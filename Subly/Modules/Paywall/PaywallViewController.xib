@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaywallViewController" customModule="Subly" customModuleProvider="target">
+            <connections>
+                <outlet property="scrollView" destination="PWL-SCV-01" id="OUT-PWL-SCV"/>
+                <outlet property="contentStack" destination="PWL-STK-01" id="OUT-PWL-STK"/>
+                <outlet property="bottomBar" destination="PWL-BBR-01" id="OUT-PWL-BBR"/>
+                <outlet property="bottomStack" destination="PWL-BST-01" id="OUT-PWL-BST"/>
+                <outlet property="view" destination="PWL-RTV-01" id="OUT-PWL-VW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="PWL-RTV-01">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWL-SCV-01">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="700"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="fill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="PWL-STK-01">
+                            <rect key="frame" x="24" y="24" width="345" height="0.0"/>
+                        </stackView>
+                    </subviews>
+                </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWL-BBR-01">
+                    <rect key="frame" x="0.0" y="700" width="393" height="152"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PWL-BST-01">
+                            <rect key="frame" x="24" y="12" width="345" height="0.0"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" name="Background"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="PWL-SFA-01"/>
+            <color key="backgroundColor" name="Background"/>
+            <constraints>
+                <constraint firstItem="PWL-SCV-01" firstAttribute="top" secondItem="PWL-SFA-01" secondAttribute="top" id="C-PWL-SCV-T"/>
+                <constraint firstItem="PWL-SCV-01" firstAttribute="leading" secondItem="PWL-SFA-01" secondAttribute="leading" id="C-PWL-SCV-L"/>
+                <constraint firstItem="PWL-SFA-01" firstAttribute="trailing" secondItem="PWL-SCV-01" secondAttribute="trailing" id="C-PWL-SCV-R"/>
+                <constraint firstItem="PWL-BBR-01" firstAttribute="top" secondItem="PWL-SCV-01" secondAttribute="bottom" id="C-PWL-BBR-T"/>
+                <constraint firstItem="PWL-STK-01" firstAttribute="top" secondItem="PWL-SCV-01" secondAttribute="top" constant="24" id="C-PWL-STK-T"/>
+                <constraint firstItem="PWL-STK-01" firstAttribute="leading" secondItem="PWL-SCV-01" secondAttribute="leading" constant="24" id="C-PWL-STK-L"/>
+                <constraint firstItem="PWL-SCV-01" firstAttribute="trailing" secondItem="PWL-STK-01" secondAttribute="trailing" constant="24" id="C-PWL-STK-R"/>
+                <constraint firstItem="PWL-SCV-01" firstAttribute="bottom" secondItem="PWL-STK-01" secondAttribute="bottom" constant="16" id="C-PWL-STK-B"/>
+                <constraint firstItem="PWL-STK-01" firstAttribute="width" secondItem="PWL-SCV-01" secondAttribute="width" constant="-48" id="C-PWL-STK-W"/>
+                <constraint firstItem="PWL-BBR-01" firstAttribute="leading" secondItem="PWL-RTV-01" secondAttribute="leading" id="C-PWL-BBR-L"/>
+                <constraint firstItem="PWL-RTV-01" firstAttribute="trailing" secondItem="PWL-BBR-01" secondAttribute="trailing" id="C-PWL-BBR-R"/>
+                <constraint firstItem="PWL-RTV-01" firstAttribute="bottom" secondItem="PWL-BBR-01" secondAttribute="bottom" id="C-PWL-BBR-B"/>
+                <constraint firstItem="PWL-BST-01" firstAttribute="top" secondItem="PWL-BBR-01" secondAttribute="top" constant="12" id="C-PWL-BST-T"/>
+                <constraint firstItem="PWL-BST-01" firstAttribute="leading" secondItem="PWL-BBR-01" secondAttribute="leading" constant="24" id="C-PWL-BST-L"/>
+                <constraint firstItem="PWL-BBR-01" firstAttribute="trailing" secondItem="PWL-BST-01" secondAttribute="trailing" constant="24" id="C-PWL-BST-R"/>
+                <constraint firstItem="PWL-SFA-01" firstAttribute="bottom" secondItem="PWL-BST-01" secondAttribute="bottom" constant="12" id="C-PWL-BST-B"/>
+            </constraints>
+            <point key="canvasLocation" x="138" y="138"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.984" green="0.976" blue="0.96499999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

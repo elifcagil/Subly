@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SectionHeaderView" customModule="Subly" customModuleProvider="target">
+            <connections>
+                <outlet property="titleLabel" destination="SHV-TTL" id="OUT-SHV-TTL"/>
+                <outlet property="countLabel" destination="SHV-CNT" id="OUT-SHV-CNT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="SHV-RTV" userLabel="Content">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="horizontal" alignment="firstBaseline" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SHV-STK">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHV-TTL">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                            <color key="textColor" name="TextSecondary"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHV-CNT">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                            <color key="textColor" name="TextTertiary"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="SHV-STK" firstAttribute="top" secondItem="SHV-RTV" secondAttribute="top" constant="12" id="C-SHV-T"/>
+                <constraint firstAttribute="bottom" secondItem="SHV-STK" secondAttribute="bottom" constant="4" id="C-SHV-B"/>
+                <constraint firstItem="SHV-STK" firstAttribute="leading" secondItem="SHV-RTV" secondAttribute="leadingMargin" id="C-SHV-L"/>
+                <constraint firstItem="SHV-RTV" firstAttribute="trailingMargin" secondItem="SHV-STK" secondAttribute="trailing" id="C-SHV-TR"/>
+            </constraints>
+            <point key="canvasLocation" x="20" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="TextSecondary">
+            <color red="0.40400000000000003" green="0.38800000000000001" blue="0.35699999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextTertiary">
+            <color red="0.60399999999999998" green="0.57999999999999996" blue="0.55300000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

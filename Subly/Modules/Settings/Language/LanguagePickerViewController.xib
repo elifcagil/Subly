@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LanguagePickerViewController" customModule="Subly" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="LNG-TBV-01" id="OUT-LNG-TBV"/>
+                <outlet property="view" destination="LNG-RTV-01" id="OUT-LNG-VW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="LNG-RTV-01">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LNG-TBV-01">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <color key="backgroundColor" name="Background"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="LNG-SFA-01"/>
+            <color key="backgroundColor" name="Background"/>
+            <constraints>
+                <constraint firstItem="LNG-TBV-01" firstAttribute="top" secondItem="LNG-SFA-01" secondAttribute="top" id="C-LNG-T"/>
+                <constraint firstItem="LNG-TBV-01" firstAttribute="leading" secondItem="LNG-SFA-01" secondAttribute="leading" id="C-LNG-L"/>
+                <constraint firstItem="LNG-SFA-01" firstAttribute="trailing" secondItem="LNG-TBV-01" secondAttribute="trailing" id="C-LNG-TR"/>
+                <constraint firstItem="LNG-SFA-01" firstAttribute="bottom" secondItem="LNG-TBV-01" secondAttribute="bottom" id="C-LNG-B"/>
+            </constraints>
+            <point key="canvasLocation" x="138" y="138"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.984" green="0.976" blue="0.96499999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

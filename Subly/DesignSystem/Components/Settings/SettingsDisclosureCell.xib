@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIResponder"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingsDisclosureCell" rowHeight="44" id="CELL-DSC-ROOT" customClass="SettingsDisclosureCell" customModule="Subly" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CELL-DSC-ROOT" id="CELL-DSC-CV">
+                <rect key="frame" x="0.0" y="0.0" width="316" height="56"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="horizontal" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="CELL-DSC-STK">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CELL-DSC-TTL">
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" name="TextPrimary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CELL-DSC-DTL">
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" name="TextSecondary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="CELL-DSC-CHP" customClass="SublyChip" customModule="Subly" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="60" height="24"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CELL-DSC-STK" firstAttribute="top" secondItem="CELL-DSC-CV" secondAttribute="top" constant="12" id="C-DSC-T"/>
+                    <constraint firstAttribute="bottom" secondItem="CELL-DSC-STK" secondAttribute="bottom" constant="12" id="C-DSC-B"/>
+                    <constraint firstItem="CELL-DSC-STK" firstAttribute="leading" secondItem="CELL-DSC-CV" secondAttribute="leadingMargin" id="C-DSC-L"/>
+                    <constraint firstItem="CELL-DSC-CV" firstAttribute="trailingMargin" secondItem="CELL-DSC-STK" secondAttribute="trailing" id="C-DSC-TR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="Surface"/>
+            <connections>
+                <outlet property="chip" destination="CELL-DSC-CHP" id="OUT-DSC-CHP"/>
+                <outlet property="detailLabel" destination="CELL-DSC-DTL" id="OUT-DSC-DTL"/>
+                <outlet property="stack" destination="CELL-DSC-STK" id="OUT-DSC-STK"/>
+                <outlet property="titleLabel" destination="CELL-DSC-TTL" id="OUT-DSC-TTL"/>
+            </connections>
+            <point key="canvasLocation" x="20" y="20"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Surface">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextPrimary">
+            <color red="0.10599999999999999" green="0.10199999999999998" blue="0.094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextSecondary">
+            <color red="0.40400000000000003" green="0.38800000000000001" blue="0.35699999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

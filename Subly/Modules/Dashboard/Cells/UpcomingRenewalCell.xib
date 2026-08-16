@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIResponder"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UpcomingRenewalCell" rowHeight="60" id="UPR-ROOT" customClass="UpcomingRenewalCell" customModule="Subly" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UPR-ROOT" id="UPR-CV">
+                <rect key="frame" x="0.0" y="0.0" width="316" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="horizontal" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UPR-STK">
+                        <subviews>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="UPR-AV" customClass="SublyAvatarView" customModule="Subly" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="leading" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UPR-TXT">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPR-NAM">
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" name="TextPrimary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPR-DAT">
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                        <color key="textColor" name="TextSecondary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="UPR-AMT-CT">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="20"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPR-AMT" customClass="SublyAmountLabel" customModule="Subly" customModuleProvider="target">
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" name="TextPrimary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="UPR-AMT" firstAttribute="top" secondItem="UPR-AMT-CT" secondAttribute="top" id="C-UPR-AMT-T"/>
+                                    <constraint firstItem="UPR-AMT" firstAttribute="leading" secondItem="UPR-AMT-CT" secondAttribute="leading" id="C-UPR-AMT-L"/>
+                                    <constraint firstItem="UPR-AMT-CT" firstAttribute="trailing" secondItem="UPR-AMT" secondAttribute="trailing" id="C-UPR-AMT-R"/>
+                                    <constraint firstItem="UPR-AMT-CT" firstAttribute="bottom" secondItem="UPR-AMT" secondAttribute="bottom" id="C-UPR-AMT-B"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="UPR-STK" firstAttribute="top" secondItem="UPR-CV" secondAttribute="top" constant="12" id="C-UPR-STK-T"/>
+                    <constraint firstAttribute="bottom" secondItem="UPR-STK" secondAttribute="bottom" constant="12" id="C-UPR-STK-B"/>
+                    <constraint firstItem="UPR-STK" firstAttribute="leading" secondItem="UPR-CV" secondAttribute="leading" constant="16" id="C-UPR-STK-L"/>
+                    <constraint firstItem="UPR-CV" firstAttribute="trailingMargin" secondItem="UPR-STK" secondAttribute="trailing" id="C-UPR-STK-R"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="Surface"/>
+            <connections>
+                <outlet property="amountLabel" destination="UPR-AMT" id="OUT-UPR-AMT"/>
+                <outlet property="avatarView" destination="UPR-AV" id="OUT-UPR-AV"/>
+                <outlet property="dateLabel" destination="UPR-DAT" id="OUT-UPR-DAT"/>
+                <outlet property="nameLabel" destination="UPR-NAM" id="OUT-UPR-NAM"/>
+            </connections>
+            <point key="canvasLocation" x="20" y="20"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Surface">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextPrimary">
+            <color red="0.10599999999999999" green="0.10199999999999998" blue="0.094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextSecondary">
+            <color red="0.40400000000000003" green="0.38800000000000001" blue="0.35699999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

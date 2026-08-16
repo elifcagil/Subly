@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubscriptionListViewController" customModule="Subly" customModuleProvider="target">
+            <connections>
+                <outlet property="chipScrollView" destination="SBL-CHP-SCV" id="OUT-SBL-CHP-SCV"/>
+                <outlet property="chipStack" destination="SBL-CHP-STK" id="OUT-SBL-CHP-STK"/>
+                <outlet property="tableView" destination="SBL-TBV-01" id="OUT-SBL-TBV"/>
+                <outlet property="emptyStateView" destination="SBL-EMP-01" id="OUT-SBL-EMP"/>
+                <outlet property="view" destination="SBL-RTV-01" id="OUT-SBL-VW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="SBL-RTV-01">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBL-CHP-SCV">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="horizontal" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SBL-CHP-STK">
+                            <rect key="frame" x="16" y="8" width="0.0" height="40"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="C-SBL-CHP-H"/>
+                    </constraints>
+                </scrollView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SBL-TBV-01">
+                    <rect key="frame" x="0.0" y="44" width="393" height="808"/>
+                    <color key="backgroundColor" name="Background"/>
+                </tableView>
+                <view contentMode="scaleToFill" hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SBL-EMP-01" customClass="SublyEmptyStateView" customModule="Subly" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="393" height="808"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="SBL-SFA-01"/>
+            <color key="backgroundColor" name="Background"/>
+            <constraints>
+                <constraint firstItem="SBL-CHP-SCV" firstAttribute="top" secondItem="SBL-SFA-01" secondAttribute="top" id="C-SBL-CHP-T"/>
+                <constraint firstItem="SBL-CHP-SCV" firstAttribute="leading" secondItem="SBL-RTV-01" secondAttribute="leading" id="C-SBL-CHP-L"/>
+                <constraint firstItem="SBL-RTV-01" firstAttribute="trailing" secondItem="SBL-CHP-SCV" secondAttribute="trailing" id="C-SBL-CHP-R"/>
+                <constraint firstItem="SBL-CHP-STK" firstAttribute="top" secondItem="SBL-CHP-SCV" secondAttribute="top" constant="8" id="C-SBL-CSTK-T"/>
+                <constraint firstItem="SBL-CHP-STK" firstAttribute="leading" secondItem="SBL-CHP-SCV" secondAttribute="leading" constant="16" id="C-SBL-CSTK-L"/>
+                <constraint firstItem="SBL-CHP-SCV" firstAttribute="trailing" secondItem="SBL-CHP-STK" secondAttribute="trailing" constant="16" id="C-SBL-CSTK-R"/>
+                <constraint firstItem="SBL-CHP-SCV" firstAttribute="bottom" secondItem="SBL-CHP-STK" secondAttribute="bottom" constant="8" id="C-SBL-CSTK-B"/>
+                <constraint firstItem="SBL-CHP-STK" firstAttribute="height" secondItem="SBL-CHP-SCV" secondAttribute="height" constant="-16" id="C-SBL-CSTK-H"/>
+                <constraint firstItem="SBL-TBV-01" firstAttribute="top" secondItem="SBL-CHP-SCV" secondAttribute="bottom" id="C-SBL-T-T"/>
+                <constraint firstItem="SBL-TBV-01" firstAttribute="leading" secondItem="SBL-SFA-01" secondAttribute="leading" id="C-SBL-T-L"/>
+                <constraint firstItem="SBL-SFA-01" firstAttribute="trailing" secondItem="SBL-TBV-01" secondAttribute="trailing" id="C-SBL-T-R"/>
+                <constraint firstItem="SBL-SFA-01" firstAttribute="bottom" secondItem="SBL-TBV-01" secondAttribute="bottom" id="C-SBL-T-B"/>
+                <constraint firstItem="SBL-EMP-01" firstAttribute="top" secondItem="SBL-CHP-SCV" secondAttribute="bottom" id="C-SBL-E-T"/>
+                <constraint firstItem="SBL-EMP-01" firstAttribute="leading" secondItem="SBL-SFA-01" secondAttribute="leading" id="C-SBL-E-L"/>
+                <constraint firstItem="SBL-SFA-01" firstAttribute="trailing" secondItem="SBL-EMP-01" secondAttribute="trailing" id="C-SBL-E-R"/>
+                <constraint firstItem="SBL-SFA-01" firstAttribute="bottom" secondItem="SBL-EMP-01" secondAttribute="bottom" id="C-SBL-E-B"/>
+            </constraints>
+            <point key="canvasLocation" x="138" y="138"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.984" green="0.976" blue="0.96499999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

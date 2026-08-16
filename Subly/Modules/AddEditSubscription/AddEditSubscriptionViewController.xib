@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddEditSubscriptionViewController" customModule="Subly" customModuleProvider="target">
+            <connections>
+                <outlet property="scrollView" destination="AES-SCV-01" id="OUT-AES-SCV"/>
+                <outlet property="formStack" destination="AES-STK-01" id="OUT-AES-STK"/>
+                <outlet property="view" destination="AES-RTV-01" id="OUT-AES-VW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="AES-RTV-01">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AES-SCV-01">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="fill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AES-STK-01">
+                            <rect key="frame" x="16" y="16" width="361" height="0.0"/>
+                        </stackView>
+                    </subviews>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="AES-SFA-01"/>
+            <color key="backgroundColor" name="Background"/>
+            <constraints>
+                <constraint firstItem="AES-SCV-01" firstAttribute="top" secondItem="AES-SFA-01" secondAttribute="top" id="C-AES-SCV-T"/>
+                <constraint firstItem="AES-SCV-01" firstAttribute="leading" secondItem="AES-SFA-01" secondAttribute="leading" id="C-AES-SCV-L"/>
+                <constraint firstItem="AES-SFA-01" firstAttribute="trailing" secondItem="AES-SCV-01" secondAttribute="trailing" id="C-AES-SCV-R"/>
+                <constraint firstItem="AES-SFA-01" firstAttribute="bottom" secondItem="AES-SCV-01" secondAttribute="bottom" id="C-AES-SCV-B"/>
+                <constraint firstItem="AES-STK-01" firstAttribute="top" secondItem="AES-SCV-01" secondAttribute="top" constant="16" id="C-AES-STK-T"/>
+                <constraint firstItem="AES-STK-01" firstAttribute="leading" secondItem="AES-SCV-01" secondAttribute="leading" constant="16" id="C-AES-STK-L"/>
+                <constraint firstItem="AES-SCV-01" firstAttribute="trailing" secondItem="AES-STK-01" secondAttribute="trailing" constant="16" id="C-AES-STK-R"/>
+                <constraint firstItem="AES-SCV-01" firstAttribute="bottom" secondItem="AES-STK-01" secondAttribute="bottom" constant="32" id="C-AES-STK-B"/>
+                <constraint firstItem="AES-STK-01" firstAttribute="width" secondItem="AES-SCV-01" secondAttribute="width" constant="-32" id="C-AES-STK-W"/>
+            </constraints>
+            <point key="canvasLocation" x="138" y="138"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.984" green="0.976" blue="0.96499999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

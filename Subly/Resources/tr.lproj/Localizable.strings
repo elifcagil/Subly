@@ -1,0 +1,368 @@
+/* Common */
+"common.save" = "Kaydet";
+"common.cancel" = "Vazgeç";
+"common.delete" = "Sil";
+"common.close" = "Kapat";
+"common.ok" = "Tamam";
+"common.edit" = "Düzenle";
+"common.archive" = "Arşivle";
+"common.upgrade" = "Yükselt";
+"common.sign_in" = "Giriş yap";
+"common.sign_out" = "Çıkış Yap";
+"common.retry" = "Tekrar dene";
+"common.something_went_wrong" = "Bir şeyler ters gitti.";
+
+/* Tabs */
+"tabs.dashboard" = "Özet";
+"tabs.subscriptions" = "Abonelikler";
+"tabs.timeline" = "Takvim";
+"tabs.insights" = "Analiz";
+"tabs.settings" = "Ayarlar";
+"tabs.search" = "Ara";
+
+/* Onboarding */
+"onboarding.next" = "İleri";
+"onboarding.skip" = "Geç";
+"onboarding.get_started" = "Başlayalım";
+"onboarding.allow_notifications" = "Bildirimlere İzin Ver";
+"onboarding.tracking.title" = "Hepsi tek yerde";
+"onboarding.tracking.message" = "Tüm yinelenen ödemelerini sade bir listede gör.";
+"onboarding.renewals.title" = "Sürpriz olmasın";
+"onboarding.renewals.message" = "Abonelik yenilemelerinden önce naif hatırlatıcılar.";
+"onboarding.insights.title" = "Harcamanı anla";
+"onboarding.insights.message" = "Aylık toplamlar ve kategori dağılımı bir bakışta.";
+"onboarding.notifications.title" = "Haberin olsun";
+"onboarding.notifications.message" = "Bildirimlere izin ver, sadece önemli olduğunda hatırlatalım.";
+"onboarding.headline" = "Paranın tam olarak nereye gittiğini bil.";
+"onboarding.subcopy" = "Tüm aboneliklerini tek sakin yerde takip et — toplamlar, yenilemeler ve nazik hatırlatıcılar.";
+"onboarding.add_first" = "İlk aboneliğini ekle";
+"onboarding.sample_data" = "Örnek verilerle keşfet";
+
+/* Registration (00/00B/00C) */
+"splash.preparing" = "Cihaz profilin hazırlanıyor…";
+"registration.headline" = "Hesap yok. Bu cihaz senin hesabın.";
+"registration.subcopy" = "E-posta yok, şifre yok, kişisel veri yok. Aboneliklerin anonim bir cihaz kimliğine bağlanır — bir kez, otomatik olarak.";
+"registration.trust1_title" = "Anonim cihaz kimliği";
+"registration.trust1_body" = "Rastgele bir tanımlayıcı — asla adın ya da numaran değil.";
+"registration.trust2_title" = "Kişisel hiçbir şey saklanmaz";
+"registration.trust2_body" = "Tasarımı gereği KVKK/GDPR kapsamı dışında.";
+"registration.trust3_title" = "Yalnızca bir kez";
+"registration.trust3_body" = "Giriş ekranı yok, çıkış yok. Hiçbir zaman.";
+"registration.your_id" = "KİMLİĞİN";
+"registration.copied" = "Kopyalandı";
+"registration.continue" = "Bu cihazla devam et";
+"registration.legal" = "Devam ettiğinde bu cihaz anonim bir kimlikle eşlenir.";
+"registering.title" = "Cihaz kaydedildi";
+"registering.taking" = "Panele yönlendiriliyorsun…";
+"registering.failed" = "Cihaz kaydedilemedi. Bağlantını kontrol edip tekrar dene.";
+
+/* Empty state (v5 screen 12) */
+"empty.title" = "Henüz bir şey takip edilmiyor";
+"empty.message" = "Aylık tabloyu görmek için bir abonelik ekle.";
+"empty.add" = "Abonelik ekle";
+"empty.sample" = "Örnek verilerle dene";
+
+/* Dashboard */
+"dashboard.title" = "Genel Bakış";
+"dashboard.monthly_total" = "Aylık toplam";
+"dashboard.active_one" = "etkin abonelik";
+"dashboard.active_other" = "etkin abonelik";
+"dashboard.active_subs" = "Etkin abonelik";
+"dashboard.see_all" = "Tümünü gör";
+"dashboard.yearly_format" = "%@ / yıl";
+"dashboard.due_caption_format" = "%@ · 7 gün";
+"dashboard.upcoming_header" = "Yaklaşan yenilemeler";
+"dashboard.empty_title" = "Henüz abonelik yok";
+"dashboard.empty_message" = "İlk aboneliğini eklemek için + simgesine dokun.";
+"dashboard.add_accessibility" = "Abonelik ekle";
+"dashboard.this_month" = "Bu ay";
+"dashboard.next_seven_days" = "Önümüzdeki 7 gün";
+"dashboard.by_category" = "Kategoriye göre";
+"dashboard.delta_format" = "%1$@ %2$d%% (%3$@ ayına göre)";
+"dashboard.active_count_format" = "%d etkin";
+"dashboard.yearly_short_format" = "%@/yıl";
+
+/* Subscription list */
+"subscription_list.title" = "Abonelikler";
+"subscription_list.uncategorized" = "Kategorisiz";
+"subscription_list.empty_title" = "Burada bir şey yok";
+"subscription_list.empty_message" = "İlk aboneliğini Özet ekranından ekle.";
+"subscription_list.failed_title" = "Yüklenemedi";
+"subscription_list.delete_title_format" = "%@ silinsin mi?";
+"subscription_list.delete_message" = "Abonelik kalıcı olarak silinecek.";
+"subscription_list.row_hint" = "Ayrıntılar için iki kez dokun. Aksiyonlar için kaydır.";
+"subscription_list.renews_on_format" = "Yenilenir: %@";
+
+/* Subscription detail */
+"subscription_detail.next_renewal" = "Sonraki yenileme";
+"subscription_detail.started" = "Başlangıç";
+"subscription_detail.category" = "Kategori";
+"subscription_detail.currency" = "Para birimi";
+"subscription_detail.delete_title" = "Abonelik silinsin mi?";
+"subscription_detail.delete_message" = "Bu abonelik ve hatırlatıcıları kalıcı olarak silinecek.";
+"subscription_detail.delete_button" = "Aboneliği sil";
+"subscription_detail.billing_cycle" = "Fatura dönemi";
+"subscription_detail.yearly_cost" = "Yıllık maliyet";
+"subscription_detail.reminder" = "Hatırlatıcı";
+"subscription_detail.due_today" = "Bugün";
+"subscription_detail.due_tomorrow" = "Yarın";
+"subscription_detail.in_days_format" = "%d gün içinde";
+"subscription_detail.edit_details" = "Ayrıntıları düzenle";
+"subscription_detail.cancel_plan" = "Planı iptal et";
+"subscription_detail.paid_so_far" = "Şimdiye kadar ödenen";
+"subscription_detail.payments_since_format" = "%2$@ tarihinden beri %1$d ödeme";
+"subscription_detail.payment_since_singular_format" = "%@ tarihinden beri 1 ödeme";
+"subscription_detail.remind_me" = "Bana hatırlat";
+"subscription_detail.one_week_before" = "1 hafta önce";
+
+/* Reminder sheet */
+"reminder_sheet.subtitle" = "Yerel bildirim · sessiz saatlere uyulur";
+"reminder_sheet.done" = "Bitti";
+
+/* Add / edit */
+"add_edit.add_title" = "Abonelik Ekle";
+"add_edit.edit_title" = "Aboneliği Düzenle";
+"add_edit.field_name" = "Ad";
+"add_edit.field_amount" = "Tutar";
+"add_edit.field_currency" = "Para Birimi";
+"add_edit.currency_hint" = "Bu abonelik için para birimini seçmek için dokun.";
+"add_edit.field_billing_cycle" = "Fatura Dönemi";
+"add_edit.field_next_renewal" = "Sonraki Yenileme";
+"add_edit.field_category" = "Kategori";
+"add_edit.field_reminders" = "Hatırlatıcılar";
+"add_edit.field_notes" = "Notlar";
+"add_edit.name_placeholder" = "Netflix, Spotify…";
+"add_edit.amount_placeholder" = "0,00";
+"add_edit.category_none" = "Yok";
+"add_edit.category_choose" = "Kategori seç";
+"add_edit.reminder_same_day" = "Aynı gün";
+"add_edit.reminder_one_day" = "1 gün";
+"add_edit.reminder_days_format" = "%d gün";
+"add_edit.could_not_save" = "Kaydedilemedi";
+"add_edit.missing_name" = "Lütfen bir ad gir.";
+"add_edit.invalid_amount" = "Geçerli bir tutar gir.";
+"add_edit.save_hint" = "Aboneliği kaydeder.";
+"add_edit.cancel_hint" = "Değişiklikleri yok sayar ve formu kapatır.";
+"add_edit.impact_format" = "Aylık %1$@ ekler — aylık toplamın %2$@ olur";
+
+/* Timeline */
+"timeline.title" = "Zaman Çizelgesi";
+"timeline.empty_title" = "Yakında geliyor";
+"timeline.empty_message" = "Yaklaşan yenilemeler burada görünecek.";
+"timeline.due_format" = "%@ ödenecek";
+"timeline.week" = "Hafta";
+"timeline.month" = "Ay";
+"timeline.payments_this_month" = "Bu ayki ödemeler";
+"timeline.previous_month" = "Önceki ay";
+"timeline.next_month" = "Sonraki ay";
+
+/* Search */
+"search.title" = "Ara";
+"search.placeholder" = "Abonelik ara";
+"search.results_one_format" = "%@ içinde 1 sonuç";
+"search.results_other_format" = "%2$@ içinde %1$d sonuç";
+"search.in_notes" = "Notlarda";
+"search.prompt_title" = "Aboneliklerinde ara";
+"search.prompt_message" = "Ad, kategori ve notlarda arar.";
+"search.no_results_format" = "\"%@\" için sonuç yok";
+
+/* Insights */
+"insights.title" = "Analiz";
+"insights.monthly_caption" = "Aylık";
+"insights.yearly_caption" = "Yıllık";
+"insights.yearly_footnote" = "öngörü";
+"insights.biggest_upcoming" = "En büyük yaklaşan ödeme";
+"insights.where_it_goes" = "Nereye gidiyor";
+"insights.next_four_weeks" = "Önümüzdeki dört hafta";
+"insights.empty_title" = "Henüz yeterli veri yok";
+"insights.empty_message" = "Analiz görmek için birkaç abonelik ekle.";
+"insights.no_breakdown" = "Dağılımı görmek için aboneliklere kategori ata.";
+"insights.no_renewals" = "Önümüzdeki dört hafta için yenileme yok.";
+"insights.week_of_format" = "%@ haftası";
+"insights.renewals_one" = "%d yenileme";
+"insights.renewals_other" = "%d yenileme";
+
+/* Settings */
+"settings.title" = "Ayarlar";
+"settings.section_plan" = "Plan";
+"settings.section_preferences" = "Tercihler";
+"settings.section_notifications" = "Bildirimler";
+"settings.section_about" = "Hakkında";
+"settings.row_subly_plus" = "Subly Plus";
+"settings.row_account" = "Hesap";
+"settings.row_currency" = "Para birimi";
+"settings.row_appearance" = "Görünüm";
+"settings.row_language" = "Dil";
+"settings.row_permission" = "İzin";
+"settings.row_version" = "Sürüm";
+"settings.row_device_id" = "Cihaz kimliği";
+"settings.device_id_copied" = "Cihaz kimliği kopyalandı. Veri silme talebinde bu kimliği bize iletebilirsin.";
+"settings.plan_active" = "Etkin";
+"settings.plan_upgrade" = "Yükselt";
+"settings.not_signed_in" = "Giriş yap";
+"settings.permission_enabled" = "Etkin";
+"settings.permission_disabled" = "Kapalı";
+"settings.permission_not_requested" = "İstenmedi";
+"settings.permission_unknown" = "Bilinmiyor";
+"settings.section_appearance" = "Görünüm";
+"settings.section_language" = "Dil";
+"settings.section_currency" = "Para Birimi";
+"settings.currency_footer" = "Yeni abonelik eklerken varsayılan olarak kullanılır ve özet kartlarını öne çıkarır.";
+"settings.row_reminders" = "Varsayılan hatırlatıcılar";
+"settings.row_calendar_export" = "Takvime aktar";
+"settings.row_notifications" = "Bildirimler";
+"settings.notifications_footer" = "Yenileme hatırlatıcıları yerel bildirim olarak gelir. Sessiz saatlere uyulur.";
+"settings.data_footer" = "Verilerin cihazında kalır.";
+
+/* Renewal notifications (v5) */
+"notifications.renewal.title_today_format" = "%1$@ bugün yenileniyor — %2$@";
+"notifications.renewal.title_tomorrow_format" = "%1$@ yarın yenileniyor — %2$@";
+"notifications.renewal.title_days_format" = "%1$@ %2$d gün içinde yenileniyor — %3$@";
+"notifications.renewal.body" = "Hâlâ kullanıyor musun? İncelemek ya da iptali planlamak için Subly'yi aç.";
+"settings.reminders_off" = "Kapalı";
+"settings.reminders_same_day" = "Aynı gün";
+"settings.reminders_one_day" = "1 gün önce";
+"settings.reminders_days_format" = "%d gün önce";
+"settings.reminders_summary_two_format" = "%@ · %@";
+"settings.reminders_summary_more_format" = "%@ · %@ · +%d daha";
+"settings.reminders_picker_title" = "Varsayılan Hatırlatıcılar";
+"settings.reminders_picker_footer" = "Yeni abonelik eklerken bu hatırlatıcılar önceden seçilir.";
+"settings.calendar_footer" = "Açıkken kaydedilen abonelikler varsayılan takvimine eklenir.";
+"settings.calendar_permission_denied" = "Takvim erişimi kapalı. iOS Ayarlar'dan etkinleştir.";
+
+/* Appearance */
+"appearance.title" = "Görünüm";
+"appearance.automatic" = "Otomatik";
+"appearance.light" = "Açık";
+"appearance.dark" = "Koyu";
+"appearance.footer" = "Otomatik, iOS sistem ayarını izler.";
+
+/* Language */
+"language.title" = "Dil";
+"language.english" = "English";
+"language.turkish" = "Türkçe";
+"language.footer" = "Dili değiştirdiğinde Subly yeniden başlar.";
+
+/* Paywall */
+"paywall.nav_title" = "Subly Plus";
+"paywall.headline" = "Subly Plus'ı aç";
+"paywall.subtitle" = "Gelişmiş analiz, takvim aktarımı ve bulut eşitleme. İstediğin zaman iptal et.";
+"paywall.benefit_insights" = "Gelişmiş analiz ve trendler";
+"paywall.benefit_sync" = "Tüm cihazlarında eşitleme";
+"paywall.benefit_calendar" = "Yenilemeleri Takvim'e aktar";
+"paywall.benefit_future" = "Gelecek Plus özellikleri dahil";
+"paywall.subscribe" = "Abone Ol";
+"paywall.restore" = "Satın Almaları Geri Yükle";
+"paywall.restoring" = "Yükleniyor…";
+"paywall.already_plus" = "Zaten Plus üyesisin. Teşekkürler!";
+"paywall.unavailable" = "Abonelikler şu an kullanılamıyor. Lütfen sonra tekrar dene.";
+"paywall.plan_monthly" = "Aylık";
+"paywall.plan_yearly" = "Yıllık";
+"paywall.best_value" = "En İyi Değer";
+"paywall.per_month_format" = "≈ %@ / ay";
+"paywall.price_per_period_format" = "%1$@ / %2$@";
+"paywall.trust" = "İstediğin zaman Ayarlar'dan iptal et · App Store faturalandırır";
+
+/* Account */
+"account.title" = "Hesap";
+"account.plan_label_format" = "Plan · %@";
+"account.free" = "Ücretsiz";
+"account.plus" = "Subly Plus";
+"account.signed_in_fallback" = "Giriş yapıldı";
+
+/* Billing cycle */
+"billing_cycle.weekly" = "Haftalık";
+"billing_cycle.monthly" = "Aylık";
+"billing_cycle.quarterly" = "Üç aylık";
+"billing_cycle.yearly" = "Yıllık";
+"billing_cycle.custom" = "Özel";
+
+/* Catalog */
+"catalog.title" = "Abonelik Ekle";
+"catalog.section_manual" = "Manuel";
+"catalog.section_suggested" = "Popüler";
+"catalog.row_manual" = "Özel abonelik";
+"catalog.empty_title" = "Eşleşme yok";
+"catalog.empty_message" = "Farklı bir arama yap ya da manuel ekle.";
+"catalog.search_placeholder" = "200+ servis ara";
+
+/* Search & filter on list */
+"list.search_placeholder" = "Abonelik ara";
+"list.filter_all" = "Tümü";
+"list.filter_active" = "Etkin";
+"list.filter_archived" = "Arşiv";
+"list.sort_button" = "Sırala";
+"list.sort_renewal_date" = "Yenileme tarihi";
+"list.sort_amount" = "Tutar";
+"list.sort_name" = "Ad";
+"list.sort_recently_added" = "Son eklenenler";
+"list.no_matches_title" = "Eşleşme yok";
+"list.no_matches_message" = "Farklı bir arama dene ya da filtreleri temizle.";
+"list.archive_action" = "Arşivle";
+"list.unarchive_action" = "Geri Yükle";
+
+/* Currency picker */
+"currency.title" = "Para Birimi";
+"currency.section_suggested" = "Önerilen";
+"currency.section_all" = "Tüm para birimleri";
+"currency.search_placeholder" = "Para birimi ara";
+"currency.empty_title" = "Eşleşme yok";
+"currency.empty_message" = "Farklı bir arama dene.";
+"currency.try" = "Türk Lirası";
+"currency.usd" = "ABD Doları";
+"currency.eur" = "Euro";
+"currency.gbp" = "İngiliz Sterlini";
+"currency.jpy" = "Japon Yeni";
+"currency.chf" = "İsviçre Frangı";
+"currency.cad" = "Kanada Doları";
+"currency.aud" = "Avustralya Doları";
+
+/* Dashboard pressure card (Phase 9) */
+"dashboard.pressure_caption_format" = "Sonraki 7 gün · %@";
+
+/* Financial Load (Phase 9) */
+"financial_load.title" = "Yaklaşan Yük";
+"financial_load.horizon_24h" = "Sonraki 24 saat";
+"financial_load.horizon_7d" = "Sonraki 7 gün";
+"financial_load.horizon_30d" = "Sonraki 30 gün";
+"financial_load.horizon_custom_format" = "Sonraki %d gün";
+"financial_load.empty_24h" = "Önümüzdeki 24 saatte yenileme yok.";
+"financial_load.empty_7d" = "Önümüzdeki 7 günde yenileme yok.";
+"financial_load.empty_30d" = "Önümüzdeki 30 günde yenileme yok.";
+"financial_load.empty_title" = "Yaklaşan ödeme yok";
+"financial_load.empty_message" = "Abonelikler yenileme tarihine yaklaştığında burada görünür.";
+"financial_load.renewals_one" = "1 yenileme";
+"financial_load.renewals_other_format" = "%d yenileme";
+"financial_load.tone.light" = "rahat";
+"financial_load.tone.moderate" = "orta";
+"financial_load.tone.heavy" = "yoğun";
+"financial_load.tone.peak" = "tepe";
+"financial_load.heaviest_day_format" = "En yoğun gün · %1$@ · %2$@";
+
+/* Bildirimler — Tier 2 Akıllı Hatırlatıcı */
+"notifications.smart.weekly.title" = "Bu haftaki yenilemeler";
+"notifications.smart.weekly.body_one" = "Bu hafta 1 abonelik yenileniyor.";
+"notifications.smart.weekly.body_other_format" = "Bu hafta %d abonelik yenileniyor.";
+"notifications.smart.heavy.title" = "Yarın yoğun bir gün";
+"notifications.smart.heavy.body_format" = "Yarın %d yenileme var.";
+"notifications.smart.new_starts.title" = "Yeni başlayan ödemeler";
+"notifications.smart.new_starts.body_one" = "Bu hafta 1 yeni abonelik başlıyor.";
+"notifications.smart.new_starts.body_other_format" = "Bu hafta %d yeni abonelik başlıyor.";
+
+/* Bildirimler — Tier 3 Finansal Farkındalık */
+"notifications.awareness.horizon.title" = "Bir sonraki haftaya bakış";
+"notifications.awareness.horizon.body_format" = "Önümüzdeki %2$d günde %1$@.";
+"notifications.awareness.peak.title" = "Yaklaşan bir ödeme";
+"notifications.awareness.peak.body_format" = "%1$@ — tek günde %2$@.";
+
+/* Categories */
+"category.streaming" = "Yayın";
+"category.music" = "Müzik";
+"category.productivity" = "Üretkenlik";
+"category.news" = "Haberler";
+"category.cloud" = "Bulut";
+"category.fitness" = "Spor";
+"category.other" = "Diğer";
+
+/* Splash */
+"splash.tagline" = "Ödediklerin üzerinde sakin kontrol";

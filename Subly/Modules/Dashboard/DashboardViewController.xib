@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="Subly" customModuleProvider="target">
+            <connections>
+                <outlet property="scrollView" destination="DSH-SCV-01" id="OUT-DSH-SCV"/>
+                <outlet property="contentStack" destination="DSH-STK-01" id="OUT-DSH-STK"/>
+                <outlet property="emptyStateView" destination="DSH-EMP-01" id="OUT-DSH-EMP"/>
+                <outlet property="view" destination="DSH-RTV-01" id="OUT-DSH-VW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="DSH-RTV-01">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSH-SCV-01">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="fill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DSH-STK-01">
+                            <rect key="frame" x="16" y="16" width="361" height="0.0"/>
+                        </stackView>
+                    </subviews>
+                </scrollView>
+                <view contentMode="scaleToFill" hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSH-EMP-01" customClass="SublyEmptyStateView" customModule="Subly" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="DSH-SFA-01"/>
+            <color key="backgroundColor" name="Background"/>
+            <constraints>
+                <constraint firstItem="DSH-SCV-01" firstAttribute="top" secondItem="DSH-SFA-01" secondAttribute="top" id="C-DSH-SCV-T"/>
+                <constraint firstItem="DSH-SCV-01" firstAttribute="leading" secondItem="DSH-SFA-01" secondAttribute="leading" id="C-DSH-SCV-L"/>
+                <constraint firstItem="DSH-SFA-01" firstAttribute="trailing" secondItem="DSH-SCV-01" secondAttribute="trailing" id="C-DSH-SCV-R"/>
+                <constraint firstItem="DSH-SFA-01" firstAttribute="bottom" secondItem="DSH-SCV-01" secondAttribute="bottom" id="C-DSH-SCV-B"/>
+                <constraint firstItem="DSH-STK-01" firstAttribute="top" secondItem="DSH-SCV-01" secondAttribute="top" constant="16" id="C-DSH-STK-T"/>
+                <constraint firstItem="DSH-STK-01" firstAttribute="leading" secondItem="DSH-SCV-01" secondAttribute="leading" constant="16" id="C-DSH-STK-L"/>
+                <constraint firstItem="DSH-SCV-01" firstAttribute="trailing" secondItem="DSH-STK-01" secondAttribute="trailing" constant="16" id="C-DSH-STK-R"/>
+                <constraint firstItem="DSH-SCV-01" firstAttribute="bottom" secondItem="DSH-STK-01" secondAttribute="bottom" constant="32" id="C-DSH-STK-B"/>
+                <constraint firstItem="DSH-STK-01" firstAttribute="width" secondItem="DSH-SCV-01" secondAttribute="width" constant="-32" id="C-DSH-STK-W"/>
+                <constraint firstItem="DSH-EMP-01" firstAttribute="top" secondItem="DSH-SFA-01" secondAttribute="top" id="C-DSH-E-T"/>
+                <constraint firstItem="DSH-EMP-01" firstAttribute="leading" secondItem="DSH-SFA-01" secondAttribute="leading" id="C-DSH-E-L"/>
+                <constraint firstItem="DSH-SFA-01" firstAttribute="trailing" secondItem="DSH-EMP-01" secondAttribute="trailing" id="C-DSH-E-R"/>
+                <constraint firstItem="DSH-SFA-01" firstAttribute="bottom" secondItem="DSH-EMP-01" secondAttribute="bottom" id="C-DSH-E-B"/>
+            </constraints>
+            <point key="canvasLocation" x="138" y="138"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.984" green="0.976" blue="0.96499999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

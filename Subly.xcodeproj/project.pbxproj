@@ -1,0 +1,1967 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01CF19DD7A7C6745F7AC856B /* PersistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA41C80DBFE31EF9B9D8C69 /* PersistenceStack.swift */; };
+		01FA629EF04B990CC558502A /* UpcomingRenewalsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7C96A6C8730C4B318D8FD /* UpcomingRenewalsUseCase.swift */; };
+		03808E460CB9819180CDA461 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E4EB7D58CEACDAB03E1C6 /* TimelineViewController.swift */; };
+		04255902A33DF4416A167D0F /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EF77E880D61BE34E9A92BF /* Subscription.swift */; };
+		08A18AC8FD0FECFE6DC89D77 /* DebugSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03524576BFA0E7EA6707AE2 /* DebugSampleData.swift */; };
+		09111FE15E7034EF880310BB /* LanguagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1890F2EE52986248EA15836 /* LanguagePickerViewModel.swift */; };
+		0AAABE6445CABEC76B508634 /* BillingCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CEDD87F2036B3C74A1A699 /* BillingCycle.swift */; };
+		0B87EDC8FE26F3B08D517DC8 /* SublyWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0FBF2A6A0B7C0C5DCADFB5 /* SublyWidgetsBundle.swift */; };
+		0C5FDEAD02C1139FBAA45609 /* SharedSubscriptionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F6F8150F51ABC551A8C5B8 /* SharedSubscriptionProvider.swift */; };
+		0C82F987018FBBCBC6CB75BB /* SubscriptionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93864F6E0FD16B9A8C0DE7D /* SubscriptionEntity.swift */; };
+		0E24B851838466F9F2FD323A /* SublyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E497B59D75F5D490FBF3590 /* SublyTabBar.swift */; };
+		0E61405545127D1E72A7C3B3 /* FinancialLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E6AB24AC6584A71A663A8 /* FinancialLoadViewController.swift */; };
+		15247D81C3CA95C96C558F73 /* LanguagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647CCF0AA59C1CB0B48C6FB0 /* LanguagePickerViewController.xib */; };
+		166E689F4C73EC1523F9DDBE /* CloudKitSubscriptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532A646803386198EB2F705 /* CloudKitSubscriptionRepository.swift */; };
+		16AE85B4DE3804ECD680BBE3 /* BillingCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CEDD87F2036B3C74A1A699 /* BillingCycle.swift */; };
+		17E6C587FEDE6B05056C3639 /* DesignSystem+Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E07F8A0FFEBFF6BD64A70 /* DesignSystem+Radius.swift */; };
+		18ABA5C6B149972F0D1042B9 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F16C87D66A6E3612CE41688 /* RegisterViewModel.swift */; };
+		190E403A7FC03C7E18A08F39 /* FinancialLoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCE75A4862C7C558F1FC33 /* FinancialLoadViewModel.swift */; };
+		1B4F7146B302CBEDDDC2D0E4 /* SublyEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96947D14844E66E197A56C6A /* SublyEmptyStateView.swift */; };
+		1C0BB65728D50FFB8499A154 /* CurrencyPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E793282CC1E9445D1DBF244E /* CurrencyPickerViewModel.swift */; };
+		1C1F8F37F99B2290FFF1A1B0 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293A42E716BEAE659F026087 /* SettingsViewController.xib */; };
+		1E5FFD071BBB4D86D742469B /* AddEditSubscriptionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747C289A197F5B3CE7D9AB52 /* AddEditSubscriptionCoordinator.swift */; };
+		1EAAF0BF64733E372108BE22 /* DomainLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C51898C6206EEA9A937C6 /* DomainLocalization.swift */; };
+		1F19E44FE2F37DE41A86CCA8 /* CatalogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288AE71CB43E034CB7E9CC21 /* CatalogRepository.swift */; };
+		1FBBE7ED7D2A7BC5C4B43265 /* ReminderSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39320BD971486ADD367ACE6 /* ReminderSheetViewController.swift */; };
+		1FE4D324D1C2AEF262228AAA /* SublyGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78B07F29DBC96CEA199A00 /* SublyGradientView.swift */; };
+		204BDD37EA9EE5146B842517 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B065DBF0113A54E3154CB0F /* OnboardingViewController.swift */; };
+		221EEB8FB49DB13B0454B002 /* DashboardEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181DC5ADD1470248308AC90F /* DashboardEmptyView.swift */; };
+		25072D5957AFDDECCDCBB6CD /* CategoryBreakdownCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41751C205EAD86794FADADFB /* CategoryBreakdownCalculator.swift */; };
+		27C8F214B122C2B25DE83DA6 /* RegisteringViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F86DAC0448831E3D12EBB9A /* RegisteringViewModel.swift */; };
+		282C20A855595FA5FA26C5C5 /* CatalogPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACC24AA96D33A3148A1A249 /* CatalogPickerViewModel.swift */; };
+		287A40760942496F6ECF9BEE /* PaywallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B587EE3FBB564DB68C7985 /* PaywallViewController.xib */; };
+		28C0E988955655DF3C21E37B /* UpcomingFinancialLoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907A809F508B812E5003395C /* UpcomingFinancialLoadUseCase.swift */; };
+		2AA9425EEA7604ACA59E74E1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA85DF2F7BCD81EB63D609 /* Coordinator.swift */; };
+		2CAA6BDB6508BEF2A86DDBAE /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330C59FAB7B5C2E67076F350 /* AnalyticsService.swift */; };
+		2CCB5A0AC8B8252FF4921270 /* FinancialLoadWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81362D2958723F1089F098DC /* FinancialLoadWindow.swift */; };
+		2D791C9DE096AFAAC3EEE254 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8089BF5B8B1A622CEF5258FD /* NotificationManager.swift */; };
+		2DD1F4DB6F2D934577E95D1B /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7838D51906450ECBFC94DE2 /* AppError.swift */; };
+		2E922CD7C404F0790B88B3EC /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3066CBB9E970BA74A01B129 /* APIClient.swift */; };
+		31158F4AFE3D896D1BC7466E /* FinancialLoadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E24CDD11ADF7FDD5F33E19 /* FinancialLoadCoordinator.swift */; };
+		311CF5736B887804408AAC1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E362DDD96513D3D1110CB7A /* LaunchScreen.storyboard */; };
+		31A3304B8DD8B0FAFEF1B2BA /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C794A3898839A6BE0133B /* HapticsService.swift */; };
+		32AE935A17E146AB33550C5D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF425CEA0A3F61CE747E0688 /* SettingsViewController.swift */; };
+		34D11D1F29EB9E40A78CB6DB /* SublyBrandAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269DD47F7E5A606507977786 /* SublyBrandAppearance.swift */; };
+		36C43E264ED1C5EB53555266 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCCCC3AD98CD1F197076837 /* AccountViewModel.swift */; };
+		38B1215A2BB738ACF001B684 /* PersistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA41C80DBFE31EF9B9D8C69 /* PersistenceStack.swift */; };
+		391D82A43E85F6578553E868 /* TimelineCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396B6C7E6FCB3106CBA5F02D /* TimelineCoordinator.swift */; };
+		3925B0CD061B90E4717A0B8B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFF27BAC6913BCFFB692EEE /* SettingsViewModel.swift */; };
+		394F007AFA42555AF0A8E238 /* UpcomingRenewalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53B154CF50BA37B0F731FFE5 /* UpcomingRenewalCell.xib */; };
+		39E2B9A479B0DFB301D87DE5 /* SettingsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3FF061DCCE25B8E16F85A2 /* SettingsPreferences.swift */; };
+		3A83CA51C9D1AF5C9817440D /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02983120597F0E3A4C60037 /* AppLanguage.swift */; };
+		3AC7E4CD85940863902D8866 /* SublyCategoryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3F4204B2CB73C4A3DED97 /* SublyCategoryBar.swift */; };
+		3AEF938304680B68217A6D42 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC324F3B5B1EA7E39C590BA /* CalendarService.swift */; };
+		3D7B5BC1D0F0CF6E94FC6DE1 /* FinancialLoadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F03567F3A69FDA00D59339A /* FinancialLoadViewController.xib */; };
+		3ED3013F9A054280EDB3F12A /* SubscriptionListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E4029564C699B8EC83D065 /* SubscriptionListViewController.xib */; };
+		42285D22DA9B2B6BC38335B9 /* NotificationPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9C6B268DD297387D58E6AF /* NotificationPayloads.swift */; };
+		431A57F6CF701CB444BFBE94 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D14584A2664D587393D2E /* Currency.swift */; };
+		44414DE17EBD7F6AEEBA096E /* ReminderDefaultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA447D8739192EA369C47C0 /* ReminderDefaultsViewController.xib */; };
+		448BF5792512983AAFD50D1D /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E75D0A24EA8999D6C76C809 /* SettingsCoordinator.swift */; };
+		4599054A0D0C895E92F0C1C7 /* SubscriptionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE8DB15DBBE39B0440A0FA0 /* SubscriptionDetailViewModel.swift */; };
+		4813C1986D2F1E1859AA947A /* SubscriptionListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C71CC8778B723872F60583 /* SubscriptionListCoordinator.swift */; };
+		49836E416A9ADC3FC27F98AC /* DesignSystem+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F9F8A42C2427ECDAF5FE7 /* DesignSystem+Shadow.swift */; };
+		4C14C892991949713BA13B1B /* SublyAppMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8C194E9215BA913EC23B1 /* SublyAppMark.swift */; };
+		4F9A26FA32552CFF1B039452 /* SettingsToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264077F1D414AC699A63C723 /* SettingsToggleCell.xib */; };
+		4FEF5DA43BCABE8D277BF08C /* InsightsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF91D96297F4EFF66A1F902 /* InsightsCoordinator.swift */; };
+		50DF7673864FB904B0A7865C /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD7756FAB416E06F69A8CD /* SectionHeaderView.swift */; };
+		510F6A289CF6219E0041D6F5 /* UpcomingFinancialLoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907A809F508B812E5003395C /* UpcomingFinancialLoadUseCase.swift */; };
+		52D8557504EE7449966F2951 /* InsightEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7818040665DECD0E6A660711 /* InsightEngine.swift */; };
+		5440C35E72F661C2FE95A8E9 /* SubscriptionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDFB01855E05CCA59C8D83 /* SubscriptionListViewController.swift */; };
+		556CE5DFE17A1715A965AA94 /* CatalogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B910361639A5F047A9A4A62 /* CatalogEntry.swift */; };
+		55D1923BC6B5AA3886A67CC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25CCDF44AB2470F8D5E559F8 /* InfoPlist.strings */; };
+		563B68DF2CBCBA8870FA70D9 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADDC8B8E4ACAD8538B9C27A /* UIColor+Hex.swift */; };
+		568498E13382EC5A9EEDCAAA /* SubscriptionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B7951616DEFBB77C5209BCB /* SubscriptionDetailViewController.xib */; };
+		56A0D62E82886554A5D310F1 /* AddSubscriptionIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3CE6F61AA12D0185D5D55 /* AddSubscriptionIntent.swift */; };
+		56F913894E3E94E0EA48537C /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3C0CC30A11043138D35C59 /* AppContainer.swift */; };
+		57E879E312726071649EB6D9 /* URLSessionAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A742416142644D29B61AF0 /* URLSessionAPIClient.swift */; };
+		597058ABC51678CD5FA5AA7D /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085A5F7DF12DC12086730433 /* UIView+Constraints.swift */; };
+		5A5C98BEB2E3FD6D248B2A61 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1207D6D4297312F83BD5216F /* Localizable.strings */; };
+		5A82A4119E29D37E3B79A065 /* YearlyProjectionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56041BFA3629E6767D7A5660 /* YearlyProjectionCalculator.swift */; };
+		5E4830713FEC0A3505192CFB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03265C9A818666B86F1CFDE7 /* SplashViewController.swift */; };
+		5F3683A80808AEE24DF8AD0B /* SettingsDisclosureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB176C4351E0E4F3A0C7CF9E /* SettingsDisclosureCell.xib */; };
+		616E39AC2EDCFE5D3BEE4049 /* ReminderDefaultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464E20C560E9F7AC2EE03DFE /* ReminderDefaultsViewModel.swift */; };
+		61B85E61EDE12F8B755D9B2D /* CategoryBreakdownCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41751C205EAD86794FADADFB /* CategoryBreakdownCalculator.swift */; };
+		62DEB7F62ACC098D474A9700 /* SublyStatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7E3C279398A5A7D53BA54 /* SublyStatCard.swift */; };
+		639E6F41B81F1BED96EC8EC0 /* SublyMonthGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21862893E4C8703CE2ADCD /* SublyMonthGrid.swift */; };
+		64EF0D9255CAE0B11275600E /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7838D51906450ECBFC94DE2 /* AppError.swift */; };
+		67A309A4FCD69FB6D42D7CFA /* SubscriptionListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4E65C15AD456BC524D500E /* SubscriptionListSection.swift */; };
+		67DD338C7F525B4E1B0344CE /* FormFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF70C136B5163724FA146CE1 /* FormFieldView.xib */; };
+		683B44E20FC3EFC5BF1514BA /* DesignSystem+Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95321B9659A4A5F2F00CD6C /* DesignSystem+Spacing.swift */; };
+		69BB82A1CA11046D6A6EF265 /* SublyLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D967395B890D6CA8691DB6D /* SublyLogoView.swift */; };
+		6A3C8A50802C5C8E72F40DE8 /* AddEditSubscriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AC1CEAE157C502F6DC18B24 /* AddEditSubscriptionViewController.xib */; };
+		6DB67C7D8DC930264FD11080 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB32733139DC27C979DA9A7 /* TimelineViewModel.swift */; };
+		6EC2573B5B54CC61C3DD2931 /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD806BF80A61CD9F3A0B40B /* SupabaseConfig.swift */; };
+		6ECA7191A63D23270AE6D9D0 /* CategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3667214E3B23F87FB43FD5E1 /* CategoryRepository.swift */; };
+		6ED7A28CCB9D078A79D84C22 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F170E2E5ACFB218AA0F2BD5 /* RegistrationService.swift */; };
+		6F9B1B58BF5A802185A6DCE7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BF035438E2DDAF4862B2E /* Category.swift */; };
+		7024A81100CEB96735E694EA /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95209F1152B03CB47AED455F /* DashboardViewController.xib */; };
+		7107FD327C25162DE666E1DE /* SmartReminderGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F77D6CB7A29249C0B60467 /* SmartReminderGenerator.swift */; };
+		7286B00FB45ABAD0C256A800 /* SublyStatCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0B2AEEA55389F5E30D1EA7 /* SublyStatCard.xib */; };
+		72F07C5A838A48188E457F3B /* FinancialLoadWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81362D2958723F1089F098DC /* FinancialLoadWindow.swift */; };
+		730CF3C60FE6424A93BD3D2F /* DateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C100467A3540F72459F3D /* DateProviding.swift */; };
+		73D4A9902E6CC294B3F7B9C0 /* AppearancePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F612EBA527B874FF0D09B68F /* AppearancePickerViewController.swift */; };
+		74D2B318370B275B08DC0903 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAC38F169D3A720C432FCA /* AccountViewController.swift */; };
+		754EC480CCD0043907F6A3C0 /* CatalogPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8DBDE5746B5DCBF86F7803 /* CatalogPickerCoordinator.swift */; };
+		7666A9D1285CC98A454122CF /* SubscriptionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E951F4D88BF6BC5CB8D47A /* SubscriptionListViewModel.swift */; };
+		76A3E9669897B476B881DC53 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1D5A8049383346377CB430A7 /* Supabase */; };
+		78B2BD780C557A1D8DF6A552 /* CatalogPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F9A9754EC0E60BF62024 /* CatalogPickerViewController.swift */; };
+		79008F52834DD92E876A3B9B /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9306C4114B33FA7D0A71969 /* DesignSystem.swift */; };
+		7999CE9BCA2B52A9D1655213 /* RenewalDateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE45817F72BC3DD60670EC7 /* RenewalDateCalculator.swift */; };
+		7A38CE79323783F2B4FCCEBE /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE130FA3E0160807B6B325 /* CurrencyFormatter.swift */; };
+		7B112D64104A7E0F5BA87BEF /* SampleDataSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12272FCC80326766B99A8CC /* SampleDataSeeder.swift */; };
+		7C2751774760CD7ACE549AC7 /* ReminderDefaultsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF9E27C377DE31E88F06C2B /* ReminderDefaultsCoordinator.swift */; };
+		7D13EC3390BB468F1D0BDE00 /* SublyEmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DBA7925750DD07EB798DF7C /* SublyEmptyStateView.xib */; };
+		7D2BB331616D3EE0D1D9ABFC /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC196C12970AFE19743C699 /* LocalizationManager.swift */; };
+		7DB839B3C44BCF989F399FB2 /* UpcomingRenewalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E70572FFD6D84E9F53D2A2 /* UpcomingRenewalCell.swift */; };
+		7F300220EAD7C43181ACE79A /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CE8510D6EC27E26C4FC9DB /* SplashViewModel.swift */; };
+		8019A40A5AB62A3CE02B809D /* ReminderDefaultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0195724D75B21ED6CE85D9 /* ReminderDefaultsViewController.swift */; };
+		8065028B0A5D2A9C78B0F73E /* DesignSystem+Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE5693F6945B8ACD7AEE7E6 /* DesignSystem+Motion.swift */; };
+		832DB7A134FE104342687276 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CEE9365377A710D589EC9B /* ViewState.swift */; };
+		83710AF2D6FFAC8089DD4F70 /* SublyWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B7C799EAE2AD7AE3E385E1CE /* SublyWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		846A3F3E6BF17D172FC54077 /* SupabaseRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A706F9E6AD08FAFBBD3496F9 /* SupabaseRegistrationService.swift */; };
+		871CC722184825578EBDFC07 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EF77E880D61BE34E9A92BF /* Subscription.swift */; };
+		872DAA603FE36F5553758BB0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D092403B314009A15528021B /* Logger.swift */; };
+		882A05ACE03177C83F33D4B4 /* DesignSystem+Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40A1076B50B0966FA771A9 /* DesignSystem+Typography.swift */; };
+		8A786B44771FC99DAE6E41C9 /* PaywallCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B026A308E6DD7AD0ADD6B336 /* PaywallCoordinator.swift */; };
+		8B594D70693E3A9BC420E398 /* SublyWeekStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB6ACD17050FACE5B974152 /* SublyWeekStrip.swift */; };
+		8C5D344E776FE1C5013D9B38 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781D2ED988A71D8006F41BEF /* OnboardingViewModel.swift */; };
+		8C8917CC174EBA1014A140E7 /* DeviceIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD22280AB1E6E9F10BD01E /* DeviceIdentity.swift */; };
+		8E750D1DE7FE201E59109305 /* PaywallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9ABDEC1AEBAA4ACC4E4B55 /* PaywallViewController.swift */; };
+		8F32F64EB823FA94D7F5F223 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4207690D1B64581FD83CDB6B /* ThemeManager.swift */; };
+		90AB017796EAABF733628A69 /* SubscriptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461CD6EECC686700AD14DA06 /* SubscriptionRepository.swift */; };
+		90C4AAE9F5068028B5392F8E /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADE02C3DEFE9D0A8D1A8A6 /* RegistrationCoordinator.swift */; };
+		94130905C9E69D4BBC2BBB28 /* InsightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02377496481A2BB8947385E /* InsightsViewController.swift */; };
+		942D7B0A398780AAF7BF63CD /* SublyAmountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA46178204FD143EB3C3870 /* SublyAmountLabel.swift */; };
+		946AC80A869A31021BE98323 /* SharedSubscriptionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F6F8150F51ABC551A8C5B8 /* SharedSubscriptionProvider.swift */; };
+		96828A0A1EA0A90C57DB4DF3 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C652B39AC34AAC9B3D709F2 /* TabBarCoordinator.swift */; };
+		9697661819791C0FA3DA420A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D13E127DBEED342D087 /* RegisterViewController.swift */; };
+		972D351E4C5146A3433DD56F /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D14584A2664D587393D2E /* Currency.swift */; };
+		97AB0C70598DDE0EB4B81320 /* Subly.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 69576ACA2860EC976B46EFDE /* Subly.storekit */; };
+		986A97628CBD2B47AA8A2DD6 /* CatalogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B910361639A5F047A9A4A62 /* CatalogEntry.swift */; };
+		98CBA0B3515ED75B88FAF5BC /* SubscriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A470D3563E03CD136D6DEBBC /* SubscriptionCell.xib */; };
+		999816EEC70A7844DE5CC65C /* InsightsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2AD00FCEB61BAAB5D215929 /* InsightsViewController.xib */; };
+		99A3BEF89114F5F42E0FE8C4 /* AddEditSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25529D4FC0A62B96CFF1404 /* AddEditSubscriptionViewController.swift */; };
+		9B0B6334C63FB29E7DD3AA67 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C31B2422EAE1063610190BA /* SectionHeaderView.xib */; };
+		9B308CA23A2659A2D4F6808E /* SubscriptionDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B2A11FAE6B1B4EEBD35E53 /* SubscriptionDetailCoordinator.swift */; };
+		9B6C63DC92010B10E7F7DA4A /* Decimal+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5AD19D591816D304FA84E /* Decimal+Currency.swift */; };
+		9B82A72CCE8B687868D6043B /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1634181956E053335B864 /* SplashCoordinator.swift */; };
+		9C64BEE2CFB6BF23EC52CB79 /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D74329E1E0ED4923A045D /* CurrencyManager.swift */; };
+		9E63F6A18127479BDC6F3494 /* FinancialHabitProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBB1BADA52588918110CFCC /* FinancialHabitProfile.swift */; };
+		9FA47DD24830418135A11172 /* SettingsToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3601858A5269C5BDAAD70 /* SettingsToggleCell.swift */; };
+		A00390A8402866AB78A22BDE /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4203A973D149AF5C17C85088 /* OnboardingCoordinator.swift */; };
+		A36ACB96E5ACB78B37D2233C /* DesignSystem+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CB924F1A644E9428F442B9 /* DesignSystem+Colors.swift */; };
+		A5A13D42843BFA383E8E05DC /* BudgetSuggestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E949FD78B3C54BB53B1AA92 /* BudgetSuggestionService.swift */; };
+		A6F4BCBE3A7400723ADB1833 /* AppearancePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ACF138C811ACD75A3A9ED4 /* AppearancePickerCoordinator.swift */; };
+		A782134888C9F5F126F83F7B /* MonthlySpendCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF409689F8306FD1420E8F0 /* MonthlySpendCalculator.swift */; };
+		AAE2DAE583F370901C43E696 /* AppearancePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB8057B550775829CE1B996 /* AppearancePickerViewController.xib */; };
+		AC66F464BF467FC0F5A6C452 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50975906A3D1A187518EE35C /* DashboardViewController.swift */; };
+		AC9D0FD5A17373D3D411E30C /* NextRenewalIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A12FADA192CBBE30431793 /* NextRenewalIntent.swift */; };
+		AEA807E5BE73D89814637789 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48BF74175AAE30F24F479575 /* AccountViewController.xib */; };
+		B07780CFEA18150ABCE1F7AA /* OfflineTolerantRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B05E82D75DEE8510818CA91 /* OfflineTolerantRegistrationService.swift */; };
+		B142107BF189B5274E5B181D /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EB9E68E5BBDAD372F28BBE /* SubscriptionCell.swift */; };
+		B16FED0015214A7B7E6B06FA /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 11E5F6E5AE0B0B2089DE26AC /* PrivacyInfo.xcprivacy */; };
+		B25D3571D56DC7D78B1EA10C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A199F56C075B20872D4B0E /* SceneDelegate.swift */; };
+		B38188948BE2F111AACB3A7B /* CategoryBreakdownChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDBCBD4BC51F994320269D9 /* CategoryBreakdownChartView.swift */; };
+		B4736DFBFB83D41F6A014D21 /* YearlyProjectionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56041BFA3629E6767D7A5660 /* YearlyProjectionCalculator.swift */; };
+		B492FAA27CBAD682B1B80322 /* UpcomingRenewalsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D9DE0BA1E03D58CBD115DC /* UpcomingRenewalsWidget.swift */; };
+		B5B8781FEA6B8EA771436E8E /* FeatureFlagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ADC0BBED45E7FFD45FDFD3 /* FeatureFlagService.swift */; };
+		B82499AAC090CBF7641A4168 /* FinancialAwarenessGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1443CA00885EBD98CB140A75 /* FinancialAwarenessGenerator.swift */; };
+		BC8DF67F71239AD1FE517EC2 /* SubscriptionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA59CD8B73A13EA162E857CB /* SubscriptionDetailViewController.swift */; };
+		BD382CE1CDB3C5D22737DDC4 /* SettingsDisclosureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D4C3C86532EA560AA1424 /* SettingsDisclosureCell.swift */; };
+		C098E4EA84288787FA5A9E8D /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D74329E1E0ED4923A045D /* CurrencyManager.swift */; };
+		C0D184D5AB74A54ABD7C5AA8 /* DashboardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3428147DFFD1876C3A70CA /* DashboardCoordinator.swift */; };
+		C188CB02A9493BD25E1F6127 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E5B21832158B106130EA38 /* AuthService.swift */; };
+		C22C98F428DF7FA53924D879 /* SublyChip.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE818553FBFB6383296543AF /* SublyChip.xib */; };
+		C27BF9CE4FDC437C309BFBF0 /* LocalizationBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE9E47D387C55BA208D5C46 /* LocalizationBundle.swift */; };
+		C2AEFB704A7C21E352DE7ED7 /* DateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C100467A3540F72459F3D /* DateProviding.swift */; };
+		C3382752FB1E3862B051CC5D /* MonthlySpendCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF409689F8306FD1420E8F0 /* MonthlySpendCalculator.swift */; };
+		C39E1A85B729C773A7608C44 /* SublyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22DD64022EBA3B659D1057 /* SublyCardView.swift */; };
+		C509C0687F97D81B8284F29A /* RenewalProjectionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D4B139F3851DAD60698E8A /* RenewalProjectionCalculator.swift */; };
+		C598212DC50150F6DBF98D13 /* FinancialHabitProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBB1BADA52588918110CFCC /* FinancialHabitProfile.swift */; };
+		C5F7B1BDDCF375D0AA672BFF /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8323BF91A14AC8DD94073512 /* Strings.swift */; };
+		C838B14F24FA328183A0CF0F /* CurrencyPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A7E64C9EC6DE6ABAE20AFD /* CurrencyPickerViewController.xib */; };
+		CAACC53C1BC3C689DDE80B01 /* AppearancePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D213BACC409CDDCCDC75DFD /* AppearancePickerViewModel.swift */; };
+		CDDAE7B38A74EC303AB5C6A1 /* RegisteringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD25E51E46E4AE14C7E11B6 /* RegisteringViewController.swift */; };
+		CEEBE30F372A978BF5ADEDD1 /* SubscriptionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93864F6E0FD16B9A8C0DE7D /* SubscriptionEntity.swift */; };
+		CF30EFCBC0838C5F76649C0A /* AccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC43B2B7C9CE4F96551A823C /* AccountCoordinator.swift */; };
+		D05E42438B51CA3E54022503 /* SettingsValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35154F4635DA039B0FC069 /* SettingsValueCell.swift */; };
+		D12BADDD208700BD6D9E5D7F /* SublySegmentedPills.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D6DF22C886570B20376858 /* SublySegmentedPills.swift */; };
+		D1704669002F9DA8FFC2313B /* SublyPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6A5164FE05FFF22DD8200 /* SublyPrimaryButton.swift */; };
+		D3827FEE530F36CC9203EB7C /* PaywallPlanCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40212BEF176AF15689B30736 /* PaywallPlanCard.xib */; };
+		D4EC2B100F88F0773C11FCB5 /* CurrencyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC2BBB64E83E8B3FB85997 /* CurrencyPickerViewController.swift */; };
+		D6783280F5002245642587A4 /* LanguagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF03E4A352759CD52E6B0C /* LanguagePickerCoordinator.swift */; };
+		D7E78F214CEB853F811C4984 /* FormFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200C9E588A632A4B4704937 /* FormFieldView.swift */; };
+		D8658FF402313F460E0B907A /* RenewalDateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE45817F72BC3DD60670EC7 /* RenewalDateCalculator.swift */; };
+		DBC5AF69468628B19BFFDEEB /* PaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE404127C8F5FD452D6DFE12 /* PaywallViewModel.swift */; };
+		DC683F64D92B101114B3FB36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D140F969FA5AA367C151D01 /* AppDelegate.swift */; };
+		DCB6C87CC0378BEC49DB0BBB /* SubscriptionDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5B4E20120E1B298E1359AE /* SubscriptionDraft.swift */; };
+		DE85780AE53BC52AF1CAAA88 /* SettingsValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6D56F64FCF8CA31A03881DF /* SettingsValueCell.xib */; };
+		E12C1225E8CF6EE7DF54A3F1 /* InsightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE35DC5C7FC2B39E10BC3CD /* InsightsViewModel.swift */; };
+		E299A15AE0908414B8618505 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66007E775661BF5CC64561A4 /* Assets.xcassets */; };
+		E4D8AADEEA8274599B842C24 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D94EBDBAF1D49066AE7859 /* DashboardViewModel.swift */; };
+		E93F8C8E5A8F198895A1C05E /* MonthlyTotalWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3351EE9534902DE71B7BB8D2 /* MonthlyTotalWidget.swift */; };
+		E95C0CC59B1D41117F1B365E /* StoreKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268A7C2F6A3CB9055E530252 /* StoreKitService.swift */; };
+		E9C8A3F3EB391F575AD42A40 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 78FD65DE91314A842A8F869C /* PrivacyInfo.xcprivacy */; };
+		EA49EBE714FBEA35624D8D58 /* CurrencyPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DD5527D8C644647B1F6943 /* CurrencyPickerCoordinator.swift */; };
+		EB25948F224F2321738DB115 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A2FA3029FBE5581E5D96F /* AppCoordinator.swift */; };
+		EF60567AA70D1E38D0EC04FE /* SublyAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057D2D010CA013833B52CC12 /* SublyAvatarView.swift */; };
+		F0275965686CE09BC60D6F24 /* AddEditSubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46AB63FC61F9550348A84B /* AddEditSubscriptionViewModel.swift */; };
+		F17832F6F471874DCA0B6AD2 /* NotificationSchedulingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9B3EC3884F5554EFF1D49 /* NotificationSchedulingPolicy.swift */; };
+		F1A66ADC6AF56A80E99020E9 /* RenewalProjectionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D4B139F3851DAD60698E8A /* RenewalProjectionCalculator.swift */; };
+		F55C504EA6053B107D8C9459 /* SublyBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6134027298CE2DB2D766D92 /* SublyBarChart.swift */; };
+		F5F5DAC580960EF37A6F9DD6 /* PaywallPlanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997CC46B1CF34EB730768A1C /* PaywallPlanCard.swift */; };
+		F631A861EEFCB93D7CB11461 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BF035438E2DDAF4862B2E /* Category.swift */; };
+		F8CC92E8E1064B688356BC3A /* UpcomingRenewalsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7C96A6C8730C4B318D8FD /* UpcomingRenewalsUseCase.swift */; };
+		F9D9958F3F1E3759E2CCF1AE /* LanguagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034A69B5E705090918CD8181 /* LanguagePickerViewController.swift */; };
+		FA5CDD308C062D6BCE7B9811 /* SpendInCategoryIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EB62B8068D7D79E532AF6 /* SpendInCategoryIntent.swift */; };
+		FAC0071C96014A693BA56E53 /* SublyChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D97FA2A502F04D3AA8422F4 /* SublyChip.swift */; };
+		FD768A07A48DBBED8D36DF27 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE130FA3E0160807B6B325 /* CurrencyFormatter.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		184DF36B70105AEED90FD292 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C31C23BD58A7ED4DF259FD25 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F987EE876C759F966F649670;
+			remoteInfo = SublyWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9936C98D00863082995E202B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				83710AF2D6FFAC8089DD4F70 /* SublyWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		00F6F8150F51ABC551A8C5B8 /* SharedSubscriptionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSubscriptionProvider.swift; sourceTree = "<group>"; };
+		02B2A11FAE6B1B4EEBD35E53 /* SubscriptionDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailCoordinator.swift; sourceTree = "<group>"; };
+		03265C9A818666B86F1CFDE7 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		034A69B5E705090918CD8181 /* LanguagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewController.swift; sourceTree = "<group>"; };
+		057D2D010CA013833B52CC12 /* SublyAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyAvatarView.swift; sourceTree = "<group>"; };
+		085A5F7DF12DC12086730433 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		0AE8DB15DBBE39B0440A0FA0 /* SubscriptionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailViewModel.swift; sourceTree = "<group>"; };
+		0B910361639A5F047A9A4A62 /* CatalogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogEntry.swift; sourceTree = "<group>"; };
+		0CFF27BAC6913BCFFB692EEE /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		0D4E65C15AD456BC524D500E /* SubscriptionListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionListSection.swift; sourceTree = "<group>"; };
+		0DCDFB01855E05CCA59C8D83 /* SubscriptionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionListViewController.swift; sourceTree = "<group>"; };
+		0DEC719DC6C6816FB0AE705E /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0E949FD78B3C54BB53B1AA92 /* BudgetSuggestionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetSuggestionService.swift; sourceTree = "<group>"; };
+		0FE45817F72BC3DD60670EC7 /* RenewalDateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenewalDateCalculator.swift; sourceTree = "<group>"; };
+		11E5F6E5AE0B0B2089DE26AC /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1443CA00885EBD98CB140A75 /* FinancialAwarenessGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialAwarenessGenerator.swift; sourceTree = "<group>"; };
+		146D14584A2664D587393D2E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		15C3CE6F61AA12D0185D5D55 /* AddSubscriptionIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionIntent.swift; sourceTree = "<group>"; };
+		16E4029564C699B8EC83D065 /* SubscriptionListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionListViewController.xib; sourceTree = "<group>"; };
+		181DC5ADD1470248308AC90F /* DashboardEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardEmptyView.swift; sourceTree = "<group>"; };
+		18ACF138C811ACD75A3A9ED4 /* AppearancePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearancePickerCoordinator.swift; sourceTree = "<group>"; };
+		1BDBCBD4BC51F994320269D9 /* CategoryBreakdownChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBreakdownChartView.swift; sourceTree = "<group>"; };
+		1C31B2422EAE1063610190BA /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		1C3FF061DCCE25B8E16F85A2 /* SettingsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPreferences.swift; sourceTree = "<group>"; };
+		1C6EB62B8068D7D79E532AF6 /* SpendInCategoryIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendInCategoryIntent.swift; sourceTree = "<group>"; };
+		1CE9E47D387C55BA208D5C46 /* LocalizationBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationBundle.swift; sourceTree = "<group>"; };
+		1DD25E51E46E4AE14C7E11B6 /* RegisteringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteringViewController.swift; sourceTree = "<group>"; };
+		1DF91D96297F4EFF66A1F902 /* InsightsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsCoordinator.swift; sourceTree = "<group>"; };
+		1E362DDD96513D3D1110CB7A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1F0C51898C6206EEA9A937C6 /* DomainLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainLocalization.swift; sourceTree = "<group>"; };
+		1FDE130FA3E0160807B6B325 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
+		25A7E64C9EC6DE6ABAE20AFD /* CurrencyPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyPickerViewController.xib; sourceTree = "<group>"; };
+		264077F1D414AC699A63C723 /* SettingsToggleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsToggleCell.xib; sourceTree = "<group>"; };
+		268A7C2F6A3CB9055E530252 /* StoreKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitService.swift; sourceTree = "<group>"; };
+		269DD47F7E5A606507977786 /* SublyBrandAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyBrandAppearance.swift; sourceTree = "<group>"; };
+		282E07F8A0FFEBFF6BD64A70 /* DesignSystem+Radius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+Radius.swift"; sourceTree = "<group>"; };
+		288AE71CB43E034CB7E9CC21 /* CatalogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogRepository.swift; sourceTree = "<group>"; };
+		293A42E716BEAE659F026087 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		2B065DBF0113A54E3154CB0F /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		2BBF03E4A352759CD52E6B0C /* LanguagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerCoordinator.swift; sourceTree = "<group>"; };
+		2EA41C80DBFE31EF9B9D8C69 /* PersistenceStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStack.swift; sourceTree = "<group>"; };
+		2F03567F3A69FDA00D59339A /* FinancialLoadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinancialLoadViewController.xib; sourceTree = "<group>"; };
+		330C59FAB7B5C2E67076F350 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		3351EE9534902DE71B7BB8D2 /* MonthlyTotalWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTotalWidget.swift; sourceTree = "<group>"; };
+		3667214E3B23F87FB43FD5E1 /* CategoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepository.swift; sourceTree = "<group>"; };
+		36E24CDD11ADF7FDD5F33E19 /* FinancialLoadCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialLoadCoordinator.swift; sourceTree = "<group>"; };
+		396B6C7E6FCB3106CBA5F02D /* TimelineCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCoordinator.swift; sourceTree = "<group>"; };
+		3CB32733139DC27C979DA9A7 /* TimelineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
+		3D0195724D75B21ED6CE85D9 /* ReminderDefaultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDefaultsViewController.swift; sourceTree = "<group>"; };
+		3D967395B890D6CA8691DB6D /* SublyLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyLogoView.swift; sourceTree = "<group>"; };
+		3E0FBF2A6A0B7C0C5DCADFB5 /* SublyWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyWidgetsBundle.swift; sourceTree = "<group>"; };
+		3E497B59D75F5D490FBF3590 /* SublyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyTabBar.swift; sourceTree = "<group>"; };
+		3E4A2FA3029FBE5581E5D96F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		3EB8057B550775829CE1B996 /* AppearancePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppearancePickerViewController.xib; sourceTree = "<group>"; };
+		40212BEF176AF15689B30736 /* PaywallPlanCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaywallPlanCard.xib; sourceTree = "<group>"; };
+		41751C205EAD86794FADADFB /* CategoryBreakdownCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBreakdownCalculator.swift; sourceTree = "<group>"; };
+		4203A973D149AF5C17C85088 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		4207690D1B64581FD83CDB6B /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		461CD6EECC686700AD14DA06 /* SubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRepository.swift; sourceTree = "<group>"; };
+		464E20C560E9F7AC2EE03DFE /* ReminderDefaultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDefaultsViewModel.swift; sourceTree = "<group>"; };
+		48BF74175AAE30F24F479575 /* AccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
+		4CB6A5164FE05FFF22DD8200 /* SublyPrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyPrimaryButton.swift; sourceTree = "<group>"; };
+		4E75D0A24EA8999D6C76C809 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		4EA080E095F85E37783A7C6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4EE35DC5C7FC2B39E10BC3CD /* InsightsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsViewModel.swift; sourceTree = "<group>"; };
+		4EE8C194E9215BA913EC23B1 /* SublyAppMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyAppMark.swift; sourceTree = "<group>"; };
+		50975906A3D1A187518EE35C /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		50E5B21832158B106130EA38 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		51290D13E127DBEED342D087 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		516C100467A3540F72459F3D /* DateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProviding.swift; sourceTree = "<group>"; };
+		5200C9E588A632A4B4704937 /* FormFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFieldView.swift; sourceTree = "<group>"; };
+		53B154CF50BA37B0F731FFE5 /* UpcomingRenewalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingRenewalCell.xib; sourceTree = "<group>"; };
+		54D9DE0BA1E03D58CBD115DC /* UpcomingRenewalsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRenewalsWidget.swift; sourceTree = "<group>"; };
+		54DDE7A2B4968A99C5181EC4 /* Subly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Subly.entitlements; sourceTree = "<group>"; };
+		56041BFA3629E6767D7A5660 /* YearlyProjectionCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyProjectionCalculator.swift; sourceTree = "<group>"; };
+		58ADE02C3DEFE9D0A8D1A8A6 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
+		58CEE9365377A710D589EC9B /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		5CFCE75A4862C7C558F1FC33 /* FinancialLoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialLoadViewModel.swift; sourceTree = "<group>"; };
+		5DBA7925750DD07EB798DF7C /* SublyEmptyStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SublyEmptyStateView.xib; sourceTree = "<group>"; };
+		5F16C87D66A6E3612CE41688 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		647CCF0AA59C1CB0B48C6FB0 /* LanguagePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagePickerViewController.xib; sourceTree = "<group>"; };
+		66007E775661BF5CC64561A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		69576ACA2860EC976B46EFDE /* Subly.storekit */ = {isa = PBXFileReference; path = Subly.storekit; sourceTree = "<group>"; };
+		6AC1CEAE157C502F6DC18B24 /* AddEditSubscriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEditSubscriptionViewController.xib; sourceTree = "<group>"; };
+		6ACC24AA96D33A3148A1A249 /* CatalogPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPickerViewModel.swift; sourceTree = "<group>"; };
+		6D213BACC409CDDCCDC75DFD /* AppearancePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearancePickerViewModel.swift; sourceTree = "<group>"; };
+		6DF409689F8306FD1420E8F0 /* MonthlySpendCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySpendCalculator.swift; sourceTree = "<group>"; };
+		70EF77E880D61BE34E9A92BF /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		718D74329E1E0ED4923A045D /* CurrencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManager.swift; sourceTree = "<group>"; };
+		71D7C96A6C8730C4B318D8FD /* UpcomingRenewalsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRenewalsUseCase.swift; sourceTree = "<group>"; };
+		71D8F9A9754EC0E60BF62024 /* CatalogPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPickerViewController.swift; sourceTree = "<group>"; };
+		741E4EB7D58CEACDAB03E1C6 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		743397C8A499E28D532A4403 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		747C289A197F5B3CE7D9AB52 /* AddEditSubscriptionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditSubscriptionCoordinator.swift; sourceTree = "<group>"; };
+		75AAC38F169D3A720C432FCA /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		7818040665DECD0E6A660711 /* InsightEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightEngine.swift; sourceTree = "<group>"; };
+		781D2ED988A71D8006F41BEF /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		78E70572FFD6D84E9F53D2A2 /* UpcomingRenewalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRenewalCell.swift; sourceTree = "<group>"; };
+		78FD65DE91314A842A8F869C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		7AC1A37974065ADBC327C5BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7B05E82D75DEE8510818CA91 /* OfflineTolerantRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineTolerantRegistrationService.swift; sourceTree = "<group>"; };
+		7CE5AD19D591816D304FA84E /* Decimal+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Currency.swift"; sourceTree = "<group>"; };
+		7E5B4E20120E1B298E1359AE /* SubscriptionDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDraft.swift; sourceTree = "<group>"; };
+		7F86DAC0448831E3D12EBB9A /* RegisteringViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteringViewModel.swift; sourceTree = "<group>"; };
+		7FA447D8739192EA369C47C0 /* ReminderDefaultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReminderDefaultsViewController.xib; sourceTree = "<group>"; };
+		7FFC2BBB64E83E8B3FB85997 /* CurrencyPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewController.swift; sourceTree = "<group>"; };
+		8089BF5B8B1A622CEF5258FD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		81362D2958723F1089F098DC /* FinancialLoadWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialLoadWindow.swift; sourceTree = "<group>"; };
+		8323BF91A14AC8DD94073512 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		849D4C3C86532EA560AA1424 /* SettingsDisclosureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDisclosureCell.swift; sourceTree = "<group>"; };
+		86A742416142644D29B61AF0 /* URLSessionAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionAPIClient.swift; sourceTree = "<group>"; };
+		87B587EE3FBB564DB68C7985 /* PaywallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaywallViewController.xib; sourceTree = "<group>"; };
+		8AE5693F6945B8ACD7AEE7E6 /* DesignSystem+Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+Motion.swift"; sourceTree = "<group>"; };
+		8C652B39AC34AAC9B3D709F2 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		8D140F969FA5AA367C151D01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8D97FA2A502F04D3AA8422F4 /* SublyChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyChip.swift; sourceTree = "<group>"; };
+		8FCCCC3AD98CD1F197076837 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		907A809F508B812E5003395C /* UpcomingFinancialLoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingFinancialLoadUseCase.swift; sourceTree = "<group>"; };
+		95209F1152B03CB47AED455F /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		96947D14844E66E197A56C6A /* SublyEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyEmptyStateView.swift; sourceTree = "<group>"; };
+		96D94EBDBAF1D49066AE7859 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		997CC46B1CF34EB730768A1C /* PaywallPlanCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallPlanCard.swift; sourceTree = "<group>"; };
+		9AEA85DF2F7BCD81EB63D609 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		9B7951616DEFBB77C5209BCB /* SubscriptionDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionDetailViewController.xib; sourceTree = "<group>"; };
+		9CC324F3B5B1EA7E39C590BA /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		9F170E2E5ACFB218AA0F2BD5 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
+		A1890F2EE52986248EA15836 /* LanguagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewModel.swift; sourceTree = "<group>"; };
+		A2AD00FCEB61BAAB5D215929 /* InsightsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightsViewController.xib; sourceTree = "<group>"; };
+		A470D3563E03CD136D6DEBBC /* SubscriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionCell.xib; sourceTree = "<group>"; };
+		A69F9F8A42C2427ECDAF5FE7 /* DesignSystem+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+Shadow.swift"; sourceTree = "<group>"; };
+		A706F9E6AD08FAFBBD3496F9 /* SupabaseRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseRegistrationService.swift; sourceTree = "<group>"; };
+		AB21862893E4C8703CE2ADCD /* SublyMonthGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyMonthGrid.swift; sourceTree = "<group>"; };
+		ACBD7756FAB416E06F69A8CD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		ADC196C12970AFE19743C699 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		B026A308E6DD7AD0ADD6B336 /* PaywallCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallCoordinator.swift; sourceTree = "<group>"; };
+		B1042D755D5117EE14B9CA3D /* Subly.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Subly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4A12FADA192CBBE30431793 /* NextRenewalIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextRenewalIntent.swift; sourceTree = "<group>"; };
+		B532A646803386198EB2F705 /* CloudKitSubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSubscriptionRepository.swift; sourceTree = "<group>"; };
+		B6CB924F1A644E9428F442B9 /* DesignSystem+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+Colors.swift"; sourceTree = "<group>"; };
+		B7C799EAE2AD7AE3E385E1CE /* SublyWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SublyWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7DD5527D8C644647B1F6943 /* CurrencyPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerCoordinator.swift; sourceTree = "<group>"; };
+		BA59CD8B73A13EA162E857CB /* SubscriptionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailViewController.swift; sourceTree = "<group>"; };
+		BB35154F4635DA039B0FC069 /* SettingsValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsValueCell.swift; sourceTree = "<group>"; };
+		BD3428147DFFD1876C3A70CA /* DashboardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCoordinator.swift; sourceTree = "<group>"; };
+		BE818553FBFB6383296543AF /* SublyChip.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SublyChip.xib; sourceTree = "<group>"; };
+		BF9ABDEC1AEBAA4ACC4E4B55 /* PaywallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewController.swift; sourceTree = "<group>"; };
+		BFD7E3C279398A5A7D53BA54 /* SublyStatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyStatCard.swift; sourceTree = "<group>"; };
+		C25529D4FC0A62B96CFF1404 /* AddEditSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditSubscriptionViewController.swift; sourceTree = "<group>"; };
+		C4C71CC8778B723872F60583 /* SubscriptionListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionListCoordinator.swift; sourceTree = "<group>"; };
+		C6D56F64FCF8CA31A03881DF /* SettingsValueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsValueCell.xib; sourceTree = "<group>"; };
+		C9306C4114B33FA7D0A71969 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		CADDC8B8E4ACAD8538B9C27A /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		CB176C4351E0E4F3A0C7CF9E /* SettingsDisclosureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsDisclosureCell.xib; sourceTree = "<group>"; };
+		CC3C0CC30A11043138D35C59 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		CDD806BF80A61CD9F3A0B40B /* SupabaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
+		CFA46178204FD143EB3C3870 /* SublyAmountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyAmountLabel.swift; sourceTree = "<group>"; };
+		D02377496481A2BB8947385E /* InsightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsViewController.swift; sourceTree = "<group>"; };
+		D02983120597F0E3A4C60037 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
+		D092403B314009A15528021B /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		D0F77D6CB7A29249C0B60467 /* SmartReminderGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartReminderGenerator.swift; sourceTree = "<group>"; };
+		D1A1634181956E053335B864 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		D1CE8510D6EC27E26C4FC9DB /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		D39320BD971486ADD367ACE6 /* ReminderSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSheetViewController.swift; sourceTree = "<group>"; };
+		D4D4B139F3851DAD60698E8A /* RenewalProjectionCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenewalProjectionCalculator.swift; sourceTree = "<group>"; };
+		D4D6DF22C886570B20376858 /* SublySegmentedPills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublySegmentedPills.swift; sourceTree = "<group>"; };
+		D93864F6E0FD16B9A8C0DE7D /* SubscriptionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionEntity.swift; sourceTree = "<group>"; };
+		D9EB9E68E5BBDAD372F28BBE /* SubscriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
+		DA78B07F29DBC96CEA199A00 /* SublyGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyGradientView.swift; sourceTree = "<group>"; };
+		DCF9E27C377DE31E88F06C2B /* ReminderDefaultsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDefaultsCoordinator.swift; sourceTree = "<group>"; };
+		DDDD22280AB1E6E9F10BD01E /* DeviceIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdentity.swift; sourceTree = "<group>"; };
+		DE22DD64022EBA3B659D1057 /* SublyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyCardView.swift; sourceTree = "<group>"; };
+		DE404127C8F5FD452D6DFE12 /* PaywallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewModel.swift; sourceTree = "<group>"; };
+		DE9C6B268DD297387D58E6AF /* NotificationPayloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPayloads.swift; sourceTree = "<group>"; };
+		DEBB1BADA52588918110CFCC /* FinancialHabitProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialHabitProfile.swift; sourceTree = "<group>"; };
+		E03524576BFA0E7EA6707AE2 /* DebugSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSampleData.swift; sourceTree = "<group>"; };
+		E12272FCC80326766B99A8CC /* SampleDataSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDataSeeder.swift; sourceTree = "<group>"; };
+		E1C3601858A5269C5BDAAD70 /* SettingsToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsToggleCell.swift; sourceTree = "<group>"; };
+		E1E951F4D88BF6BC5CB8D47A /* SubscriptionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionListViewModel.swift; sourceTree = "<group>"; };
+		E33BF035438E2DDAF4862B2E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		E5CEDD87F2036B3C74A1A699 /* BillingCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingCycle.swift; sourceTree = "<group>"; };
+		E7838D51906450ECBFC94DE2 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		E793282CC1E9445D1DBF244E /* CurrencyPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewModel.swift; sourceTree = "<group>"; };
+		EA46AB63FC61F9550348A84B /* AddEditSubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditSubscriptionViewModel.swift; sourceTree = "<group>"; };
+		EC8DBDE5746B5DCBF86F7803 /* CatalogPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPickerCoordinator.swift; sourceTree = "<group>"; };
+		EE40A1076B50B0966FA771A9 /* DesignSystem+Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+Typography.swift"; sourceTree = "<group>"; };
+		EF70C136B5163724FA146CE1 /* FormFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormFieldView.xib; sourceTree = "<group>"; };
+		F2A199F56C075B20872D4B0E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F2EE0FAD7691CDE5FFE8B7B1 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F3066CBB9E970BA74A01B129 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		F5F3F4204B2CB73C4A3DED97 /* SublyCategoryBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyCategoryBar.swift; sourceTree = "<group>"; };
+		F612EBA527B874FF0D09B68F /* AppearancePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearancePickerViewController.swift; sourceTree = "<group>"; };
+		F6134027298CE2DB2D766D92 /* SublyBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyBarChart.swift; sourceTree = "<group>"; };
+		F69C794A3898839A6BE0133B /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsService.swift; sourceTree = "<group>"; };
+		F95321B9659A4A5F2F00CD6C /* DesignSystem+Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+Spacing.swift"; sourceTree = "<group>"; };
+		F9ADC0BBED45E7FFD45FDFD3 /* FeatureFlagService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagService.swift; sourceTree = "<group>"; };
+		FA0B2AEEA55389F5E30D1EA7 /* SublyStatCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SublyStatCard.xib; sourceTree = "<group>"; };
+		FA1E6AB24AC6584A71A663A8 /* FinancialLoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialLoadViewController.swift; sourceTree = "<group>"; };
+		FAB9B3EC3884F5554EFF1D49 /* NotificationSchedulingPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSchedulingPolicy.swift; sourceTree = "<group>"; };
+		FC43B2B7C9CE4F96551A823C /* AccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinator.swift; sourceTree = "<group>"; };
+		FCB6ACD17050FACE5B974152 /* SublyWeekStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyWeekStrip.swift; sourceTree = "<group>"; };
+		FF425CEA0A3F61CE747E0688 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AEA0C8DF559BCF9F6E0E14D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76A3E9669897B476B881DC53 /* Supabase in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		023E014D873C4FDC0C5DC32E /* Foundation+ */ = {
+			isa = PBXGroup;
+			children = (
+				7CE5AD19D591816D304FA84E /* Decimal+Currency.swift */,
+			);
+			path = "Foundation+";
+			sourceTree = "<group>";
+		};
+		025091BB78A435A2F31DB0D9 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				396B6C7E6FCB3106CBA5F02D /* TimelineCoordinator.swift */,
+				741E4EB7D58CEACDAB03E1C6 /* TimelineViewController.swift */,
+				3CB32733139DC27C979DA9A7 /* TimelineViewModel.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		0335889544BFE2DB7F4E0D3B /* UIKit+ */ = {
+			isa = PBXGroup;
+			children = (
+				085A5F7DF12DC12086730433 /* UIView+Constraints.swift */,
+			);
+			path = "UIKit+";
+			sourceTree = "<group>";
+		};
+		0B0F06A7A46CA893E012EFE4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0B33CD7374712BFC78EBB7E2 /* Shadow */ = {
+			isa = PBXGroup;
+			children = (
+				A69F9F8A42C2427ECDAF5FE7 /* DesignSystem+Shadow.swift */,
+			);
+			path = Shadow;
+			sourceTree = "<group>";
+		};
+		0B6CDD51573E3018A89CF147 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				D092403B314009A15528021B /* Logger.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		1A7F01A01FFFB5ECB5CEF16C /* CurrencyPicker */ = {
+			isa = PBXGroup;
+			children = (
+				B7DD5527D8C644647B1F6943 /* CurrencyPickerCoordinator.swift */,
+				7FFC2BBB64E83E8B3FB85997 /* CurrencyPickerViewController.swift */,
+				25A7E64C9EC6DE6ABAE20AFD /* CurrencyPickerViewController.xib */,
+				E793282CC1E9445D1DBF244E /* CurrencyPickerViewModel.swift */,
+			);
+			path = CurrencyPicker;
+			sourceTree = "<group>";
+		};
+		1E84CE4A2EEFDCFFF75CCEB4 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				50E5B21832158B106130EA38 /* AuthService.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		1FE6845D1B1FF468241A2898 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				B6CB924F1A644E9428F442B9 /* DesignSystem+Colors.swift */,
+				CADDC8B8E4ACAD8538B9C27A /* UIColor+Hex.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		21F7706890C9A6F200CDBFFA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F3066CBB9E970BA74A01B129 /* APIClient.swift */,
+				86A742416142644D29B61AF0 /* URLSessionAPIClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		23C43A6481D0306FD2C24D9C /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				41751C205EAD86794FADADFB /* CategoryBreakdownCalculator.swift */,
+				6DF409689F8306FD1420E8F0 /* MonthlySpendCalculator.swift */,
+				0FE45817F72BC3DD60670EC7 /* RenewalDateCalculator.swift */,
+				D4D4B139F3851DAD60698E8A /* RenewalProjectionCalculator.swift */,
+				907A809F508B812E5003395C /* UpcomingFinancialLoadUseCase.swift */,
+				71D7C96A6C8730C4B318D8FD /* UpcomingRenewalsUseCase.swift */,
+				56041BFA3629E6767D7A5660 /* YearlyProjectionCalculator.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		26CE648B02CB4BD9520DCF1E /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				EDF52A513AC7F319153982CC /* Migrations */,
+				A0F108F5C976303103F921F4 /* Persistence */,
+				8348CC9F374AFD2414DE2571 /* Repositories */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		2A1865BBBBE6C2D6006864C0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BE7AEAFF9EE8DBE9310977D1 /* Settings */,
+				1BDBCBD4BC51F994320269D9 /* CategoryBreakdownChartView.swift */,
+				ACBD7756FAB416E06F69A8CD /* SectionHeaderView.swift */,
+				1C31B2422EAE1063610190BA /* SectionHeaderView.xib */,
+				CFA46178204FD143EB3C3870 /* SublyAmountLabel.swift */,
+				4EE8C194E9215BA913EC23B1 /* SublyAppMark.swift */,
+				057D2D010CA013833B52CC12 /* SublyAvatarView.swift */,
+				F6134027298CE2DB2D766D92 /* SublyBarChart.swift */,
+				269DD47F7E5A606507977786 /* SublyBrandAppearance.swift */,
+				DE22DD64022EBA3B659D1057 /* SublyCardView.swift */,
+				F5F3F4204B2CB73C4A3DED97 /* SublyCategoryBar.swift */,
+				8D97FA2A502F04D3AA8422F4 /* SublyChip.swift */,
+				BE818553FBFB6383296543AF /* SublyChip.xib */,
+				96947D14844E66E197A56C6A /* SublyEmptyStateView.swift */,
+				5DBA7925750DD07EB798DF7C /* SublyEmptyStateView.xib */,
+				DA78B07F29DBC96CEA199A00 /* SublyGradientView.swift */,
+				3D967395B890D6CA8691DB6D /* SublyLogoView.swift */,
+				AB21862893E4C8703CE2ADCD /* SublyMonthGrid.swift */,
+				4CB6A5164FE05FFF22DD8200 /* SublyPrimaryButton.swift */,
+				D4D6DF22C886570B20376858 /* SublySegmentedPills.swift */,
+				BFD7E3C279398A5A7D53BA54 /* SublyStatCard.swift */,
+				FA0B2AEEA55389F5E30D1EA7 /* SublyStatCard.xib */,
+				3E497B59D75F5D490FBF3590 /* SublyTabBar.swift */,
+				FCB6ACD17050FACE5B974152 /* SublyWeekStrip.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		2D96317E9B6FD9CA81EE5F20 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D03931537B759AD08D01B1CC /* Combine+ */,
+				023E014D873C4FDC0C5DC32E /* Foundation+ */,
+				0335889544BFE2DB7F4E0D3B /* UIKit+ */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3242F19884DC44766961529C /* Motion */ = {
+			isa = PBXGroup;
+			children = (
+				8AE5693F6945B8ACD7AEE7E6 /* DesignSystem+Motion.swift */,
+			);
+			path = Motion;
+			sourceTree = "<group>";
+		};
+		39DC5BAE736FE7509108C96E /* Concurrency */ = {
+			isa = PBXGroup;
+			children = (
+				516C100467A3540F72459F3D /* DateProviding.swift */,
+			);
+			path = Concurrency;
+			sourceTree = "<group>";
+		};
+		3B7F63A0B3477F842BC70BAF /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				2BBF03E4A352759CD52E6B0C /* LanguagePickerCoordinator.swift */,
+				034A69B5E705090918CD8181 /* LanguagePickerViewController.swift */,
+				647CCF0AA59C1CB0B48C6FB0 /* LanguagePickerViewController.xib */,
+				A1890F2EE52986248EA15836 /* LanguagePickerViewModel.swift */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
+		3F1A27EBB74EAE8DD7500F01 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				78E70572FFD6D84E9F53D2A2 /* UpcomingRenewalCell.swift */,
+				53B154CF50BA37B0F731FFE5 /* UpcomingRenewalCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		420042C1B627BFBE5329DBDF /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A17740DFD3A922CC6091F5DF /* CurrencyManager */,
+				FABCB75B9858DF208D2E7EEB /* HapticsService */,
+				442F2083C172000E194F9778 /* LocalizationManager */,
+				7D1AE546B4C6B4F9D89B0A47 /* NotificationManager */,
+				C36B3B8473DF53C3C029DE1C /* SettingsPreferences */,
+				A81CCDF5C5F5D720F9025FEF /* ThemeManager */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		4424AEAA7A013BA6E110CD31 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5200C9E588A632A4B4704937 /* FormFieldView.swift */,
+				EF70C136B5163724FA146CE1 /* FormFieldView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		442F2083C172000E194F9778 /* LocalizationManager */ = {
+			isa = PBXGroup;
+			children = (
+				D02983120597F0E3A4C60037 /* AppLanguage.swift */,
+				ADC196C12970AFE19743C699 /* LocalizationManager.swift */,
+			);
+			path = LocalizationManager;
+			sourceTree = "<group>";
+		};
+		4551B56B3310D869728A71FC /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				1443CA00885EBD98CB140A75 /* FinancialAwarenessGenerator.swift */,
+				D0F77D6CB7A29249C0B60467 /* SmartReminderGenerator.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		45C7C140B673176B30AA897A /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				64D3E089300C87494B3FAE78 /* Views */,
+				B026A308E6DD7AD0ADD6B336 /* PaywallCoordinator.swift */,
+				BF9ABDEC1AEBAA4ACC4E4B55 /* PaywallViewController.swift */,
+				87B587EE3FBB564DB68C7985 /* PaywallViewController.xib */,
+				DE404127C8F5FD452D6DFE12 /* PaywallViewModel.swift */,
+			);
+			path = Paywall;
+			sourceTree = "<group>";
+		};
+		47BB42940C348C04273FA819 /* SampleData */ = {
+			isa = PBXGroup;
+			children = (
+				E12272FCC80326766B99A8CC /* SampleDataSeeder.swift */,
+			);
+			path = SampleData;
+			sourceTree = "<group>";
+		};
+		483A2963A08798E9F785ABBF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E1EAF9A6888ADD19663103A8 /* Appearance */,
+				3B7F63A0B3477F842BC70BAF /* Language */,
+				71E537CF2F1A141830FFA777 /* Reminders */,
+				4E75D0A24EA8999D6C76C809 /* SettingsCoordinator.swift */,
+				FF425CEA0A3F61CE747E0688 /* SettingsViewController.swift */,
+				293A42E716BEAE659F026087 /* SettingsViewController.xib */,
+				0CFF27BAC6913BCFFB692EEE /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		4C0B164B7A75DD4A9A40C1B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1042D755D5117EE14B9CA3D /* Subly.app */,
+				B7C799EAE2AD7AE3E385E1CE /* SublyWidgets.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4ECAF5BFC11A45A410C24A0D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D9EB9E68E5BBDAD372F28BBE /* SubscriptionCell.swift */,
+				A470D3563E03CD136D6DEBBC /* SubscriptionCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5B2A680093303105BD458F20 /* FinancialLoad */ = {
+			isa = PBXGroup;
+			children = (
+				36E24CDD11ADF7FDD5F33E19 /* FinancialLoadCoordinator.swift */,
+				FA1E6AB24AC6584A71A663A8 /* FinancialLoadViewController.swift */,
+				2F03567F3A69FDA00D59339A /* FinancialLoadViewController.xib */,
+				5CFCE75A4862C7C558F1FC33 /* FinancialLoadViewModel.swift */,
+			);
+			path = FinancialLoad;
+			sourceTree = "<group>";
+		};
+		5B50F3DAE554BA0FFE61BBFB /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				1F0C51898C6206EEA9A937C6 /* DomainLocalization.swift */,
+				1CE9E47D387C55BA208D5C46 /* LocalizationBundle.swift */,
+				8323BF91A14AC8DD94073512 /* Strings.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		5FEDFB5FA15D837350E3577A /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				E7838D51906450ECBFC94DE2 /* AppError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		638D8646DC8A0B49AA1842AA /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				9CC324F3B5B1EA7E39C590BA /* CalendarService.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		64D3E089300C87494B3FAE78 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				997CC46B1CF34EB730768A1C /* PaywallPlanCard.swift */,
+				40212BEF176AF15689B30736 /* PaywallPlanCard.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		65B621E33671B250E5F99645 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				330C59FAB7B5C2E67076F350 /* AnalyticsService.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		6EA55B8DE9E8E17A3E2CE042 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				1FE6845D1B1FF468241A2898 /* Colors */,
+				2A1865BBBBE6C2D6006864C0 /* Components */,
+				3242F19884DC44766961529C /* Motion */,
+				E6AD8FD2C34F3E4D880454ED /* Radius */,
+				0B33CD7374712BFC78EBB7E2 /* Shadow */,
+				7A80BE0F47DF9BE5D63495BC /* Spacing */,
+				E4D435A2B95F61987EDA483B /* Typography */,
+				C9306C4114B33FA7D0A71969 /* DesignSystem.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		6F201247D98E274178532DDF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				25CCDF44AB2470F8D5E559F8 /* InfoPlist.strings */,
+				1207D6D4297312F83BD5216F /* Localizable.strings */,
+				66007E775661BF5CC64561A4 /* Assets.xcassets */,
+				7AC1A37974065ADBC327C5BF /* Info.plist */,
+				1E362DDD96513D3D1110CB7A /* LaunchScreen.storyboard */,
+				11E5F6E5AE0B0B2089DE26AC /* PrivacyInfo.xcprivacy */,
+				54DDE7A2B4968A99C5181EC4 /* Subly.entitlements */,
+				69576ACA2860EC976B46EFDE /* Subly.storekit */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7127F2C7D9FD028A9B98B4EB /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				CC3C0CC30A11043138D35C59 /* AppContainer.swift */,
+				3E4A2FA3029FBE5581E5D96F /* AppCoordinator.swift */,
+				8D140F969FA5AA367C151D01 /* AppDelegate.swift */,
+				9AEA85DF2F7BCD81EB63D609 /* Coordinator.swift */,
+				E03524576BFA0E7EA6707AE2 /* DebugSampleData.swift */,
+				F2A199F56C075B20872D4B0E /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		71E537CF2F1A141830FFA777 /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				DCF9E27C377DE31E88F06C2B /* ReminderDefaultsCoordinator.swift */,
+				3D0195724D75B21ED6CE85D9 /* ReminderDefaultsViewController.swift */,
+				7FA447D8739192EA369C47C0 /* ReminderDefaultsViewController.xib */,
+				464E20C560E9F7AC2EE03DFE /* ReminderDefaultsViewModel.swift */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		7A80BE0F47DF9BE5D63495BC /* Spacing */ = {
+			isa = PBXGroup;
+			children = (
+				F95321B9659A4A5F2F00CD6C /* DesignSystem+Spacing.swift */,
+			);
+			path = Spacing;
+			sourceTree = "<group>";
+		};
+		7D1AE546B4C6B4F9D89B0A47 /* NotificationManager */ = {
+			isa = PBXGroup;
+			children = (
+				8089BF5B8B1A622CEF5258FD /* NotificationManager.swift */,
+				DE9C6B268DD297387D58E6AF /* NotificationPayloads.swift */,
+				FAB9B3EC3884F5554EFF1D49 /* NotificationSchedulingPolicy.swift */,
+			);
+			path = NotificationManager;
+			sourceTree = "<group>";
+		};
+		82F62AE618E153FB519C0565 /* SublyWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				3351EE9534902DE71B7BB8D2 /* MonthlyTotalWidget.swift */,
+				78FD65DE91314A842A8F869C /* PrivacyInfo.xcprivacy */,
+				3E0FBF2A6A0B7C0C5DCADFB5 /* SublyWidgetsBundle.swift */,
+				54D9DE0BA1E03D58CBD115DC /* UpcomingRenewalsWidget.swift */,
+			);
+			path = SublyWidgets;
+			sourceTree = "<group>";
+		};
+		8348CC9F374AFD2414DE2571 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				288AE71CB43E034CB7E9CC21 /* CatalogRepository.swift */,
+				3667214E3B23F87FB43FD5E1 /* CategoryRepository.swift */,
+				B532A646803386198EB2F705 /* CloudKitSubscriptionRepository.swift */,
+				00F6F8150F51ABC551A8C5B8 /* SharedSubscriptionProvider.swift */,
+				461CD6EECC686700AD14DA06 /* SubscriptionRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		84129931BAAB99A2CC3285E8 = {
+			isa = PBXGroup;
+			children = (
+				E60BE3B5234F4EF499AF0CB7 /* Subly */,
+				82F62AE618E153FB519C0565 /* SublyWidgets */,
+				4C0B164B7A75DD4A9A40C1B6 /* Products */,
+			);
+			indentWidth = 4;
+			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 0;
+		};
+		90EC612EC0A48EACAEAD317E /* SubscriptionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CC7FFE883BFE4CFEC727006E /* Views */,
+				02B2A11FAE6B1B4EEBD35E53 /* SubscriptionDetailCoordinator.swift */,
+				BA59CD8B73A13EA162E857CB /* SubscriptionDetailViewController.swift */,
+				9B7951616DEFBB77C5209BCB /* SubscriptionDetailViewController.xib */,
+				0AE8DB15DBBE39B0440A0FA0 /* SubscriptionDetailViewModel.swift */,
+			);
+			path = SubscriptionDetail;
+			sourceTree = "<group>";
+		};
+		94C06873F3065788DD2BA7A9 /* Insights */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F06A7A46CA893E012EFE4 /* Views */,
+				1DF91D96297F4EFF66A1F902 /* InsightsCoordinator.swift */,
+				D02377496481A2BB8947385E /* InsightsViewController.swift */,
+				A2AD00FCEB61BAAB5D215929 /* InsightsViewController.xib */,
+				4EE35DC5C7FC2B39E10BC3CD /* InsightsViewModel.swift */,
+			);
+			path = Insights;
+			sourceTree = "<group>";
+		};
+		953F85FF21E27D396630EB7D /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				DDDD22280AB1E6E9F10BD01E /* DeviceIdentity.swift */,
+				7B05E82D75DEE8510818CA91 /* OfflineTolerantRegistrationService.swift */,
+				9F170E2E5ACFB218AA0F2BD5 /* RegistrationService.swift */,
+				A706F9E6AD08FAFBBD3496F9 /* SupabaseRegistrationService.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		95D8A02581935B2283E6F682 /* AddEditSubscription */ = {
+			isa = PBXGroup;
+			children = (
+				E4021F573903B991B81307BB /* Models */,
+				4424AEAA7A013BA6E110CD31 /* Views */,
+				747C289A197F5B3CE7D9AB52 /* AddEditSubscriptionCoordinator.swift */,
+				C25529D4FC0A62B96CFF1404 /* AddEditSubscriptionViewController.swift */,
+				6AC1CEAE157C502F6DC18B24 /* AddEditSubscriptionViewController.xib */,
+				EA46AB63FC61F9550348A84B /* AddEditSubscriptionViewModel.swift */,
+			);
+			path = AddEditSubscription;
+			sourceTree = "<group>";
+		};
+		97A91D46CCC706DFCC8924D8 /* StoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				268A7C2F6A3CB9055E530252 /* StoreKitService.swift */,
+			);
+			path = StoreKit;
+			sourceTree = "<group>";
+		};
+		987152AC7038A48B2FC5E27E /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AA41C4FADD4A538876CF680E /* Models */,
+				23C43A6481D0306FD2C24D9C /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A0448E2F05DD473BE471C70E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0D4E65C15AD456BC524D500E /* SubscriptionListSection.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A0F108F5C976303103F921F4 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				2EA41C80DBFE31EF9B9D8C69 /* PersistenceStack.swift */,
+				D93864F6E0FD16B9A8C0DE7D /* SubscriptionEntity.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		A17740DFD3A922CC6091F5DF /* CurrencyManager */ = {
+			isa = PBXGroup;
+			children = (
+				1FDE130FA3E0160807B6B325 /* CurrencyFormatter.swift */,
+				718D74329E1E0ED4923A045D /* CurrencyManager.swift */,
+			);
+			path = CurrencyManager;
+			sourceTree = "<group>";
+		};
+		A32D53A6C7F8F4D262272890 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CE5959E62B6A9CE28E0D2986 /* Account */,
+				95D8A02581935B2283E6F682 /* AddEditSubscription */,
+				CE2324BB861E1349B6B2669B /* CatalogPicker */,
+				1A7F01A01FFFB5ECB5CEF16C /* CurrencyPicker */,
+				B5537E5A8A6240C369A3FDC5 /* Dashboard */,
+				5B2A680093303105BD458F20 /* FinancialLoad */,
+				94C06873F3065788DD2BA7A9 /* Insights */,
+				D51EDD9D2EE41F332DFD2300 /* Onboarding */,
+				45C7C140B673176B30AA897A /* Paywall */,
+				E50B69AA58F46FB8F4B110EB /* Registration */,
+				483A2963A08798E9F785ABBF /* Settings */,
+				A39B3F11524E8606DFBDEA46 /* Splash */,
+				90EC612EC0A48EACAEAD317E /* SubscriptionDetail */,
+				AFCF15840030388AE4C0CE65 /* SubscriptionList */,
+				BB1E17A3F4E41A80B382BD4E /* TabBar */,
+				025091BB78A435A2F31DB0D9 /* Timeline */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		A39B3F11524E8606DFBDEA46 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				D1A1634181956E053335B864 /* SplashCoordinator.swift */,
+				03265C9A818666B86F1CFDE7 /* SplashViewController.swift */,
+				D1CE8510D6EC27E26C4FC9DB /* SplashViewModel.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		A81CCDF5C5F5D720F9025FEF /* ThemeManager */ = {
+			isa = PBXGroup;
+			children = (
+				4207690D1B64581FD83CDB6B /* ThemeManager.swift */,
+			);
+			path = ThemeManager;
+			sourceTree = "<group>";
+		};
+		AA41C4FADD4A538876CF680E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5CEDD87F2036B3C74A1A699 /* BillingCycle.swift */,
+				0B910361639A5F047A9A4A62 /* CatalogEntry.swift */,
+				E33BF035438E2DDAF4862B2E /* Category.swift */,
+				146D14584A2664D587393D2E /* Currency.swift */,
+				DEBB1BADA52588918110CFCC /* FinancialHabitProfile.swift */,
+				81362D2958723F1089F098DC /* FinancialLoadWindow.swift */,
+				70EF77E880D61BE34E9A92BF /* Subscription.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ACBAB1FD8C7E753877CC7278 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				181DC5ADD1470248308AC90F /* DashboardEmptyView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AFCF15840030388AE4C0CE65 /* SubscriptionList */ = {
+			isa = PBXGroup;
+			children = (
+				4ECAF5BFC11A45A410C24A0D /* Cells */,
+				A0448E2F05DD473BE471C70E /* Models */,
+				C4C71CC8778B723872F60583 /* SubscriptionListCoordinator.swift */,
+				0DCDFB01855E05CCA59C8D83 /* SubscriptionListViewController.swift */,
+				16E4029564C699B8EC83D065 /* SubscriptionListViewController.xib */,
+				E1E951F4D88BF6BC5CB8D47A /* SubscriptionListViewModel.swift */,
+			);
+			path = SubscriptionList;
+			sourceTree = "<group>";
+		};
+		B2D792BA916415FD3462105F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				39DC5BAE736FE7509108C96E /* Concurrency */,
+				FEF9B73801E2C0C6EDB9166C /* Config */,
+				5FEDFB5FA15D837350E3577A /* Errors */,
+				5B50F3DAE554BA0FFE61BBFB /* Localization */,
+				0B6CDD51573E3018A89CF147 /* Logging */,
+				F1B4164E1840886DF14D0BC8 /* State */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B5537E5A8A6240C369A3FDC5 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				3F1A27EBB74EAE8DD7500F01 /* Cells */,
+				ACBAB1FD8C7E753877CC7278 /* Views */,
+				BD3428147DFFD1876C3A70CA /* DashboardCoordinator.swift */,
+				50975906A3D1A187518EE35C /* DashboardViewController.swift */,
+				95209F1152B03CB47AED455F /* DashboardViewController.xib */,
+				96D94EBDBAF1D49066AE7859 /* DashboardViewModel.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		B5A9B3787EC0392A6411CBD0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				65B621E33671B250E5F99645 /* Analytics */,
+				1E84CE4A2EEFDCFFF75CCEB4 /* Auth */,
+				F0A3FF2FDBCE238109F0C380 /* Budget */,
+				638D8646DC8A0B49AA1842AA /* Calendar */,
+				E39B70A6229B946E0092EBA1 /* FeatureFlags */,
+				C1F8F99847A094BBEA413ECE /* Insights */,
+				21F7706890C9A6F200CDBFFA /* Networking */,
+				4551B56B3310D869728A71FC /* Notifications */,
+				953F85FF21E27D396630EB7D /* Registration */,
+				47BB42940C348C04273FA819 /* SampleData */,
+				97A91D46CCC706DFCC8924D8 /* StoreKit */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BB1E17A3F4E41A80B382BD4E /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				8C652B39AC34AAC9B3D709F2 /* TabBarCoordinator.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		BE7AEAFF9EE8DBE9310977D1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				849D4C3C86532EA560AA1424 /* SettingsDisclosureCell.swift */,
+				CB176C4351E0E4F3A0C7CF9E /* SettingsDisclosureCell.xib */,
+				E1C3601858A5269C5BDAAD70 /* SettingsToggleCell.swift */,
+				264077F1D414AC699A63C723 /* SettingsToggleCell.xib */,
+				BB35154F4635DA039B0FC069 /* SettingsValueCell.swift */,
+				C6D56F64FCF8CA31A03881DF /* SettingsValueCell.xib */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		C1F8F99847A094BBEA413ECE /* Insights */ = {
+			isa = PBXGroup;
+			children = (
+				7818040665DECD0E6A660711 /* InsightEngine.swift */,
+			);
+			path = Insights;
+			sourceTree = "<group>";
+		};
+		C36B3B8473DF53C3C029DE1C /* SettingsPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				1C3FF061DCCE25B8E16F85A2 /* SettingsPreferences.swift */,
+			);
+			path = SettingsPreferences;
+			sourceTree = "<group>";
+		};
+		CC7FFE883BFE4CFEC727006E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D39320BD971486ADD367ACE6 /* ReminderSheetViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE2324BB861E1349B6B2669B /* CatalogPicker */ = {
+			isa = PBXGroup;
+			children = (
+				EC8DBDE5746B5DCBF86F7803 /* CatalogPickerCoordinator.swift */,
+				71D8F9A9754EC0E60BF62024 /* CatalogPickerViewController.swift */,
+				6ACC24AA96D33A3148A1A249 /* CatalogPickerViewModel.swift */,
+			);
+			path = CatalogPicker;
+			sourceTree = "<group>";
+		};
+		CE5959E62B6A9CE28E0D2986 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				FC43B2B7C9CE4F96551A823C /* AccountCoordinator.swift */,
+				75AAC38F169D3A720C432FCA /* AccountViewController.swift */,
+				48BF74175AAE30F24F479575 /* AccountViewController.xib */,
+				8FCCCC3AD98CD1F197076837 /* AccountViewModel.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		D03931537B759AD08D01B1CC /* Combine+ */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Combine+";
+			sourceTree = "<group>";
+		};
+		D51EDD9D2EE41F332DFD2300 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				4203A973D149AF5C17C85088 /* OnboardingCoordinator.swift */,
+				2B065DBF0113A54E3154CB0F /* OnboardingViewController.swift */,
+				781D2ED988A71D8006F41BEF /* OnboardingViewModel.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		DA66DB87BD1F5CAC90E3495D /* AppIntents */ = {
+			isa = PBXGroup;
+			children = (
+				15C3CE6F61AA12D0185D5D55 /* AddSubscriptionIntent.swift */,
+				B4A12FADA192CBBE30431793 /* NextRenewalIntent.swift */,
+				1C6EB62B8068D7D79E532AF6 /* SpendInCategoryIntent.swift */,
+			);
+			path = AppIntents;
+			sourceTree = "<group>";
+		};
+		E1EAF9A6888ADD19663103A8 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				18ACF138C811ACD75A3A9ED4 /* AppearancePickerCoordinator.swift */,
+				F612EBA527B874FF0D09B68F /* AppearancePickerViewController.swift */,
+				3EB8057B550775829CE1B996 /* AppearancePickerViewController.xib */,
+				6D213BACC409CDDCCDC75DFD /* AppearancePickerViewModel.swift */,
+			);
+			path = Appearance;
+			sourceTree = "<group>";
+		};
+		E39B70A6229B946E0092EBA1 /* FeatureFlags */ = {
+			isa = PBXGroup;
+			children = (
+				F9ADC0BBED45E7FFD45FDFD3 /* FeatureFlagService.swift */,
+			);
+			path = FeatureFlags;
+			sourceTree = "<group>";
+		};
+		E4021F573903B991B81307BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7E5B4E20120E1B298E1359AE /* SubscriptionDraft.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E4D435A2B95F61987EDA483B /* Typography */ = {
+			isa = PBXGroup;
+			children = (
+				EE40A1076B50B0966FA771A9 /* DesignSystem+Typography.swift */,
+			);
+			path = Typography;
+			sourceTree = "<group>";
+		};
+		E50B69AA58F46FB8F4B110EB /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				1DD25E51E46E4AE14C7E11B6 /* RegisteringViewController.swift */,
+				7F86DAC0448831E3D12EBB9A /* RegisteringViewModel.swift */,
+				51290D13E127DBEED342D087 /* RegisterViewController.swift */,
+				5F16C87D66A6E3612CE41688 /* RegisterViewModel.swift */,
+				58ADE02C3DEFE9D0A8D1A8A6 /* RegistrationCoordinator.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		E60BE3B5234F4EF499AF0CB7 /* Subly */ = {
+			isa = PBXGroup;
+			children = (
+				DA66DB87BD1F5CAC90E3495D /* AppIntents */,
+				7127F2C7D9FD028A9B98B4EB /* Application */,
+				B2D792BA916415FD3462105F /* Core */,
+				6EA55B8DE9E8E17A3E2CE042 /* DesignSystem */,
+				987152AC7038A48B2FC5E27E /* Domain */,
+				2D96317E9B6FD9CA81EE5F20 /* Extensions */,
+				420042C1B627BFBE5329DBDF /* Managers */,
+				A32D53A6C7F8F4D262272890 /* Modules */,
+				6F201247D98E274178532DDF /* Resources */,
+				B5A9B3787EC0392A6411CBD0 /* Services */,
+				26CE648B02CB4BD9520DCF1E /* Storage */,
+			);
+			path = Subly;
+			sourceTree = "<group>";
+		};
+		E6AD8FD2C34F3E4D880454ED /* Radius */ = {
+			isa = PBXGroup;
+			children = (
+				282E07F8A0FFEBFF6BD64A70 /* DesignSystem+Radius.swift */,
+			);
+			path = Radius;
+			sourceTree = "<group>";
+		};
+		EDF52A513AC7F319153982CC /* Migrations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Migrations;
+			sourceTree = "<group>";
+		};
+		F0A3FF2FDBCE238109F0C380 /* Budget */ = {
+			isa = PBXGroup;
+			children = (
+				0E949FD78B3C54BB53B1AA92 /* BudgetSuggestionService.swift */,
+			);
+			path = Budget;
+			sourceTree = "<group>";
+		};
+		F1B4164E1840886DF14D0BC8 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				58CEE9365377A710D589EC9B /* ViewState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		FABCB75B9858DF208D2E7EEB /* HapticsService */ = {
+			isa = PBXGroup;
+			children = (
+				F69C794A3898839A6BE0133B /* HapticsService.swift */,
+			);
+			path = HapticsService;
+			sourceTree = "<group>";
+		};
+		FEF9B73801E2C0C6EDB9166C /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				CDD806BF80A61CD9F3A0B40B /* SupabaseConfig.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0E5F3A6E0CB4817D871DE8C2 /* Subly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F8EA3BDC37EBFD5B2C3D069 /* Build configuration list for PBXNativeTarget "Subly" */;
+			buildPhases = (
+				F9D69CFB32D5B0CC49553AC0 /* Sources */,
+				42167084FFF17860C12BF75D /* Resources */,
+				AEA0C8DF559BCF9F6E0E14D3 /* Frameworks */,
+				9936C98D00863082995E202B /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				97ADE0999AAF6BB519477E9D /* PBXTargetDependency */,
+			);
+			name = Subly;
+			packageProductDependencies = (
+				1D5A8049383346377CB430A7 /* Supabase */,
+			);
+			productName = Subly;
+			productReference = B1042D755D5117EE14B9CA3D /* Subly.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F987EE876C759F966F649670 /* SublyWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 218D9F6670BA308375CC104F /* Build configuration list for PBXNativeTarget "SublyWidgets" */;
+			buildPhases = (
+				2F6ED70BC674DE2C95FD8AEE /* Sources */,
+				96DB247CE544A39C9D1FE6D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SublyWidgets;
+			packageProductDependencies = (
+			);
+			productName = SublyWidgets;
+			productReference = B7C799EAE2AD7AE3E385E1CE /* SublyWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C31C23BD58A7ED4DF259FD25 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					0E5F3A6E0CB4817D871DE8C2 = {
+						ProvisioningStyle = Automatic;
+					};
+					F987EE876C759F966F649670 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1D43EA570A8D48BC54C3FE63 /* Build configuration list for PBXProject "Subly" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				tr,
+			);
+			mainGroup = 84129931BAAB99A2CC3285E8;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				045CA4F95EF6579907368411 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 4C0B164B7A75DD4A9A40C1B6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0E5F3A6E0CB4817D871DE8C2 /* Subly */,
+				F987EE876C759F966F649670 /* SublyWidgets */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42167084FFF17860C12BF75D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEA807E5BE73D89814637789 /* AccountViewController.xib in Resources */,
+				6A3C8A50802C5C8E72F40DE8 /* AddEditSubscriptionViewController.xib in Resources */,
+				AAE2DAE583F370901C43E696 /* AppearancePickerViewController.xib in Resources */,
+				E299A15AE0908414B8618505 /* Assets.xcassets in Resources */,
+				C838B14F24FA328183A0CF0F /* CurrencyPickerViewController.xib in Resources */,
+				7024A81100CEB96735E694EA /* DashboardViewController.xib in Resources */,
+				3D7B5BC1D0F0CF6E94FC6DE1 /* FinancialLoadViewController.xib in Resources */,
+				67DD338C7F525B4E1B0344CE /* FormFieldView.xib in Resources */,
+				55D1923BC6B5AA3886A67CC6 /* InfoPlist.strings in Resources */,
+				999816EEC70A7844DE5CC65C /* InsightsViewController.xib in Resources */,
+				15247D81C3CA95C96C558F73 /* LanguagePickerViewController.xib in Resources */,
+				311CF5736B887804408AAC1B /* LaunchScreen.storyboard in Resources */,
+				5A5C98BEB2E3FD6D248B2A61 /* Localizable.strings in Resources */,
+				D3827FEE530F36CC9203EB7C /* PaywallPlanCard.xib in Resources */,
+				287A40760942496F6ECF9BEE /* PaywallViewController.xib in Resources */,
+				B16FED0015214A7B7E6B06FA /* PrivacyInfo.xcprivacy in Resources */,
+				44414DE17EBD7F6AEEBA096E /* ReminderDefaultsViewController.xib in Resources */,
+				9B0B6334C63FB29E7DD3AA67 /* SectionHeaderView.xib in Resources */,
+				5F3683A80808AEE24DF8AD0B /* SettingsDisclosureCell.xib in Resources */,
+				4F9A26FA32552CFF1B039452 /* SettingsToggleCell.xib in Resources */,
+				DE85780AE53BC52AF1CAAA88 /* SettingsValueCell.xib in Resources */,
+				1C1F8F37F99B2290FFF1A1B0 /* SettingsViewController.xib in Resources */,
+				97AB0C70598DDE0EB4B81320 /* Subly.storekit in Resources */,
+				C22C98F428DF7FA53924D879 /* SublyChip.xib in Resources */,
+				7D13EC3390BB468F1D0BDE00 /* SublyEmptyStateView.xib in Resources */,
+				7286B00FB45ABAD0C256A800 /* SublyStatCard.xib in Resources */,
+				98CBA0B3515ED75B88FAF5BC /* SubscriptionCell.xib in Resources */,
+				568498E13382EC5A9EEDCAAA /* SubscriptionDetailViewController.xib in Resources */,
+				3ED3013F9A054280EDB3F12A /* SubscriptionListViewController.xib in Resources */,
+				394F007AFA42555AF0A8E238 /* UpcomingRenewalCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96DB247CE544A39C9D1FE6D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9C8A3F3EB391F575AD42A40 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2F6ED70BC674DE2C95FD8AEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DD1F4DB6F2D934577E95D1B /* AppError.swift in Sources */,
+				16AE85B4DE3804ECD680BBE3 /* BillingCycle.swift in Sources */,
+				556CE5DFE17A1715A965AA94 /* CatalogEntry.swift in Sources */,
+				F631A861EEFCB93D7CB11461 /* Category.swift in Sources */,
+				61B85E61EDE12F8B755D9B2D /* CategoryBreakdownCalculator.swift in Sources */,
+				972D351E4C5146A3433DD56F /* Currency.swift in Sources */,
+				7A38CE79323783F2B4FCCEBE /* CurrencyFormatter.swift in Sources */,
+				C098E4EA84288787FA5A9E8D /* CurrencyManager.swift in Sources */,
+				730CF3C60FE6424A93BD3D2F /* DateProviding.swift in Sources */,
+				C598212DC50150F6DBF98D13 /* FinancialHabitProfile.swift in Sources */,
+				2CCB5A0AC8B8252FF4921270 /* FinancialLoadWindow.swift in Sources */,
+				A782134888C9F5F126F83F7B /* MonthlySpendCalculator.swift in Sources */,
+				E93F8C8E5A8F198895A1C05E /* MonthlyTotalWidget.swift in Sources */,
+				38B1215A2BB738ACF001B684 /* PersistenceStack.swift in Sources */,
+				D8658FF402313F460E0B907A /* RenewalDateCalculator.swift in Sources */,
+				C509C0687F97D81B8284F29A /* RenewalProjectionCalculator.swift in Sources */,
+				0C5FDEAD02C1139FBAA45609 /* SharedSubscriptionProvider.swift in Sources */,
+				0B87EDC8FE26F3B08D517DC8 /* SublyWidgetsBundle.swift in Sources */,
+				04255902A33DF4416A167D0F /* Subscription.swift in Sources */,
+				0C82F987018FBBCBC6CB75BB /* SubscriptionEntity.swift in Sources */,
+				510F6A289CF6219E0041D6F5 /* UpcomingFinancialLoadUseCase.swift in Sources */,
+				01FA629EF04B990CC558502A /* UpcomingRenewalsUseCase.swift in Sources */,
+				B492FAA27CBAD682B1B80322 /* UpcomingRenewalsWidget.swift in Sources */,
+				5A82A4119E29D37E3B79A065 /* YearlyProjectionCalculator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9D69CFB32D5B0CC49553AC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E922CD7C404F0790B88B3EC /* APIClient.swift in Sources */,
+				CF30EFCBC0838C5F76649C0A /* AccountCoordinator.swift in Sources */,
+				74D2B318370B275B08DC0903 /* AccountViewController.swift in Sources */,
+				36C43E264ED1C5EB53555266 /* AccountViewModel.swift in Sources */,
+				1E5FFD071BBB4D86D742469B /* AddEditSubscriptionCoordinator.swift in Sources */,
+				99A3BEF89114F5F42E0FE8C4 /* AddEditSubscriptionViewController.swift in Sources */,
+				F0275965686CE09BC60D6F24 /* AddEditSubscriptionViewModel.swift in Sources */,
+				56A0D62E82886554A5D310F1 /* AddSubscriptionIntent.swift in Sources */,
+				2CAA6BDB6508BEF2A86DDBAE /* AnalyticsService.swift in Sources */,
+				56F913894E3E94E0EA48537C /* AppContainer.swift in Sources */,
+				EB25948F224F2321738DB115 /* AppCoordinator.swift in Sources */,
+				DC683F64D92B101114B3FB36 /* AppDelegate.swift in Sources */,
+				64EF0D9255CAE0B11275600E /* AppError.swift in Sources */,
+				3A83CA51C9D1AF5C9817440D /* AppLanguage.swift in Sources */,
+				A6F4BCBE3A7400723ADB1833 /* AppearancePickerCoordinator.swift in Sources */,
+				73D4A9902E6CC294B3F7B9C0 /* AppearancePickerViewController.swift in Sources */,
+				CAACC53C1BC3C689DDE80B01 /* AppearancePickerViewModel.swift in Sources */,
+				C188CB02A9493BD25E1F6127 /* AuthService.swift in Sources */,
+				0AAABE6445CABEC76B508634 /* BillingCycle.swift in Sources */,
+				A5A13D42843BFA383E8E05DC /* BudgetSuggestionService.swift in Sources */,
+				3AEF938304680B68217A6D42 /* CalendarService.swift in Sources */,
+				986A97628CBD2B47AA8A2DD6 /* CatalogEntry.swift in Sources */,
+				754EC480CCD0043907F6A3C0 /* CatalogPickerCoordinator.swift in Sources */,
+				78B2BD780C557A1D8DF6A552 /* CatalogPickerViewController.swift in Sources */,
+				282C20A855595FA5FA26C5C5 /* CatalogPickerViewModel.swift in Sources */,
+				1F19E44FE2F37DE41A86CCA8 /* CatalogRepository.swift in Sources */,
+				6F9B1B58BF5A802185A6DCE7 /* Category.swift in Sources */,
+				25072D5957AFDDECCDCBB6CD /* CategoryBreakdownCalculator.swift in Sources */,
+				B38188948BE2F111AACB3A7B /* CategoryBreakdownChartView.swift in Sources */,
+				6ECA7191A63D23270AE6D9D0 /* CategoryRepository.swift in Sources */,
+				166E689F4C73EC1523F9DDBE /* CloudKitSubscriptionRepository.swift in Sources */,
+				2AA9425EEA7604ACA59E74E1 /* Coordinator.swift in Sources */,
+				431A57F6CF701CB444BFBE94 /* Currency.swift in Sources */,
+				FD768A07A48DBBED8D36DF27 /* CurrencyFormatter.swift in Sources */,
+				9C64BEE2CFB6BF23EC52CB79 /* CurrencyManager.swift in Sources */,
+				EA49EBE714FBEA35624D8D58 /* CurrencyPickerCoordinator.swift in Sources */,
+				D4EC2B100F88F0773C11FCB5 /* CurrencyPickerViewController.swift in Sources */,
+				1C0BB65728D50FFB8499A154 /* CurrencyPickerViewModel.swift in Sources */,
+				C0D184D5AB74A54ABD7C5AA8 /* DashboardCoordinator.swift in Sources */,
+				221EEB8FB49DB13B0454B002 /* DashboardEmptyView.swift in Sources */,
+				AC66F464BF467FC0F5A6C452 /* DashboardViewController.swift in Sources */,
+				E4D8AADEEA8274599B842C24 /* DashboardViewModel.swift in Sources */,
+				C2AEFB704A7C21E352DE7ED7 /* DateProviding.swift in Sources */,
+				08A18AC8FD0FECFE6DC89D77 /* DebugSampleData.swift in Sources */,
+				9B6C63DC92010B10E7F7DA4A /* Decimal+Currency.swift in Sources */,
+				A36ACB96E5ACB78B37D2233C /* DesignSystem+Colors.swift in Sources */,
+				8065028B0A5D2A9C78B0F73E /* DesignSystem+Motion.swift in Sources */,
+				17E6C587FEDE6B05056C3639 /* DesignSystem+Radius.swift in Sources */,
+				49836E416A9ADC3FC27F98AC /* DesignSystem+Shadow.swift in Sources */,
+				683B44E20FC3EFC5BF1514BA /* DesignSystem+Spacing.swift in Sources */,
+				882A05ACE03177C83F33D4B4 /* DesignSystem+Typography.swift in Sources */,
+				79008F52834DD92E876A3B9B /* DesignSystem.swift in Sources */,
+				8C8917CC174EBA1014A140E7 /* DeviceIdentity.swift in Sources */,
+				1EAAF0BF64733E372108BE22 /* DomainLocalization.swift in Sources */,
+				B5B8781FEA6B8EA771436E8E /* FeatureFlagService.swift in Sources */,
+				B82499AAC090CBF7641A4168 /* FinancialAwarenessGenerator.swift in Sources */,
+				9E63F6A18127479BDC6F3494 /* FinancialHabitProfile.swift in Sources */,
+				31158F4AFE3D896D1BC7466E /* FinancialLoadCoordinator.swift in Sources */,
+				0E61405545127D1E72A7C3B3 /* FinancialLoadViewController.swift in Sources */,
+				190E403A7FC03C7E18A08F39 /* FinancialLoadViewModel.swift in Sources */,
+				72F07C5A838A48188E457F3B /* FinancialLoadWindow.swift in Sources */,
+				D7E78F214CEB853F811C4984 /* FormFieldView.swift in Sources */,
+				31A3304B8DD8B0FAFEF1B2BA /* HapticsService.swift in Sources */,
+				52D8557504EE7449966F2951 /* InsightEngine.swift in Sources */,
+				4FEF5DA43BCABE8D277BF08C /* InsightsCoordinator.swift in Sources */,
+				94130905C9E69D4BBC2BBB28 /* InsightsViewController.swift in Sources */,
+				E12C1225E8CF6EE7DF54A3F1 /* InsightsViewModel.swift in Sources */,
+				D6783280F5002245642587A4 /* LanguagePickerCoordinator.swift in Sources */,
+				F9D9958F3F1E3759E2CCF1AE /* LanguagePickerViewController.swift in Sources */,
+				09111FE15E7034EF880310BB /* LanguagePickerViewModel.swift in Sources */,
+				C27BF9CE4FDC437C309BFBF0 /* LocalizationBundle.swift in Sources */,
+				7D2BB331616D3EE0D1D9ABFC /* LocalizationManager.swift in Sources */,
+				872DAA603FE36F5553758BB0 /* Logger.swift in Sources */,
+				C3382752FB1E3862B051CC5D /* MonthlySpendCalculator.swift in Sources */,
+				AC9D0FD5A17373D3D411E30C /* NextRenewalIntent.swift in Sources */,
+				2D791C9DE096AFAAC3EEE254 /* NotificationManager.swift in Sources */,
+				42285D22DA9B2B6BC38335B9 /* NotificationPayloads.swift in Sources */,
+				F17832F6F471874DCA0B6AD2 /* NotificationSchedulingPolicy.swift in Sources */,
+				B07780CFEA18150ABCE1F7AA /* OfflineTolerantRegistrationService.swift in Sources */,
+				A00390A8402866AB78A22BDE /* OnboardingCoordinator.swift in Sources */,
+				204BDD37EA9EE5146B842517 /* OnboardingViewController.swift in Sources */,
+				8C5D344E776FE1C5013D9B38 /* OnboardingViewModel.swift in Sources */,
+				8A786B44771FC99DAE6E41C9 /* PaywallCoordinator.swift in Sources */,
+				F5F5DAC580960EF37A6F9DD6 /* PaywallPlanCard.swift in Sources */,
+				8E750D1DE7FE201E59109305 /* PaywallViewController.swift in Sources */,
+				DBC5AF69468628B19BFFDEEB /* PaywallViewModel.swift in Sources */,
+				01CF19DD7A7C6745F7AC856B /* PersistenceStack.swift in Sources */,
+				9697661819791C0FA3DA420A /* RegisterViewController.swift in Sources */,
+				18ABA5C6B149972F0D1042B9 /* RegisterViewModel.swift in Sources */,
+				CDDAE7B38A74EC303AB5C6A1 /* RegisteringViewController.swift in Sources */,
+				27C8F214B122C2B25DE83DA6 /* RegisteringViewModel.swift in Sources */,
+				90C4AAE9F5068028B5392F8E /* RegistrationCoordinator.swift in Sources */,
+				6ED7A28CCB9D078A79D84C22 /* RegistrationService.swift in Sources */,
+				7C2751774760CD7ACE549AC7 /* ReminderDefaultsCoordinator.swift in Sources */,
+				8019A40A5AB62A3CE02B809D /* ReminderDefaultsViewController.swift in Sources */,
+				616E39AC2EDCFE5D3BEE4049 /* ReminderDefaultsViewModel.swift in Sources */,
+				1FBBE7ED7D2A7BC5C4B43265 /* ReminderSheetViewController.swift in Sources */,
+				7999CE9BCA2B52A9D1655213 /* RenewalDateCalculator.swift in Sources */,
+				F1A66ADC6AF56A80E99020E9 /* RenewalProjectionCalculator.swift in Sources */,
+				7B112D64104A7E0F5BA87BEF /* SampleDataSeeder.swift in Sources */,
+				B25D3571D56DC7D78B1EA10C /* SceneDelegate.swift in Sources */,
+				50DF7673864FB904B0A7865C /* SectionHeaderView.swift in Sources */,
+				448BF5792512983AAFD50D1D /* SettingsCoordinator.swift in Sources */,
+				BD382CE1CDB3C5D22737DDC4 /* SettingsDisclosureCell.swift in Sources */,
+				39E2B9A479B0DFB301D87DE5 /* SettingsPreferences.swift in Sources */,
+				9FA47DD24830418135A11172 /* SettingsToggleCell.swift in Sources */,
+				D05E42438B51CA3E54022503 /* SettingsValueCell.swift in Sources */,
+				32AE935A17E146AB33550C5D /* SettingsViewController.swift in Sources */,
+				3925B0CD061B90E4717A0B8B /* SettingsViewModel.swift in Sources */,
+				946AC80A869A31021BE98323 /* SharedSubscriptionProvider.swift in Sources */,
+				7107FD327C25162DE666E1DE /* SmartReminderGenerator.swift in Sources */,
+				FA5CDD308C062D6BCE7B9811 /* SpendInCategoryIntent.swift in Sources */,
+				9B82A72CCE8B687868D6043B /* SplashCoordinator.swift in Sources */,
+				5E4830713FEC0A3505192CFB /* SplashViewController.swift in Sources */,
+				7F300220EAD7C43181ACE79A /* SplashViewModel.swift in Sources */,
+				E95C0CC59B1D41117F1B365E /* StoreKitService.swift in Sources */,
+				C5F7B1BDDCF375D0AA672BFF /* Strings.swift in Sources */,
+				942D7B0A398780AAF7BF63CD /* SublyAmountLabel.swift in Sources */,
+				4C14C892991949713BA13B1B /* SublyAppMark.swift in Sources */,
+				EF60567AA70D1E38D0EC04FE /* SublyAvatarView.swift in Sources */,
+				F55C504EA6053B107D8C9459 /* SublyBarChart.swift in Sources */,
+				34D11D1F29EB9E40A78CB6DB /* SublyBrandAppearance.swift in Sources */,
+				C39E1A85B729C773A7608C44 /* SublyCardView.swift in Sources */,
+				3AC7E4CD85940863902D8866 /* SublyCategoryBar.swift in Sources */,
+				FAC0071C96014A693BA56E53 /* SublyChip.swift in Sources */,
+				1B4F7146B302CBEDDDC2D0E4 /* SublyEmptyStateView.swift in Sources */,
+				1FE4D324D1C2AEF262228AAA /* SublyGradientView.swift in Sources */,
+				69BB82A1CA11046D6A6EF265 /* SublyLogoView.swift in Sources */,
+				639E6F41B81F1BED96EC8EC0 /* SublyMonthGrid.swift in Sources */,
+				D1704669002F9DA8FFC2313B /* SublyPrimaryButton.swift in Sources */,
+				D12BADDD208700BD6D9E5D7F /* SublySegmentedPills.swift in Sources */,
+				62DEB7F62ACC098D474A9700 /* SublyStatCard.swift in Sources */,
+				0E24B851838466F9F2FD323A /* SublyTabBar.swift in Sources */,
+				8B594D70693E3A9BC420E398 /* SublyWeekStrip.swift in Sources */,
+				871CC722184825578EBDFC07 /* Subscription.swift in Sources */,
+				B142107BF189B5274E5B181D /* SubscriptionCell.swift in Sources */,
+				9B308CA23A2659A2D4F6808E /* SubscriptionDetailCoordinator.swift in Sources */,
+				BC8DF67F71239AD1FE517EC2 /* SubscriptionDetailViewController.swift in Sources */,
+				4599054A0D0C895E92F0C1C7 /* SubscriptionDetailViewModel.swift in Sources */,
+				DCB6C87CC0378BEC49DB0BBB /* SubscriptionDraft.swift in Sources */,
+				CEEBE30F372A978BF5ADEDD1 /* SubscriptionEntity.swift in Sources */,
+				4813C1986D2F1E1859AA947A /* SubscriptionListCoordinator.swift in Sources */,
+				67A309A4FCD69FB6D42D7CFA /* SubscriptionListSection.swift in Sources */,
+				5440C35E72F661C2FE95A8E9 /* SubscriptionListViewController.swift in Sources */,
+				7666A9D1285CC98A454122CF /* SubscriptionListViewModel.swift in Sources */,
+				90AB017796EAABF733628A69 /* SubscriptionRepository.swift in Sources */,
+				6EC2573B5B54CC61C3DD2931 /* SupabaseConfig.swift in Sources */,
+				846A3F3E6BF17D172FC54077 /* SupabaseRegistrationService.swift in Sources */,
+				96828A0A1EA0A90C57DB4DF3 /* TabBarCoordinator.swift in Sources */,
+				8F32F64EB823FA94D7F5F223 /* ThemeManager.swift in Sources */,
+				391D82A43E85F6578553E868 /* TimelineCoordinator.swift in Sources */,
+				03808E460CB9819180CDA461 /* TimelineViewController.swift in Sources */,
+				6DB67C7D8DC930264FD11080 /* TimelineViewModel.swift in Sources */,
+				563B68DF2CBCBA8870FA70D9 /* UIColor+Hex.swift in Sources */,
+				597058ABC51678CD5FA5AA7D /* UIView+Constraints.swift in Sources */,
+				57E879E312726071649EB6D9 /* URLSessionAPIClient.swift in Sources */,
+				28C0E988955655DF3C21E37B /* UpcomingFinancialLoadUseCase.swift in Sources */,
+				7DB839B3C44BCF989F399FB2 /* UpcomingRenewalCell.swift in Sources */,
+				F8CC92E8E1064B688356BC3A /* UpcomingRenewalsUseCase.swift in Sources */,
+				832DB7A134FE104342687276 /* ViewState.swift in Sources */,
+				B4736DFBFB83D41F6A014D21 /* YearlyProjectionCalculator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		97ADE0999AAF6BB519477E9D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F987EE876C759F966F649670 /* SublyWidgets */;
+			targetProxy = 184DF36B70105AEED90FD292 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1207D6D4297312F83BD5216F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				743397C8A499E28D532A4403 /* en */,
+				0DEC719DC6C6816FB0AE705E /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		25CCDF44AB2470F8D5E559F8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EA080E095F85E37783A7C6C /* en */,
+				F2EE0FAD7691CDE5FFE8B7B1 /* tr */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F60FEF4B5810FFB65CF7C66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		22322F71419DF4F3583A341C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Subly/Resources/Subly.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Subly/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.subly.app;
+				PRODUCT_NAME = Subly;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		52D1A01E4FB05761FED86430 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6750812C5CB5400F591D0B54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SublyWidgets/SublyWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SublyWidgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.subly.app.widgets;
+				PRODUCT_NAME = SublyWidgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6B57A71B2EFAF4F5C0E0E8A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Subly/Resources/Subly.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Subly/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.subly.app;
+				PRODUCT_NAME = Subly;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DE7ADAE248807C2772897480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SublyWidgets/SublyWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SublyWidgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.subly.app.widgets;
+				PRODUCT_NAME = SublyWidgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D43EA570A8D48BC54C3FE63 /* Build configuration list for PBXProject "Subly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D1A01E4FB05761FED86430 /* Debug */,
+				1F60FEF4B5810FFB65CF7C66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1F8EA3BDC37EBFD5B2C3D069 /* Build configuration list for PBXNativeTarget "Subly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22322F71419DF4F3583A341C /* Debug */,
+				6B57A71B2EFAF4F5C0E0E8A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		218D9F6670BA308375CC104F /* Build configuration list for PBXNativeTarget "SublyWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6750812C5CB5400F591D0B54 /* Debug */,
+				DE7ADAE248807C2772897480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		045CA4F95EF6579907368411 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.55.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1D5A8049383346377CB430A7 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 045CA4F95EF6579907368411 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C31C23BD58A7ED4DF259FD25 /* Project object */;
+}

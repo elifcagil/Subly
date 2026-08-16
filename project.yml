@@ -1,0 +1,148 @@
+name: Subly
+options:
+  bundleIdPrefix: com.subly
+  deploymentTarget:
+    iOS: "17.0"
+  developmentLanguage: en
+  xcodeVersion: "16.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+  groupSortPosition: top
+  defaultConfig: Debug
+  usesTabs: false
+  indentWidth: 4
+  tabWidth: 4
+
+settings:
+  base:
+    SWIFT_VERSION: "5.10"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    TARGETED_DEVICE_FAMILY: "1"
+    SWIFT_STRICT_CONCURRENCY: complete
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    DEAD_CODE_STRIPPING: YES
+    CLANG_ANALYZER_NONNULL: YES
+    CLANG_WARN_DOCUMENTATION_COMMENTS: YES
+    GCC_TREAT_WARNINGS_AS_ERRORS: NO
+    SWIFT_TREAT_WARNINGS_AS_ERRORS: NO
+
+configs:
+  Debug: debug
+  Release: release
+
+packages:
+  Supabase:
+    url: https://github.com/supabase/supabase-swift
+    # Pinned to the 2.55.x line — the generated .xcodeproj (and with it
+    # Package.resolved) is not tracked in git, so this file is the only place
+    # the dependency version is fixed. `from: 2.0.0` would let another machine
+    # resolve a different 2.x than the one this app was tested against.
+    minorVersion: 2.55.1
+
+schemes:
+  Subly:
+    build:
+      targets:
+        Subly: all
+    run:
+      config: Debug
+      storeKitConfiguration: Subly/Resources/Subly.storekit
+    test:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+
+targets:
+  Subly:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Subly
+        excludes:
+          - "**/.DS_Store"
+    info:
+      path: Subly/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: Subly
+        CFBundleShortVersionString: "1.0.0"
+        CFBundleVersion: "1"
+        # EventKit is used to export renewals to the user's calendar. Without
+        # these keys iOS terminates the app the moment access is requested.
+        # iOS 17+ reads the first two; the legacy key covers older releases.
+        # Localized copies live in */InfoPlist.strings.
+        NSCalendarsWriteOnlyAccessUsageDescription: "Subly adds your subscription renewals to your calendar so you never miss a payment."
+        NSCalendarsFullAccessUsageDescription: "Subly adds your subscription renewals to your calendar and keeps them up to date."
+        NSCalendarsUsageDescription: "Subly adds your subscription renewals to your calendar so you never miss a payment."
+        # Only standard HTTPS is used — exempt. Declaring it here skips the
+        # export-compliance question on every App Store Connect upload.
+        ITSAppUsesNonExemptEncryption: false
+        UILaunchStoryboardName: LaunchScreen
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIRequiresFullScreen: true
+        UIUserInterfaceStyle: Automatic
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.subly.app
+        PRODUCT_NAME: Subly
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        GENERATE_INFOPLIST_FILE: NO
+        CURRENT_PROJECT_VERSION: "1"
+        MARKETING_VERSION: "1.0.0"
+        CODE_SIGN_ENTITLEMENTS: Subly/Resources/Subly.entitlements
+        CODE_SIGN_STYLE: Automatic
+    dependencies:
+      - target: SublyWidgets
+      # Only the app target talks to Supabase. The widget extension reads the
+      # shared local store and must stay offline.
+      - package: Supabase
+        products:
+          - Supabase
+
+  SublyWidgets:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: SublyWidgets
+        excludes:
+          - "Info.plist"
+          - "SublyWidgets.entitlements"
+      - path: Subly/Domain
+      - path: Subly/Core/Concurrency/DateProviding.swift
+      - path: Subly/Core/Errors/AppError.swift
+      - path: Subly/Storage/Persistence/PersistenceStack.swift
+      - path: Subly/Storage/Persistence/SubscriptionEntity.swift
+      - path: Subly/Storage/Repositories/SharedSubscriptionProvider.swift
+      - path: Subly/Managers/CurrencyManager/CurrencyManager.swift
+      - path: Subly/Managers/CurrencyManager/CurrencyFormatter.swift
+    info:
+      path: SublyWidgets/Info.plist
+      properties:
+        CFBundleDisplayName: Subly
+        CFBundleShortVersionString: "1.0.0"
+        CFBundleVersion: "1"
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.subly.app.widgets
+        PRODUCT_NAME: SublyWidgets
+        GENERATE_INFOPLIST_FILE: NO
+        CURRENT_PROJECT_VERSION: "1"
+        MARKETING_VERSION: "1.0.0"
+        CODE_SIGN_ENTITLEMENTS: SublyWidgets/SublyWidgets.entitlements
+        CODE_SIGN_STYLE: Automatic
+        SKIP_INSTALL: YES

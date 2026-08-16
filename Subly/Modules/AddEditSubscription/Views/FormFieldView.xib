@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FormFieldView" customModule="Subly" customModuleProvider="target">
+            <connections>
+                <outlet property="titleLabel" destination="FFV-TTL-01" id="OUT-FFV-TTL"/>
+                <outlet property="contentContainer" destination="FFV-CNT-01" id="OUT-FFV-CNT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="FFV-RTV-01" userLabel="Content">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFV-TTL-01">
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                    <color key="textColor" name="TextSecondary"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFV-CNT-01" userLabel="ContentContainer">
+                    <rect key="frame" x="0.0" y="22" width="320" height="38"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="FFV-TTL-01" firstAttribute="top" secondItem="FFV-RTV-01" secondAttribute="top" id="C-FFV-TTL-T"/>
+                <constraint firstItem="FFV-TTL-01" firstAttribute="leading" secondItem="FFV-RTV-01" secondAttribute="leading" id="C-FFV-TTL-L"/>
+                <constraint firstItem="FFV-RTV-01" firstAttribute="trailing" secondItem="FFV-TTL-01" secondAttribute="trailing" id="C-FFV-TTL-R"/>
+                <constraint firstItem="FFV-CNT-01" firstAttribute="top" secondItem="FFV-TTL-01" secondAttribute="bottom" constant="4" id="C-FFV-CNT-T"/>
+                <constraint firstItem="FFV-CNT-01" firstAttribute="leading" secondItem="FFV-RTV-01" secondAttribute="leading" id="C-FFV-CNT-L"/>
+                <constraint firstItem="FFV-RTV-01" firstAttribute="trailing" secondItem="FFV-CNT-01" secondAttribute="trailing" id="C-FFV-CNT-R"/>
+                <constraint firstItem="FFV-RTV-01" firstAttribute="bottom" secondItem="FFV-CNT-01" secondAttribute="bottom" id="C-FFV-CNT-B"/>
+            </constraints>
+            <point key="canvasLocation" x="20" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="TextSecondary">
+            <color red="0.40400000000000003" green="0.38800000000000001" blue="0.35699999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

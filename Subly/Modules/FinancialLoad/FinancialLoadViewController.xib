@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FinancialLoadViewController" customModule="Subly" customModuleProvider="target">
+            <connections>
+                <outlet property="scrollView" destination="FLD-SCV-01" id="OUT-FLD-SCV"/>
+                <outlet property="contentStack" destination="FLD-STK-01" id="OUT-FLD-STK"/>
+                <outlet property="emptyStateView" destination="FLD-EMP-01" id="OUT-FLD-EMP"/>
+                <outlet property="view" destination="FLD-RTV-01" id="OUT-FLD-VW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="FLD-RTV-01">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FLD-SCV-01">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="fill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FLD-STK-01">
+                            <rect key="frame" x="16" y="16" width="361" height="0.0"/>
+                        </stackView>
+                    </subviews>
+                </scrollView>
+                <view contentMode="scaleToFill" hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FLD-EMP-01" customClass="SublyEmptyStateView" customModule="Subly" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="FLD-SFA-01"/>
+            <color key="backgroundColor" name="Background"/>
+            <constraints>
+                <constraint firstItem="FLD-SCV-01" firstAttribute="top" secondItem="FLD-SFA-01" secondAttribute="top" id="C-FLD-SCV-T"/>
+                <constraint firstItem="FLD-SCV-01" firstAttribute="leading" secondItem="FLD-SFA-01" secondAttribute="leading" id="C-FLD-SCV-L"/>
+                <constraint firstItem="FLD-SFA-01" firstAttribute="trailing" secondItem="FLD-SCV-01" secondAttribute="trailing" id="C-FLD-SCV-R"/>
+                <constraint firstItem="FLD-SFA-01" firstAttribute="bottom" secondItem="FLD-SCV-01" secondAttribute="bottom" id="C-FLD-SCV-B"/>
+                <constraint firstItem="FLD-STK-01" firstAttribute="top" secondItem="FLD-SCV-01" secondAttribute="top" constant="16" id="C-FLD-STK-T"/>
+                <constraint firstItem="FLD-STK-01" firstAttribute="leading" secondItem="FLD-SCV-01" secondAttribute="leading" constant="16" id="C-FLD-STK-L"/>
+                <constraint firstItem="FLD-SCV-01" firstAttribute="trailing" secondItem="FLD-STK-01" secondAttribute="trailing" constant="16" id="C-FLD-STK-R"/>
+                <constraint firstItem="FLD-SCV-01" firstAttribute="bottom" secondItem="FLD-STK-01" secondAttribute="bottom" constant="32" id="C-FLD-STK-B"/>
+                <constraint firstItem="FLD-STK-01" firstAttribute="width" secondItem="FLD-SCV-01" secondAttribute="width" constant="-32" id="C-FLD-STK-W"/>
+                <constraint firstItem="FLD-EMP-01" firstAttribute="top" secondItem="FLD-SFA-01" secondAttribute="top" id="C-FLD-E-T"/>
+                <constraint firstItem="FLD-EMP-01" firstAttribute="leading" secondItem="FLD-SFA-01" secondAttribute="leading" id="C-FLD-E-L"/>
+                <constraint firstItem="FLD-SFA-01" firstAttribute="trailing" secondItem="FLD-EMP-01" secondAttribute="trailing" id="C-FLD-E-R"/>
+                <constraint firstItem="FLD-SFA-01" firstAttribute="bottom" secondItem="FLD-EMP-01" secondAttribute="bottom" id="C-FLD-E-B"/>
+            </constraints>
+            <point key="canvasLocation" x="138" y="138"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.984" green="0.976" blue="0.96499999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

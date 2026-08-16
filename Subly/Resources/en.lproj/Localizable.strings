@@ -1,0 +1,368 @@
+/* Common */
+"common.save" = "Save";
+"common.cancel" = "Cancel";
+"common.delete" = "Delete";
+"common.close" = "Close";
+"common.ok" = "OK";
+"common.edit" = "Edit";
+"common.archive" = "Archive";
+"common.upgrade" = "Upgrade";
+"common.sign_in" = "Sign in";
+"common.sign_out" = "Sign Out";
+"common.retry" = "Retry";
+"common.something_went_wrong" = "Something went wrong.";
+
+/* Tabs */
+"tabs.dashboard" = "Dashboard";
+"tabs.subscriptions" = "Subs";
+"tabs.timeline" = "Timeline";
+"tabs.insights" = "Insights";
+"tabs.settings" = "Settings";
+"tabs.search" = "Search";
+
+/* Onboarding */
+"onboarding.next" = "Next";
+"onboarding.skip" = "Skip";
+"onboarding.get_started" = "Get Started";
+"onboarding.allow_notifications" = "Allow Notifications";
+"onboarding.tracking.title" = "Track in one place";
+"onboarding.tracking.message" = "See every recurring charge in one calm, focused list.";
+"onboarding.renewals.title" = "Never be surprised";
+"onboarding.renewals.message" = "Gentle reminders before your subscriptions renew.";
+"onboarding.insights.title" = "Understand your spend";
+"onboarding.insights.message" = "Monthly totals and category breakdowns at a glance.";
+"onboarding.notifications.title" = "Stay in the loop";
+"onboarding.notifications.message" = "Allow notifications and we'll only remind you when it matters.";
+"onboarding.headline" = "Know exactly where money goes.";
+"onboarding.subcopy" = "Track every subscription in one calm place — totals, renewals and gentle reminders.";
+"onboarding.add_first" = "Add your first subscription";
+"onboarding.sample_data" = "Explore with sample data";
+
+/* Registration (00/00B/00C) */
+"splash.preparing" = "Preparing your device profile…";
+"registration.headline" = "No account. This device is your account.";
+"registration.subcopy" = "No email, no password, no personal data. Your subscriptions link to an anonymous device ID — once, automatically.";
+"registration.trust1_title" = "Anonymous device ID";
+"registration.trust1_body" = "A random identifier — never your name or number.";
+"registration.trust2_title" = "Nothing personal stored";
+"registration.trust2_body" = "Out of KVKK/GDPR scope by design.";
+"registration.trust3_title" = "One time only";
+"registration.trust3_body" = "No sign-in screens, no logout. Ever.";
+"registration.your_id" = "YOUR ID";
+"registration.copied" = "Copied";
+"registration.continue" = "Continue with this device";
+"registration.legal" = "By continuing, this device is linked to an anonymous ID.";
+"registering.title" = "Device registered";
+"registering.taking" = "Taking you to your dashboard…";
+"registering.failed" = "We couldn’t register this device. Check your connection and try again.";
+
+/* Empty state (v5 screen 12) */
+"empty.title" = "Nothing tracked yet";
+"empty.message" = "Add a subscription to see your monthly picture.";
+"empty.add" = "Add a subscription";
+"empty.sample" = "Try with sample data";
+
+/* Dashboard */
+"dashboard.title" = "Overview";
+"dashboard.monthly_total" = "Monthly total";
+"dashboard.active_one" = "active subscription";
+"dashboard.active_other" = "active subscriptions";
+"dashboard.active_subs" = "Active subs";
+"dashboard.see_all" = "See all";
+"dashboard.yearly_format" = "%@ / year";
+"dashboard.due_caption_format" = "%@ · 7 days";
+"dashboard.upcoming_header" = "Upcoming renewals";
+"dashboard.empty_title" = "No subscriptions yet";
+"dashboard.empty_message" = "Tap + to add your first subscription.";
+"dashboard.add_accessibility" = "Add subscription";
+"dashboard.this_month" = "This month";
+"dashboard.next_seven_days" = "Next 7 days";
+"dashboard.by_category" = "By category";
+"dashboard.delta_format" = "%1$@ %2$d%% vs %3$@";
+"dashboard.active_count_format" = "%d active";
+"dashboard.yearly_short_format" = "%@/yr";
+
+/* Subscription list */
+"subscription_list.title" = "Subscriptions";
+"subscription_list.uncategorized" = "Uncategorized";
+"subscription_list.empty_title" = "Nothing here yet";
+"subscription_list.empty_message" = "Add your first subscription from the Dashboard.";
+"subscription_list.failed_title" = "Couldn't load";
+"subscription_list.delete_title_format" = "Delete %@?";
+"subscription_list.delete_message" = "This will remove the subscription permanently.";
+"subscription_list.row_hint" = "Double tap to view details. Swipe for actions.";
+"subscription_list.renews_on_format" = "Renews %@";
+
+/* Subscription detail */
+"subscription_detail.next_renewal" = "Next renewal";
+"subscription_detail.started" = "Started";
+"subscription_detail.category" = "Category";
+"subscription_detail.currency" = "Currency";
+"subscription_detail.delete_title" = "Delete subscription?";
+"subscription_detail.delete_message" = "This will permanently remove this subscription and its reminders.";
+"subscription_detail.delete_button" = "Delete subscription";
+"subscription_detail.billing_cycle" = "Billing cycle";
+"subscription_detail.yearly_cost" = "Yearly cost";
+"subscription_detail.reminder" = "Reminder";
+"subscription_detail.due_today" = "Today";
+"subscription_detail.due_tomorrow" = "Tomorrow";
+"subscription_detail.in_days_format" = "in %d days";
+"subscription_detail.edit_details" = "Edit details";
+"subscription_detail.cancel_plan" = "Cancel plan";
+"subscription_detail.paid_so_far" = "Paid so far";
+"subscription_detail.payments_since_format" = "%1$d payments since %2$@";
+"subscription_detail.payment_since_singular_format" = "1 payment since %@";
+"subscription_detail.remind_me" = "Remind me";
+"subscription_detail.one_week_before" = "1 week before";
+
+/* Reminder sheet */
+"reminder_sheet.subtitle" = "Local notification · quiet hours respected";
+"reminder_sheet.done" = "Done";
+
+/* Add / edit */
+"add_edit.add_title" = "Add Subscription";
+"add_edit.edit_title" = "Edit Subscription";
+"add_edit.field_name" = "Name";
+"add_edit.field_amount" = "Amount";
+"add_edit.field_currency" = "Currency";
+"add_edit.currency_hint" = "Tap to choose the currency for this subscription.";
+"add_edit.field_billing_cycle" = "Billing Cycle";
+"add_edit.field_next_renewal" = "Next Renewal";
+"add_edit.field_category" = "Category";
+"add_edit.field_reminders" = "Reminders";
+"add_edit.field_notes" = "Notes";
+"add_edit.name_placeholder" = "Netflix, Spotify…";
+"add_edit.amount_placeholder" = "0.00";
+"add_edit.category_none" = "None";
+"add_edit.category_choose" = "Choose category";
+"add_edit.reminder_same_day" = "Same day";
+"add_edit.reminder_one_day" = "1 day";
+"add_edit.reminder_days_format" = "%d days";
+"add_edit.could_not_save" = "Couldn't save";
+"add_edit.missing_name" = "Please enter a name.";
+"add_edit.invalid_amount" = "Please enter a valid amount.";
+"add_edit.save_hint" = "Saves the subscription.";
+"add_edit.cancel_hint" = "Discards changes and closes the form.";
+"add_edit.impact_format" = "Adds %1$@/mo — your monthly total becomes %2$@";
+
+/* Timeline */
+"timeline.title" = "Timeline";
+"timeline.empty_title" = "Timeline coming soon";
+"timeline.empty_message" = "Upcoming renewals will appear here.";
+"timeline.due_format" = "%@ due";
+"timeline.week" = "Week";
+"timeline.month" = "Month";
+"timeline.payments_this_month" = "Payments this month";
+"timeline.previous_month" = "Previous month";
+"timeline.next_month" = "Next month";
+
+/* Search */
+"search.title" = "Search";
+"search.placeholder" = "Search subscriptions";
+"search.results_one_format" = "1 result in %@";
+"search.results_other_format" = "%1$d results in %2$@";
+"search.in_notes" = "In notes";
+"search.prompt_title" = "Search your subscriptions";
+"search.prompt_message" = "Searches names, categories and notes.";
+"search.no_results_format" = "No results for \"%@\"";
+
+/* Insights */
+"insights.title" = "Insights";
+"insights.monthly_caption" = "Monthly";
+"insights.yearly_caption" = "Yearly";
+"insights.yearly_footnote" = "projected";
+"insights.biggest_upcoming" = "Biggest upcoming charge";
+"insights.where_it_goes" = "Where it goes";
+"insights.next_four_weeks" = "Next four weeks";
+"insights.empty_title" = "Not enough data yet";
+"insights.empty_message" = "Add a few subscriptions to start seeing insights.";
+"insights.no_breakdown" = "Categorize subscriptions to see breakdown.";
+"insights.no_renewals" = "No renewals in the next four weeks.";
+"insights.week_of_format" = "Week of %@";
+"insights.renewals_one" = "%d renewal";
+"insights.renewals_other" = "%d renewals";
+
+/* Settings */
+"settings.title" = "Settings";
+"settings.section_plan" = "Plan";
+"settings.section_preferences" = "Preferences";
+"settings.section_notifications" = "Notifications";
+"settings.section_about" = "About";
+"settings.row_subly_plus" = "Subly Plus";
+"settings.row_account" = "Account";
+"settings.row_currency" = "Currency";
+"settings.row_appearance" = "Appearance";
+"settings.row_language" = "Language";
+"settings.row_permission" = "Permission";
+"settings.row_version" = "Version";
+"settings.row_device_id" = "Device ID";
+"settings.device_id_copied" = "Device ID copied. Send it to us with any data deletion request.";
+"settings.plan_active" = "Active";
+"settings.plan_upgrade" = "Upgrade";
+"settings.not_signed_in" = "Sign in";
+"settings.permission_enabled" = "Enabled";
+"settings.permission_disabled" = "Disabled";
+"settings.permission_not_requested" = "Not requested";
+"settings.permission_unknown" = "Unknown";
+"settings.section_appearance" = "Appearance";
+"settings.section_language" = "Language";
+"settings.section_currency" = "Currency";
+"settings.currency_footer" = "Used as the default when adding new subscriptions and for highlighting summary cards.";
+"settings.row_reminders" = "Default reminders";
+"settings.row_calendar_export" = "Export to Calendar";
+"settings.row_notifications" = "Notifications";
+"settings.notifications_footer" = "Renewal reminders arrive as local notifications. Quiet hours are respected.";
+"settings.data_footer" = "Data stays on your device.";
+
+/* Renewal notifications (v5) */
+"notifications.renewal.title_today_format" = "%1$@ renews today — %2$@";
+"notifications.renewal.title_tomorrow_format" = "%1$@ renews tomorrow — %2$@";
+"notifications.renewal.title_days_format" = "%1$@ renews in %2$d days — %3$@";
+"notifications.renewal.body" = "Still using it? Open Subly to review or set it to cancel.";
+"settings.reminders_off" = "Off";
+"settings.reminders_same_day" = "Same day";
+"settings.reminders_one_day" = "1 day before";
+"settings.reminders_days_format" = "%d days before";
+"settings.reminders_summary_two_format" = "%@ · %@";
+"settings.reminders_summary_more_format" = "%@ · %@ · +%d more";
+"settings.reminders_picker_title" = "Default Reminders";
+"settings.reminders_picker_footer" = "These offsets are pre-selected when you add a new subscription.";
+"settings.calendar_footer" = "When enabled, saved subscriptions are added to your default calendar.";
+"settings.calendar_permission_denied" = "Calendar access is disabled. Enable it in iOS Settings.";
+
+/* Appearance */
+"appearance.title" = "Appearance";
+"appearance.automatic" = "Automatic";
+"appearance.light" = "Light";
+"appearance.dark" = "Dark";
+"appearance.footer" = "Automatic follows the iOS system setting.";
+
+/* Language */
+"language.title" = "Language";
+"language.english" = "English";
+"language.turkish" = "Türkçe";
+"language.footer" = "Subly will reload when you change languages.";
+
+/* Paywall */
+"paywall.nav_title" = "Subly Plus";
+"paywall.headline" = "Unlock Subly Plus";
+"paywall.subtitle" = "Advanced insights, calendar export, and cloud sync. Cancel anytime.";
+"paywall.benefit_insights" = "Advanced insights & trends";
+"paywall.benefit_sync" = "Sync across all your devices";
+"paywall.benefit_calendar" = "Export renewals to Calendar";
+"paywall.benefit_future" = "Future Plus-only features included";
+"paywall.subscribe" = "Subscribe";
+"paywall.restore" = "Restore Purchases";
+"paywall.restoring" = "Restoring…";
+"paywall.already_plus" = "You're already a Plus member. Thank you!";
+"paywall.unavailable" = "Subscriptions unavailable. Please try again later.";
+"paywall.plan_monthly" = "Monthly";
+"paywall.plan_yearly" = "Yearly";
+"paywall.best_value" = "Best Value";
+"paywall.per_month_format" = "≈ %@ / month";
+"paywall.price_per_period_format" = "%1$@ / %2$@";
+"paywall.trust" = "Cancel anytime in Settings · Billed by the App Store";
+
+/* Account */
+"account.title" = "Account";
+"account.plan_label_format" = "Plan · %@";
+"account.free" = "Free";
+"account.plus" = "Subly Plus";
+"account.signed_in_fallback" = "Signed in";
+
+/* Billing cycle */
+"billing_cycle.weekly" = "Weekly";
+"billing_cycle.monthly" = "Monthly";
+"billing_cycle.quarterly" = "Quarterly";
+"billing_cycle.yearly" = "Yearly";
+"billing_cycle.custom" = "Custom";
+
+/* Catalog */
+"catalog.title" = "Add Subscription";
+"catalog.section_manual" = "Manual";
+"catalog.section_suggested" = "Popular";
+"catalog.row_manual" = "Custom subscription";
+"catalog.empty_title" = "No matches";
+"catalog.empty_message" = "Try a different search or add manually.";
+"catalog.search_placeholder" = "Search 200+ services";
+
+/* Search & filter on list */
+"list.search_placeholder" = "Search subscriptions";
+"list.filter_all" = "All";
+"list.filter_active" = "Active";
+"list.filter_archived" = "Archived";
+"list.sort_button" = "Sort";
+"list.sort_renewal_date" = "Renewal date";
+"list.sort_amount" = "Amount";
+"list.sort_name" = "Name";
+"list.sort_recently_added" = "Recently added";
+"list.no_matches_title" = "No matches";
+"list.no_matches_message" = "Try a different search or clear filters.";
+"list.archive_action" = "Archive";
+"list.unarchive_action" = "Restore";
+
+/* Currency picker */
+"currency.title" = "Currency";
+"currency.section_suggested" = "Suggested";
+"currency.section_all" = "All currencies";
+"currency.search_placeholder" = "Search currency";
+"currency.empty_title" = "No matches";
+"currency.empty_message" = "Try a different search.";
+"currency.try" = "Turkish Lira";
+"currency.usd" = "US Dollar";
+"currency.eur" = "Euro";
+"currency.gbp" = "British Pound";
+"currency.jpy" = "Japanese Yen";
+"currency.chf" = "Swiss Franc";
+"currency.cad" = "Canadian Dollar";
+"currency.aud" = "Australian Dollar";
+
+/* Dashboard pressure card (Phase 9) */
+"dashboard.pressure_caption_format" = "Next 7 days · %@";
+
+/* Financial Load (Phase 9) */
+"financial_load.title" = "Upcoming Load";
+"financial_load.horizon_24h" = "Next 24 hours";
+"financial_load.horizon_7d" = "Next 7 days";
+"financial_load.horizon_30d" = "Next 30 days";
+"financial_load.horizon_custom_format" = "Next %d days";
+"financial_load.empty_24h" = "No renewals in the next 24 hours.";
+"financial_load.empty_7d" = "No renewals in the next 7 days.";
+"financial_load.empty_30d" = "No renewals in the next 30 days.";
+"financial_load.empty_title" = "Nothing coming up";
+"financial_load.empty_message" = "When subscriptions get close to their renewal date, you'll see them here.";
+"financial_load.renewals_one" = "1 renewal";
+"financial_load.renewals_other_format" = "%d renewals";
+"financial_load.tone.light" = "light";
+"financial_load.tone.moderate" = "moderate";
+"financial_load.tone.heavy" = "heavy";
+"financial_load.tone.peak" = "peak";
+"financial_load.heaviest_day_format" = "Heaviest day · %1$@ · %2$@";
+
+/* Notifications — Tier 2 Smart */
+"notifications.smart.weekly.title" = "This week's renewals";
+"notifications.smart.weekly.body_one" = "1 subscription is renewing this week.";
+"notifications.smart.weekly.body_other_format" = "%d subscriptions are renewing this week.";
+"notifications.smart.heavy.title" = "Heads up — tomorrow is busy";
+"notifications.smart.heavy.body_format" = "%d renewals coming tomorrow.";
+"notifications.smart.new_starts.title" = "New charges starting";
+"notifications.smart.new_starts.body_one" = "1 new subscription starts this week.";
+"notifications.smart.new_starts.body_other_format" = "%d new subscriptions start this week.";
+
+/* Notifications — Tier 3 Financial Awareness */
+"notifications.awareness.horizon.title" = "A look at the week ahead";
+"notifications.awareness.horizon.body_format" = "%1$@ across the next %2$d days.";
+"notifications.awareness.peak.title" = "Heads up on a charge";
+"notifications.awareness.peak.body_format" = "%1$@ — %2$@ all on one day.";
+
+/* Categories */
+"category.streaming" = "Streaming";
+"category.music" = "Music";
+"category.productivity" = "Productivity";
+"category.news" = "News";
+"category.cloud" = "Cloud";
+"category.fitness" = "Fitness";
+"category.other" = "Other";
+
+/* Splash */
+"splash.tagline" = "Calm control over what you pay";

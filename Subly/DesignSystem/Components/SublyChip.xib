@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SublyChip" customModule="Subly" customModuleProvider="target">
+            <connections>
+                <outlet property="contentStack" destination="STK-CHP-01" id="OUT-STK-01"/>
+                <outlet property="iconView" destination="ICN-CHP-01" id="OUT-ICN-01"/>
+                <outlet property="textLabel" destination="LBL-CHP-01" id="OUT-LBL-01"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="VW-CHP-ROOT" userLabel="Content">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="24"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="horizontal" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="STK-CHP-01">
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ICN-CHP-01"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBL-CHP-01">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="SFA-CHP-01"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="STK-CHP-01" firstAttribute="top" secondItem="VW-CHP-ROOT" secondAttribute="top" constant="4" id="C-CHP-T"/>
+                <constraint firstItem="STK-CHP-01" firstAttribute="leading" secondItem="VW-CHP-ROOT" secondAttribute="leading" constant="8" id="C-CHP-L"/>
+                <constraint firstAttribute="trailing" secondItem="STK-CHP-01" secondAttribute="trailing" constant="8" id="C-CHP-TR"/>
+                <constraint firstAttribute="bottom" secondItem="STK-CHP-01" secondAttribute="bottom" constant="4" id="C-CHP-B"/>
+            </constraints>
+            <point key="canvasLocation" x="20" y="20"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SublyEmptyStateView" customModule="Subly" customModuleProvider="target">
+            <connections>
+                <outlet property="iconView" destination="ESV-ICN-01" id="OUT-ESV-ICN"/>
+                <outlet property="titleLabel" destination="ESV-TTL-01" id="OUT-ESV-TTL"/>
+                <outlet property="messageLabel" destination="ESV-MSG-01" id="OUT-ESV-MSG"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ESV-RTV-01" userLabel="Content">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ESV-STK-01">
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ESV-ICN-01">
+                            <color key="tintColor" name="TextTertiary"/>
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" pointSize="44" weight="regular" scale="default"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESV-TTL-01">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <color key="textColor" name="TextPrimary"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESV-MSG-01">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                            <color key="textColor" name="TextSecondary"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ESV-STK-01" firstAttribute="centerX" secondItem="ESV-RTV-01" secondAttribute="centerX" id="C-ESV-CX"/>
+                <constraint firstItem="ESV-STK-01" firstAttribute="centerY" secondItem="ESV-RTV-01" secondAttribute="centerY" id="C-ESV-CY"/>
+                <constraint firstItem="ESV-STK-01" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ESV-RTV-01" secondAttribute="leading" constant="24" id="C-ESV-L"/>
+                <constraint firstItem="ESV-RTV-01" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ESV-STK-01" secondAttribute="trailing" constant="24" id="C-ESV-TR"/>
+            </constraints>
+            <point key="canvasLocation" x="20" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="TextPrimary">
+            <color red="0.10599999999999999" green="0.10199999999999998" blue="0.094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextSecondary">
+            <color red="0.40400000000000003" green="0.38800000000000001" blue="0.35699999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextTertiary">
+            <color red="0.60399999999999998" green="0.57999999999999996" blue="0.55300000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

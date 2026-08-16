@@ -1,0 +1,5 @@
+/* Calendar access — shown by iOS when exporting a renewal to the calendar.
+   The system dialog follows the device language, not the in-app language. */
+"NSCalendarsWriteOnlyAccessUsageDescription" = "Subly adds your subscription renewals to your calendar so you never miss a payment.";
+"NSCalendarsFullAccessUsageDescription" = "Subly adds your subscription renewals to your calendar and keeps them up to date.";
+"NSCalendarsUsageDescription" = "Subly adds your subscription renewals to your calendar so you never miss a payment.";

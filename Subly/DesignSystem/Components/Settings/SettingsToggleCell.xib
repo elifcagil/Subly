@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIResponder"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingsToggleCell" rowHeight="44" id="CELL-TGL-ROOT" customClass="SettingsToggleCell" customModule="Subly" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CELL-TGL-ROOT" id="CELL-TGL-CV">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="56"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="horizontal" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="CELL-TGL-STK">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CELL-TGL-TTL">
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" name="TextPrimary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CELL-TGL-SW">
+                                <color key="onTintColor" name="AccentColor"/>
+                            </switch>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CELL-TGL-STK" firstAttribute="top" secondItem="CELL-TGL-CV" secondAttribute="top" constant="8" id="C-TGL-T"/>
+                    <constraint firstAttribute="bottom" secondItem="CELL-TGL-STK" secondAttribute="bottom" constant="8" id="C-TGL-B"/>
+                    <constraint firstItem="CELL-TGL-STK" firstAttribute="leading" secondItem="CELL-TGL-CV" secondAttribute="leadingMargin" id="C-TGL-L"/>
+                    <constraint firstItem="CELL-TGL-CV" firstAttribute="trailingMargin" secondItem="CELL-TGL-STK" secondAttribute="trailing" id="C-TGL-TR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="Surface"/>
+            <connections>
+                <outlet property="titleLabel" destination="CELL-TGL-TTL" id="OUT-TGL-TTL"/>
+                <outlet property="toggle" destination="CELL-TGL-SW" id="OUT-TGL-SW"/>
+            </connections>
+            <point key="canvasLocation" x="20" y="20"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.247" green="0.478" blue="0.361" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Surface">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextPrimary">
+            <color red="0.10599999999999999" green="0.10199999999999998" blue="0.094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

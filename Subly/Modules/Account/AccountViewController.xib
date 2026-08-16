@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22500" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22500"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountViewController" customModule="Subly" customModuleProvider="target">
+            <connections>
+                <outlet property="card" destination="ACC-CRD-01" id="OUT-ACC-CRD"/>
+                <outlet property="nameLabel" destination="ACC-NAM-01" id="OUT-ACC-NAM"/>
+                <outlet property="identifierLabel" destination="ACC-IDT-01" id="OUT-ACC-IDT"/>
+                <outlet property="entitlementLabel" destination="ACC-ENT-01" id="OUT-ACC-ENT"/>
+                <outlet property="signOutButton" destination="ACC-OUT-01" id="OUT-ACC-OUT"/>
+                <outlet property="signInContainer" destination="ACC-SIC-01" id="OUT-ACC-SIC"/>
+                <outlet property="view" destination="ACC-RTV-01" id="OUT-ACC-VW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" userLabel="First Responder" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ACC-RTV-01">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="fill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ACC-STK-01">
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACC-CRD-01" customClass="SublyCardView" customModule="Subly" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="98"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="leading" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ACC-CST-01">
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACC-NAM-01">
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                            <color key="textColor" name="TextPrimary"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Identifier" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACC-IDT-01">
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" name="TextSecondary"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan · Free" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACC-ENT-01">
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                            <color key="textColor" name="TextTertiary"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="ACC-CST-01" firstAttribute="top" secondItem="ACC-CRD-01" secondAttribute="top" constant="16" id="C-ACC-CST-T"/>
+                                <constraint firstItem="ACC-CST-01" firstAttribute="leading" secondItem="ACC-CRD-01" secondAttribute="leading" constant="16" id="C-ACC-CST-L"/>
+                                <constraint firstAttribute="trailing" secondItem="ACC-CST-01" secondAttribute="trailing" constant="16" id="C-ACC-CST-TR"/>
+                                <constraint firstAttribute="bottom" secondItem="ACC-CST-01" secondAttribute="bottom" constant="16" id="C-ACC-CST-B"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACC-SIC-01">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="48"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="C-ACC-SIC-H"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACC-OUT-01">
+                            <state key="normal" title="Sign Out"/>
+                            <color key="tintColor" name="DangerColor"/>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="ACC-SFA-01"/>
+            <color key="backgroundColor" name="Background"/>
+            <constraints>
+                <constraint firstItem="ACC-STK-01" firstAttribute="top" secondItem="ACC-SFA-01" secondAttribute="top" constant="16" id="C-ACC-STK-T"/>
+                <constraint firstItem="ACC-STK-01" firstAttribute="leading" secondItem="ACC-SFA-01" secondAttribute="leading" constant="16" id="C-ACC-STK-L"/>
+                <constraint firstItem="ACC-SFA-01" firstAttribute="trailing" secondItem="ACC-STK-01" secondAttribute="trailing" constant="16" id="C-ACC-STK-TR"/>
+            </constraints>
+            <point key="canvasLocation" x="138" y="138"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.984" green="0.976" blue="0.96499999999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DangerColor">
+            <color red="0.761" green="0.333" blue="0.231" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextPrimary">
+            <color red="0.10599999999999999" green="0.10199999999999998" blue="0.094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextSecondary">
+            <color red="0.40400000000000003" green="0.38800000000000001" blue="0.35699999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextTertiary">
+            <color red="0.60399999999999998" green="0.57999999999999996" blue="0.55300000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
