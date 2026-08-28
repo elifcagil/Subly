@@ -52,7 +52,7 @@ final class AddEditSubscriptionCoordinator: Coordinator {
             }
         }
         let nav = UINavigationController(rootViewController: viewController)
-        nav.modalPresentationStyle = .formSheet
+        nav.modalPresentationStyle = .fullScreen
         modalNavigationController = nav
         presentingController.present(nav, animated: true)
     }

@@ -34,10 +34,7 @@ final class CatalogPickerCoordinator: Coordinator {
             haptics: container.hapticsService
         )
         let nav = UINavigationController(rootViewController: viewController)
-        nav.modalPresentationStyle = .pageSheet
-        if let sheet = nav.sheetPresentationController {
-            sheet.detents = [.large(), .medium()]
-        }
+        nav.modalPresentationStyle = .fullScreen
         modalNavigationController = nav
         presentingController.present(nav, animated: true)
     }

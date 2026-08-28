@@ -19,7 +19,7 @@ struct ConsoleLogger: Logging {
 
     private let subsystem: String
 
-    init(subsystem: String = "com.subly.app") {
+    init(subsystem: String = "com.elifcagil.subly") {
         self.subsystem = subsystem
     }
 

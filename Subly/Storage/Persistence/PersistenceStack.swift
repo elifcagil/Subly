@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 enum AppGroup {
-    static let identifier = "group.com.subly.app"
+    static let identifier = "group.com.elifcagil.subly"
 
     static var containerURL: URL? {
         FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: identifier)
