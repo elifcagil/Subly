@@ -81,6 +81,7 @@
 "dashboard.delta_format" = "%1$@ %2$d%% vs %3$@";
 "dashboard.active_count_format" = "%d active";
 "dashboard.yearly_short_format" = "%@/yr";
+"dashboard.other_currency_monthly_format" = "+ %@/mo";
 
 /* Subscription list */
 "subscription_list.title" = "Subscriptions";

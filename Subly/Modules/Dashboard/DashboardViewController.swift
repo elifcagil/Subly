@@ -25,6 +25,9 @@ final class DashboardViewController: UIViewController {
     // Hero
     private let thisMonthLabel = UILabel()
     private let heroAmountLabel = SublyAmountLabel()
+    /// Roadmap §8.6 "Honest aggregation" — subscriptions in other currencies
+    /// are never converted into the hero number; each shows as "+ ₺249,99/ay".
+    private let otherCurrenciesLabel = UILabel()
     private let miniChart = SublyBarChart()
     private let trendLabel = UILabel()
 
@@ -150,7 +153,13 @@ final class DashboardViewController: UIViewController {
         miniChart.heightAnchor.constraint(equalToConstant: 64).isActive = true
         miniChart.setContentHuggingPriority(.required, for: .horizontal)
 
-        let amountColumn = UIStackView(arrangedSubviews: [thisMonthLabel, heroAmountLabel])
+        otherCurrenciesLabel.font = DesignSystem.Typography.sectionHeader
+        otherCurrenciesLabel.textColor = DesignSystem.Colors.textSecondary
+        otherCurrenciesLabel.adjustsFontForContentSizeCategory = true
+        otherCurrenciesLabel.numberOfLines = 0
+        otherCurrenciesLabel.isHidden = true
+
+        let amountColumn = UIStackView(arrangedSubviews: [thisMonthLabel, heroAmountLabel, otherCurrenciesLabel])
         amountColumn.axis = .vertical
         amountColumn.spacing = 4
 
@@ -264,6 +273,10 @@ final class DashboardViewController: UIViewController {
             heroAmountLabel.setDimmedDecimals(primary.amountText, font: DesignSystem.Typography.heroAmount)
             heroAmountLabel.accessibilityLabel = "\(Strings.Dashboard.thisMonth), \(primary.amountText)"
         }
+        let others = snapshot.totals.dropFirst()
+            .map { Strings.Dashboard.otherCurrencyMonthly($0.amountText) }
+        otherCurrenciesLabel.isHidden = others.isEmpty
+        otherCurrenciesLabel.text = others.joined(separator: " · ")
         applyTrendChart(snapshot.trend)
         applyTrendLine(snapshot)
         applyUpcoming(snapshot.upcoming)
