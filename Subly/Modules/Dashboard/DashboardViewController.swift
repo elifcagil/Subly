@@ -24,10 +24,11 @@ final class DashboardViewController: UIViewController {
 
     // Hero
     private let thisMonthLabel = UILabel()
+    /// Currency selector (roadmap §8.6 "Honest aggregation" — currencies are
+    /// never converted into one number; the whole hero rescopes per chip).
+    private let currencyChipScroll = UIScrollView()
+    private let currencyChipStack = UIStackView()
     private let heroAmountLabel = SublyAmountLabel()
-    /// Roadmap §8.6 "Honest aggregation" — subscriptions in other currencies
-    /// are never converted into the hero number; each shows as "+ ₺249,99/ay".
-    private let otherCurrenciesLabel = UILabel()
     private let miniChart = SublyBarChart()
     private let trendLabel = UILabel()
 
@@ -153,15 +154,27 @@ final class DashboardViewController: UIViewController {
         miniChart.heightAnchor.constraint(equalToConstant: 64).isActive = true
         miniChart.setContentHuggingPriority(.required, for: .horizontal)
 
-        otherCurrenciesLabel.font = DesignSystem.Typography.sectionHeader
-        otherCurrenciesLabel.textColor = DesignSystem.Colors.textSecondary
-        otherCurrenciesLabel.adjustsFontForContentSizeCategory = true
-        otherCurrenciesLabel.numberOfLines = 0
-        otherCurrenciesLabel.isHidden = true
+        currencyChipStack.axis = .horizontal
+        currencyChipStack.spacing = 8
+        currencyChipStack.translatesAutoresizingMaskIntoConstraints = false
+        currencyChipScroll.showsHorizontalScrollIndicator = false
+        currencyChipScroll.clipsToBounds = false
+        currencyChipScroll.addSubview(currencyChipStack)
+        currencyChipScroll.isHidden = true
+        NSLayoutConstraint.activate([
+            currencyChipScroll.heightAnchor.constraint(equalToConstant: 32),
+            currencyChipStack.topAnchor.constraint(equalTo: currencyChipScroll.contentLayoutGuide.topAnchor),
+            currencyChipStack.bottomAnchor.constraint(equalTo: currencyChipScroll.contentLayoutGuide.bottomAnchor),
+            currencyChipStack.leadingAnchor.constraint(equalTo: currencyChipScroll.contentLayoutGuide.leadingAnchor),
+            currencyChipStack.trailingAnchor.constraint(equalTo: currencyChipScroll.contentLayoutGuide.trailingAnchor),
+            currencyChipStack.heightAnchor.constraint(equalTo: currencyChipScroll.frameLayoutGuide.heightAnchor)
+        ])
 
-        let amountColumn = UIStackView(arrangedSubviews: [thisMonthLabel, heroAmountLabel, otherCurrenciesLabel])
+        let amountColumn = UIStackView(arrangedSubviews: [thisMonthLabel, currencyChipScroll, heroAmountLabel])
         amountColumn.axis = .vertical
         amountColumn.spacing = 4
+        amountColumn.setCustomSpacing(10, after: thisMonthLabel)
+        amountColumn.setCustomSpacing(10, after: currencyChipScroll)
 
         let heroRow = UIStackView(arrangedSubviews: [amountColumn, UIView(), miniChart])
         heroRow.axis = .horizontal
@@ -273,14 +286,24 @@ final class DashboardViewController: UIViewController {
             heroAmountLabel.setDimmedDecimals(primary.amountText, font: DesignSystem.Typography.heroAmount)
             heroAmountLabel.accessibilityLabel = "\(Strings.Dashboard.thisMonth), \(primary.amountText)"
         }
-        let others = snapshot.totals.dropFirst()
-            .map { Strings.Dashboard.otherCurrencyMonthly($0.amountText) }
-        otherCurrenciesLabel.isHidden = others.isEmpty
-        otherCurrenciesLabel.text = others.joined(separator: " · ")
+        applyCurrencyChips(snapshot.currencyChips)
         applyTrendChart(snapshot.trend)
         applyTrendLine(snapshot)
         applyUpcoming(snapshot.upcoming)
         applyCategories(snapshot.categories)
+    }
+
+    private func applyCurrencyChips(_ chips: [DashboardViewModel.CurrencyChip]) {
+        currencyChipStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        currencyChipScroll.isHidden = chips.isEmpty
+        for chip in chips {
+            let button = FilterChipButton(title: chip.title, isSelected: chip.isSelected)
+            button.onTap = { [weak self] in
+                self?.haptics.play(.selection)
+                self?.viewModel.selectCurrency(chip.currencyCode)
+            }
+            currencyChipStack.addArrangedSubview(button)
+        }
     }
 
     private func applyTrendChart(_ trend: [DashboardViewModel.TrendMonth]) {

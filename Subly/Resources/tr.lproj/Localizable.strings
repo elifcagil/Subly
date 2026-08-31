@@ -81,8 +81,6 @@
 "dashboard.delta_format" = "%1$@ %2$d%% (%3$@ ayına göre)";
 "dashboard.active_count_format" = "%d etkin";
 "dashboard.yearly_short_format" = "%@/yıl";
-"dashboard.other_currency_monthly_format" = "+ %@/ay";
-
 /* Subscription list */
 "subscription_list.title" = "Abonelikler";
 "subscription_list.uncategorized" = "Kategorisiz";

@@ -78,9 +78,6 @@ enum Strings {
         static func yearlyShort(_ amountText: String) -> String {
             String(format: L("dashboard.yearly_short_format"), amountText)
         }
-        static func otherCurrencyMonthly(_ amountText: String) -> String {
-            String(format: L("dashboard.other_currency_monthly_format"), amountText)
-        }
         static func yearly(_ amountText: String) -> String {
             String(format: L("dashboard.yearly_format"), amountText)
         }

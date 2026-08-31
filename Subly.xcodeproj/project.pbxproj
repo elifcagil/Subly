@@ -186,6 +186,7 @@
 		C3382752FB1E3862B051CC5D /* MonthlySpendCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF409689F8306FD1420E8F0 /* MonthlySpendCalculator.swift */; };
 		C39E1A85B729C773A7608C44 /* SublyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22DD64022EBA3B659D1057 /* SublyCardView.swift */; };
 		C509C0687F97D81B8284F29A /* RenewalProjectionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D4B139F3851DAD60698E8A /* RenewalProjectionCalculator.swift */; };
+		C5783BA4188F93F25E7B4B5D /* FilterChipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF468761C17FE3780406F48 /* FilterChipButton.swift */; };
 		C598212DC50150F6DBF98D13 /* FinancialHabitProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBB1BADA52588918110CFCC /* FinancialHabitProfile.swift */; };
 		C5F7B1BDDCF375D0AA672BFF /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8323BF91A14AC8DD94073512 /* Strings.swift */; };
 		C838B14F24FA328183A0CF0F /* CurrencyPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A7E64C9EC6DE6ABAE20AFD /* CurrencyPickerViewController.xib */; };
@@ -407,6 +408,7 @@
 		CB176C4351E0E4F3A0C7CF9E /* SettingsDisclosureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsDisclosureCell.xib; sourceTree = "<group>"; };
 		CC3C0CC30A11043138D35C59 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		CDD806BF80A61CD9F3A0B40B /* SupabaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
+		CDF468761C17FE3780406F48 /* FilterChipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChipButton.swift; sourceTree = "<group>"; };
 		CFA46178204FD143EB3C3870 /* SublyAmountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyAmountLabel.swift; sourceTree = "<group>"; };
 		D02377496481A2BB8947385E /* InsightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsViewController.swift; sourceTree = "<group>"; };
 		D02983120597F0E3A4C60037 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 			children = (
 				BE7AEAFF9EE8DBE9310977D1 /* Settings */,
 				1BDBCBD4BC51F994320269D9 /* CategoryBreakdownChartView.swift */,
+				CDF468761C17FE3780406F48 /* FilterChipButton.swift */,
 				ACBD7756FAB416E06F69A8CD /* SectionHeaderView.swift */,
 				1C31B2422EAE1063610190BA /* SectionHeaderView.xib */,
 				CFA46178204FD143EB3C3870 /* SublyAmountLabel.swift */,
@@ -1548,6 +1551,7 @@
 				8C8917CC174EBA1014A140E7 /* DeviceIdentity.swift in Sources */,
 				1EAAF0BF64733E372108BE22 /* DomainLocalization.swift in Sources */,
 				B5B8781FEA6B8EA771436E8E /* FeatureFlagService.swift in Sources */,
+				C5783BA4188F93F25E7B4B5D /* FilterChipButton.swift in Sources */,
 				B82499AAC090CBF7641A4168 /* FinancialAwarenessGenerator.swift in Sources */,
 				9E63F6A18127479BDC6F3494 /* FinancialHabitProfile.swift in Sources */,
 				31158F4AFE3D896D1BC7466E /* FinancialLoadCoordinator.swift in Sources */,

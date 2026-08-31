@@ -48,18 +48,31 @@ final class DashboardViewModel {
         let totalText: String
     }
 
+    /// One chip of the hero currency selector — shown only when subscriptions
+    /// span 2+ currencies. Chip order is stable (preferred currency first),
+    /// independent of which chip is selected.
+    struct CurrencyChip: Hashable {
+        let currencyCode: String
+        /// "₺ TRY", "$ USD" — glyph + ISO code.
+        let title: String
+        let isSelected: Bool
+    }
+
     struct Snapshot: Hashable {
+        /// Selected currency first — the hero renders `totals.first`.
         let totals: [CurrencyTotal]
+        /// Currency selector chips; empty when only one currency is in use.
+        let currencyChips: [CurrencyChip]
         let pressure: [PressureCard]
         let totalActiveCount: Int
         let upcoming: [UpcomingRow]
-        /// v5 hero chart — projected spend for the last 6 months (primary
+        /// v5 hero chart — projected spend for the last 6 months (selected
         /// currency), derived from subscription start dates.
         let trend: [TrendMonth]
         /// "▾ 4% vs June" — nil when there is no prior-month data to compare.
         let deltaText: String?
         let deltaIsDown: Bool
-        /// v5 category bar segments (primary currency), largest first.
+        /// v5 category bar segments (selected currency), largest first.
         let categories: [CategorySegment]
     }
 
@@ -77,6 +90,10 @@ final class DashboardViewModel {
     private var preferredCurrencyObservationTask: Task<Void, Never>?
     private var categoriesByID: [UUID: Category] = [:]
     private var latestItems: [Subscription] = []
+    /// Explicit chip selection; nil follows the default (preferred display
+    /// currency, or the most-used currency when the preferred one has no
+    /// subscriptions). Session-only — resets on relaunch.
+    private var selectedCurrencyCode: String?
 
     private(set) var state: ViewState<Snapshot> = .idle {
         didSet { onStateChange?(state) }
@@ -145,6 +162,13 @@ final class DashboardViewModel {
         onAddSubscriptionTapped?()
     }
 
+    /// Hero currency chip tapped — rescope the dashboard to that currency.
+    func selectCurrency(_ code: String) {
+        guard code != selectedCurrencyCode else { return }
+        selectedCurrencyCode = code
+        publish(items: latestItems)
+    }
+
     func didSelectUpcoming(_ subscription: Subscription) {
         onSelectSubscription?(subscription)
     }
@@ -204,11 +228,36 @@ final class DashboardViewModel {
             return
         }
 
-        let totals = makeCurrencyTotals(from: active)
+        // Stable order (preferred first, then most-used) drives the chip row;
+        // the hero renders whichever currency is selected.
+        let orderedTotals = makeCurrencyTotals(from: active)
+        if let explicit = selectedCurrencyCode,
+           !orderedTotals.contains(where: { $0.currencyCode == explicit }) {
+            // Selected currency lost its last subscription — fall back to default.
+            selectedCurrencyCode = nil
+        }
+        let selectedCode = selectedCurrencyCode ?? orderedTotals.first?.currencyCode
+        var totals = orderedTotals
+        if let index = totals.firstIndex(where: { $0.currencyCode == selectedCode }), index > 0 {
+            totals.insert(totals.remove(at: index), at: 0)
+        }
+
+        let currencyChips: [CurrencyChip] = orderedTotals.count >= 2
+            ? orderedTotals.map { total in
+                let symbol = currencyManager.currency(for: total.currencyCode)?.symbol
+                return CurrencyChip(
+                    currencyCode: total.currencyCode,
+                    title: [symbol, total.currencyCode].compactMap { $0 }.joined(separator: " "),
+                    isSelected: total.currencyCode == selectedCode
+                )
+            }
+            : []
+
+        let selectedSubs = active.filter { $0.currencyCode == selectedCode }
         let pressure = makePressureCards(from: active)
         let calendar = dateProvider.calendar
         let startOfToday = calendar.startOfDay(for: dateProvider.now)
-        let upcoming = upcomingUseCase(active, withinDays: 7).map { sub in
+        let upcoming = upcomingUseCase(selectedSubs, withinDays: 7).map { sub in
             let category = sub.categoryID.flatMap { categoriesByID[$0] }
             let days = calendar.dateComponents(
                 [.day],
@@ -225,19 +274,18 @@ final class DashboardViewModel {
             )
         }
 
-        let primaryCurrency = totals.first?.currencyCode
-        let primarySubs = active.filter { $0.currencyCode == primaryCurrency }
-        let (trend, deltaText, deltaIsDown) = makeTrend(from: primarySubs)
+        let (trend, deltaText, deltaIsDown) = makeTrend(from: selectedSubs)
 
         state = .loaded(Snapshot(
             totals: totals,
+            currencyChips: currencyChips,
             pressure: pressure,
-            totalActiveCount: active.count,
+            totalActiveCount: selectedSubs.count,
             upcoming: upcoming,
             trend: trend,
             deltaText: deltaText,
             deltaIsDown: deltaIsDown,
-            categories: makeCategorySegments(from: primarySubs)
+            categories: makeCategorySegments(from: selectedSubs)
         ))
     }
 
