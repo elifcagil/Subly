@@ -267,7 +267,7 @@
 		0DEC719DC6C6816FB0AE705E /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0E949FD78B3C54BB53B1AA92 /* BudgetSuggestionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetSuggestionService.swift; sourceTree = "<group>"; };
 		0FE45817F72BC3DD60670EC7 /* RenewalDateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenewalDateCalculator.swift; sourceTree = "<group>"; };
-		11E5F6E5AE0B0B2089DE26AC /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		11E5F6E5AE0B0B2089DE26AC /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		1443CA00885EBD98CB140A75 /* FinancialAwarenessGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialAwarenessGenerator.swift; sourceTree = "<group>"; };
 		146D14584A2664D587393D2E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		15C3CE6F61AA12D0185D5D55 /* AddSubscriptionIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionIntent.swift; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 		5F16C87D66A6E3612CE41688 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		647CCF0AA59C1CB0B48C6FB0 /* LanguagePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagePickerViewController.xib; sourceTree = "<group>"; };
 		66007E775661BF5CC64561A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		69576ACA2860EC976B46EFDE /* Subly.storekit */ = {isa = PBXFileReference; path = Subly.storekit; sourceTree = "<group>"; };
+		69576ACA2860EC976B46EFDE /* Subly.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Subly.storekit; sourceTree = "<group>"; };
 		6AC1CEAE157C502F6DC18B24 /* AddEditSubscriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEditSubscriptionViewController.xib; sourceTree = "<group>"; };
 		6ACC24AA96D33A3148A1A249 /* CatalogPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPickerViewModel.swift; sourceTree = "<group>"; };
 		6D213BACC409CDDCCDC75DFD /* AppearancePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearancePickerViewModel.swift; sourceTree = "<group>"; };
@@ -351,7 +351,7 @@
 		7818040665DECD0E6A660711 /* InsightEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightEngine.swift; sourceTree = "<group>"; };
 		781D2ED988A71D8006F41BEF /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		78E70572FFD6D84E9F53D2A2 /* UpcomingRenewalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRenewalCell.swift; sourceTree = "<group>"; };
-		78FD65DE91314A842A8F869C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		78FD65DE91314A842A8F869C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		7AC1A37974065ADBC327C5BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7B05E82D75DEE8510818CA91 /* OfflineTolerantRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineTolerantRegistrationService.swift; sourceTree = "<group>"; };
 		7CE5AD19D591816D304FA84E /* Decimal+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Currency.swift"; sourceTree = "<group>"; };
@@ -388,7 +388,7 @@
 		ACBD7756FAB416E06F69A8CD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		ADC196C12970AFE19743C699 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		B026A308E6DD7AD0ADD6B336 /* PaywallCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallCoordinator.swift; sourceTree = "<group>"; };
-		B1042D755D5117EE14B9CA3D /* Subly.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Subly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1042D755D5117EE14B9CA3D /* Subly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4A12FADA192CBBE30431793 /* NextRenewalIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextRenewalIntent.swift; sourceTree = "<group>"; };
 		B532A646803386198EB2F705 /* CloudKitSubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSubscriptionRepository.swift; sourceTree = "<group>"; };
 		B6CB924F1A644E9428F442B9 /* DesignSystem+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+Colors.swift"; sourceTree = "<group>"; };
@@ -1763,7 +1763,7 @@
 				CODE_SIGN_ENTITLEMENTS = Subly/Resources/Subly.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P4Y83PNQ54;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Subly/Resources/Info.plist;
@@ -1772,7 +1772,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.elifcagil.subly;
 				PRODUCT_NAME = Subly;
 				SDKROOT = iphoneos;
@@ -1881,7 +1881,7 @@
 				CODE_SIGN_ENTITLEMENTS = Subly/Resources/Subly.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P4Y83PNQ54;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Subly/Resources/Info.plist;
@@ -1890,7 +1890,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.elifcagil.subly;
 				PRODUCT_NAME = Subly;
 				SDKROOT = iphoneos;
