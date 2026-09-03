@@ -60,8 +60,6 @@ final class TimelineViewModel {
         let weekdayLetters: [String]
         /// Row-major grid cells (multiple of 7).
         let gridDays: [MonthDay]
-        /// Totals of renewals in the displayed month, one per currency.
-        let monthTotalText: String?
         let monthPayments: [MonthPayments]
     }
 
@@ -156,7 +154,6 @@ final class TimelineViewModel {
             monthYearTitle: monthYearFormatter.string(from: displayedMonth),
             weekdayLetters: makeWeekdayLetters(calendar: calendar),
             gridDays: makeGrid(active, calendar: calendar, now: now, monthDate: displayedMonth),
-            monthTotalText: totalForMonth(active, calendar: calendar, monthDate: displayedMonth),
             monthPayments: makeMonthPayments(active, calendar: calendar, monthDate: displayedMonth)
         ))
     }
@@ -208,11 +205,6 @@ final class TimelineViewModel {
             cells.append(MonthDay(dayNumber: "", isInMonth: false, isToday: false, hasRenewal: false))
         }
         return cells
-    }
-
-    private func totalForMonth(_ subs: [Subscription], calendar: Calendar, monthDate: Date) -> String? {
-        guard let month = calendar.dateInterval(of: .month, for: monthDate) else { return nil }
-        return currencyTotalsText(for: subs.filter { month.contains($0.nextRenewalDate) })
     }
 
     /// One total per currency, joined as "$29.98 + ₺10,99". Mixed currencies

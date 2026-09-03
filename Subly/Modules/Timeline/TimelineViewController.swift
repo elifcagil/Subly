@@ -28,7 +28,6 @@ final class TimelineViewController: UIViewController {
     private let monthGrid = SublyMonthGrid()
     private let paymentsHeaderRow = UIStackView()
     private let paymentsTitleLabel = UILabel()
-    private let paymentsTotalLabel = UILabel()
     private let paymentsStack = UIStackView()
 
     init(viewModel: TimelineViewModel, haptics: HapticsService) {
@@ -170,16 +169,10 @@ final class TimelineViewController: UIViewController {
         paymentsTitleLabel.textColor = DesignSystem.Colors.textSecondary
         paymentsTitleLabel.adjustsFontForContentSizeCategory = true
 
-        paymentsTotalLabel.font = DesignSystem.Typography.scaled(15, weight: .bold, relativeTo: .body, tabular: true)
-        paymentsTotalLabel.textColor = DesignSystem.Colors.accentText
-        paymentsTotalLabel.adjustsFontForContentSizeCategory = true
-        paymentsTotalLabel.setContentHuggingPriority(.required, for: .horizontal)
-
         paymentsHeaderRow.axis = .horizontal
         paymentsHeaderRow.alignment = .firstBaseline
         paymentsHeaderRow.addArrangedSubview(paymentsTitleLabel)
         paymentsHeaderRow.addArrangedSubview(UIView())
-        paymentsHeaderRow.addArrangedSubview(paymentsTotalLabel)
         contentStack.addArrangedSubview(paymentsHeaderRow)
         contentStack.setCustomSpacing(DesignSystem.Spacing.sm, after: paymentsHeaderRow)
 
@@ -311,9 +304,6 @@ final class TimelineViewController: UIViewController {
                 )
             }
         )
-
-        paymentsTotalLabel.text = snapshot.monthTotalText
-        paymentsTotalLabel.isHidden = snapshot.monthTotalText == nil
 
         paymentsStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
         for payments in snapshot.monthPayments {
