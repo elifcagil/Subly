@@ -47,7 +47,8 @@ final class TimelineViewModel {
         let mode: Mode
         /// "July"
         let monthTitle: String
-        /// "$71.46" — total renewing this month (primary currency); nil when none.
+        /// "$71.46 + ₺249,99" — totals renewing this month, one per currency;
+        /// nil when none.
         let dueAmountText: String?
         let week: [WeekDay]
         let groups: [DayGroup]
@@ -59,7 +60,7 @@ final class TimelineViewModel {
         let weekdayLetters: [String]
         /// Row-major grid cells (multiple of 7).
         let gridDays: [MonthDay]
-        /// Total of renewals in the displayed month (primary currency).
+        /// Totals of renewals in the displayed month, one per currency.
         let monthTotalText: String?
         let monthPayments: [MonthPayments]
     }
@@ -211,13 +212,24 @@ final class TimelineViewModel {
 
     private func totalForMonth(_ subs: [Subscription], calendar: Calendar, monthDate: Date) -> String? {
         guard let month = calendar.dateInterval(of: .month, for: monthDate) else { return nil }
-        let inMonth = subs.filter { month.contains($0.nextRenewalDate) }
-        guard let primaryCurrency = inMonth.first?.currencyCode else { return nil }
-        let total = inMonth
-            .filter { $0.currencyCode == primaryCurrency }
-            .reduce(Decimal(0)) { $0 + $1.amount }
-        guard total > 0 else { return nil }
-        return currencyFormatter.string(from: total, currencyCode: primaryCurrency)
+        return currencyTotalsText(for: subs.filter { month.contains($0.nextRenewalDate) })
+    }
+
+    /// One total per currency, joined as "$29.98 + ₺10,99". Mixed currencies
+    /// are never added into one number (roadmap §8.6 "Honest aggregation");
+    /// the most-used currency in the window comes first.
+    private func currencyTotalsText(for subs: [Subscription]) -> String? {
+        let parts = Dictionary(grouping: subs, by: \.currencyCode)
+            .map { code, group in
+                (code: code, count: group.count, total: group.reduce(Decimal(0)) { $0 + $1.amount })
+            }
+            .filter { $0.total > 0 }
+            .sorted { lhs, rhs in
+                if lhs.count != rhs.count { return lhs.count > rhs.count }
+                return lhs.code < rhs.code
+            }
+            .map { currencyFormatter.string(from: $0.total, currencyCode: $0.code) }
+        return parts.isEmpty ? nil : parts.joined(separator: " + ")
     }
 
     /// Renewals inside the displayed month keyed by day number, soonest first.
@@ -244,17 +256,10 @@ final class TimelineViewModel {
         }
     }
 
-    /// Sum of renewals dated inside the current month (primary currency only —
-    /// mixed currencies are never added together).
+    /// Sum of renewals dated inside the current month, one total per currency.
     private func dueThisMonth(_ subs: [Subscription], calendar: Calendar, now: Date) -> String? {
         guard let month = calendar.dateInterval(of: .month, for: now) else { return nil }
-        let inMonth = subs.filter { month.contains($0.nextRenewalDate) }
-        guard let primaryCurrency = inMonth.first?.currencyCode else { return nil }
-        let total = inMonth
-            .filter { $0.currencyCode == primaryCurrency }
-            .reduce(Decimal(0)) { $0 + $1.amount }
-        guard total > 0 else { return nil }
-        return currencyFormatter.string(from: total, currencyCode: primaryCurrency)
+        return currencyTotalsText(for: subs.filter { month.contains($0.nextRenewalDate) })
     }
 
     private func makeWeek(_ subs: [Subscription], calendar: Calendar, now: Date) -> [WeekDay] {
