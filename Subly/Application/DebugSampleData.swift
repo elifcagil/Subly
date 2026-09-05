@@ -21,7 +21,7 @@ enum DebugSampleData {
             // if any subscription points at a category that no longer exists,
             // wipe and re-seed so category names resolve again.
             let hasDangling = existing.contains { sub in
-                sub.categoryID.map { !validCategoryIDs.contains($0) } ?? false
+                sub.categoryIDs.contains { !validCategoryIDs.contains($0) }
             }
             guard hasDangling else { return }
             for sub in existing {

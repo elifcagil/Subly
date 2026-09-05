@@ -1,3 +1,5 @@
+import IQKeyboardManagerSwift
+import IQKeyboardToolbarManager
 import UIKit
 import UserNotifications
 
@@ -12,7 +14,20 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         UNUserNotificationCenter.current().delegate = notificationDelegate
         NotificationManager().registerActions()
+        configureKeyboardManager()
         return true
+    }
+
+    /// Keyboard handling app-wide: content scrolls clear of the keyboard, a
+    /// tap outside dismisses it, and every input (the decimal pad included,
+    /// which has no return key of its own) gets a toolbar with a localized
+    /// Done button.
+    private func configureKeyboardManager() {
+        IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardManager.shared.resignOnTouchOutside = true
+        IQKeyboardToolbarManager.shared.isEnabled = true
+        IQKeyboardToolbarManager.shared.toolbarConfiguration.useTextInputViewTintColor = true
+        IQKeyboardToolbarManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
     }
 
     func application(

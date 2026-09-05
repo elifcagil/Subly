@@ -1,8 +1,8 @@
 import UIKit
 
-/// v5 Add — Catalog (screen 05): search field, "Popular" 3-column grid of
-/// service cards (44pt tile + name), and a dashed-border "Custom subscription"
-/// row with an accent-tint plus tile.
+/// v5 Add — Catalog (screen 05): search field, a dashed-border "Custom
+/// subscription" row (accent-tint plus tile) pinned to the top, then the
+/// "Popular" 3-column grid of template cards (44pt tile + name) beneath it.
 final class CatalogPickerViewController: UIViewController {
 
     private let viewModel: CatalogPickerViewModel
@@ -13,8 +13,8 @@ final class CatalogPickerViewController: UIViewController {
     private var entries: [CatalogEntry] = []
 
     private enum Section: Int, CaseIterable {
-        case popular
         case custom
+        case popular
     }
 
     init(viewModel: CatalogPickerViewModel, haptics: HapticsService) {
@@ -94,7 +94,7 @@ final class CatalogPickerViewController: UIViewController {
                 group.interItemSpacing = .fixed(10)
                 let section = NSCollectionLayoutSection(group: group)
                 section.interGroupSpacing = 10
-                section.contentInsets = .init(top: 8, leading: inset, bottom: 20, trailing: inset)
+                section.contentInsets = .init(top: 8, leading: inset, bottom: 32, trailing: inset)
                 let header = NSCollectionLayoutBoundarySupplementaryItem(
                     layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30)),
                     elementKind: UICollectionView.elementKindSectionHeader,
@@ -112,7 +112,7 @@ final class CatalogPickerViewController: UIViewController {
                     subitems: [item]
                 )
                 let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets = .init(top: 4, leading: inset, bottom: 32, trailing: inset)
+                section.contentInsets = .init(top: 12, leading: inset, bottom: 8, trailing: inset)
                 return section
             }
         }

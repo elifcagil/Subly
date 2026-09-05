@@ -240,7 +240,7 @@ final class TimelineViewModel {
                     RenewalRow(
                         subscription: sub,
                         name: sub.name,
-                        categoryName: sub.categoryID.flatMap { categoriesByID[$0]?.localizedName },
+                        categoryName: categoryLine(for: sub),
                         amountText: currencyFormatter.string(from: sub.amount, currencyCode: sub.currencyCode)
                     )
                 }
@@ -290,7 +290,7 @@ final class TimelineViewModel {
                     RenewalRow(
                         subscription: sub,
                         name: sub.name,
-                        categoryName: sub.categoryID.flatMap { categoriesByID[$0]?.localizedName },
+                        categoryName: categoryLine(for: sub),
                         amountText: currencyFormatter.string(from: sub.amount, currencyCode: sub.currencyCode)
                     )
                 }
@@ -317,5 +317,11 @@ final class TimelineViewModel {
         formatter.setLocalizedDateFormatFromTemplate("EEEE MMMM d")
         formatter.calendar = dateProvider.calendar
         return formatter
+    }
+
+    /// "Streaming, Music" — every tag joined; nil when uncategorized.
+    private func categoryLine(for subscription: Subscription) -> String? {
+        let names = subscription.categoryIDs.compactMap { categoriesByID[$0]?.localizedName }
+        return names.isEmpty ? nil : names.joined(separator: ", ")
     }
 }

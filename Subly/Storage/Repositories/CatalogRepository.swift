@@ -8,19 +8,42 @@ protocol CatalogRepository: Sendable {
 struct InMemoryCatalogRepository: CatalogRepository {
 
     private let entries: [CatalogEntry]
+    /// Server-published prices layered over the bundled defaults, so the
+    /// templates open with the price that is current today.
+    private let priceProvider: CatalogPriceProviding?
 
-    init(entries: [CatalogEntry] = CatalogEntry.defaults) {
+    init(entries: [CatalogEntry] = CatalogEntry.defaults, priceProvider: CatalogPriceProviding? = nil) {
         self.entries = entries.sorted { $0.name < $1.name }
+        self.priceProvider = priceProvider
     }
 
     func fetchAll() async throws -> [CatalogEntry] {
-        entries
+        await withCurrentPrices(entries)
     }
 
     func search(_ query: String) async throws -> [CatalogEntry] {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return entries }
-        return entries.filter { $0.matches(query: trimmed) }
+        guard !trimmed.isEmpty else { return try await fetchAll() }
+        return await withCurrentPrices(entries.filter { $0.matches(query: trimmed) })
+    }
+
+    private func withCurrentPrices(_ list: [CatalogEntry]) async -> [CatalogEntry] {
+        guard let priceProvider else { return list }
+        let prices = await priceProvider.prices()
+        guard !prices.isEmpty else { return list }
+        return list.map { entry in
+            guard let price = prices[entry.name.lowercased()] else { return entry }
+            return CatalogEntry(
+                id: entry.id,
+                name: entry.name,
+                suggestedAmount: price.amount,
+                currencyCode: price.currencyCode,
+                billingCycle: price.billingCycle,
+                categoryName: entry.categoryName,
+                systemIcon: entry.systemIcon,
+                searchTerms: entry.searchTerms
+            )
+        }
     }
 }
 

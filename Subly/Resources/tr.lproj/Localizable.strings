@@ -40,7 +40,7 @@
 
 /* Registration (00/00B/00C) */
 "splash.preparing" = "Cihaz profilin hazırlanıyor…";
-"registration.headline" = "Hesap yok. Bu cihaz senin hesabın.";
+"registration.headline" = "Hesap yok. Cihaz senin hesabın.";
 "registration.subcopy" = "E-posta yok, şifre yok, kişisel veri yok. Aboneliklerin anonim bir cihaz kimliğine bağlanır — bir kez, otomatik olarak.";
 "registration.trust1_title" = "Anonim cihaz kimliği";
 "registration.trust1_body" = "Rastgele bir tanımlayıcı — asla adın ya da numaran değil.";
@@ -50,8 +50,8 @@
 "registration.trust3_body" = "Giriş ekranı yok, çıkış yok. Hiçbir zaman.";
 "registration.your_id" = "KİMLİĞİN";
 "registration.copied" = "Kopyalandı";
-"registration.continue" = "Bu cihazla devam et";
-"registration.legal" = "Devam ettiğinde bu cihaz anonim bir kimlikle eşlenir.";
+"registration.continue" = "Cihazla devam et";
+"registration.legal" = "Devam ettiğinde cihaz anonim bir kimlikle eşlenir.";
 "registering.title" = "Cihaz kaydedildi";
 "registering.taking" = "Panele yönlendiriliyorsun…";
 "registering.failed" = "Cihaz kaydedilemedi. Bağlantını kontrol edip tekrar dene.";
@@ -98,6 +98,11 @@
 "subscription_detail.category" = "Kategori";
 "subscription_detail.currency" = "Para birimi";
 "subscription_detail.delete_title" = "Abonelik silinsin mi?";
+"delete_flow.title_format" = "%@ silinsin mi?";
+"delete_flow.visit_site_message_format" = "Subly'den kaldırılacak. Planını orada da iptal etmek için %@ resmi sitesine gidilsin mi?";
+"delete_flow.plain_message" = "Abonelik ve hatırlatıcıları kalıcı olarak silinecek.";
+"delete_flow.yes_open_site" = "Evet, sil ve siteye git";
+"delete_flow.no" = "Hayır";
 "subscription_detail.delete_message" = "Bu abonelik ve hatırlatıcıları kalıcı olarak silinecek.";
 "subscription_detail.delete_button" = "Aboneliği sil";
 "subscription_detail.billing_cycle" = "Fatura dönemi";
@@ -134,6 +139,8 @@
 "add_edit.amount_placeholder" = "0,00";
 "add_edit.category_none" = "Yok";
 "add_edit.category_choose" = "Kategori seç";
+"add_edit.category_multi_hint" = "Bir veya birden fazla seç";
+"add_edit.category_limit_format" = "En fazla %d kategori";
 "add_edit.reminder_same_day" = "Aynı gün";
 "add_edit.reminder_one_day" = "1 gün";
 "add_edit.reminder_days_format" = "%d gün";

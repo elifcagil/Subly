@@ -27,6 +27,13 @@ final class SettingsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // The Dashboard hides the navigation bar and only re-shows it during
+        // this push. A bar that comes back mid-transition does not lay out
+        // its large title until the table scrolls, so ask for it explicitly
+        // and force a layout pass before the transition starts.
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.sizeToFit()
         viewModel.load()
     }
 

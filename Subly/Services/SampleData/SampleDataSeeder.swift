@@ -58,7 +58,7 @@ struct FixtureSampleDataSeeder: SampleDataSeeding {
                 billingCycle: .monthly,
                 startDate: start,
                 nextRenewalDate: next,
-                categoryID: categoryID(sample.category),
+                categoryIDs: categoryID(sample.category).map { [$0] } ?? [],
                 notes: nil,
                 isArchived: false,
                 reminderLeadDays: [3]

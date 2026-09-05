@@ -141,11 +141,11 @@ final class AddEditSubscriptionViewModel {
 
     private func resolveCatalogCategoryIfNeeded() {
         guard case .createFromCatalog(let entry) = mode,
-              draft.categoryID == nil,
+              draft.categoryIDs.isEmpty,
               let match = categories.first(where: { $0.name.caseInsensitiveCompare(entry.categoryName) == .orderedSame }) else {
             return
         }
-        draft.categoryID = match.id
+        draft.categoryIDs = [match.id]
     }
 
     func updateName(_ value: String) {
@@ -174,8 +174,22 @@ final class AddEditSubscriptionViewModel {
         publishSnapshot()
     }
 
-    func updateCategory(_ value: UUID?) {
-        draft.categoryID = value
+    func clearCategories() {
+        draft.categoryIDs.removeAll()
+        publishSnapshot()
+    }
+
+    /// Multi-select: picking a category from the menu adds it; picking it
+    /// again removes it. Capped at `SubscriptionDraft.maxCategories`.
+    func toggleCategory(_ id: UUID) {
+        if let index = draft.categoryIDs.firstIndex(of: id) {
+            draft.categoryIDs.remove(at: index)
+        } else if draft.categoryIDs.count < SubscriptionDraft.maxCategories {
+            draft.categoryIDs.append(id)
+        } else {
+            onErrorMessage?(Strings.AddEdit.categoryLimit(SubscriptionDraft.maxCategories))
+            return
+        }
         publishSnapshot()
     }
 

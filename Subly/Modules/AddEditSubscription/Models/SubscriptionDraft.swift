@@ -1,6 +1,9 @@
 import Foundation
 
 struct SubscriptionDraft: Equatable {
+    /// A subscription can carry at most this many categories.
+    static let maxCategories = 2
+
     var id: UUID
     var name: String
     var amountText: String
@@ -8,7 +11,7 @@ struct SubscriptionDraft: Equatable {
     var billingCycle: BillingCycle
     var startDate: Date
     var nextRenewalDate: Date
-    var categoryID: UUID?
+    var categoryIDs: [UUID]
     var notes: String
     var reminderLeadDays: Set<Int>
 
@@ -25,7 +28,7 @@ struct SubscriptionDraft: Equatable {
             billingCycle: .monthly,
             startDate: today,
             nextRenewalDate: today,
-            categoryID: nil,
+            categoryIDs: [],
             notes: "",
             reminderLeadDays: defaultReminderLeadDays
         )
@@ -46,7 +49,7 @@ struct SubscriptionDraft: Equatable {
             billingCycle: entry.billingCycle,
             startDate: today,
             nextRenewalDate: today,
-            categoryID: nil,
+            categoryIDs: [],
             notes: "",
             reminderLeadDays: defaultReminderLeadDays
         )
@@ -62,7 +65,7 @@ struct SubscriptionDraft: Equatable {
             billingCycle: subscription.billingCycle,
             startDate: subscription.startDate,
             nextRenewalDate: subscription.nextRenewalDate,
-            categoryID: subscription.categoryID,
+            categoryIDs: subscription.categoryIDs,
             notes: subscription.notes ?? "",
             reminderLeadDays: Set(subscription.reminderLeadDays)
         )
@@ -99,7 +102,7 @@ extension SubscriptionDraft {
             billingCycle: billingCycle,
             startDate: startDate,
             nextRenewalDate: nextRenewalDate,
-            categoryID: categoryID,
+            categoryIDs: categoryIDs,
             notes: notes.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : notes,
             isArchived: false,
             reminderLeadDays: reminderLeadDays.sorted()

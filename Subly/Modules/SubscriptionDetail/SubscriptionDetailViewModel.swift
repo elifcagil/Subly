@@ -177,7 +177,8 @@ final class SubscriptionDetailViewModel {
     }
 
     private func publishSnapshot() {
-        let categoryName = subscription.categoryID.flatMap { categoriesByID[$0]?.localizedName }
+        let categoryNames = subscription.categoryIDs.compactMap { categoriesByID[$0]?.localizedName }
+        let categoryName: String? = categoryNames.isEmpty ? nil : categoryNames.joined(separator: ", ")
         let categoryLine = [categoryName, subscription.billingCycle.localizedName]
             .compactMap { $0 }
             .joined(separator: " · ")

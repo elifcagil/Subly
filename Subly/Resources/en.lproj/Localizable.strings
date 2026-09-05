@@ -40,7 +40,7 @@
 
 /* Registration (00/00B/00C) */
 "splash.preparing" = "Preparing your device profile…";
-"registration.headline" = "No account. This device is your account.";
+"registration.headline" = "No account. The device is your account.";
 "registration.subcopy" = "No email, no password, no personal data. Your subscriptions link to an anonymous device ID — once, automatically.";
 "registration.trust1_title" = "Anonymous device ID";
 "registration.trust1_body" = "A random identifier — never your name or number.";
@@ -50,11 +50,11 @@
 "registration.trust3_body" = "No sign-in screens, no logout. Ever.";
 "registration.your_id" = "YOUR ID";
 "registration.copied" = "Copied";
-"registration.continue" = "Continue with this device";
-"registration.legal" = "By continuing, this device is linked to an anonymous ID.";
+"registration.continue" = "Continue with the device";
+"registration.legal" = "By continuing, the device is linked to an anonymous ID.";
 "registering.title" = "Device registered";
 "registering.taking" = "Taking you to your dashboard…";
-"registering.failed" = "We couldn’t register this device. Check your connection and try again.";
+"registering.failed" = "We couldn’t register the device. Check your connection and try again.";
 
 /* Empty state (v5 screen 12) */
 "empty.title" = "Nothing tracked yet";
@@ -98,6 +98,11 @@
 "subscription_detail.category" = "Category";
 "subscription_detail.currency" = "Currency";
 "subscription_detail.delete_title" = "Delete subscription?";
+"delete_flow.title_format" = "Delete %@?";
+"delete_flow.visit_site_message_format" = "It will be removed from Subly. Open the official %@ website to cancel your plan there too?";
+"delete_flow.plain_message" = "This will permanently remove the subscription and its reminders.";
+"delete_flow.yes_open_site" = "Yes, delete & open site";
+"delete_flow.no" = "No";
 "subscription_detail.delete_message" = "This will permanently remove this subscription and its reminders.";
 "subscription_detail.delete_button" = "Delete subscription";
 "subscription_detail.billing_cycle" = "Billing cycle";
@@ -134,6 +139,8 @@
 "add_edit.amount_placeholder" = "0.00";
 "add_edit.category_none" = "None";
 "add_edit.category_choose" = "Choose category";
+"add_edit.category_multi_hint" = "Pick one or more";
+"add_edit.category_limit_format" = "Up to %d categories";
 "add_edit.reminder_same_day" = "Same day";
 "add_edit.reminder_one_day" = "1 day";
 "add_edit.reminder_days_format" = "%d days";

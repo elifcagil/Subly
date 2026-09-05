@@ -391,17 +391,9 @@ final class SubscriptionDetailViewController: UIViewController {
     }
 
     private func presentDeleteConfirmation() {
-        let alert = UIAlertController(
-            title: Strings.SubscriptionDetail.deleteTitle,
-            message: Strings.SubscriptionDetail.deleteMessage,
-            preferredStyle: .actionSheet
-        )
-        alert.addAction(UIAlertAction(title: Strings.Common.delete, style: .destructive) { [weak self] _ in
-            self?.haptics.play(.warning)
+        presentDeleteSubscriptionPrompt(name: viewModel.subscription.name, haptics: haptics) { [weak self] in
             self?.viewModel.confirmDelete()
-        })
-        alert.addAction(UIAlertAction(title: Strings.Common.cancel, style: .cancel))
-        present(alert, animated: true)
+        }
     }
 
     private func present(errorMessage: String) {

@@ -19,6 +19,7 @@
 		0C82F987018FBBCBC6CB75BB /* SubscriptionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93864F6E0FD16B9A8C0DE7D /* SubscriptionEntity.swift */; };
 		0E24B851838466F9F2FD323A /* SublyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E497B59D75F5D490FBF3590 /* SublyTabBar.swift */; };
 		0E61405545127D1E72A7C3B3 /* FinancialLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E6AB24AC6584A71A663A8 /* FinancialLoadViewController.swift */; };
+		117F8DC7F1C6FA70FACC34C1 /* CatalogPriceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1EBEB8232BE00AA6442922 /* CatalogPriceService.swift */; };
 		15247D81C3CA95C96C558F73 /* LanguagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647CCF0AA59C1CB0B48C6FB0 /* LanguagePickerViewController.xib */; };
 		166E689F4C73EC1523F9DDBE /* CloudKitSubscriptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532A646803386198EB2F705 /* CloudKitSubscriptionRepository.swift */; };
 		16AE85B4DE3804ECD680BBE3 /* BillingCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CEDD87F2036B3C74A1A699 /* BillingCycle.swift */; };
@@ -40,6 +41,7 @@
 		282C20A855595FA5FA26C5C5 /* CatalogPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACC24AA96D33A3148A1A249 /* CatalogPickerViewModel.swift */; };
 		287A40760942496F6ECF9BEE /* PaywallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B587EE3FBB564DB68C7985 /* PaywallViewController.xib */; };
 		28C0E988955655DF3C21E37B /* UpcomingFinancialLoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907A809F508B812E5003395C /* UpcomingFinancialLoadUseCase.swift */; };
+		29D4F42065EFD2EAFE254363 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 041E9F8C4BDAA401F825203C /* IQKeyboardManagerSwift */; };
 		2AA9425EEA7604ACA59E74E1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA85DF2F7BCD81EB63D609 /* Coordinator.swift */; };
 		2CAA6BDB6508BEF2A86DDBAE /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330C59FAB7B5C2E67076F350 /* AnalyticsService.swift */; };
 		2CCB5A0AC8B8252FF4921270 /* FinancialLoadWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81362D2958723F1089F098DC /* FinancialLoadWindow.swift */; };
@@ -60,6 +62,7 @@
 		3A83CA51C9D1AF5C9817440D /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02983120597F0E3A4C60037 /* AppLanguage.swift */; };
 		3AC7E4CD85940863902D8866 /* SublyCategoryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3F4204B2CB73C4A3DED97 /* SublyCategoryBar.swift */; };
 		3AEF938304680B68217A6D42 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC324F3B5B1EA7E39C590BA /* CalendarService.swift */; };
+		3B45B8A88935CFAF870DB55B /* UIViewController+DeleteSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A268AA7C207F06B7C68861 /* UIViewController+DeleteSubscription.swift */; };
 		3D7B5BC1D0F0CF6E94FC6DE1 /* FinancialLoadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F03567F3A69FDA00D59339A /* FinancialLoadViewController.xib */; };
 		3ED3013F9A054280EDB3F12A /* SubscriptionListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E4029564C699B8EC83D065 /* SubscriptionListViewController.xib */; };
 		42285D22DA9B2B6BC38335B9 /* NotificationPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9C6B268DD297387D58E6AF /* NotificationPayloads.swift */; };
@@ -158,6 +161,7 @@
 		9E63F6A18127479BDC6F3494 /* FinancialHabitProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBB1BADA52588918110CFCC /* FinancialHabitProfile.swift */; };
 		9FA47DD24830418135A11172 /* SettingsToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3601858A5269C5BDAAD70 /* SettingsToggleCell.swift */; };
 		A00390A8402866AB78A22BDE /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4203A973D149AF5C17C85088 /* OnboardingCoordinator.swift */; };
+		A35015D5711FB33F3310D049 /* ServiceWebsiteDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B750C68D2525B114495264 /* ServiceWebsiteDirectory.swift */; };
 		A36ACB96E5ACB78B37D2233C /* DesignSystem+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CB924F1A644E9428F442B9 /* DesignSystem+Colors.swift */; };
 		A5A13D42843BFA383E8E05DC /* BudgetSuggestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E949FD78B3C54BB53B1AA92 /* BudgetSuggestionService.swift */; };
 		A6F4BCBE3A7400723ADB1833 /* AppearancePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ACF138C811ACD75A3A9ED4 /* AppearancePickerCoordinator.swift */; };
@@ -175,6 +179,7 @@
 		B492FAA27CBAD682B1B80322 /* UpcomingRenewalsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D9DE0BA1E03D58CBD115DC /* UpcomingRenewalsWidget.swift */; };
 		B5B8781FEA6B8EA771436E8E /* FeatureFlagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ADC0BBED45E7FFD45FDFD3 /* FeatureFlagService.swift */; };
 		B82499AAC090CBF7641A4168 /* FinancialAwarenessGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1443CA00885EBD98CB140A75 /* FinancialAwarenessGenerator.swift */; };
+		BAA612EB5F52805874BC7B36 /* IQKeyboardToolbarManager in Frameworks */ = {isa = PBXBuildFile; productRef = 96BD9DFB4F833DA52F97A872 /* IQKeyboardToolbarManager */; };
 		BC8DF67F71239AD1FE517EC2 /* SubscriptionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA59CD8B73A13EA162E857CB /* SubscriptionDetailViewController.swift */; };
 		BD382CE1CDB3C5D22737DDC4 /* SettingsDisclosureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D4C3C86532EA560AA1424 /* SettingsDisclosureCell.swift */; };
 		C098E4EA84288787FA5A9E8D /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D74329E1E0ED4923A045D /* CurrencyManager.swift */; };
@@ -267,13 +272,14 @@
 		0DEC719DC6C6816FB0AE705E /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0E949FD78B3C54BB53B1AA92 /* BudgetSuggestionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetSuggestionService.swift; sourceTree = "<group>"; };
 		0FE45817F72BC3DD60670EC7 /* RenewalDateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenewalDateCalculator.swift; sourceTree = "<group>"; };
-		11E5F6E5AE0B0B2089DE26AC /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		11E5F6E5AE0B0B2089DE26AC /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		1443CA00885EBD98CB140A75 /* FinancialAwarenessGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialAwarenessGenerator.swift; sourceTree = "<group>"; };
 		146D14584A2664D587393D2E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		15C3CE6F61AA12D0185D5D55 /* AddSubscriptionIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionIntent.swift; sourceTree = "<group>"; };
 		16E4029564C699B8EC83D065 /* SubscriptionListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionListViewController.xib; sourceTree = "<group>"; };
 		181DC5ADD1470248308AC90F /* DashboardEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardEmptyView.swift; sourceTree = "<group>"; };
 		18ACF138C811ACD75A3A9ED4 /* AppearancePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearancePickerCoordinator.swift; sourceTree = "<group>"; };
+		18B750C68D2525B114495264 /* ServiceWebsiteDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceWebsiteDirectory.swift; sourceTree = "<group>"; };
 		1BDBCBD4BC51F994320269D9 /* CategoryBreakdownChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBreakdownChartView.swift; sourceTree = "<group>"; };
 		1C31B2422EAE1063610190BA /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		1C3FF061DCCE25B8E16F85A2 /* SettingsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPreferences.swift; sourceTree = "<group>"; };
@@ -335,7 +341,7 @@
 		5F16C87D66A6E3612CE41688 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		647CCF0AA59C1CB0B48C6FB0 /* LanguagePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagePickerViewController.xib; sourceTree = "<group>"; };
 		66007E775661BF5CC64561A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		69576ACA2860EC976B46EFDE /* Subly.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Subly.storekit; sourceTree = "<group>"; };
+		69576ACA2860EC976B46EFDE /* Subly.storekit */ = {isa = PBXFileReference; path = Subly.storekit; sourceTree = "<group>"; };
 		6AC1CEAE157C502F6DC18B24 /* AddEditSubscriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEditSubscriptionViewController.xib; sourceTree = "<group>"; };
 		6ACC24AA96D33A3148A1A249 /* CatalogPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPickerViewModel.swift; sourceTree = "<group>"; };
 		6D213BACC409CDDCCDC75DFD /* AppearancePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearancePickerViewModel.swift; sourceTree = "<group>"; };
@@ -351,7 +357,7 @@
 		7818040665DECD0E6A660711 /* InsightEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightEngine.swift; sourceTree = "<group>"; };
 		781D2ED988A71D8006F41BEF /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		78E70572FFD6D84E9F53D2A2 /* UpcomingRenewalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRenewalCell.swift; sourceTree = "<group>"; };
-		78FD65DE91314A842A8F869C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		78FD65DE91314A842A8F869C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		7AC1A37974065ADBC327C5BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7B05E82D75DEE8510818CA91 /* OfflineTolerantRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineTolerantRegistrationService.swift; sourceTree = "<group>"; };
 		7CE5AD19D591816D304FA84E /* Decimal+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Currency.swift"; sourceTree = "<group>"; };
@@ -361,6 +367,7 @@
 		7FFC2BBB64E83E8B3FB85997 /* CurrencyPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewController.swift; sourceTree = "<group>"; };
 		8089BF5B8B1A622CEF5258FD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		81362D2958723F1089F098DC /* FinancialLoadWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialLoadWindow.swift; sourceTree = "<group>"; };
+		81A268AA7C207F06B7C68861 /* UIViewController+DeleteSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+DeleteSubscription.swift"; sourceTree = "<group>"; };
 		8323BF91A14AC8DD94073512 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		849D4C3C86532EA560AA1424 /* SettingsDisclosureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDisclosureCell.swift; sourceTree = "<group>"; };
 		86A742416142644D29B61AF0 /* URLSessionAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionAPIClient.swift; sourceTree = "<group>"; };
@@ -388,7 +395,7 @@
 		ACBD7756FAB416E06F69A8CD /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		ADC196C12970AFE19743C699 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		B026A308E6DD7AD0ADD6B336 /* PaywallCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallCoordinator.swift; sourceTree = "<group>"; };
-		B1042D755D5117EE14B9CA3D /* Subly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1042D755D5117EE14B9CA3D /* Subly.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Subly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4A12FADA192CBBE30431793 /* NextRenewalIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextRenewalIntent.swift; sourceTree = "<group>"; };
 		B532A646803386198EB2F705 /* CloudKitSubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSubscriptionRepository.swift; sourceTree = "<group>"; };
 		B6CB924F1A644E9428F442B9 /* DesignSystem+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+Colors.swift"; sourceTree = "<group>"; };
@@ -437,6 +444,7 @@
 		E7838D51906450ECBFC94DE2 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		E793282CC1E9445D1DBF244E /* CurrencyPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewModel.swift; sourceTree = "<group>"; };
 		EA46AB63FC61F9550348A84B /* AddEditSubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditSubscriptionViewModel.swift; sourceTree = "<group>"; };
+		EC1EBEB8232BE00AA6442922 /* CatalogPriceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPriceService.swift; sourceTree = "<group>"; };
 		EC8DBDE5746B5DCBF86F7803 /* CatalogPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPickerCoordinator.swift; sourceTree = "<group>"; };
 		EE40A1076B50B0966FA771A9 /* DesignSystem+Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+Typography.swift"; sourceTree = "<group>"; };
 		EF70C136B5163724FA146CE1 /* FormFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormFieldView.xib; sourceTree = "<group>"; };
@@ -463,6 +471,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				76A3E9669897B476B881DC53 /* Supabase in Frameworks */,
+				29D4F42065EFD2EAFE254363 /* IQKeyboardManagerSwift in Frameworks */,
+				BAA612EB5F52805874BC7B36 /* IQKeyboardToolbarManager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				085A5F7DF12DC12086730433 /* UIView+Constraints.swift */,
+				81A268AA7C207F06B7C68861 /* UIViewController+DeleteSubscription.swift */,
 			);
 			path = "UIKit+";
 			sourceTree = "<group>";
@@ -803,6 +814,14 @@
 			path = Analytics;
 			sourceTree = "<group>";
 		};
+		6967D92EC705EDE603A6EF2C /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				EC1EBEB8232BE00AA6442922 /* CatalogPriceService.swift */,
+			);
+			path = Catalog;
+			sourceTree = "<group>";
+		};
 		6EA55B8DE9E8E17A3E2CE042 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -1090,6 +1109,14 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		B3D267CBF66672FD3B6A8C29 /* ServiceLinks */ = {
+			isa = PBXGroup;
+			children = (
+				18B750C68D2525B114495264 /* ServiceWebsiteDirectory.swift */,
+			);
+			path = ServiceLinks;
+			sourceTree = "<group>";
+		};
 		B5537E5A8A6240C369A3FDC5 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -1110,12 +1137,14 @@
 				1E84CE4A2EEFDCFFF75CCEB4 /* Auth */,
 				F0A3FF2FDBCE238109F0C380 /* Budget */,
 				638D8646DC8A0B49AA1842AA /* Calendar */,
+				6967D92EC705EDE603A6EF2C /* Catalog */,
 				E39B70A6229B946E0092EBA1 /* FeatureFlags */,
 				C1F8F99847A094BBEA413ECE /* Insights */,
 				21F7706890C9A6F200CDBFFA /* Networking */,
 				4551B56B3310D869728A71FC /* Notifications */,
 				953F85FF21E27D396630EB7D /* Registration */,
 				47BB42940C348C04273FA819 /* SampleData */,
+				B3D267CBF66672FD3B6A8C29 /* ServiceLinks */,
 				97A91D46CCC706DFCC8924D8 /* StoreKit */,
 			);
 			path = Services;
@@ -1346,6 +1375,8 @@
 			name = Subly;
 			packageProductDependencies = (
 				1D5A8049383346377CB430A7 /* Supabase */,
+				041E9F8C4BDAA401F825203C /* IQKeyboardManagerSwift */,
+				96BD9DFB4F833DA52F97A872 /* IQKeyboardToolbarManager */,
 			);
 			productName = Subly;
 			productReference = B1042D755D5117EE14B9CA3D /* Subly.app */;
@@ -1399,6 +1430,8 @@
 			mainGroup = 84129931BAAB99A2CC3285E8;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				90421545087619844829A1E6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				B884D956EAB426E925109FE0 /* XCRemoteSwiftPackageReference "IQKeyboardToolbarManager" */,
 				045CA4F95EF6579907368411 /* XCRemoteSwiftPackageReference "supabase-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -1521,6 +1554,7 @@
 				754EC480CCD0043907F6A3C0 /* CatalogPickerCoordinator.swift in Sources */,
 				78B2BD780C557A1D8DF6A552 /* CatalogPickerViewController.swift in Sources */,
 				282C20A855595FA5FA26C5C5 /* CatalogPickerViewModel.swift in Sources */,
+				117F8DC7F1C6FA70FACC34C1 /* CatalogPriceService.swift in Sources */,
 				1F19E44FE2F37DE41A86CCA8 /* CatalogRepository.swift in Sources */,
 				6F9B1B58BF5A802185A6DCE7 /* Category.swift in Sources */,
 				25072D5957AFDDECCDCBB6CD /* CategoryBreakdownCalculator.swift in Sources */,
@@ -1599,6 +1633,7 @@
 				7B112D64104A7E0F5BA87BEF /* SampleDataSeeder.swift in Sources */,
 				B25D3571D56DC7D78B1EA10C /* SceneDelegate.swift in Sources */,
 				50DF7673864FB904B0A7865C /* SectionHeaderView.swift in Sources */,
+				A35015D5711FB33F3310D049 /* ServiceWebsiteDirectory.swift in Sources */,
 				448BF5792512983AAFD50D1D /* SettingsCoordinator.swift in Sources */,
 				BD382CE1CDB3C5D22737DDC4 /* SettingsDisclosureCell.swift in Sources */,
 				39E2B9A479B0DFB301D87DE5 /* SettingsPreferences.swift in Sources */,
@@ -1652,6 +1687,7 @@
 				6DB67C7D8DC930264FD11080 /* TimelineViewModel.swift in Sources */,
 				563B68DF2CBCBA8870FA70D9 /* UIColor+Hex.swift in Sources */,
 				597058ABC51678CD5FA5AA7D /* UIView+Constraints.swift in Sources */,
+				3B45B8A88935CFAF870DB55B /* UIViewController+DeleteSubscription.swift in Sources */,
 				57E879E312726071649EB6D9 /* URLSessionAPIClient.swift in Sources */,
 				28C0E988955655DF3C21E37B /* UpcomingFinancialLoadUseCase.swift in Sources */,
 				7DB839B3C44BCF989F399FB2 /* UpcomingRenewalCell.swift in Sources */,
@@ -1854,7 +1890,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = SublyWidgets/SublyWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P4Y83PNQ54;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = SublyWidgets/Info.plist;
@@ -1864,7 +1900,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.elifcagil.subly.widgets;
 				PRODUCT_NAME = SublyWidgets;
 				SDKROOT = iphoneos;
@@ -1903,7 +1939,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = SublyWidgets/SublyWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P4Y83PNQ54;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = SublyWidgets/Info.plist;
@@ -1913,7 +1949,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.elifcagil.subly.widgets;
 				PRODUCT_NAME = SublyWidgets;
 				SDKROOT = iphoneos;
@@ -1963,13 +1999,39 @@
 				minimumVersion = 2.55.1;
 			};
 		};
+		90421545087619844829A1E6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.3;
+			};
+		};
+		B884D956EAB426E925109FE0 /* XCRemoteSwiftPackageReference "IQKeyboardToolbarManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardToolbarManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.6;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		041E9F8C4BDAA401F825203C /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90421545087619844829A1E6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
 		1D5A8049383346377CB430A7 /* Supabase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 045CA4F95EF6579907368411 /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Supabase;
+		};
+		96BD9DFB4F833DA52F97A872 /* IQKeyboardToolbarManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B884D956EAB426E925109FE0 /* XCRemoteSwiftPackageReference "IQKeyboardToolbarManager" */;
+			productName = IQKeyboardToolbarManager;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

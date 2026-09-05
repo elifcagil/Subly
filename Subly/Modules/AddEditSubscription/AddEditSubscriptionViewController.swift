@@ -121,12 +121,16 @@ final class AddEditSubscriptionViewController: UIViewController {
         renewalDatePicker.minimumDate = Date()
         renewalDatePicker.addTarget(self, action: #selector(renewalDateChanged), for: .valueChanged)
 
+        // Tapping opens the category menu; each tap on an item toggles it,
+        // so re-opening the menu adds (or removes) further categories.
         categoryButton.translatesAutoresizingMaskIntoConstraints = false
         categoryButton.contentHorizontalAlignment = .leading
         categoryButton.titleLabel?.font = DesignSystem.Typography.body
         categoryButton.titleLabel?.adjustsFontForContentSizeCategory = true
+        categoryButton.titleLabel?.numberOfLines = 0
         categoryButton.tintColor = DesignSystem.Colors.accent
         categoryButton.showsMenuAsPrimaryAction = true
+        categoryButton.accessibilityHint = Strings.AddEdit.categoryMultiHint
 
         reminderStack.axis = .horizontal
         reminderStack.spacing = DesignSystem.Spacing.sm
@@ -253,28 +257,39 @@ final class AddEditSubscriptionViewController: UIViewController {
     }
 
     private func configureCategoryMenu(for draft: SubscriptionDraft, categories: [Category]) {
-        let actions: [UIAction] = [
-            UIAction(title: Strings.AddEdit.categoryNone, state: draft.categoryID == nil ? .on : .off) { [weak self] _ in
-                self?.viewModel.updateCategory(nil)
-            }
-        ] + categories.map { category in
-            UIAction(
+        let selected = Set(draft.categoryIDs)
+        let atLimit = selected.count >= SubscriptionDraft.maxCategories
+        let none = UIAction(
+            title: Strings.AddEdit.categoryNone,
+            state: selected.isEmpty ? .on : .off
+        ) { [weak self] _ in
+            self?.viewModel.clearCategories()
+        }
+        let toggles = categories.map { category in
+            let isOn = selected.contains(category.id)
+            let action = UIAction(
                 title: category.localizedName,
                 image: UIImage(systemName: category.systemIconName),
-                state: draft.categoryID == category.id ? .on : .off
+                state: isOn ? .on : .off
             ) { [weak self] _ in
-                self?.viewModel.updateCategory(category.id)
+                self?.haptics.play(.selection)
+                self?.viewModel.toggleCategory(category.id)
             }
+            // At the cap only the selected ones stay tappable (to remove).
+            if atLimit, !isOn { action.attributes = .disabled }
+            return action
         }
-        categoryButton.menu = UIMenu(title: Strings.AddEdit.fieldCategory, children: actions)
+        categoryButton.menu = UIMenu(
+            title: Strings.AddEdit.categoryLimit(SubscriptionDraft.maxCategories),
+            options: .displayInline,
+            children: [none] + toggles
+        )
 
-        let selectedTitle: String
-        if let id = draft.categoryID, let category = categories.first(where: { $0.id == id }) {
-            selectedTitle = category.localizedName
-        } else {
-            selectedTitle = Strings.AddEdit.categoryChoose
-        }
-        categoryButton.setTitle(selectedTitle, for: .normal)
+        // Keep the user's pick order ("Streaming, Music") in the title.
+        let names = draft.categoryIDs.compactMap { id in categories.first { $0.id == id }?.localizedName }
+        let title = names.isEmpty ? Strings.AddEdit.categoryChoose : names.joined(separator: ", ")
+        categoryButton.setTitle(title, for: .normal)
+        categoryButton.accessibilityLabel = "\(Strings.AddEdit.fieldCategory): \(title)"
     }
 
     private func configureReminderControl(for draft: SubscriptionDraft, options: [Int]) {

@@ -2,7 +2,7 @@ import UIKit
 
 /// v5 Register (screen 00B): small logo tile, headline "No account. This
 /// device is your account.", subcopy, 3-row trust card with lime-tinted icon
-/// tiles, bottom-pinned lime "Continue with this device" + legal caption.
+/// tiles, bottom-pinned lime "Continue with the device" + legal caption.
 /// The device ID itself is never shown. No back navigation.
 final class RegisterViewController: UIViewController {
 

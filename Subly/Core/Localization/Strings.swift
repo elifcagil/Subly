@@ -197,6 +197,17 @@ enum Strings {
         }
     }
 
+    /// Delete prompt shared by the list and the detail screen.
+    enum DeleteFlow {
+        /// "Delete %@?"
+        static var titleFormat: String { L("delete_flow.title_format") }
+        /// "Also open the official %@ site so you can cancel there?"
+        static var visitSiteMessageFormat: String { L("delete_flow.visit_site_message_format") }
+        static var plainMessage: String { L("delete_flow.plain_message") }
+        static var yesOpenSite: String { L("delete_flow.yes_open_site") }
+        static var no: String { L("delete_flow.no") }
+    }
+
     enum SubscriptionDetail {
         static var nextRenewal: String { L("subscription_detail.next_renewal") }
         static var started: String { L("subscription_detail.started") }
@@ -245,6 +256,12 @@ enum Strings {
         static var amountPlaceholder: String { L("add_edit.amount_placeholder") }
         static var categoryNone: String { L("add_edit.category_none") }
         static var categoryChoose: String { L("add_edit.category_choose") }
+        /// "Pick one or more" — menu title / accessibility hint for the category picker.
+        static var categoryMultiHint: String { L("add_edit.category_multi_hint") }
+        /// "Up to %d categories" — menu title; also the message when the cap is hit.
+        static func categoryLimit(_ max: Int) -> String {
+            String(format: L("add_edit.category_limit_format"), max)
+        }
         static var reminderSameDay: String { L("add_edit.reminder_same_day") }
         static var reminderOneDay: String { L("add_edit.reminder_one_day") }
         static func reminderDays(_ days: Int) -> String {

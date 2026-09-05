@@ -12,6 +12,7 @@ final class SublySegmentedPills: UIView {
     var onSelect: ((Int) -> Void)?
 
     private(set) var selectedIndex: Int = 0
+    private let scrollView = UIScrollView()
     private let stack = UIStackView()
     private var buttons: [UIButton] = []
 
@@ -27,15 +28,35 @@ final class SublySegmentedPills: UIView {
 
     private func commonInit() {
         stack.axis = .horizontal
-        stack.distribution = .fillEqually
+        // Every pill is as wide as its title needs (plus padding). When the
+        // row fits, pills stretch proportionally to fill it; when it does not
+        // (five cycles on a narrow phone), the row scrolls sideways instead
+        // of clipping titles.
+        stack.distribution = .fillProportionally
         stack.spacing = 8
         stack.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(stack)
+
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.alwaysBounceHorizontal = false
+        scrollView.clipsToBounds = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(scrollView)
+        scrollView.addSubview(stack)
+
+        let fillWidth = stack.widthAnchor.constraint(
+            greaterThanOrEqualTo: scrollView.frameLayoutGuide.widthAnchor
+        )
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: topAnchor),
-            stack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stack.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            stack.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            stack.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            stack.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            stack.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor),
+            fillWidth,
             heightAnchor.constraint(greaterThanOrEqualToConstant: 40)
         ])
     }
@@ -52,8 +73,9 @@ final class SublySegmentedPills: UIView {
             button.layer.cornerCurve = .continuous
             button.titleLabel?.font = DesignSystem.Typography.subhead
             button.titleLabel?.adjustsFontForContentSizeCategory = true
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.titleLabel?.minimumScaleFactor = 0.8
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            button.setContentCompressionResistancePriority(.required, for: .horizontal)
+            button.setContentHuggingPriority(.defaultLow, for: .horizontal)
             button.setTitle(segment.title, for: .normal)
             button.addTarget(self, action: #selector(didTapSegment(_:)), for: .touchUpInside)
             button.accessibilityLabel = segment.title
@@ -66,7 +88,19 @@ final class SublySegmentedPills: UIView {
     func setSelectedIndex(_ index: Int, notify: Bool = false) {
         selectedIndex = index
         applySelection()
+        scrollSelectedIntoView()
         if notify { onSelect?(index) }
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        scrollSelectedIntoView(animated: false)
+    }
+
+    private func scrollSelectedIntoView(animated: Bool = true) {
+        guard buttons.indices.contains(selectedIndex), scrollView.bounds.width > 0 else { return }
+        let frame = buttons[selectedIndex].frame.insetBy(dx: -8, dy: 0)
+        scrollView.scrollRectToVisible(frame, animated: animated)
     }
 
     private func applySelection() {
@@ -89,6 +123,7 @@ final class SublySegmentedPills: UIView {
         guard sender.tag != selectedIndex else { return }
         selectedIndex = sender.tag
         UIView.animate(withDuration: 0.15) { self.applySelection() }
+        scrollSelectedIntoView()
         onSelect?(sender.tag)
     }
 

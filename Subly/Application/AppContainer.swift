@@ -9,6 +9,7 @@ final class AppContainer {
     let subscriptionRepository: SubscriptionRepository
     let categoryRepository: CategoryRepository
     let catalogRepository: CatalogRepository
+    let catalogPriceService: CatalogPriceProviding
     let notificationManager: NotificationScheduling
     let smartReminderGenerator: SmartReminderGenerating
     let awarenessGenerator: AwarenessGenerating
@@ -44,7 +45,11 @@ final class AppContainer {
             logger: logger
         )
         self.categoryRepository = InMemoryCategoryRepository()
-        self.catalogRepository = InMemoryCatalogRepository()
+        let supabase = SupabaseConfig.makeClient()
+        self.supabase = supabase
+        let catalogPriceService = SupabaseCatalogPriceService(client: supabase, logger: logger)
+        self.catalogPriceService = catalogPriceService
+        self.catalogRepository = InMemoryCatalogRepository(priceProvider: catalogPriceService)
         self.notificationManager = NotificationManager()
         self.smartReminderGenerator = RuleBasedSmartReminderGenerator()
         self.awarenessGenerator = RuleBasedAwarenessGenerator()
@@ -74,8 +79,6 @@ final class AppContainer {
         )
         let deviceIdentity = KeychainDeviceIdentity()
         self.deviceIdentity = deviceIdentity
-        let supabase = SupabaseConfig.makeClient()
-        self.supabase = supabase
         self.registrationService = OfflineTolerantRegistrationService(
             wrapping: SupabaseRegistrationService(
                 client: supabase,
@@ -86,6 +89,8 @@ final class AppContainer {
         )
 
         observeEntitlement()
+        // One request per launch; the picker reads the cached result.
+        Task { await catalogPriceService.refreshIfNeeded() }
     }
 
     /// Re-sends a registration that was completed offline. No-op in the common

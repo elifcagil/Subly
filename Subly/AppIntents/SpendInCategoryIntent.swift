@@ -23,7 +23,7 @@ struct SpendInCategoryIntent: AppIntent {
         let label: String
 
         if let category = matchedCategory {
-            filtered = subscriptions.filter { $0.categoryID == category.id }
+            filtered = subscriptions.filter { $0.categoryIDs.contains(category.id) }
             label = category.name
         } else {
             filtered = subscriptions

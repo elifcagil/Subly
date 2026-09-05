@@ -226,7 +226,7 @@ final class SubscriptionListViewModel {
 
     private func matchesCategory(_ subscription: Subscription) -> Bool {
         guard let selected = selectedCategoryID else { return true }
-        return subscription.categoryID == selected
+        return subscription.categoryIDs.contains(selected)
     }
 
     private func matchesQuery(_ subscription: Subscription) -> Bool {
@@ -234,8 +234,8 @@ final class SubscriptionListViewModel {
         guard !trimmed.isEmpty else { return true }
         if subscription.name.lowercased().contains(trimmed) { return true }
         if let notes = subscription.notes, notes.lowercased().contains(trimmed) { return true }
-        if let cat = subscription.categoryID.flatMap({ categoriesByID[$0] }),
-           cat.localizedName.lowercased().contains(trimmed) { return true }
+        let categoryNames = subscription.categoryIDs.compactMap { categoriesByID[$0]?.localizedName }
+        if categoryNames.contains(where: { $0.lowercased().contains(trimmed) }) { return true }
         return false
     }
 
@@ -288,7 +288,10 @@ final class SubscriptionListViewModel {
         let amount = currencyFormatter.string(from: subscription.amount, currencyCode: subscription.currencyCode)
         let dateText = dateFormatter.string(from: subscription.nextRenewalDate)
         let category = subscription.categoryID.flatMap { categoriesByID[$0] }
-        let categoryName = category?.localizedName ?? Strings.SubscriptionList.uncategorized
+        let allNames = subscription.categoryIDs.compactMap { categoriesByID[$0]?.localizedName }
+        let categoryName = allNames.isEmpty
+            ? Strings.SubscriptionList.uncategorized
+            : allNames.joined(separator: ", ")
         return Row(
             subscription: subscription,
             primaryText: subscription.name,
@@ -296,7 +299,7 @@ final class SubscriptionListViewModel {
             amountText: amount,
             cycleText: subscription.billingCycle.localizedName.lowercased(),
             avatarSystemIcon: category?.systemIconName ?? "creditcard",
-            categoryName: category?.localizedName
+            categoryName: allNames.isEmpty ? nil : allNames.joined(separator: ", ")
         )
     }
 
