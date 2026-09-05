@@ -36,6 +36,25 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // Visual-QA: force the registration flow on next launch.
             container.deviceIdentity.setRegistered(false)
         }
+        if qaArgs.contains("-rolloverQA") {
+            // Visual-QA: insert a stale-dated subscription so the roll-forward
+            // pass has something to advance (the UI can't create past dates).
+            let repository = container.subscriptionRepository
+            let dateProvider = container.dateProvider
+            Task { @MainActor in
+                let yesterday = dateProvider.calendar.date(
+                    byAdding: .day, value: -1, to: dateProvider.now
+                ) ?? dateProvider.now
+                try? await repository.save(Subscription(
+                    name: "RolloverQA",
+                    amount: 9.99,
+                    currencyCode: "USD",
+                    billingCycle: .monthly,
+                    startDate: yesterday,
+                    nextRenewalDate: yesterday
+                ))
+            }
+        }
         if qaArgs.contains("-skipOnboarding") {
             // Visual-QA: straight to the (possibly empty) main shell.
             UserDefaults.standard.set(true, forKey: "com.subly.onboarding.completed")
@@ -107,6 +126,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Flush a registration that was completed while offline.
         container?.retryPendingRegistrationIfNeeded()
+        // Advance past-due renewal dates to the next billing cycle.
+        container?.rollRenewalsForward()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

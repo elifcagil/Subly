@@ -5,7 +5,9 @@ Yenileme tarihi geçtiğinde `nextRenewalDate` otomatik olarak bir sonraki döng
 tarihine ilerler; "Önümüzdeki 7 gün", takvim, bildirimler ve widget'lar hep
 canlı kalır.
 
-**Durum:** Planlandı — v1.0 sonrası ilk özellik (veya inceleme reddi olursa v1.0'a alınabilir).
+**Durum:** ✅ UYGULANDI (5 Eyl 2026) — takvime aktarma senkronu (§ Adım 5) hariç;
+o v1.1'e ertelendi. Doğrulama: 10 birim testi + simülatörde `-rolloverQA`
+launch argümanıyla uçtan uca (dünkü tarih → sonraki döngüye atladı).
 
 ---
 
@@ -146,12 +148,12 @@ idempotent olduğu için kilit gerekmez; yine de servis içinde basit bir
 
 ## 8. İş listesi (özet)
 
-- [ ] `RenewalDateCalculator`'a takvim enjeksiyonunu bağla
-- [ ] `RenewalRolloverService` + birim testleri
-- [ ] Açılış + öne gelme + gün değişimi tetikleri
-- [ ] Bildirim yeniden kurma (eski bekleyenleri temizleyerek)
-- [ ] `WidgetCenter` reload
-- [ ] (Opsiyonel) Takvime aktarma senkronu
-- [ ] Simülatörde tarih ilerletme senaryosu ile uçtan uca doğrulama
+- [x] `RenewalDateCalculator`'a takvim enjeksiyonunu bağla (servis `dateProvider.calendar` geçiyor)
+- [x] `RenewalRolloverService` + birim testleri (10 test — yeni `SublyTests` target'ı)
+- [x] Açılış + öne gelme (`sceneDidBecomeActive`) + gün değişimi (`NSCalendarDayChanged`) tetikleri
+- [x] Bildirim yeniden kurma (`schedule` zaten eski bekleyenleri temizliyor)
+- [x] `WidgetCenter` reload
+- [ ] (Opsiyonel) Takvime aktarma senkronu — v1.1
+- [x] Simülatörde uçtan uca doğrulama (`-rolloverQA` launch argümanı ile)
 
 **Tahmini toplam:** ~1 iş günü (takvim senkronu hariç).

@@ -75,10 +75,12 @@
 		4C14C892991949713BA13B1B /* SublyAppMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8C194E9215BA913EC23B1 /* SublyAppMark.swift */; };
 		4F9A26FA32552CFF1B039452 /* SettingsToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264077F1D414AC699A63C723 /* SettingsToggleCell.xib */; };
 		4FEF5DA43BCABE8D277BF08C /* InsightsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF91D96297F4EFF66A1F902 /* InsightsCoordinator.swift */; };
+		4FF74E09AA090FA246945B27 /* RenewalRolloverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157FDD80888789181F0BC5E /* RenewalRolloverService.swift */; };
 		50DF7673864FB904B0A7865C /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD7756FAB416E06F69A8CD /* SectionHeaderView.swift */; };
 		510F6A289CF6219E0041D6F5 /* UpcomingFinancialLoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907A809F508B812E5003395C /* UpcomingFinancialLoadUseCase.swift */; };
 		52D8557504EE7449966F2951 /* InsightEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7818040665DECD0E6A660711 /* InsightEngine.swift */; };
 		5440C35E72F661C2FE95A8E9 /* SubscriptionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDFB01855E05CCA59C8D83 /* SubscriptionListViewController.swift */; };
+		5487A6169D21FFECD8B13DD0 /* RenewalRolloverServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF77ADA76C77A99AEBFE2DA /* RenewalRolloverServiceTests.swift */; };
 		556CE5DFE17A1715A965AA94 /* CatalogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B910361639A5F047A9A4A62 /* CatalogEntry.swift */; };
 		55D1923BC6B5AA3886A67CC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25CCDF44AB2470F8D5E559F8 /* InfoPlist.strings */; };
 		563B68DF2CBCBA8870FA70D9 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADDC8B8E4ACAD8538B9C27A /* UIColor+Hex.swift */; };
@@ -234,6 +236,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0D7CDA8BD573CF3CE599298E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C31C23BD58A7ED4DF259FD25 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E5F3A6E0CB4817D871DE8C2;
+			remoteInfo = Subly;
+		};
 		184DF36B70105AEED90FD292 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C31C23BD58A7ED4DF259FD25 /* Project object */;
@@ -373,6 +382,7 @@
 		86A742416142644D29B61AF0 /* URLSessionAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionAPIClient.swift; sourceTree = "<group>"; };
 		87B587EE3FBB564DB68C7985 /* PaywallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaywallViewController.xib; sourceTree = "<group>"; };
 		8AE5693F6945B8ACD7AEE7E6 /* DesignSystem+Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+Motion.swift"; sourceTree = "<group>"; };
+		8BF77ADA76C77A99AEBFE2DA /* RenewalRolloverServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenewalRolloverServiceTests.swift; sourceTree = "<group>"; };
 		8C652B39AC34AAC9B3D709F2 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		8D140F969FA5AA367C151D01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D97FA2A502F04D3AA8422F4 /* SublyChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyChip.swift; sourceTree = "<group>"; };
@@ -407,6 +417,7 @@
 		BE818553FBFB6383296543AF /* SublyChip.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SublyChip.xib; sourceTree = "<group>"; };
 		BF9ABDEC1AEBAA4ACC4E4B55 /* PaywallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewController.swift; sourceTree = "<group>"; };
 		BFD7E3C279398A5A7D53BA54 /* SublyStatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyStatCard.swift; sourceTree = "<group>"; };
+		C157FDD80888789181F0BC5E /* RenewalRolloverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenewalRolloverService.swift; sourceTree = "<group>"; };
 		C25529D4FC0A62B96CFF1404 /* AddEditSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditSubscriptionViewController.swift; sourceTree = "<group>"; };
 		C4C71CC8778B723872F60583 /* SubscriptionListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionListCoordinator.swift; sourceTree = "<group>"; };
 		C6D56F64FCF8CA31A03881DF /* SettingsValueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsValueCell.xib; sourceTree = "<group>"; };
@@ -461,6 +472,7 @@
 		FA1E6AB24AC6584A71A663A8 /* FinancialLoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialLoadViewController.swift; sourceTree = "<group>"; };
 		FAB9B3EC3884F5554EFF1D49 /* NotificationSchedulingPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSchedulingPolicy.swift; sourceTree = "<group>"; };
 		FC43B2B7C9CE4F96551A823C /* AccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinator.swift; sourceTree = "<group>"; };
+		FC6A78324056E3FAB984C8D5 /* SublyTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SublyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCB6ACD17050FACE5B974152 /* SublyWeekStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublyWeekStrip.swift; sourceTree = "<group>"; };
 		FF425CEA0A3F61CE747E0688 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -640,6 +652,14 @@
 			path = Motion;
 			sourceTree = "<group>";
 		};
+		36EF41151E859BBF680CF36C /* Renewal */ = {
+			isa = PBXGroup;
+			children = (
+				C157FDD80888789181F0BC5E /* RenewalRolloverService.swift */,
+			);
+			path = Renewal;
+			sourceTree = "<group>";
+		};
 		39DC5BAE736FE7509108C96E /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +766,7 @@
 			isa = PBXGroup;
 			children = (
 				B1042D755D5117EE14B9CA3D /* Subly.app */,
+				FC6A78324056E3FAB984C8D5 /* SublyTests.xctest */,
 				B7C799EAE2AD7AE3E385E1CE /* SublyWidgets.appex */,
 			);
 			name = Products;
@@ -921,6 +942,7 @@
 			isa = PBXGroup;
 			children = (
 				E60BE3B5234F4EF499AF0CB7 /* Subly */,
+				B6BB0470D8C42D54C0F00BDE /* SublyTests */,
 				82F62AE618E153FB519C0565 /* SublyWidgets */,
 				4C0B164B7A75DD4A9A40C1B6 /* Products */,
 			);
@@ -1143,11 +1165,20 @@
 				21F7706890C9A6F200CDBFFA /* Networking */,
 				4551B56B3310D869728A71FC /* Notifications */,
 				953F85FF21E27D396630EB7D /* Registration */,
+				36EF41151E859BBF680CF36C /* Renewal */,
 				47BB42940C348C04273FA819 /* SampleData */,
 				B3D267CBF66672FD3B6A8C29 /* ServiceLinks */,
 				97A91D46CCC706DFCC8924D8 /* StoreKit */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		B6BB0470D8C42D54C0F00BDE /* SublyTests */ = {
+			isa = PBXGroup;
+			children = (
+				8BF77ADA76C77A99AEBFE2DA /* RenewalRolloverServiceTests.swift */,
+			);
+			path = SublyTests;
 			sourceTree = "<group>";
 		};
 		BB1E17A3F4E41A80B382BD4E /* TabBar */ = {
@@ -1382,6 +1413,24 @@
 			productReference = B1042D755D5117EE14B9CA3D /* Subly.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7BFE45A813CCE674682BF635 /* SublyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA9D06FBF98414DF0B40C36C /* Build configuration list for PBXNativeTarget "SublyTests" */;
+			buildPhases = (
+				8A6C7C2B44185F193B157831 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				711F83F906B28ECCA6B40E3A /* PBXTargetDependency */,
+			);
+			name = SublyTests;
+			packageProductDependencies = (
+			);
+			productName = SublyTests;
+			productReference = FC6A78324056E3FAB984C8D5 /* SublyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F987EE876C759F966F649670 /* SublyWidgets */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 218D9F6670BA308375CC104F /* Build configuration list for PBXNativeTarget "SublyWidgets" */;
@@ -1440,6 +1489,7 @@
 			projectRoot = "";
 			targets = (
 				0E5F3A6E0CB4817D871DE8C2 /* Subly */,
+				7BFE45A813CCE674682BF635 /* SublyTests */,
 				F987EE876C759F966F649670 /* SublyWidgets */,
 			);
 		};
@@ -1522,6 +1572,14 @@
 				01FA629EF04B990CC558502A /* UpcomingRenewalsUseCase.swift in Sources */,
 				B492FAA27CBAD682B1B80322 /* UpcomingRenewalsWidget.swift in Sources */,
 				5A82A4119E29D37E3B79A065 /* YearlyProjectionCalculator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A6C7C2B44185F193B157831 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5487A6169D21FFECD8B13DD0 /* RenewalRolloverServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1630,6 +1688,7 @@
 				1FBBE7ED7D2A7BC5C4B43265 /* ReminderSheetViewController.swift in Sources */,
 				7999CE9BCA2B52A9D1655213 /* RenewalDateCalculator.swift in Sources */,
 				F1A66ADC6AF56A80E99020E9 /* RenewalProjectionCalculator.swift in Sources */,
+				4FF74E09AA090FA246945B27 /* RenewalRolloverService.swift in Sources */,
 				7B112D64104A7E0F5BA87BEF /* SampleDataSeeder.swift in Sources */,
 				B25D3571D56DC7D78B1EA10C /* SceneDelegate.swift in Sources */,
 				50DF7673864FB904B0A7865C /* SectionHeaderView.swift in Sources */,
@@ -1700,6 +1759,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		711F83F906B28ECCA6B40E3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E5F3A6E0CB4817D871DE8C2 /* Subly */;
+			targetProxy = 0D7CDA8BD573CF3CE599298E /* PBXContainerItemProxy */;
+		};
 		97ADE0999AAF6BB519477E9D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F987EE876C759F966F649670 /* SublyWidgets */;
@@ -1813,6 +1877,24 @@
 				PRODUCT_NAME = Subly;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		4E267D33A0482E2481492A65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.elifcagil.subly.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Subly.app/Subly";
 			};
 			name = Debug;
 		};
@@ -1934,6 +2016,24 @@
 			};
 			name = Release;
 		};
+		D920F8FE35385DB2FC2BDFEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.elifcagil.subly.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Subly.app/Subly";
+			};
+			name = Release;
+		};
 		DE7ADAE248807C2772897480 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1984,6 +2084,15 @@
 			buildConfigurations = (
 				6750812C5CB5400F591D0B54 /* Debug */,
 				DE7ADAE248807C2772897480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FA9D06FBF98414DF0B40C36C /* Build configuration list for PBXNativeTarget "SublyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E267D33A0482E2481492A65 /* Debug */,
+				D920F8FE35385DB2FC2BDFEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

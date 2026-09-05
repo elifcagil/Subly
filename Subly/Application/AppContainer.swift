@@ -31,6 +31,7 @@ final class AppContainer {
     let sampleDataSeeder: SampleDataSeeding
     let deviceIdentity: DeviceIdentityProviding
     let registrationService: RegistrationService
+    let renewalRolloverService: RenewalRolloverService
 
     private var entitlementObservationTask: Task<Void, Never>?
 
@@ -88,9 +89,26 @@ final class AppContainer {
             logger: logger
         )
 
+        self.renewalRolloverService = RenewalRolloverService(
+            repository: subscriptionRepository,
+            notificationScheduler: notificationManager,
+            preferences: settingsPreferences,
+            dateProvider: dateProvider
+        )
+        renewalRolloverService.startObservingDayChanges()
+
         observeEntitlement()
         // One request per launch; the picker reads the cached result.
         Task { await catalogPriceService.refreshIfNeeded() }
+    }
+
+    /// Advances past-due renewal dates to the next cycle (roll-forward).
+    /// Called from `sceneDidBecomeActive` — covers both launch and
+    /// foregrounding; day changes while open are handled by the service's
+    /// own observer.
+    func rollRenewalsForward() {
+        let service = renewalRolloverService
+        Task { await service.rollForwardExpired() }
     }
 
     /// Re-sends a registration that was completed offline. No-op in the common
