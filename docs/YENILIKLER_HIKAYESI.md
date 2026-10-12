@@ -11,15 +11,17 @@ Recap ve Yenilikler aynı motoru kullanır (`Subly/Modules/Story/`):
 - `StoryCardView` + `StoryContent` protokolü: her hikâye kartlarını, paletini ve ipucunu sağlar (`RecapStoryContent`, `WhatsNewViewModel`).
 - `StoryIntroTheme`: giriş kartları için `.graphite` (koyu) / `.paper` (açık) renk tokenleri. Recap kart 01 ve Yenilikler kart 01 bunu kullanır.
 
-## Sürüm anahtarı (`WhatsNewPayload.isEnabled`)
+## Uzaktan anahtar (`app_config.whats_new_enabled`)
 
-Hikâye kullanıcıya **bir kez**, güncelleme sonrası ilk açılışta gösterilir. Sürümler arasında `isEnabled = false` tutulur; payload bir sonraki Yenilikler için şablondur. 1.1.0 için anahtar **açık**. Yeni bir Yenilikler yayınlamak için:
+Hikâye kullanıcıya **bir kez**, güncelleme sonrası ilk açılışta gösterilir. Gösterilip gösterilmeyeceği Supabase'den yönetilir: **Table Editor → app_config → `whats_new_enabled`** satırının `value` alanı `true` / `false`. Yeni build gerekmez; uygulama her açılışta ve ön plana gelişte değeri çeker (2,5 sn bekler, gelmezse önbellekteki son değer, o da yoksa kapalı).
 
-1. Yeni payload'ı yaz (`release101` kopyala), `payloads` sözlüğüne yeni `CFBundleShortVersionString` ile ekle.
-2. `isEnabled = true` yap.
-3. O sürümden sonra tekrar `false` yap.
+Yeni bir Yenilikler yayınlamak için:
 
-`false` iken açılışta hikâye gelmez ve Ayarlar'daki "Yenilikler" satırı görünmez. `-whatsNewQA` argümanı QA için anahtarı geçici olarak açar.
+1. Yeni payload'ı yaz (`release110` kopyala), `payloads` sözlüğüne yeni `CFBundleShortVersionString` ile ekle, build al.
+2. `app_config` tablosunda `whats_new_enabled` = `true`.
+3. Yayın dönemi bitince `false`.
+
+`false` iken açılışta hikâye gelmez ve Ayarlar'daki "Yenilikler" satırı görünmez. Kullanıcı bazında tek seferlik gösterim cihazda tutulur (`WhatsNewStore`), anahtar açık kalsa bile aynı sürüm ikinci kez gösterilmez. `-whatsNewQA` argümanı QA için anahtarı geçici olarak açar. Tablo: `supabase/migrations/20261013_app_config.sql`.
 
 ## Ne zaman gösterilir
 

@@ -42,19 +42,20 @@ struct WhatsNewPayload: Equatable, Sendable {
     // MARK: - Release switch
     //
     // The story is shown ONCE per user, on the first launch after an update.
-    // Between releases it stays off and the cards below are the template for
-    // the next one. To ship a new What's New:
+    // Whether it is live at all is decided remotely: Supabase →
+    // `app_config` → `whats_new_enabled` (true/false), so it can be switched
+    // off from the dashboard once a release has had its moment, with no new
+    // build. Offline / before the first fetch, the last cached value applies
+    // and the default is off. To ship a new What's New:
     //   1. Write the new payload (copy `release110`), key it by the new
     //      `CFBundleShortVersionString` in `payloads`.
-    //   2. Flip `isEnabled` to `true`.
-    //   3. After that release, flip it back to `false`.
+    //   2. Set `whats_new_enabled` to true in `app_config`.
+    //   3. After the release window, set it back to false.
     // `WhatsNewStore` remembers the last seen version, so users who already
     // watched this version's story never see it again even while enabled.
 
-    /// Master switch. `false` → no launch story, no Settings row.
-    static let isEnabled = true
-
-    /// Visual-QA override (`-whatsNewQA`): behaves as if `isEnabled` were true.
+    /// Visual-QA override (`-whatsNewQA`): behaves as if the remote switch
+    /// were on.
     nonisolated(unsafe) static var isForcedOnForQA = false
 
     /// All payloads this build knows, by version.
@@ -67,10 +68,10 @@ struct WhatsNewPayload: Equatable, Sendable {
         payloads[version]
     }
 
-    /// The story this build may show: enabled and keyed by the running
-    /// version. Nil → the feature is dormant.
-    static var active: WhatsNewPayload? {
-        guard isEnabled || isForcedOnForQA else { return nil }
+    /// The story this build may show: remote switch on and a payload keyed
+    /// by the running version. Nil → the feature is dormant.
+    static func active(config: RemoteConfigProviding) -> WhatsNewPayload? {
+        guard isForcedOnForQA || config.bool(.whatsNewEnabled, default: false) else { return nil }
         return payload(for: AppVersion.current)
     }
 

@@ -40,6 +40,8 @@ final class AppContainer {
     let recapScheduler: RecapScheduler
     let quietHoursService: QuietHoursService
     let whatsNewStore: WhatsNewStore
+    /// Dashboard-flipped switches (`public.app_config`).
+    let remoteConfig: RemoteConfigProviding
 
     private var entitlementObservationTask: Task<Void, Never>?
 
@@ -60,6 +62,7 @@ final class AppContainer {
         self.categoryRepository = InMemoryCategoryRepository()
         let supabase = SupabaseConfig.makeClient()
         self.supabase = supabase
+        self.remoteConfig = SupabaseRemoteConfigService(client: supabase, logger: logger)
         let catalogPriceService = SupabaseCatalogPriceService(client: supabase, logger: logger)
         self.catalogPriceService = catalogPriceService
         self.catalogRepository = InMemoryCatalogRepository(priceProvider: catalogPriceService)
@@ -177,6 +180,8 @@ final class AppContainer {
     /// Foreground pass: refresh the trusted clock first, then everything
     /// that depends on "now" (roll-forward, reminders, recap).
     func refreshTimeDependentState() {
+        let config = remoteConfig
+        Task { await config.refresh(maxWait: 5) }
         let clock = trustedClock
         let rollover = renewalRolloverService
         let reminders = reminderSyncService

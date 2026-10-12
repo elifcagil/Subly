@@ -41,6 +41,7 @@
 		1B4F7146B302CBEDDDC2D0E4 /* SublyEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96947D14844E66E197A56C6A /* SublyEmptyStateView.swift */; };
 		1C0BB65728D50FFB8499A154 /* CurrencyPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E793282CC1E9445D1DBF244E /* CurrencyPickerViewModel.swift */; };
 		1C1F8F37F99B2290FFF1A1B0 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293A42E716BEAE659F026087 /* SettingsViewController.xib */; };
+		1C5ACB82A144A27BAF2D800A /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B76861C9EE52CC8B3AAB52 /* RemoteConfigService.swift */; };
 		1D7299882F5BCCE6FADBA4F6 /* QuietHoursRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B86E562FFCFFB5471285 /* QuietHoursRingView.swift */; };
 		1E5FFD071BBB4D86D742469B /* AddEditSubscriptionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747C289A197F5B3CE7D9AB52 /* AddEditSubscriptionCoordinator.swift */; };
 		1EAAF0BF64733E372108BE22 /* DomainLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C51898C6206EEA9A937C6 /* DomainLocalization.swift */; };
@@ -363,6 +364,7 @@
 		181DC5ADD1470248308AC90F /* DashboardEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardEmptyView.swift; sourceTree = "<group>"; };
 		18ACF138C811ACD75A3A9ED4 /* AppearancePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearancePickerCoordinator.swift; sourceTree = "<group>"; };
 		18B750C68D2525B114495264 /* ServiceWebsiteDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceWebsiteDirectory.swift; sourceTree = "<group>"; };
+		19B76861C9EE52CC8B3AAB52 /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
 		1BDBCBD4BC51F994320269D9 /* CategoryBreakdownChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBreakdownChartView.swift; sourceTree = "<group>"; };
 		1C31B2422EAE1063610190BA /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		1C3FF061DCCE25B8E16F85A2 /* SettingsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPreferences.swift; sourceTree = "<group>"; };
@@ -1156,6 +1158,14 @@
 			path = SubscriptionDetail;
 			sourceTree = "<group>";
 		};
+		924C2B2ACB1C2E46CA621785 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				19B76861C9EE52CC8B3AAB52 /* RemoteConfigService.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		94C06873F3065788DD2BA7A9 /* Insights */ = {
 			isa = PBXGroup;
 			children = (
@@ -1376,6 +1386,7 @@
 				F0A3FF2FDBCE238109F0C380 /* Budget */,
 				638D8646DC8A0B49AA1842AA /* Calendar */,
 				6967D92EC705EDE603A6EF2C /* Catalog */,
+				924C2B2ACB1C2E46CA621785 /* Config */,
 				E39B70A6229B946E0092EBA1 /* FeatureFlags */,
 				C1F8F99847A094BBEA413ECE /* Insights */,
 				21F7706890C9A6F200CDBFFA /* Networking */,
@@ -1982,6 +1993,7 @@
 				2E89627A7D9B4357AACE9372 /* ReminderScheduler.swift in Sources */,
 				1FBBE7ED7D2A7BC5C4B43265 /* ReminderSheetViewController.swift in Sources */,
 				47A4B3805F58F122D3DF192F /* ReminderSyncService.swift in Sources */,
+				1C5ACB82A144A27BAF2D800A /* RemoteConfigService.swift in Sources */,
 				7999CE9BCA2B52A9D1655213 /* RenewalDateCalculator.swift in Sources */,
 				B612D952C357BA61998F58ED /* RenewalProgressCalculator.swift in Sources */,
 				F1A66ADC6AF56A80E99020E9 /* RenewalProjectionCalculator.swift in Sources */,

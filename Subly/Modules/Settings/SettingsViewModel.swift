@@ -63,6 +63,7 @@ final class SettingsViewModel {
     private let subscriptionRepository: SubscriptionRepository
     private let featureFlagService: FeatureFlagProviding
     private let deviceIdentity: DeviceIdentityProviding
+    private let remoteConfig: RemoteConfigProviding
 
     private var entitlement: SublyEntitlement = .free
     private var authState: AuthState = .signedOut
@@ -107,8 +108,10 @@ final class SettingsViewModel {
         authService: AuthService,
         subscriptionRepository: SubscriptionRepository,
         featureFlagService: FeatureFlagProviding,
-        deviceIdentity: DeviceIdentityProviding
+        deviceIdentity: DeviceIdentityProviding,
+        remoteConfig: RemoteConfigProviding = StaticRemoteConfigService()
     ) {
+        self.remoteConfig = remoteConfig
         self.themeManager = themeManager
         self.localizationManager = localizationManager
         self.currencyManager = currencyManager
@@ -430,7 +433,7 @@ final class SettingsViewModel {
             ]
         )
         var sections: [Section] = []
-        if WhatsNewPayload.active != nil { sections.append(updates) }
+        if WhatsNewPayload.active(config: remoteConfig) != nil { sections.append(updates) }
         if showsPlanSection { sections.append(plan) }
         sections.append(contentsOf: [appearance, language, currency, notifications, about])
         state = .loaded(Snapshot(sections: sections))

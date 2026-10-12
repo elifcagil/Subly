@@ -22,9 +22,9 @@ final class WhatsNewCoordinator: Coordinator {
     }
 
     /// The story for the running version, if this build ships one and the
-    /// release switch is on.
-    static func currentPayload() -> WhatsNewPayload? {
-        WhatsNewPayload.active
+    /// remote switch (`app_config.whats_new_enabled`) is on.
+    static func currentPayload(container: AppContainer) -> WhatsNewPayload? {
+        WhatsNewPayload.active(config: container.remoteConfig)
     }
 
     func start() {

@@ -104,11 +104,21 @@ final class AppCoordinator: Coordinator {
         let coordinator = TabBarCoordinator(window: window, container: container)
         addChild(coordinator)
         coordinator.start()
-        if presentWhatsNewIfDue(over: coordinator) {
-            // The story covers the shell; the usual entry prompts follow once
-            // it is dismissed (see `presentWhatsNewIfDue`).
-            return
+        Task { @MainActor [weak self, weak coordinator] in
+            guard let self, let coordinator else { return }
+            // Remote switch: a short fetch so a flip from the dashboard
+            // applies on this very launch; offline → cached value.
+            await self.container.remoteConfig.refresh(maxWait: 2.5)
+            if self.presentWhatsNewIfDue(over: coordinator) {
+                // The story covers the shell; the usual entry prompts follow
+                // once it is dismissed (see `presentWhatsNewIfDue`).
+                return
+            }
+            self.runEntryFlow(startingAddFlow: startingAddFlow, shell: coordinator)
         }
+    }
+
+    private func runEntryFlow(startingAddFlow: Bool, shell coordinator: TabBarCoordinator) {
         if startingAddFlow {
             // Give the shell a beat to settle before presenting the sheet.
             // The notification prompt follows once that sheet closes.
@@ -127,7 +137,7 @@ final class AppCoordinator: Coordinator {
     /// when nothing is due.
     @discardableResult
     private func presentWhatsNewIfDue(over shell: TabBarCoordinator) -> Bool {
-        guard let payload = WhatsNewCoordinator.currentPayload(),
+        guard let payload = WhatsNewCoordinator.currentPayload(container: container),
               WhatsNewGate.shouldShow(
                 currentVersion: AppVersion.current,
                 lastSeenVersion: container.whatsNewStore.lastSeenVersion,

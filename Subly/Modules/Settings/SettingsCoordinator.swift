@@ -27,7 +27,8 @@ final class SettingsCoordinator: Coordinator {
             authService: container.authService,
             subscriptionRepository: container.subscriptionRepository,
             featureFlagService: container.featureFlagService,
-            deviceIdentity: container.deviceIdentity
+            deviceIdentity: container.deviceIdentity,
+            remoteConfig: container.remoteConfig
         )
         viewModel.onOpenPaywall = { [weak self] in
             self?.presentPaywall()
@@ -145,7 +146,7 @@ final class SettingsCoordinator: Coordinator {
 
     private func presentWhatsNew() {
         guard let host = navigationController.topViewController,
-              let payload = WhatsNewCoordinator.currentPayload() else { return }
+              let payload = WhatsNewCoordinator.currentPayload(container: container) else { return }
         let coordinator = WhatsNewCoordinator(presentingController: host, container: container, payload: payload)
         coordinator.onFinished = { [weak self, weak coordinator] in
             guard let self, let coordinator else { return }
