@@ -26,7 +26,7 @@ Recap ve Yenilikler aynı motoru kullanır (`Subly/Modules/Story/`):
 
 Kartlar: 01 giriş (tema bağımlı, 5 numaralı satır — her numara gittiği kartın rengi), 02 ana ekran widget'ları, 03 kilit ekranı widget'ları, 04 akıllı hatırlatmalar, 05 sessiz saatler, 06 Recap finali (132 pt `RecapStoryButton(metrics: .hero)`, sürekli döner; ilk özet tarihi `RecapScheduler.nextRecapDate()`).
 
-Kart süresi 7 sn (Recap 8 sn). Giriş animasyonları: halkalar 0 → değer (0.9 sn), bildirim 12 pt aşağı kayarak belirir, sessiz yay çizilir. Hareketi Azalt açıkken son durum gösterilir.
+Kart süresi 10 sn (Recap 8 sn): adım listeleri rahat okunsun diye. Giriş animasyonları: halkalar 0 → değer (0.9 sn), bildirim 12 pt aşağı kayarak belirir, sessiz yay çizilir. Hareketi Azalt açıkken son durum gösterilir.
 
 ## Recap kart 01
 

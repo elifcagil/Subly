@@ -1,11 +1,11 @@
 import UIKit
 
-/// The What's New story: 6 cards on the shared player (7s each; the finale
+/// The What's New story: 6 cards on the shared player (10s each; the finale
 /// waits for its button). Marks the version seen on any dismissal.
 @MainActor
 final class WhatsNewViewModel: StoryContent {
 
-    static let cardDuration: TimeInterval = 7
+    static let cardDuration: TimeInterval = 10
 
     let payload: WhatsNewPayload
     /// "Sep 14" — when the first recap arrives; nil when unknown.
