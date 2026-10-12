@@ -509,8 +509,8 @@
 "whats_new.finale.title" = "Aboneliklerinin artık kendi hikâyesi var.";
 "whats_new.finale.body" = "Her 3 ayda bir: ne harcadın, ne pahalandı, en uzun süredir neye ödüyorsun. Hazır olduğunda bu halka Ayarlar'ın yanında dönmeye başlar. Dokun.";
 "whats_new.finale.callout_title" = "3 ay sonra görüşürüz.";
-"whats_new.finale.callout_body_format" = "Rakamlar bizden, patlamış mısır senden. İlk özetin %@ tarihinde geliyor.";
-"whats_new.finale.callout_body_no_date" = "Rakamlar bizden, patlamış mısır senden. İlk özetin, ilk aboneliğinden 3 ay sonra geliyor.";
+"whats_new.finale.callout_body_format" = "Rakamları biz toplarız, sen sadece bak. İlk özetin %@ tarihinde hazır.";
+"whats_new.finale.callout_body_no_date" = "Rakamları biz toplarız, sen sadece bak. İlk özetin, ilk aboneliğinden 3 ay sonra hazır.";
 "whats_new.finale.button" = "Tamam, görüşürüz";
 "whats_new.widget.tomorrow" = "Yarın";
 "whats_new.widget.days_format" = "%d gün";

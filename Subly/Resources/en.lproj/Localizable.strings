@@ -509,8 +509,8 @@
 "whats_new.finale.title" = "Your subscriptions are getting their own story.";
 "whats_new.finale.body" = "Every 3 months: what you spent, what got pricier and what you've been paying the longest. When it's ready, this circle starts spinning next to Settings. Tap it.";
 "whats_new.finale.callout_title" = "See you in 3 months.";
-"whats_new.finale.callout_body_format" = "We'll bring the numbers, you bring the popcorn. Your first recap arrives on %@.";
-"whats_new.finale.callout_body_no_date" = "We'll bring the numbers, you bring the popcorn. Your first recap arrives 3 months after your first subscription.";
+"whats_new.finale.callout_body_format" = "We do the math, you just watch. Your first recap is ready on %@.";
+"whats_new.finale.callout_body_no_date" = "We do the math, you just watch. Your first recap is ready 3 months after your first subscription.";
 "whats_new.finale.button" = "Got it, see you then";
 "whats_new.widget.tomorrow" = "Tomorrow";
 "whats_new.widget.days_format" = "%d days";
