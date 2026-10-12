@@ -32,6 +32,11 @@ final class DashboardViewController: UIViewController {
     private let miniChart = SublyBarChart()
     private let trendLabel = UILabel()
 
+    // 3-month recap story icon (header, left of Settings)
+    private let recapStoryButton = RecapStoryButton()
+    /// Frame source for the zoom transition into the recap.
+    var recapStorySourceView: UIView { recapStoryButton }
+
     // Next 7 days
     private let upcomingCard = SublyCardView()
     private let upcomingHeaderLabel = UILabel()
@@ -69,11 +74,23 @@ final class DashboardViewController: UIViewController {
         super.viewWillAppear(animated)
         // v5 dashboard draws its own header; restore the bar for pushes.
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        viewModel.refreshRecapStory()
+        recapStoryButton.resumeSpin()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        recapStoryButton.pauseSpin()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        avatarButton.layer.borderColor = DesignSystem.Colors.strokeControl.cgColor
     }
 
     // MARK: - Configuration
@@ -116,14 +133,23 @@ final class DashboardViewController: UIViewController {
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.text = Strings.Dashboard.title
 
+        // Profile / Settings: no initials (device-ID registration, no name) —
+        // a person glyph on the avatar surface with a hairline border.
         var config = UIButton.Configuration.filled()
         config.baseBackgroundColor = DesignSystem.Colors.avatarBackground
-        config.baseForegroundColor = DesignSystem.Colors.textSecondary
-        config.image = UIImage(systemName: "gearshape.fill")
-        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold)
+        config.baseForegroundColor = DesignSystem.Colors.textPrimary.withAlphaComponent(0.7)
+        config.image = UIImage(systemName: "person")
+        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
         config.cornerStyle = .capsule
         avatarButton.configuration = config
+        avatarButton.layer.cornerRadius = 17
+        avatarButton.layer.borderWidth = 1
+        avatarButton.layer.borderColor = DesignSystem.Colors.strokeControl.cgColor
         avatarButton.accessibilityLabel = Strings.Settings.title
+
+        recapStoryButton.isHidden = true
+        recapStoryButton.accessibilityHint = Strings.Recap.storyHint
+        recapStoryButton.addTarget(self, action: #selector(didTapRecapStory), for: .touchUpInside)
         avatarButton.addTarget(self, action: #selector(didTapAvatar), for: .touchUpInside)
         NSLayoutConstraint.activate([
             avatarButton.widthAnchor.constraint(equalToConstant: 34),
@@ -134,7 +160,12 @@ final class DashboardViewController: UIViewController {
         titleColumn.axis = .vertical
         titleColumn.spacing = 2
 
-        let header = UIStackView(arrangedSubviews: [titleColumn, UIView(), avatarButton])
+        let trailing = UIStackView(arrangedSubviews: [recapStoryButton, avatarButton])
+        trailing.axis = .horizontal
+        trailing.alignment = .center
+        trailing.spacing = 10
+
+        let header = UIStackView(arrangedSubviews: [titleColumn, UIView(), trailing])
         header.axis = .horizontal
         header.alignment = .center
         contentStack.addArrangedSubview(header)
@@ -190,6 +221,12 @@ final class DashboardViewController: UIViewController {
         hero.spacing = DesignSystem.Spacing.sm
         contentStack.addArrangedSubview(hero)
         contentStack.setCustomSpacing(DesignSystem.Spacing.xl, after: hero)
+
+    }
+
+    /// Re-checks the story state (on appear and after the story closes).
+    func refreshRecapStory() {
+        viewModel.refreshRecapStory()
     }
 
     private func configureUpcomingCard() {
@@ -286,6 +323,7 @@ final class DashboardViewController: UIViewController {
             heroAmountLabel.setDimmedDecimals(primary.amountText, font: DesignSystem.Typography.heroAmount)
             heroAmountLabel.accessibilityLabel = "\(Strings.Dashboard.thisMonth), \(primary.amountText)"
         }
+        applyRecapStory(snapshot.recapStory)
         applyCurrencyChips(snapshot.currencyChips)
         applyTrendChart(snapshot.trend)
         applyTrendLine(snapshot)
@@ -459,6 +497,38 @@ final class DashboardViewController: UIViewController {
     }
 
     // MARK: - Actions
+
+    private var renderedStoryState: RecapStoryState?
+
+    private func applyRecapStory(_ story: DashboardViewModel.RecapStory?) {
+        guard let story else {
+            guard !recapStoryButton.isHidden else { return }
+            // Animate out: fade + scale 0.8, 200ms.
+            UIView.animate(withDuration: 0.2, animations: {
+                self.recapStoryButton.alpha = 0
+                self.recapStoryButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            }, completion: { _ in
+                self.recapStoryButton.isHidden = true
+                self.recapStoryButton.transform = .identity
+                self.recapStoryButton.alpha = 1
+            })
+            renderedStoryState = nil
+            return
+        }
+        let buttonState: RecapStoryButton.State = story.state == .ready ? .ready : .seen
+        let wasVisible = !recapStoryButton.isHidden
+        recapStoryButton.isHidden = false
+        recapStoryButton.setState(buttonState, animated: wasVisible && renderedStoryState != story.state)
+        renderedStoryState = story.state
+        recapStoryButton.accessibilityLabel = story.state == .ready
+            ? Strings.Recap.storyReady(period: story.periodLabel)
+            : Strings.Recap.storySeen(period: story.periodLabel)
+    }
+
+    @objc private func didTapRecapStory() {
+        haptics.play(.lightImpact)
+        viewModel.didTapRecapStory()
+    }
 
     @objc private func didTapAvatar() {
         haptics.play(.selection)

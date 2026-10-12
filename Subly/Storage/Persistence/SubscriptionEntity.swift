@@ -69,7 +69,7 @@ extension SubscriptionEntity {
             notes: subscription.notes,
             isArchived: subscription.isArchived,
             reminderLeadDaysData: encode(subscription.reminderLeadDays),
-            createdAt: now,
+            createdAt: subscription.createdAt ?? now,
             updatedAt: now
         )
     }
@@ -86,6 +86,7 @@ extension SubscriptionEntity {
         notes = subscription.notes
         isArchived = subscription.isArchived
         reminderLeadDaysData = Self.encode(subscription.reminderLeadDays)
+        if let created = subscription.createdAt { createdAt = created }
         updatedAt = now
     }
 
@@ -101,7 +102,8 @@ extension SubscriptionEntity {
             categoryIDs: resolvedCategoryIDs,
             notes: notes,
             isArchived: isArchived,
-            reminderLeadDays: Self.decode(reminderLeadDaysData)
+            reminderLeadDays: Self.decode(reminderLeadDaysData),
+            createdAt: createdAt
         )
     }
 

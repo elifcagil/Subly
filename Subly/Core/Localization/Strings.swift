@@ -326,6 +326,142 @@ enum Strings {
         }
     }
 
+    /// Renewal reminder notifications — copy table from the handoff
+    /// (`CLAUDE_CODE_PROMPT_REMINDER_NOTIFICATION.md`).
+    enum Reminders {
+        static func titleToday(name: String) -> String {
+            String(format: L("reminders.title_today_format"), name)
+        }
+        static func bodyToday(amount: String) -> String {
+            String(format: L("reminders.body_today_format"), amount)
+        }
+        static func titleTomorrow(name: String) -> String {
+            String(format: L("reminders.title_tomorrow_format"), name)
+        }
+        static func bodyTomorrow(amount: String) -> String {
+            String(format: L("reminders.body_tomorrow_format"), amount)
+        }
+        static func titleWeek(name: String) -> String {
+            String(format: L("reminders.title_week_format"), name)
+        }
+        static func bodyWeek(amount: String, date: String) -> String {
+            String(format: L("reminders.body_week_format"), amount, date)
+        }
+        static func titleInDays(name: String, days: Int) -> String {
+            String(format: L("reminders.title_days_format"), name, days)
+        }
+        static func bodyInDays(amount: String, date: String, verb: String) -> String {
+            String(format: L("reminders.body_days_format"), amount, date, verb)
+        }
+        static var verbWatching: String { L("reminders.verb_watching") }
+        static var verbListening: String { L("reminders.verb_listening") }
+        static var verbUsing: String { L("reminders.verb_using") }
+
+        static func groupedTitleToday(count: Int) -> String {
+            String(format: L("reminders.grouped_title_today_format"), count)
+        }
+        static func groupedTitleTomorrow(count: Int) -> String {
+            String(format: L("reminders.grouped_title_tomorrow_format"), count)
+        }
+        static func groupedTitleInDays(count: Int, days: Int) -> String {
+            String(format: L("reminders.grouped_title_days_format"), count, days)
+        }
+        static func groupedBodyTwo(_ first: String, _ second: String, total: String) -> String {
+            String(format: L("reminders.grouped_body_two_format"), first, second, total)
+        }
+        static func groupedBodyThree(_ first: String, _ second: String, _ third: String, total: String) -> String {
+            String(format: L("reminders.grouped_body_three_format"), first, second, third, total)
+        }
+        static func groupedBodyMore(_ first: String, _ second: String, more: Int, total: String) -> String {
+            String(format: L("reminders.grouped_body_more_format"), first, second, more, total)
+        }
+
+        static var actionKeep: String { L("reminders.action_keep") }
+        static var actionRemindTomorrow: String { L("reminders.action_remind_tomorrow") }
+        static var actionReview: String { L("reminders.action_review") }
+    }
+
+    /// 3-month recap story (handoff `CLAUDE_CODE_PROMPT_RECAP.md`).
+    enum Recap {
+        static func header(period: String) -> String { String(format: L("recap.header_format"), period) }
+        static var tapToContinue: String { L("recap.tap_to_continue") }
+        static var totalTitle: String { L("recap.total.title") }
+        static func totalSubline(count: Int, perDay: String) -> String {
+            String(format: L("recap.total.subline_format"), count, perDay)
+        }
+        static func moreThanPrevious(_ delta: String) -> String { String(format: L("recap.total.more_format"), delta) }
+        static func lessThanPrevious(_ delta: String) -> String { String(format: L("recap.total.less_format"), delta) }
+        static var mostExpensiveTitle: String { L("recap.most_expensive.title") }
+        static func shareOfTotal(percent: Int, period: String) -> String {
+            String(format: L("recap.most_expensive.share_format"), percent, period)
+        }
+        static func pricesWentUp(_ count: Int) -> String { String(format: L("recap.price.title_format"), count) }
+        static var perYear: String { L("recap.price.per_year") }
+        static var priceReviewPrompt: String { L("recap.price.prompt") }
+        static var reviewSubscriptions: String { L("recap.price.review") }
+        static var longestTitle: String { L("recap.longest.title") }
+        static func since(_ date: String) -> String { String(format: L("recap.longest.since_format"), date) }
+        static var months: String { L("recap.longest.months") }
+        static func totalSince(_ amount: String) -> String { String(format: L("recap.longest.total_format"), amount) }
+        static func summaryTitle(period: String) -> String { String(format: L("recap.summary.title_format"), period) }
+        static var tileTotal: String { L("recap.summary.tile_total") }
+        static var tileMostExpensive: String { L("recap.summary.tile_most_expensive") }
+        static var tilePriceIncreases: String { L("recap.summary.tile_price_increases") }
+        static var tileLongest: String { L("recap.summary.tile_longest") }
+        static func subscriptionsCount(_ count: Int) -> String { String(format: L("recap.summary.subscriptions_format"), count) }
+        static var share: String { L("recap.share") }
+        static var done: String { L("recap.done") }
+        static var close: String { L("recap.close") }
+        static var notificationTitle: String { L("recap.notification.title") }
+        static func notificationBody(total: String, count: Int) -> String {
+            String(format: L("recap.notification.body_format"), total, count)
+        }
+        static func bannerTitle(period: String) -> String { String(format: L("recap.banner.title_format"), period) }
+        static var bannerAction: String { L("recap.banner.action") }
+        static var viewRecap: String { L("recap.view_recap") }
+        static func storyReady(period: String) -> String { String(format: L("recap.story.ready_format"), period) }
+        static func storySeen(period: String) -> String { String(format: L("recap.story.seen_format"), period) }
+        static var storyHint: String { L("recap.story.hint") }
+    }
+
+    /// Quiet hours settings (handoff `CLAUDE_CODE_PROMPT_QUIET_HOURS.md`).
+    enum QuietHours {
+        static var title: String { L("quiet_hours.title") }
+        static var subtitle: String { L("quiet_hours.subtitle") }
+        static var row: String { L("quiet_hours.row") }
+        static var off: String { L("quiet_hours.off") }
+        static var ofQuiet: String { L("quiet_hours.of_quiet") }
+        static var starts: String { L("quiet_hours.starts") }
+        static var ends: String { L("quiet_hours.ends") }
+        static var startsAt: String { L("quiet_hours.starts_at") }
+        static var endsAt: String { L("quiet_hours.ends_at") }
+        static var set: String { L("quiet_hours.set") }
+        static var pickerCaption: String { L("quiet_hours.picker_caption") }
+        static var days: String { L("quiet_hours.days") }
+        static var everyDay: String { L("quiet_hours.every_day") }
+        static var weekdays: String { L("quiet_hours.weekdays") }
+        static var weekends: String { L("quiet_hours.weekends") }
+        static var renewalAlerts: String { L("quiet_hours.renewal_alerts") }
+        static var renewalAlertsSubtitle: String { L("quiet_hours.renewal_alerts_subtitle") }
+        static var footnote: String { L("quiet_hours.footnote") }
+        static var footnoteEmphasis: String { L("quiet_hours.footnote_emphasis") }
+        static func hours(_ hours: Int) -> String { String(format: L("quiet_hours.hours_format"), hours) }
+        static func hoursMinutes(_ hours: Int, _ minutes: Int) -> String { String(format: L("quiet_hours.hours_minutes_format"), hours, minutes) }
+        static func accessibilityRing(start: String, end: String, duration: String) -> String {
+            String(format: L("quiet_hours.a11y_ring_format"), start, end, duration)
+        }
+        static var selectStartHandle: String { L("quiet_hours.a11y_select_start") }
+        static var selectEndHandle: String { L("quiet_hours.a11y_select_end") }
+    }
+
+    /// Entry-time permission prompt and the "denied" follow-up.
+    enum NotificationPermission {
+        static var notNow: String { L("notification_permission.not_now") }
+        static var deniedTitle: String { L("notification_permission.denied_title") }
+        static var deniedMessage: String { L("notification_permission.denied_message") }
+        static var openSettings: String { L("notification_permission.open_settings") }
+    }
+
     enum Settings {
         static var title: String { L("settings.title") }
         static var sectionPlan: String { L("settings.section_plan") }
@@ -368,6 +504,7 @@ enum Strings {
         static var remindersPickerFooter: String { L("settings.reminders_picker_footer") }
         static var calendarFooter: String { L("settings.calendar_footer") }
         static var calendarPermissionDenied: String { L("settings.calendar_permission_denied") }
+        static var notificationsPermissionDenied: String { L("settings.notifications_permission_denied") }
         static func remindersSummaryTwo(_ a: String, _ b: String) -> String {
             String(format: L("settings.reminders_summary_two_format"), a, b)
         }

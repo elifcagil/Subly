@@ -20,8 +20,12 @@ final class DashboardCoordinator: Coordinator {
             currencyFormatter: container.currencyFormatter,
             currencyManager: container.currencyManager,
             dateProvider: container.dateProvider,
-            sampleDataSeeder: container.sampleDataSeeder
+            sampleDataSeeder: container.sampleDataSeeder,
+            recapProvider: container.recapScheduler
         )
+        viewModel.onOpenRecap = { [weak self] recap in
+            self?.presentRecap(recap)
+        }
         viewModel.onAddSubscriptionTapped = { [weak self] in
             self?.presentCatalogPicker()
         }
@@ -46,6 +50,23 @@ final class DashboardCoordinator: Coordinator {
             haptics: container.hapticsService
         )
         navigationController.setViewControllers([viewController], animated: false)
+    }
+
+    private func presentRecap(_ recap: Recap) {
+        guard let host = navigationController.topViewController else { return }
+        let dashboard = host as? DashboardViewController
+        let coordinator = RecapCoordinator(
+            presentingController: host, container: container, recap: recap,
+            sourceView: dashboard?.recapStorySourceView
+        )
+        coordinator.onFinished = { [weak self, weak coordinator] in
+            guard let self, let coordinator else { return }
+            self.removeChild(coordinator)
+            // ready → seen once the story closes.
+            (self.navigationController.viewControllers.first as? DashboardViewController)?.refreshRecapStory()
+        }
+        addChild(coordinator)
+        coordinator.start()
     }
 
     private func presentCatalogPicker() {

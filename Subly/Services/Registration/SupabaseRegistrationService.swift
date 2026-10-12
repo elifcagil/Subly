@@ -77,7 +77,9 @@ struct SupabaseRegistrationService: RegistrationService {
         )
         try await client.from("devices").upsert(row).execute()
 
+        let registeredAt = deviceIdentity.registeredAt() ?? Date()
+        if deviceIdentity.registeredAt() == nil { deviceIdentity.setRegisteredAt(registeredAt) }
         deviceIdentity.setRegistered(true)
-        return RegistrationResult(deviceID: deviceId, registeredAt: Date())
+        return RegistrationResult(deviceID: deviceId, registeredAt: registeredAt)
     }
 }

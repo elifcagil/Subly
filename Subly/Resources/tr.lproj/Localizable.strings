@@ -372,3 +372,93 @@
 
 /* Splash */
 "splash.tagline" = "Ödediklerin üzerinde sakin kontrol";
+
+/* Yenileme hatırlatma bildirimleri (handoff metin tablosu) */
+"reminders.title_today_format" = "%@ bugün yenileniyor";
+"reminders.body_today_format" = "%@ bugün çekilecek.";
+"reminders.title_tomorrow_format" = "%@ yarın yenileniyor";
+"reminders.body_tomorrow_format" = "%@ yarın çekilecek.";
+"reminders.title_week_format" = "%@ bir hafta içinde yenileniyor";
+"reminders.body_week_format" = "%2$@ tarihinde %1$@. Karar vermek için bolca zaman var.";
+"reminders.title_days_format" = "%1$@ %2$d gün içinde yenileniyor";
+"reminders.body_days_format" = "%2$@ tarihinde %1$@. Hâlâ %3$@? Tutmak, ertelemek ya da incelemek için basılı tut.";
+"reminders.verb_watching" = "izliyor musun";
+"reminders.verb_listening" = "dinliyor musun";
+"reminders.verb_using" = "kullanıyor musun";
+"reminders.grouped_title_today_format" = "Bugün %d yenileme";
+"reminders.grouped_title_tomorrow_format" = "Yarın %d yenileme";
+"reminders.grouped_title_days_format" = "%2$d gün içinde %1$d yenileme";
+"reminders.grouped_body_two_format" = "%1$@ ve %2$@ · toplam %3$@.";
+"reminders.grouped_body_three_format" = "%1$@, %2$@ ve %3$@ · toplam %4$@.";
+"reminders.grouped_body_more_format" = "%1$@, %2$@ ve %3$d diğer · toplam %4$@.";
+"reminders.action_keep" = "Aboneliği tut";
+"reminders.action_remind_tomorrow" = "Yarın hatırlat";
+"reminders.action_review" = "Subly'de incele";
+
+/* Bildirim izni */
+"notification_permission.not_now" = "Şimdi değil";
+"notification_permission.denied_title" = "Hatırlatıcılar kapalı";
+"notification_permission.denied_message" = "Yenileme hatırlatıcıları almak için iOS Ayarlar'dan bildirimlere izin ver. Bunu istediğin zaman Subly Ayarlar'dan değiştirebilirsin.";
+"notification_permission.open_settings" = "Ayarlar'ı Aç";
+"settings.notifications_permission_denied" = "Bildirimler iOS Ayarlar'da kapalı. İzin vermek için Ayarlar'ı aç.";
+
+/* 3 aylık özet (recap) hikâyesi */
+"recap.header_format" = "Subly · %@ özeti";
+"recap.tap_to_continue" = "Devam etmek için dokun";
+"recap.total.title" = "Son 3 ayda aboneliklerin";
+"recap.total.subline_format" = "%1$d abonelik. Günde yaklaşık %2$@.";
+"recap.total.more_format" = "▴ Önceki 3 aya göre %@ daha fazla";
+"recap.total.less_format" = "▾ Önceki 3 aya göre %@ daha az";
+"recap.most_expensive.title" = "En pahalı aboneliğin";
+"recap.most_expensive.share_format" = "%2$@ döneminde aboneliklere harcadığının %%%1$d'i.";
+"recap.price.title_format" = "%d fiyat yükseldi";
+"recap.price.per_year" = "/yıl";
+"recap.price.prompt" = "Hâlâ değer mi? Buradan inceleyebilirsin.";
+"recap.price.review" = "Abonelikleri incele";
+"recap.longest.title" = "En uzun süredir devam eden";
+"recap.longest.since_format" = "%@'dan beri";
+"recap.longest.months" = "ay";
+"recap.longest.total_format" = "Toplam %@. Her kare bir ay.";
+"recap.summary.title_format" = "%@ özetin";
+"recap.summary.tile_total" = "Toplam";
+"recap.summary.tile_most_expensive" = "En pahalı";
+"recap.summary.tile_price_increases" = "Fiyat artışları";
+"recap.summary.tile_longest" = "En uzun süredir";
+"recap.summary.subscriptions_format" = "%d abonelik";
+"recap.share" = "Paylaş";
+"recap.done" = "Bitti";
+"recap.close" = "Kapat";
+"recap.notification.title" = "Özetin hazır";
+"recap.notification.body_format" = "Son 3 ayda %2$d abonelik için %1$@ harcadın.";
+"recap.banner.title_format" = "%@ özeti hazır";
+"recap.banner.action" = "Gör";
+"recap.view_recap" = "Özeti gör";
+"recap.story.ready_format" = "Özet hazır, %@";
+"recap.story.seen_format" = "Özet, %@, görüldü";
+"recap.story.hint" = "3 aylık özetini açar";
+
+/* Sessiz saatler */
+"quiet_hours.title" = "Sessiz saatler";
+"quiet_hours.subtitle" = "Bu saatlerde hatırlatıcılar sessizce gelir; ses ve banner olmaz.";
+"quiet_hours.row" = "Sessiz saatler";
+"quiet_hours.off" = "Kapalı";
+"quiet_hours.of_quiet" = "sessizlik";
+"quiet_hours.starts" = "Başlangıç";
+"quiet_hours.ends" = "Bitiş";
+"quiet_hours.starts_at" = "Başlangıç saati";
+"quiet_hours.ends_at" = "Bitiş saati";
+"quiet_hours.set" = "Ayarla";
+"quiet_hours.picker_caption" = "5 dakikalık adımlar · 24 saat biçimi cihaz ayarını izler";
+"quiet_hours.days" = "Günler";
+"quiet_hours.every_day" = "Her gün";
+"quiet_hours.weekdays" = "Hafta içi";
+"quiet_hours.weekends" = "Hafta sonu";
+"quiet_hours.renewal_alerts" = "Yenileme günü uyarıları";
+"quiet_hours.renewal_alerts_subtitle" = "Sessiz saatlerde bile \"bugün yenileniyor\" için ses çal";
+"quiet_hours.footnote" = "Bu aralıktaki hatırlatıcılar yine zamanında gelir ama sessizce: ses yok, banner yok, doğrudan Bildirim Merkezi'ne.";
+"quiet_hours.footnote_emphasis" = "sessizce";
+"quiet_hours.hours_format" = "%ds";
+"quiet_hours.hours_minutes_format" = "%1$ds %2$ddk";
+"quiet_hours.a11y_ring_format" = "Sessiz saatler, %1$@ – %2$@, %3$@.";
+"quiet_hours.a11y_select_start" = "Başlangıcı ayarla";
+"quiet_hours.a11y_select_end" = "Bitişi ayarla";

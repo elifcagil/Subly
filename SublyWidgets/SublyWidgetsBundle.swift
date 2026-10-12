@@ -4,7 +4,9 @@ import SwiftUI
 @main
 struct SublyWidgetsBundle: WidgetBundle {
     var body: some Widget {
-        MonthlyTotalWidget()
+        RenewalRingWidget()
+        LockScreenRingWidget()
         UpcomingRenewalsWidget()
+        MonthlyTotalWidget()
     }
 }

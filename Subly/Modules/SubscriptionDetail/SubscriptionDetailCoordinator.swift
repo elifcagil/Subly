@@ -26,7 +26,7 @@ final class SubscriptionDetailCoordinator: Coordinator {
             subscription: subscription,
             subscriptionRepository: container.subscriptionRepository,
             categoryRepository: container.categoryRepository,
-            notificationScheduler: container.notificationManager,
+            reminderSync: container.reminderSyncService,
             currencyFormatter: container.currencyFormatter,
             dateProvider: container.dateProvider,
             preferences: container.settingsPreferences

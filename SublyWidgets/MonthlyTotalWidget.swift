@@ -75,7 +75,7 @@ struct MonthlyTotalWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: MonthlyTotalProvider()) { entry in
             MonthlyTotalWidgetView(entry: entry)
-                .containerBackground(.background, for: .widget)
+                .containerBackground(WidgetTheme.background, for: .widget)
         }
         .configurationDisplayName("Monthly Total")
         .description("Your monthly subscription spend at a glance.")

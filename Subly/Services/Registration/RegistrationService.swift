@@ -49,7 +49,9 @@ final class MockRegistrationService: RegistrationService, @unchecked Sendable {
             if shouldFail { throw RegistrationError.failed }
         }
 
+        let registeredAt = deviceIdentity.registeredAt() ?? Date()
+        if deviceIdentity.registeredAt() == nil { deviceIdentity.setRegisteredAt(registeredAt) }
         deviceIdentity.setRegistered(true)
-        return RegistrationResult(deviceID: deviceId, registeredAt: Date())
+        return RegistrationResult(deviceID: deviceId, registeredAt: registeredAt)
     }
 }

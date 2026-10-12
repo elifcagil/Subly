@@ -36,6 +36,20 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // Visual-QA: force the registration flow on next launch.
             container.deviceIdentity.setRegistered(false)
         }
+        if qaArgs.contains("-resetNotificationPrompt") {
+            // Visual-QA: show the entry-time notification prompt again.
+            UserDefaults.standard.removeObject(forKey: "com.subly.notifications.entry_prompted")
+        }
+        if qaArgs.contains("-recapQA") {
+            // Visual-QA: pretend the device registered 3 months + 2 days ago so a
+            // recap is due, and forget any seen recap.
+            let calendar = container.dateProvider.calendar
+            if let anchor = calendar.date(byAdding: .month, value: -3, to: container.dateProvider.now),
+               let backdated = calendar.date(byAdding: .day, value: -2, to: anchor) {
+                container.deviceIdentity.setRegisteredAt(backdated)
+            }
+            UserDefaults.standard.removeObject(forKey: "com.subly.recap.last_seen_index")
+        }
         if qaArgs.contains("-rolloverQA") {
             // Visual-QA: insert a stale-dated subscription so the roll-forward
             // pass has something to advance (the UI can't create past dates).
@@ -66,6 +80,17 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UserDefaults.standard.set(true, forKey: "com.subly.onboarding.completed")
             Task { @MainActor in
                 await DebugSampleData.seedIfNeeded(into: container)
+                if qaArgs.contains("-recapQA") {
+                    // Backdate start dates so the sample subscriptions existed for
+                    // the whole first recap period.
+                    let calendar = container.dateProvider.calendar
+                    for var sub in (try? await container.subscriptionRepository.fetchAll()) ?? [] {
+                        guard let earlier = calendar.date(byAdding: .month, value: -8, to: sub.startDate) else { continue }
+                        sub.startDate = earlier
+                        sub.createdAt = calendar.date(byAdding: .day, value: -2, to: anchorQA(calendar, container)) ?? earlier
+                        try? await container.subscriptionRepository.save(sub)
+                    }
+                }
                 coordinator.start()
                 await self.presentPreviewIfRequested(container: container)
             }
@@ -73,6 +98,22 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             coordinator.start()
         }
         window.makeKeyAndVisible()
+
+        // `subly://…` from a widget tap that launched the app.
+        for context in connectionOptions.urlContexts {
+            DeepLinkRouter.shared.open(context.url)
+        }
+    }
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        for context in URLContexts {
+            DeepLinkRouter.shared.open(context.url)
+        }
+    }
+
+    /// `-recapQA`: 3 months ago, so the first recap is due.
+    private func anchorQA(_ calendar: Calendar, _ container: AppContainer) -> Date {
+        calendar.date(byAdding: .month, value: -3, to: container.dateProvider.now) ?? container.dateProvider.now
     }
 
     /// Visual-QA: `-previewDetail` pushes the first subscription's detail;
@@ -128,6 +169,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         container?.retryPendingRegistrationIfNeeded()
         // Advance past-due renewal dates to the next billing cycle.
         container?.rollRenewalsForward()
+        // Rebuild the next 60 days of renewal reminders.
+        container?.resyncReminders()
+        // Pick up a permission granted in iOS Settings while we were away.
+        container?.refreshNotificationPermissionAfterForeground()
+        // Keep the next recap notification scheduled.
+        container?.refreshRecap()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

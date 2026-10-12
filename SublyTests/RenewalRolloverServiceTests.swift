@@ -8,8 +8,7 @@ final class RenewalRolloverServiceTests: XCTestCase {
     private var calendar: Calendar!
     private var now: Date!
     private var repository: InMemorySubscriptionRepository!
-    private var scheduler: SpyNotificationScheduler!
-    private var preferences: FakeSettingsPreferences!
+    private var reminderSync: SpyReminderSync!
     private var service: RenewalRolloverService!
 
     override func setUp() {
@@ -19,12 +18,10 @@ final class RenewalRolloverServiceTests: XCTestCase {
         calendar = utc
         now = date(2026, 6, 15, hour: 10)
         repository = InMemorySubscriptionRepository()
-        scheduler = SpyNotificationScheduler()
-        preferences = FakeSettingsPreferences()
+        reminderSync = SpyReminderSync()
         service = RenewalRolloverService(
             repository: repository,
-            notificationScheduler: scheduler,
-            preferences: preferences,
+            reminderSync: reminderSync,
             dateProvider: FixedDateProvider(now: now, calendar: calendar)
         )
     }
@@ -120,40 +117,25 @@ final class RenewalRolloverServiceTests: XCTestCase {
 
     // MARK: - Reminders
 
-    func testRolledSubscriptionGetsRemindersRescheduled() async throws {
-        var sub = makeSubscription(cycle: .monthly, nextRenewal: date(2026, 6, 10))
-        sub.reminderLeadDays = [1]
-        try await repository.save(sub)
+    func testRollingTriggersOneReminderRebuild() async throws {
+        let first = makeSubscription(cycle: .monthly, nextRenewal: date(2026, 6, 10))
+        let second = makeSubscription(cycle: .weekly, nextRenewal: date(2026, 6, 12))
+        try await repository.save(first)
+        try await repository.save(second)
 
         _ = await service.rollForwardExpired()
 
-        XCTAssertEqual(scheduler.scheduledCalls.count, 1)
-        XCTAssertEqual(scheduler.scheduledCalls.first?.subscription.id, sub.id)
-        XCTAssertEqual(scheduler.scheduledCalls.first?.leadDays, [1])
-        XCTAssertEqual(
-            scheduler.scheduledCalls.first?.subscription.nextRenewalDate,
-            date(2026, 7, 10)
-        )
+        // One rebuild for the whole set, not one per subscription.
+        XCTAssertEqual(reminderSync.resyncCount, 1)
     }
 
-    func testNoRemindersRescheduledWhenGloballyDisabled() async throws {
-        preferences.remindersEnabled = false
-        var sub = makeSubscription(cycle: .monthly, nextRenewal: date(2026, 6, 10))
-        sub.reminderLeadDays = [1]
+    func testNoRebuildWhenNothingRolled() async throws {
+        let sub = makeSubscription(cycle: .monthly, nextRenewal: date(2026, 6, 20))
         try await repository.save(sub)
 
         _ = await service.rollForwardExpired()
 
-        XCTAssertTrue(scheduler.scheduledCalls.isEmpty)
-    }
-
-    func testNoRemindersRescheduledWithoutLeadDays() async throws {
-        let sub = makeSubscription(cycle: .monthly, nextRenewal: date(2026, 6, 10))
-        try await repository.save(sub)
-
-        _ = await service.rollForwardExpired()
-
-        XCTAssertTrue(scheduler.scheduledCalls.isEmpty)
+        XCTAssertEqual(reminderSync.resyncCount, 0)
     }
 
     // MARK: - Helpers
@@ -181,36 +163,7 @@ private struct FixedDateProvider: DateProviding {
     let calendar: Calendar
 }
 
-private final class SpyNotificationScheduler: NotificationScheduling, @unchecked Sendable {
-    private(set) var scheduledCalls: [(subscription: Subscription, leadDays: [Int])] = []
-
-    func requestAuthorization() async throws -> Bool { true }
-    func schedule(for subscription: Subscription, leadDays: [Int]) async throws {
-        scheduledCalls.append((subscription, leadDays))
-    }
-    func cancel(for subscriptionID: UUID) async {}
-    func pendingIdentifiers(for subscriptionID: UUID) async -> [String] { [] }
-    func registerActions() {}
-    func snooze(identifier: String, by hours: Int) async throws {}
-    func scheduleSmart(_ payloads: [SmartReminderPayload]) async {}
-    func scheduleAwareness(_ payloads: [AwarenessPayload]) async {}
-    func reconcileAll(smart: [SmartReminderPayload], awareness: [AwarenessPayload]) async {}
-}
-
-private final class FakeSettingsPreferences: SettingsPreferencesManaging, @unchecked Sendable {
-    var remindersEnabled = true
-
-    func current() -> SettingsPreferences {
-        SettingsPreferences(
-            defaultReminderLeadDays: [1],
-            calendarExportEnabled: false,
-            remindersEnabled: remindersEnabled
-        )
-    }
-    func setDefaultReminderLeadDays(_ days: Set<Int>) {}
-    func setCalendarExportEnabled(_ enabled: Bool) {}
-    func setRemindersEnabled(_ enabled: Bool) {}
-    func observe() -> AsyncStream<SettingsPreferences> {
-        AsyncStream { $0.finish() }
-    }
+private final class SpyReminderSync: ReminderSyncing, @unchecked Sendable {
+    private(set) var resyncCount = 0
+    func resync() async { resyncCount += 1 }
 }

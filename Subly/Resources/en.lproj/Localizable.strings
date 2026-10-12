@@ -372,3 +372,93 @@
 
 /* Splash */
 "splash.tagline" = "Calm control over what you pay";
+
+/* Renewal reminder notifications (handoff copy table) */
+"reminders.title_today_format" = "%@ renews today";
+"reminders.body_today_format" = "%@ will be charged today.";
+"reminders.title_tomorrow_format" = "%@ renews tomorrow";
+"reminders.body_tomorrow_format" = "%@ will be charged tomorrow.";
+"reminders.title_week_format" = "%@ renews in a week";
+"reminders.body_week_format" = "%1$@ on %2$@. Plenty of time to decide.";
+"reminders.title_days_format" = "%1$@ renews in %2$d days";
+"reminders.body_days_format" = "%1$@ on %2$@. Still %3$@? Long-press to keep, snooze or review.";
+"reminders.verb_watching" = "watching";
+"reminders.verb_listening" = "listening";
+"reminders.verb_using" = "using it";
+"reminders.grouped_title_today_format" = "%d renewals today";
+"reminders.grouped_title_tomorrow_format" = "%d renewals tomorrow";
+"reminders.grouped_title_days_format" = "%1$d renewals in %2$d days";
+"reminders.grouped_body_two_format" = "%1$@ and %2$@ · %3$@ total.";
+"reminders.grouped_body_three_format" = "%1$@, %2$@ and %3$@ · %4$@ total.";
+"reminders.grouped_body_more_format" = "%1$@, %2$@ and %3$d more · %4$@ total.";
+"reminders.action_keep" = "Keep subscription";
+"reminders.action_remind_tomorrow" = "Remind me tomorrow";
+"reminders.action_review" = "Review in Subly";
+
+/* Notification permission prompt */
+"notification_permission.not_now" = "Not now";
+"notification_permission.denied_title" = "Reminders are off";
+"notification_permission.denied_message" = "Allow notifications in iOS Settings to get renewal reminders. You can change this anytime from Subly Settings.";
+"notification_permission.open_settings" = "Open Settings";
+"settings.notifications_permission_denied" = "Notifications are turned off in iOS Settings. Open Settings to allow them.";
+
+/* 3-month recap story */
+"recap.header_format" = "Subly · %@ recap";
+"recap.tap_to_continue" = "Tap to continue";
+"recap.total.title" = "In the last 3 months, your subscriptions cost";
+"recap.total.subline_format" = "%1$d subscriptions. About %2$@ a day.";
+"recap.total.more_format" = "▴ %@ more than the previous 3 months";
+"recap.total.less_format" = "▾ %@ less than the previous 3 months";
+"recap.most_expensive.title" = "Your most expensive";
+"recap.most_expensive.share_format" = "%1$d%% of everything you spent on subscriptions in %2$@.";
+"recap.price.title_format" = "%d prices went up";
+"recap.price.per_year" = "/year";
+"recap.price.prompt" = "Still worth it? You can review them from here.";
+"recap.price.review" = "Review subscriptions";
+"recap.longest.title" = "Your longest-running";
+"recap.longest.since_format" = "Since %@";
+"recap.longest.months" = "months";
+"recap.longest.total_format" = "That's %@ in total. One square is one month.";
+"recap.summary.title_format" = "Your %@";
+"recap.summary.tile_total" = "Total";
+"recap.summary.tile_most_expensive" = "Most expensive";
+"recap.summary.tile_price_increases" = "Price increases";
+"recap.summary.tile_longest" = "Longest-running";
+"recap.summary.subscriptions_format" = "%d subscriptions";
+"recap.share" = "Share";
+"recap.done" = "Done";
+"recap.close" = "Close";
+"recap.notification.title" = "Your recap is ready";
+"recap.notification.body_format" = "You spent %1$@ across %2$d subscriptions in the last 3 months.";
+"recap.banner.title_format" = "%@ recap ready";
+"recap.banner.action" = "View";
+"recap.view_recap" = "View recap";
+"recap.story.ready_format" = "Recap ready, %@";
+"recap.story.seen_format" = "Recap, %@, viewed";
+"recap.story.hint" = "Opens your 3-month recap";
+
+/* Quiet hours */
+"quiet_hours.title" = "Quiet hours";
+"quiet_hours.subtitle" = "During these hours, reminders arrive silently, with no sound or banner.";
+"quiet_hours.row" = "Quiet hours";
+"quiet_hours.off" = "Off";
+"quiet_hours.of_quiet" = "of quiet";
+"quiet_hours.starts" = "Starts";
+"quiet_hours.ends" = "Ends";
+"quiet_hours.starts_at" = "Starts at";
+"quiet_hours.ends_at" = "Ends at";
+"quiet_hours.set" = "Set";
+"quiet_hours.picker_caption" = "5-minute steps · 24-hour clock follows device setting";
+"quiet_hours.days" = "Days";
+"quiet_hours.every_day" = "Every day";
+"quiet_hours.weekdays" = "Weekdays";
+"quiet_hours.weekends" = "Weekends";
+"quiet_hours.renewal_alerts" = "Renewal-day alerts";
+"quiet_hours.renewal_alerts_subtitle" = "Play sound for \"renews today\" even in quiet hours";
+"quiet_hours.footnote" = "Reminders in this window still arrive on time, but silently: no sound, no banner, straight to Notification Center.";
+"quiet_hours.footnote_emphasis" = "silently";
+"quiet_hours.hours_format" = "%dh";
+"quiet_hours.hours_minutes_format" = "%1$dh %2$dm";
+"quiet_hours.a11y_ring_format" = "Quiet hours, %1$@ to %2$@, %3$@.";
+"quiet_hours.a11y_select_start" = "Adjust start";
+"quiet_hours.a11y_select_end" = "Adjust end";

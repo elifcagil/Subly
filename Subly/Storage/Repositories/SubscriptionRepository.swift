@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import WidgetKit
 
 protocol SubscriptionRepository: Sendable {
     func fetchAll() async throws -> [Subscription]
@@ -142,6 +143,8 @@ final class SwiftDataSubscriptionRepository: SubscriptionRepository {
         for continuation in continuations.values {
             continuation.yield(snapshot)
         }
+        // Widgets read the same App Group store; every write refreshes them.
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     private func fetchAllSync() throws -> [Subscription] {

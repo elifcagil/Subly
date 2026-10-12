@@ -33,7 +33,7 @@ final class SubscriptionDetailViewModel {
     private let subscriptionID: UUID
     private let subscriptionRepository: SubscriptionRepository
     private let categoryRepository: CategoryRepository
-    private let notificationScheduler: NotificationScheduling
+    private let reminderSync: ReminderSyncing
     private let currencyFormatter: CurrencyFormatting
     private let dateProvider: DateProviding
     private let preferences: SettingsPreferencesManaging
@@ -57,7 +57,7 @@ final class SubscriptionDetailViewModel {
         subscription: Subscription,
         subscriptionRepository: SubscriptionRepository,
         categoryRepository: CategoryRepository,
-        notificationScheduler: NotificationScheduling,
+        reminderSync: ReminderSyncing,
         currencyFormatter: CurrencyFormatting,
         dateProvider: DateProviding,
         preferences: SettingsPreferencesManaging
@@ -66,7 +66,7 @@ final class SubscriptionDetailViewModel {
         self.subscription = subscription
         self.subscriptionRepository = subscriptionRepository
         self.categoryRepository = categoryRepository
-        self.notificationScheduler = notificationScheduler
+        self.reminderSync = reminderSync
         self.currencyFormatter = currencyFormatter
         self.dateProvider = dateProvider
         self.preferences = preferences
@@ -112,11 +112,7 @@ final class SubscriptionDetailViewModel {
             updated.reminderLeadDays = leadDays.map { [$0] } ?? []
             do {
                 try await subscriptionRepository.save(updated)
-                await notificationScheduler.cancel(for: updated.id)
-                // Master notifications switch (Settings) gates scheduling.
-                if let lead = leadDays, preferences.current().remindersEnabled {
-                    try? await notificationScheduler.schedule(for: updated, leadDays: [lead])
-                }
+                await reminderSync.resync()
                 self.subscription = updated
                 self.publishSnapshot()
             } catch let error as UserFacingError {
@@ -135,11 +131,12 @@ final class SubscriptionDetailViewModel {
                     var restored = subscription
                     restored.isArchived = false
                     try await subscriptionRepository.save(restored)
+                    await reminderSync.resync()
                     self.subscription = restored
                     self.publishSnapshot()
                 } else {
                     try await subscriptionRepository.archive(subscription.id)
-                    await notificationScheduler.cancel(for: subscription.id)
+                    await reminderSync.resync()
                     self.onDismiss?()
                 }
             } catch {
@@ -154,7 +151,7 @@ final class SubscriptionDetailViewModel {
             guard let self else { return }
             do {
                 try await subscriptionRepository.delete(id)
-                await notificationScheduler.cancel(for: id)
+                await reminderSync.resync()
                 self.onDismiss?()
             } catch let error as UserFacingError {
                 self.state = .failed(message: error.userMessage)

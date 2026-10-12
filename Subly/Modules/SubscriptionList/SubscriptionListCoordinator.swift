@@ -17,6 +17,7 @@ final class SubscriptionListCoordinator: Coordinator {
         let viewModel = SubscriptionListViewModel(
             subscriptionRepository: container.subscriptionRepository,
             categoryRepository: container.categoryRepository,
+            reminderSync: container.reminderSyncService,
             currencyFormatter: container.currencyFormatter,
             dateProvider: container.dateProvider
         )

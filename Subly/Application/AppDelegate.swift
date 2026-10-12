@@ -54,13 +54,10 @@ final class NotificationCenterDelegate: NSObject, UNUserNotificationCenterDelega
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
-        if response.actionIdentifier == SublyNotificationCategory.snoozeAction {
-            let identifier = response.notification.request.identifier
-            Task {
-                try? await NotificationManager().snooze(identifier: identifier, by: 24)
-                completionHandler()
-            }
-        } else {
+        // Keep / Remind me tomorrow / Review (and a plain tap) on a renewal
+        // reminder. Other categories have no actions yet.
+        Task { @MainActor in
+            await NotificationActionHandler.shared.handle(response)
             completionHandler()
         }
     }

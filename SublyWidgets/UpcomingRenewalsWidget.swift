@@ -102,7 +102,7 @@ struct UpcomingRenewalsWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: UpcomingRenewalsProvider()) { entry in
             UpcomingRenewalsWidgetView(entry: entry)
-                .containerBackground(.background, for: .widget)
+                .containerBackground(WidgetTheme.background, for: .widget)
         }
         .configurationDisplayName("Upcoming Renewals")
         .description("See what's renewing in the next two weeks.")

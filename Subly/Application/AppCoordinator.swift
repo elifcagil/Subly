@@ -103,9 +103,14 @@ final class AppCoordinator: Coordinator {
         coordinator.start()
         if startingAddFlow {
             // Give the shell a beat to settle before presenting the sheet.
+            // The notification prompt follows once that sheet closes.
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [weak coordinator] in
                 coordinator?.presentAddFlow()
             }
+        } else {
+            // First entry (or still undetermined): ask for notification
+            // permission once the dashboard has settled.
+            coordinator.promptForNotificationPermissionIfNeeded(after: 0.8)
         }
     }
 }

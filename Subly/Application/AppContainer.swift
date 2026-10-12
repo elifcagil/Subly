@@ -32,6 +32,11 @@ final class AppContainer {
     let deviceIdentity: DeviceIdentityProviding
     let registrationService: RegistrationService
     let renewalRolloverService: RenewalRolloverService
+    let reminderSyncService: ReminderSyncService
+    let notificationPermissionService: NotificationPermissionService
+    let deviceProfileService: DeviceProfileSyncing
+    let recapScheduler: RecapScheduler
+    let quietHoursService: QuietHoursService
 
     private var entitlementObservationTask: Task<Void, Never>?
 
@@ -89,10 +94,57 @@ final class AppContainer {
             logger: logger
         )
 
+        // Renewal reminders: one rebuild path for every trigger (save, delete,
+        // archive, roll-forward, master switch, permission, time change).
+        let reminderScheduler = LocalReminderScheduler(calendar: dateProvider.calendar)
+        let reminderBuilder = ReminderContentBuilder(
+            calendar: dateProvider.calendar,
+            currencyFormatter: currencyFormatter
+        )
+        let quietHoursService = QuietHoursStore(calendar: dateProvider.calendar)
+        self.quietHoursService = quietHoursService
+        let reminderSyncService = ReminderSyncService(
+            repository: subscriptionRepository,
+            preferences: settingsPreferences,
+            scheduler: reminderScheduler,
+            builder: reminderBuilder,
+            acknowledgements: ReminderAcknowledgementStore(),
+            quietHours: quietHoursService,
+            dateProvider: dateProvider,
+            logger: logger
+        )
+        self.reminderSyncService = reminderSyncService
+        reminderSyncService.startObservingTimeChanges()
+        reminderSyncService.startObservingQuietHours()
+
+        let deviceProfileService = SupabaseDeviceProfileService(client: supabase, logger: logger)
+        self.deviceProfileService = deviceProfileService
+        self.notificationPermissionService = NotificationPermissionService(
+            authorization: SystemNotificationAuthorization(),
+            preferences: settingsPreferences,
+            reminderSync: reminderSyncService,
+            deviceProfile: deviceProfileService,
+            logger: logger
+        )
+
+        // 3-month recap: cadence from the Keychain `registeredAt`, one
+        // "Your recap is ready" notification at a time.
+        let recapScheduler = RecapScheduler(
+            deviceIdentity: deviceIdentity,
+            repository: subscriptionRepository,
+            currencyManager: currencyManager,
+            currencyFormatter: currencyFormatter,
+            notifications: reminderScheduler,
+            builder: reminderBuilder,
+            dateProvider: dateProvider,
+            logger: logger
+        )
+        self.recapScheduler = recapScheduler
+        recapScheduler.startObservingTimeChanges()
+
         self.renewalRolloverService = RenewalRolloverService(
             repository: subscriptionRepository,
-            notificationScheduler: notificationManager,
-            preferences: settingsPreferences,
+            reminderSync: reminderSyncService,
             dateProvider: dateProvider
         )
         renewalRolloverService.startObservingDayChanges()
@@ -109,6 +161,32 @@ final class AppContainer {
     func rollRenewalsForward() {
         let service = renewalRolloverService
         Task { await service.rollForwardExpired() }
+    }
+
+    /// Rebuilds the next 60 days of renewal reminders. Called on every
+    /// foreground; re-entrant calls coalesce inside the service.
+    func resyncReminders() {
+        let service = reminderSyncService
+        Task { await service.resync() }
+    }
+
+    /// If the user allowed notifications from iOS Settings while away, turns
+    /// the in-app switch on and rebuilds reminders.
+    func refreshNotificationPermissionAfterForeground() {
+        let service = notificationPermissionService
+        Task { await service.refreshAfterForeground() }
+    }
+
+    /// Re-schedules the next "Your recap is ready" notification and mirrors
+    /// the cadence anchor to the backend. Called on every foreground.
+    func refreshRecap() {
+        let scheduler = recapScheduler
+        let profile = deviceProfileService
+        let registeredAt = deviceIdentity.registeredAt()
+        Task {
+            await scheduler.refresh()
+            if let registeredAt { await profile.setRegisteredAt(registeredAt) }
+        }
     }
 
     /// Re-sends a registration that was completed offline. No-op in the common

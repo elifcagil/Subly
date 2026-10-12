@@ -14,6 +14,9 @@ struct Subscription: Identifiable, Hashable, Codable, Sendable {
     var notes: String?
     var isArchived: Bool
     var reminderLeadDays: [Int]
+    /// When the subscription was added to Subly (set by the store). Anchors
+    /// the recap cadence: the first recap comes 3 months after the first one.
+    var createdAt: Date?
 
     init(
         id: UUID = UUID(),
@@ -26,7 +29,8 @@ struct Subscription: Identifiable, Hashable, Codable, Sendable {
         categoryIDs: [Category.ID] = [],
         notes: String? = nil,
         isArchived: Bool = false,
-        reminderLeadDays: [Int] = []
+        reminderLeadDays: [Int] = [],
+        createdAt: Date? = nil
     ) {
         self.id = id
         self.name = name
@@ -39,6 +43,7 @@ struct Subscription: Identifiable, Hashable, Codable, Sendable {
         self.notes = notes
         self.isArchived = isArchived
         self.reminderLeadDays = reminderLeadDays
+        self.createdAt = createdAt
     }
 
     /// Primary category (first selected), or nil when uncategorized.
@@ -48,7 +53,7 @@ struct Subscription: Identifiable, Hashable, Codable, Sendable {
 
     private enum CodingKeys: String, CodingKey {
         case id, name, amount, currencyCode, billingCycle, startDate, nextRenewalDate
-        case categoryIDs, categoryID, notes, isArchived, reminderLeadDays
+        case categoryIDs, categoryID, notes, isArchived, reminderLeadDays, createdAt
     }
 
     init(from decoder: Decoder) throws {
@@ -70,6 +75,7 @@ struct Subscription: Identifiable, Hashable, Codable, Sendable {
         notes = try c.decodeIfPresent(String.self, forKey: .notes)
         isArchived = try c.decodeIfPresent(Bool.self, forKey: .isArchived) ?? false
         reminderLeadDays = try c.decodeIfPresent([Int].self, forKey: .reminderLeadDays) ?? []
+        createdAt = try c.decodeIfPresent(Date.self, forKey: .createdAt)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -85,5 +91,6 @@ struct Subscription: Identifiable, Hashable, Codable, Sendable {
         try c.encodeIfPresent(notes, forKey: .notes)
         try c.encode(isArchived, forKey: .isArchived)
         try c.encode(reminderLeadDays, forKey: .reminderLeadDays)
+        try c.encodeIfPresent(createdAt, forKey: .createdAt)
     }
 }

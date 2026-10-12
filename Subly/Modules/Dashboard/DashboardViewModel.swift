@@ -58,7 +58,17 @@ final class DashboardViewModel {
         let isSelected: Bool
     }
 
+    /// Header story icon: shown for 7 days after a recap date (spinning until
+    /// opened, dimmed afterwards).
+    struct RecapStory: Hashable {
+        let recap: Recap
+        let state: RecapStoryState
+        let periodLabel: String
+    }
+
     struct Snapshot: Hashable {
+        /// nil when the story icon is hidden.
+        let recapStory: RecapStory?
         /// Selected currency first — the hero renders `totals.first`.
         let totals: [CurrencyTotal]
         /// Currency selector chips; empty when only one currency is in use.
@@ -82,6 +92,8 @@ final class DashboardViewModel {
     private let currencyManager: CurrencyManaging
     private let dateProvider: DateProviding
     private let sampleDataSeeder: SampleDataSeeding
+    private let recapProvider: RecapAvailabilityProviding
+    private var recapStory: RecapStory?
     private let calculateMonthlyTotal = MonthlySpendCalculator()
     private let upcomingUseCase: UpcomingRenewalsUseCase
     private let financialLoadUseCase: UpcomingFinancialLoadUseCase
@@ -110,6 +122,8 @@ final class DashboardViewModel {
     var onShowInsights: (() -> Void)?
     /// Tapped the header avatar — opens Settings (v5: not a tab).
     var onShowSettings: (() -> Void)?
+    /// Tapped the header story icon.
+    var onOpenRecap: ((Recap) -> Void)?
 
     init(
         subscriptionRepository: SubscriptionRepository,
@@ -117,7 +131,8 @@ final class DashboardViewModel {
         currencyFormatter: CurrencyFormatting,
         currencyManager: CurrencyManaging,
         dateProvider: DateProviding,
-        sampleDataSeeder: SampleDataSeeding
+        sampleDataSeeder: SampleDataSeeding,
+        recapProvider: RecapAvailabilityProviding
     ) {
         self.subscriptionRepository = subscriptionRepository
         self.categoryRepository = categoryRepository
@@ -125,6 +140,7 @@ final class DashboardViewModel {
         self.currencyManager = currencyManager
         self.dateProvider = dateProvider
         self.sampleDataSeeder = sampleDataSeeder
+        self.recapProvider = recapProvider
         self.upcomingUseCase = UpcomingRenewalsUseCase(
             calendar: dateProvider.calendar,
             now: { dateProvider.now }
@@ -185,6 +201,24 @@ final class DashboardViewModel {
         onShowInsights?()
     }
 
+    func didTapRecapStory() {
+        guard let story = recapStory else { return }
+        onOpenRecap?(story.recap)
+    }
+
+    /// Re-reads the story state (cheap) and republishes if it changed.
+    func refreshRecapStory() {
+        Task { [weak self] in
+            guard let self else { return }
+            let story = (await recapProvider.storyRecap()).map {
+                RecapStory(recap: $0.recap, state: $0.state, periodLabel: recapProvider.periodLabel(for: $0.recap))
+            }
+            guard story != self.recapStory else { return }
+            self.recapStory = story
+            self.publish(items: self.latestItems)
+        }
+    }
+
     func didTapSettings() {
         onShowSettings?()
     }
@@ -222,6 +256,7 @@ final class DashboardViewModel {
     }
 
     private func publish(items: [Subscription]) {
+        latestItems = items
         let active = items.filter { !$0.isArchived }
         guard !active.isEmpty else {
             state = .empty
@@ -277,6 +312,7 @@ final class DashboardViewModel {
         let (trend, deltaText, deltaIsDown) = makeTrend(from: selectedSubs)
 
         state = .loaded(Snapshot(
+            recapStory: recapStory,
             totals: totals,
             currencyChips: currencyChips,
             pressure: pressure,

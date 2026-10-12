@@ -26,7 +26,7 @@ final class AddEditSubscriptionCoordinator: Coordinator {
             mode: mode,
             subscriptionRepository: container.subscriptionRepository,
             categoryRepository: container.categoryRepository,
-            notificationScheduler: container.notificationManager,
+            reminderSync: container.reminderSyncService,
             preferences: container.settingsPreferences,
             calendarService: container.calendarService,
             currencyManager: container.currencyManager,

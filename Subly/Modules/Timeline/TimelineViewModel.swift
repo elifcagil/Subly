@@ -61,12 +61,15 @@ final class TimelineViewModel {
         /// Row-major grid cells (multiple of 7).
         let gridDays: [MonthDay]
         let monthPayments: [MonthPayments]
+        /// Index of the past recap covering the displayed month — "View recap".
+        let archivedRecapIndex: Int?
     }
 
     private let subscriptionRepository: SubscriptionRepository
     private let categoryRepository: CategoryRepository
     private let currencyFormatter: CurrencyFormatting
     private let dateProvider: DateProviding
+    private let recapProvider: RecapAvailabilityProviding
 
     private var observationTask: Task<Void, Never>?
     private var categoriesByID: [UUID: Category] = [:]
@@ -81,17 +84,26 @@ final class TimelineViewModel {
 
     var onStateChange: ((ViewState<Snapshot>) -> Void)?
     var onSelectSubscription: ((Subscription) -> Void)?
+    /// "View recap" on a past period's month header.
+    var onOpenRecap: ((Int) -> Void)?
 
     init(
         subscriptionRepository: SubscriptionRepository,
         categoryRepository: CategoryRepository,
         currencyFormatter: CurrencyFormatting,
-        dateProvider: DateProviding
+        dateProvider: DateProviding,
+        recapProvider: RecapAvailabilityProviding
     ) {
         self.subscriptionRepository = subscriptionRepository
         self.categoryRepository = categoryRepository
         self.currencyFormatter = currencyFormatter
         self.dateProvider = dateProvider
+        self.recapProvider = recapProvider
+    }
+
+    func didTapViewRecap() {
+        guard case .loaded(let snapshot) = state, let index = snapshot.archivedRecapIndex else { return }
+        onOpenRecap?(index)
     }
 
     deinit {
@@ -154,7 +166,8 @@ final class TimelineViewModel {
             monthYearTitle: monthYearFormatter.string(from: displayedMonth),
             weekdayLetters: makeWeekdayLetters(calendar: calendar),
             gridDays: makeGrid(active, calendar: calendar, now: now, monthDate: displayedMonth),
-            monthPayments: makeMonthPayments(active, calendar: calendar, monthDate: displayedMonth)
+            monthPayments: makeMonthPayments(active, calendar: calendar, monthDate: displayedMonth),
+            archivedRecapIndex: recapProvider.recapIndex(covering: displayedMonth)
         ))
     }
 

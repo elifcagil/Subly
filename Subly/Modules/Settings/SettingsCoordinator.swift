@@ -20,10 +20,12 @@ final class SettingsCoordinator: Coordinator {
             currencyManager: container.currencyManager,
             preferences: container.settingsPreferences,
             calendarService: container.calendarService,
+            permissionService: container.notificationPermissionService,
+            reminderSync: container.reminderSyncService,
+            quietHoursService: container.quietHoursService,
             storeKitService: container.storeKitService,
             authService: container.authService,
             subscriptionRepository: container.subscriptionRepository,
-            notificationScheduler: container.notificationManager,
             featureFlagService: container.featureFlagService,
             deviceIdentity: container.deviceIdentity
         )
@@ -45,6 +47,15 @@ final class SettingsCoordinator: Coordinator {
         viewModel.onOpenReminderDefaults = { [weak self] in
             self?.pushReminderDefaults()
         }
+        viewModel.onOpenQuietHours = { [weak self] in
+            self?.pushQuietHours()
+        }
+        viewModel.onOpenSystemNotificationSettings = {
+            UIApplication.openNotificationSettings()
+        }
+        viewModel.onNotificationPermissionDenied = { [weak self] in
+            self?.presentNotificationPermissionDeniedAlert()
+        }
         // `viewModel` is captured weakly: it owns this closure, so a strong
         // capture would retain it forever.
         viewModel.onCopyDeviceID = { [weak self, weak viewModel] deviceID in
@@ -55,6 +66,21 @@ final class SettingsCoordinator: Coordinator {
         let viewController = SettingsViewController(viewModel: viewModel)
         // v5: Settings is pushed from the Dashboard header avatar (no tab).
         navigationController.pushViewController(viewController, animated: true)
+    }
+
+    /// iOS has notifications off for Subly: explain and offer the shortcut.
+    private func presentNotificationPermissionDeniedAlert() {
+        guard let host = navigationController.topViewController else { return }
+        let alert = UIAlertController(
+            title: Strings.NotificationPermission.deniedTitle,
+            message: Strings.Settings.notificationsPermissionDenied,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: Strings.Common.cancel, style: .cancel))
+        alert.addAction(UIAlertAction(title: Strings.NotificationPermission.openSettings, style: .default) { _ in
+            UIApplication.openNotificationSettings()
+        })
+        host.present(alert, animated: true)
     }
 
     private func presentCurrencyPicker() {
@@ -110,6 +136,12 @@ final class SettingsCoordinator: Coordinator {
             navigationController: navigationController,
             container: container
         )
+        addChild(coordinator)
+        coordinator.start()
+    }
+
+    private func pushQuietHours() {
+        let coordinator = QuietHoursCoordinator(navigationController: navigationController, container: container)
         addChild(coordinator)
         coordinator.start()
     }

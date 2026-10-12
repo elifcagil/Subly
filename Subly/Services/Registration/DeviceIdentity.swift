@@ -16,6 +16,10 @@ protocol DeviceIdentityProviding: Sendable {
     /// call is retried on the next foreground until it succeeds.
     func isPendingRemoteSync() -> Bool
     func setPendingRemoteSync(_ value: Bool)
+    /// When this device first registered — the anchor for recap cadence
+    /// (every 3 months). Not personal data. Written once.
+    func registeredAt() -> Date?
+    func setRegisteredAt(_ date: Date)
     /// Masked display form: `SUB-7F3A···9C21`.
     func displayID() -> String
 }
@@ -26,6 +30,7 @@ struct KeychainDeviceIdentity: DeviceIdentityProviding {
     private let idAccount = "device-id"
     private let registeredAccount = "device-registered"
     private let pendingSyncAccount = "device-pending-remote-sync"
+    private let registeredAtAccount = "device-registered-at"
 
     func deviceID() -> String {
         if let existing = readString(account: idAccount) {
@@ -58,6 +63,15 @@ struct KeychainDeviceIdentity: DeviceIdentityProviding {
         } else {
             delete(account: pendingSyncAccount)
         }
+    }
+
+    func registeredAt() -> Date? {
+        guard let raw = readString(account: registeredAtAccount), let seconds = TimeInterval(raw) else { return nil }
+        return Date(timeIntervalSince1970: seconds)
+    }
+
+    func setRegisteredAt(_ date: Date) {
+        writeString(String(date.timeIntervalSince1970), account: registeredAtAccount)
     }
 
     /// `SUB-` + first hex group + `···` + last hex group of the UUID.

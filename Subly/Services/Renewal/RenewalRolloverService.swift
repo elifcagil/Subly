@@ -16,21 +16,18 @@ import WidgetKit
 final class RenewalRolloverService {
 
     private let repository: SubscriptionRepository
-    private let notificationScheduler: NotificationScheduling
-    private let preferences: SettingsPreferencesManaging
+    private let reminderSync: ReminderSyncing
     private let dateProvider: DateProviding
     private var isRunning = false
     private var dayChangeObserver: NSObjectProtocol?
 
     init(
         repository: SubscriptionRepository,
-        notificationScheduler: NotificationScheduling,
-        preferences: SettingsPreferencesManaging,
+        reminderSync: ReminderSyncing,
         dateProvider: DateProviding
     ) {
         self.repository = repository
-        self.notificationScheduler = notificationScheduler
-        self.preferences = preferences
+        self.reminderSync = reminderSync
         self.dateProvider = dateProvider
     }
 
@@ -56,7 +53,7 @@ final class RenewalRolloverService {
     }
 
     /// Advances every active subscription whose `nextRenewalDate` is before
-    /// the start of today, reschedules its reminders, and refreshes widgets.
+    /// the start of today, rebuilds reminders, and refreshes widgets.
     /// Returns the subscriptions that were advanced.
     @discardableResult
     func rollForwardExpired() async -> [Subscription] {
@@ -89,16 +86,9 @@ final class RenewalRolloverService {
 
         guard !rolled.isEmpty else { return [] }
 
-        if preferences.current().remindersEnabled {
-            for subscription in rolled where !subscription.reminderLeadDays.isEmpty {
-                // `schedule` cancels the subscription's stale pending
-                // notifications before adding the new cycle's.
-                try? await notificationScheduler.schedule(
-                    for: subscription,
-                    leadDays: subscription.reminderLeadDays
-                )
-            }
-        }
+        // New cycle dates → new reminder set (grouping, same-day, 60-day
+        // horizon all recomputed in one place).
+        await reminderSync.resync()
 
         WidgetCenter.shared.reloadAllTimelines()
         return rolled

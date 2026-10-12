@@ -28,6 +28,7 @@ final class TimelineViewController: UIViewController {
     private let monthGrid = SublyMonthGrid()
     private let paymentsHeaderRow = UIStackView()
     private let paymentsTitleLabel = UILabel()
+    private let viewRecapButton = UIButton(type: .system)
     private let paymentsStack = UIStackView()
 
     init(viewModel: TimelineViewModel, haptics: HapticsService) {
@@ -173,6 +174,18 @@ final class TimelineViewController: UIViewController {
         paymentsHeaderRow.alignment = .firstBaseline
         paymentsHeaderRow.addArrangedSubview(paymentsTitleLabel)
         paymentsHeaderRow.addArrangedSubview(UIView())
+        var recapConfig = UIButton.Configuration.plain()
+        recapConfig.title = Strings.Recap.viewRecap
+        recapConfig.baseForegroundColor = DesignSystem.Colors.accentText
+        recapConfig.contentInsets = .zero
+        viewRecapButton.configuration = recapConfig
+        viewRecapButton.titleLabel?.font = DesignSystem.Typography.sectionHeader
+        viewRecapButton.isHidden = true
+        viewRecapButton.addAction(UIAction { [weak self] _ in
+            self?.haptics.play(.lightImpact)
+            self?.viewModel.didTapViewRecap()
+        }, for: .touchUpInside)
+        paymentsHeaderRow.addArrangedSubview(viewRecapButton)
         contentStack.addArrangedSubview(paymentsHeaderRow)
         contentStack.setCustomSpacing(DesignSystem.Spacing.sm, after: paymentsHeaderRow)
 
@@ -244,6 +257,8 @@ final class TimelineViewController: UIViewController {
         paymentsHeaderRow.isHidden = !isMonth
         paymentsStack.isHidden = !isMonth
         modePills.setSelectedIndex(isMonth ? 1 : 0)
+
+        viewRecapButton.isHidden = snapshot.archivedRecapIndex == nil
 
         if isMonth {
             applyMonth(snapshot)

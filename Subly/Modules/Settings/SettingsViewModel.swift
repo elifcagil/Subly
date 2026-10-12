@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 @preconcurrency import UserNotifications
 
 @MainActor
@@ -27,6 +27,9 @@ final class SettingsViewModel {
         case openLanguage
         case openCurrency
         case openReminderDefaults
+        case openQuietHours
+        /// Permission row: not asked yet → system prompt; otherwise iOS Settings.
+        case openNotificationPermission
         case none
     }
 
@@ -50,11 +53,13 @@ final class SettingsViewModel {
     private let currencyManager: CurrencyManaging
     private let preferences: SettingsPreferencesManaging
     private let calendarService: CalendarService
-    private let notificationCenter: UNUserNotificationCenter
+    private let permissionService: NotificationPermissionService
+    private let reminderSync: ReminderSyncing
+    private let quietHoursService: QuietHoursService
+    private var quietHoursTask: Task<Void, Never>?
     private let storeKitService: StoreKitService
     private let authService: AuthService
     private let subscriptionRepository: SubscriptionRepository
-    private let notificationScheduler: NotificationScheduling
     private let featureFlagService: FeatureFlagProviding
     private let deviceIdentity: DeviceIdentityProviding
 
@@ -66,6 +71,7 @@ final class SettingsViewModel {
 
     private var preferencesObservationTask: Task<Void, Never>?
     private var currencyObservationTask: Task<Void, Never>?
+    private var foregroundObserver: NSObjectProtocol?
 
     private(set) var state: ViewState<Snapshot> = .idle {
         didSet { onStateChange?(state) }
@@ -78,8 +84,13 @@ final class SettingsViewModel {
     var onOpenLanguage: (() -> Void)?
     var onOpenCurrency: (() -> Void)?
     var onOpenReminderDefaults: (() -> Void)?
+    var onOpenQuietHours: (() -> Void)?
     var onCopyDeviceID: ((String) -> Void)?
     var onErrorMessage: ((String) -> Void)?
+    /// The user tapped the permission row (or flipped the switch) while iOS
+    /// has notifications off for Subly → coordinator offers iOS Settings.
+    var onNotificationPermissionDenied: (() -> Void)?
+    var onOpenSystemNotificationSettings: (() -> Void)?
 
     init(
         themeManager: ThemeManaging,
@@ -87,11 +98,12 @@ final class SettingsViewModel {
         currencyManager: CurrencyManaging,
         preferences: SettingsPreferencesManaging,
         calendarService: CalendarService,
-        notificationCenter: UNUserNotificationCenter = .current(),
+        permissionService: NotificationPermissionService,
+        reminderSync: ReminderSyncing,
+        quietHoursService: QuietHoursService,
         storeKitService: StoreKitService,
         authService: AuthService,
         subscriptionRepository: SubscriptionRepository,
-        notificationScheduler: NotificationScheduling,
         featureFlagService: FeatureFlagProviding,
         deviceIdentity: DeviceIdentityProviding
     ) {
@@ -100,11 +112,12 @@ final class SettingsViewModel {
         self.currencyManager = currencyManager
         self.preferences = preferences
         self.calendarService = calendarService
-        self.notificationCenter = notificationCenter
+        self.permissionService = permissionService
+        self.reminderSync = reminderSync
+        self.quietHoursService = quietHoursService
         self.storeKitService = storeKitService
         self.authService = authService
         self.subscriptionRepository = subscriptionRepository
-        self.notificationScheduler = notificationScheduler
         self.featureFlagService = featureFlagService
         self.deviceIdentity = deviceIdentity
     }
@@ -112,6 +125,10 @@ final class SettingsViewModel {
     deinit {
         preferencesObservationTask?.cancel()
         currencyObservationTask?.cancel()
+        quietHoursTask?.cancel()
+        if let foregroundObserver {
+            NotificationCenter.default.removeObserver(foregroundObserver)
+        }
     }
 
     func load() {
@@ -120,13 +137,49 @@ final class SettingsViewModel {
         calendarStatus = calendarService.authorizationStatus()
         Task { [weak self] in
             guard let self else { return }
-            self.notificationStatus = await notificationCenter.notificationSettings().authorizationStatus
+            self.notificationStatus = await permissionService.status()
             self.entitlement = await storeKitService.currentEntitlement()
             self.authState = authService.currentState()
             self.publishSnapshot()
         }
         observePreferences()
         observeCurrency()
+        observeForeground()
+        observeQuietHours()
+    }
+
+    private func observeQuietHours() {
+        quietHoursTask?.cancel()
+        quietHoursTask = Task { [weak self] in
+            guard let self else { return }
+            var isFirst = true
+            for await _ in quietHoursService.observe() {
+                if Task.isCancelled { return }
+                if isFirst { isFirst = false; continue }
+                self.publishSnapshot()
+            }
+        }
+    }
+
+    /// The permission row reflects iOS Settings, which the user may have
+    /// changed while away — re-read on every return to the foreground.
+    private func observeForeground() {
+        guard foregroundObserver == nil else { return }
+        foregroundObserver = NotificationCenter.default.addObserver(
+            forName: UIApplication.didBecomeActiveNotification,
+            object: nil,
+            queue: .main
+        ) { _ in
+            Task { @MainActor [weak self] in
+                await self?.refreshPermissionStatus()
+            }
+        }
+    }
+
+    private func refreshPermissionStatus() async {
+        notificationStatus = await permissionService.status()
+        preferencesValue = preferences.current()
+        publishSnapshot()
     }
 
     func didSelect(action: RowAction) {
@@ -141,6 +194,8 @@ final class SettingsViewModel {
         case .openLanguage: onOpenLanguage?()
         case .openCurrency: onOpenCurrency?()
         case .openReminderDefaults: onOpenReminderDefaults?()
+        case .openQuietHours: onOpenQuietHours?()
+        case .openNotificationPermission: handlePermissionRowTap()
         case .none: break
         }
     }
@@ -154,27 +209,49 @@ final class SettingsViewModel {
         }
     }
 
-    /// v5 master notifications switch: persists the preference, then cancels
-    /// or reschedules every active subscription's renewal reminders.
+    /// v5 master notifications switch. Turning it on needs the OS
+    /// permission: not asked yet → system prompt (the outcome sets the
+    /// switch); denied → switch stays off and the coordinator points to iOS
+    /// Settings. Either way the reminder set is rebuilt and the backend's
+    /// device row is updated.
     private func handleNotificationsToggle(isOn: Bool) {
-        preferences.setRemindersEnabled(isOn)
         Task { [weak self] in
             guard let self else { return }
-            if isOn, notificationStatus == .notDetermined {
-                _ = try? await notificationScheduler.requestAuthorization()
-                self.notificationStatus = await notificationCenter.notificationSettings().authorizationStatus
-            }
-            let active = (try? await subscriptionRepository.fetchActive()) ?? []
             if isOn {
-                for sub in active where !sub.reminderLeadDays.isEmpty {
-                    try? await notificationScheduler.schedule(for: sub, leadDays: sub.reminderLeadDays)
+                switch await permissionService.status() {
+                case .notDetermined:
+                    await permissionService.requestPermission()
+                case .denied:
+                    preferences.setRemindersEnabled(false)
+                    permissionService.markAwaitingSystemSettings()
+                    onNotificationPermissionDenied?()
+                default:
+                    preferences.setRemindersEnabled(true)
+                    await reminderSync.resync()
+                    await permissionService.syncBackend()
                 }
             } else {
-                for sub in active {
-                    await notificationScheduler.cancel(for: sub.id)
-                }
+                preferences.setRemindersEnabled(false)
+                await reminderSync.resync()
+                await permissionService.syncBackend()
             }
-            self.publishSnapshot()
+            await self.refreshPermissionStatus()
+        }
+    }
+
+    private func handlePermissionRowTap() {
+        Task { [weak self] in
+            guard let self else { return }
+            switch await permissionService.status() {
+            case .notDetermined:
+                await permissionService.requestPermission()
+                await self.refreshPermissionStatus()
+            case .denied:
+                permissionService.markAwaitingSystemSettings()
+                onOpenSystemNotificationSettings?()
+            default:
+                onOpenSystemNotificationSettings?()
+            }
         }
     }
 
@@ -298,12 +375,17 @@ final class SettingsViewModel {
                 .value(
                     title: Strings.Settings.rowPermission,
                     detail: permissionText(for: notificationStatus),
-                    action: .none
+                    action: .openNotificationPermission
                 ),
                 .disclosure(
                     title: Strings.Settings.rowReminders,
                     accessory: .detail(reminderSummary()),
                     action: .openReminderDefaults
+                ),
+                .disclosure(
+                    title: Strings.QuietHours.row,
+                    accessory: .detail(QuietHoursViewModel.summary(quietHoursService.current(), calendar: .current)),
+                    action: .openQuietHours
                 ),
                 .toggle(
                     title: Strings.Settings.rowCalendarExport,

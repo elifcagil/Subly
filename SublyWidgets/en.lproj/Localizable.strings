@@ -1,0 +1,11 @@
+"widget.upcoming" = "Upcoming";
+"widget.this_week" = "this week";
+"widget.next_renewal" = "Next renewal";
+"widget.add_first" = "Add your first subscription";
+"widget.when.today" = "Today";
+"widget.when.tomorrow" = "Tomorrow";
+"widget.when.in_days_format" = "In %d days";
+"widget.accessibility_format" = "%1$@, %2$@, renews %3$@, %4$d%% of the billing cycle elapsed.";
+"widget.when.short_days_format" = "%dd";
+"widget.lock.add" = "Add a subscription";
+"widget.lock.empty_inline" = "No renewals soon";

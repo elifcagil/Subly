@@ -24,7 +24,7 @@ final class AddEditSubscriptionViewModel {
 
     private let subscriptionRepository: SubscriptionRepository
     private let categoryRepository: CategoryRepository
-    private let notificationScheduler: NotificationScheduling
+    private let reminderSync: ReminderSyncing
     private let preferences: SettingsPreferencesManaging
     private let calendarService: CalendarService
     private let dateProvider: DateProviding
@@ -54,7 +54,7 @@ final class AddEditSubscriptionViewModel {
         mode: Mode,
         subscriptionRepository: SubscriptionRepository,
         categoryRepository: CategoryRepository,
-        notificationScheduler: NotificationScheduling,
+        reminderSync: ReminderSyncing,
         preferences: SettingsPreferencesManaging,
         calendarService: CalendarService,
         currencyManager: CurrencyManaging,
@@ -65,7 +65,7 @@ final class AddEditSubscriptionViewModel {
         self.mode = mode
         self.subscriptionRepository = subscriptionRepository
         self.categoryRepository = categoryRepository
-        self.notificationScheduler = notificationScheduler
+        self.reminderSync = reminderSync
         self.preferences = preferences
         self.calendarService = calendarService
         self.currencyManager = currencyManager
@@ -226,25 +226,15 @@ final class AddEditSubscriptionViewModel {
     }
 
     private func persist(_ subscription: Subscription) {
-        // Master notifications switch (Settings) gates all reminder scheduling.
-        let leadDays = preferences.current().remindersEnabled
-            ? subscription.reminderLeadDays
-            : []
         isSaving = true
         publishSnapshot()
         Task { [weak self] in
             guard let self else { return }
             do {
                 try await subscriptionRepository.save(subscription)
-                if !leadDays.isEmpty {
-                    do {
-                        try await notificationScheduler.schedule(for: subscription, leadDays: leadDays)
-                    } catch {
-                        // Scheduling errors do not block save; surface as a soft warning.
-                    }
-                } else {
-                    await notificationScheduler.cancel(for: subscription.id)
-                }
+                // Rebuilds the whole reminder set — grouping needs all of it.
+                // The master switch in Settings is honoured inside.
+                await reminderSync.resync()
                 if self.preferences.current().calendarExportEnabled {
                     _ = try? await self.calendarService.export(subscription)
                 }

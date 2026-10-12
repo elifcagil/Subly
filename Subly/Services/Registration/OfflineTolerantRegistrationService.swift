@@ -36,9 +36,11 @@ struct OfflineTolerantRegistrationService: RegistrationService {
                 "Device registration deferred — no connectivity. Will retry on next foreground. (\(error))",
                 category: "registration"
             )
+            let registeredAt = deviceIdentity.registeredAt() ?? Date()
+            if deviceIdentity.registeredAt() == nil { deviceIdentity.setRegisteredAt(registeredAt) }
             deviceIdentity.setRegistered(true)
             deviceIdentity.setPendingRemoteSync(true)
-            return RegistrationResult(deviceID: deviceId, registeredAt: Date())
+            return RegistrationResult(deviceID: deviceId, registeredAt: registeredAt)
         }
     }
 

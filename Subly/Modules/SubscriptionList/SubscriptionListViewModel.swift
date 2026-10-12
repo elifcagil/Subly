@@ -49,6 +49,7 @@ final class SubscriptionListViewModel {
 
     private let subscriptionRepository: SubscriptionRepository
     private let categoryRepository: CategoryRepository
+    private let reminderSync: ReminderSyncing
     private let currencyFormatter: CurrencyFormatting
     private let dateProvider: DateProviding
     private var observationTask: Task<Void, Never>?
@@ -74,11 +75,13 @@ final class SubscriptionListViewModel {
     init(
         subscriptionRepository: SubscriptionRepository,
         categoryRepository: CategoryRepository,
+        reminderSync: ReminderSyncing,
         currencyFormatter: CurrencyFormatting,
         dateProvider: DateProviding
     ) {
         self.subscriptionRepository = subscriptionRepository
         self.categoryRepository = categoryRepository
+        self.reminderSync = reminderSync
         self.currencyFormatter = currencyFormatter
         self.dateProvider = dateProvider
     }
@@ -140,6 +143,7 @@ final class SubscriptionListViewModel {
         Task { [weak self] in
             guard let self else { return }
             try? await subscriptionRepository.delete(subscription.id)
+            await reminderSync.resync()
         }
     }
 
@@ -147,6 +151,7 @@ final class SubscriptionListViewModel {
         Task { [weak self] in
             guard let self else { return }
             try? await subscriptionRepository.archive(subscription.id)
+            await reminderSync.resync()
             self.onArchivedSubscription?()
         }
     }
@@ -157,6 +162,7 @@ final class SubscriptionListViewModel {
             var restored = subscription
             restored.isArchived = false
             try? await subscriptionRepository.save(restored)
+            await reminderSync.resync()
         }
     }
 

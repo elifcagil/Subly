@@ -91,6 +91,10 @@ targets:
         # Only standard HTTPS is used — exempt. Declaring it here skips the
         # export-compliance question on every App Store Connect upload.
         ITSAppUsesNonExemptEncryption: false
+        # Widget taps and notification deep links: subly://subscription/<id>, subly://add
+        CFBundleURLTypes:
+          - CFBundleURLName: com.elifcagil.subly
+            CFBundleURLSchemes: [subly]
         UILaunchStoryboardName: LaunchScreen
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
@@ -159,6 +163,8 @@ targets:
       - path: Subly/Storage/Repositories/SharedSubscriptionProvider.swift
       - path: Subly/Managers/CurrencyManager/CurrencyManager.swift
       - path: Subly/Managers/CurrencyManager/CurrencyFormatter.swift
+      # App icon for the widget gallery / App Library entry of the extension.
+      - path: Subly/Resources/Assets.xcassets
     info:
       path: SublyWidgets/Info.plist
       properties:
@@ -172,6 +178,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.elifcagil.subly.widgets
         PRODUCT_NAME: SublyWidgets
         TARGETED_DEVICE_FAMILY: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         GENERATE_INFOPLIST_FILE: NO
         CURRENT_PROJECT_VERSION: "2"
         MARKETING_VERSION: "1.0.1"
