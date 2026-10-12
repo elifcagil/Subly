@@ -51,7 +51,9 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UserDefaults.standard.removeObject(forKey: "com.subly.recap.last_seen_index")
         }
         if qaArgs.contains("-whatsNewQA") {
-            // Visual-QA: forget the seen version so the story opens on launch.
+            // Visual-QA: force the release switch on and forget the seen
+            // version so the story opens on launch.
+            WhatsNewPayload.isForcedOnForQA = true
             container.whatsNewStore.reset()
         }
         if qaArgs.contains("-rolloverQA") {

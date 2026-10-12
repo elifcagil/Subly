@@ -416,8 +416,8 @@ final class SettingsViewModel {
                 )
             ]
         )
-        // First group: re-open this version's What's New story (only when
-        // the build ships one).
+        // First group: re-open this version's What's New story (only while
+        // `WhatsNewPayload.isEnabled` is on for a release).
         let updates = Section(
             title: Strings.WhatsNew.settingsSection,
             footer: nil,
@@ -430,7 +430,7 @@ final class SettingsViewModel {
             ]
         )
         var sections: [Section] = []
-        if WhatsNewPayload.payload(for: AppVersion.current) != nil { sections.append(updates) }
+        if WhatsNewPayload.active != nil { sections.append(updates) }
         if showsPlanSection { sections.append(plan) }
         sections.append(contentsOf: [appearance, language, currency, notifications, about])
         state = .loaded(Snapshot(sections: sections))

@@ -39,13 +39,39 @@ struct WhatsNewPayload: Equatable, Sendable {
         let baseHex: String
     }
 
+    // MARK: - Release switch
+    //
+    // The story is shown ONCE per user, on the first launch after an update.
+    // Between releases it stays off and the cards below are the template for
+    // the next one. To ship a new What's New:
+    //   1. Write the new payload (copy `release101`), key it by the new
+    //      `CFBundleShortVersionString` in `payloads`.
+    //   2. Flip `isEnabled` to `true`.
+    //   3. After that release, flip it back to `false`.
+    // `WhatsNewStore` remembers the last seen version, so users who already
+    // watched this version's story never see it again even while enabled.
+
+    /// Master switch. `false` → no launch story, no Settings row.
+    static let isEnabled = false
+
+    /// Visual-QA override (`-whatsNewQA`): behaves as if `isEnabled` were true.
+    nonisolated(unsafe) static var isForcedOnForQA = false
+
     /// All payloads this build knows, by version.
     static let payloads: [String: WhatsNewPayload] = [
         "1.0.1": release101
     ]
 
+    /// The payload keyed by `version`, regardless of the switch (tests).
     static func payload(for version: String) -> WhatsNewPayload? {
         payloads[version]
+    }
+
+    /// The story this build may show: enabled and keyed by the running
+    /// version. Nil → the feature is dormant.
+    static var active: WhatsNewPayload? {
+        guard isEnabled || isForcedOnForQA else { return nil }
+        return payload(for: AppVersion.current)
     }
 
     // MARK: - 1.0.1

@@ -21,9 +21,10 @@ final class WhatsNewCoordinator: Coordinator {
         self.payload = payload
     }
 
-    /// The story for the running version, if this build ships one.
+    /// The story for the running version, if this build ships one and the
+    /// release switch is on.
     static func currentPayload() -> WhatsNewPayload? {
-        WhatsNewPayload.payload(for: AppVersion.current)
+        WhatsNewPayload.active
     }
 
     func start() {

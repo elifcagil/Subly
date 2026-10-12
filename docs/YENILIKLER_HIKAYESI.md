@@ -11,9 +11,19 @@ Recap ve Yenilikler aynı motoru kullanır (`Subly/Modules/Story/`):
 - `StoryCardView` + `StoryContent` protokolü: her hikâye kartlarını, paletini ve ipucunu sağlar (`RecapStoryContent`, `WhatsNewViewModel`).
 - `StoryIntroTheme`: giriş kartları için `.graphite` (koyu) / `.paper` (açık) renk tokenleri. Recap kart 01 ve Yenilikler kart 01 bunu kullanır.
 
+## Sürüm anahtarı (`WhatsNewPayload.isEnabled`)
+
+Hikâye kullanıcıya **bir kez**, güncelleme sonrası ilk açılışta gösterilir. Sürümler arasında `isEnabled = false` tutulur; payload bir sonraki Yenilikler için şablondur. Yeni bir Yenilikler yayınlamak için:
+
+1. Yeni payload'ı yaz (`release101` kopyala), `payloads` sözlüğüne yeni `CFBundleShortVersionString` ile ekle.
+2. `isEnabled = true` yap.
+3. O sürümden sonra tekrar `false` yap.
+
+`false` iken açılışta hikâye gelmez ve Ayarlar'daki "Yenilikler" satırı görünmez. `-whatsNewQA` argümanı QA için anahtarı geçici olarak açar.
+
 ## Ne zaman gösterilir
 
-- Sürüm başına bir kez, güncelleme sonrası ilk açılışta, Dashboard'dan önce (`AppCoordinator.presentWhatsNewIfDue`).
+- Anahtar açıkken sürüm başına bir kez, güncelleme sonrası ilk açılışta, Dashboard'dan önce (`AppCoordinator.presentWhatsNewIfDue`).
 - `WhatsNewGate.shouldShow(currentVersion:lastSeenVersion:hasPayload:)`: `CFBundleShortVersionString` > kaydedilen sürüm **ve** bu sürüm için payload varsa.
 - Yeni kurulumlar görmez: kayıt tamamlanınca `WhatsNewStore.markSeen(version:)` damgalanır.
 - Kapatılınca (düğme, ×, kaydırma) görüldü sayılır; ardından bildirim izni istemi gelir.

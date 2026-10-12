@@ -45,6 +45,20 @@ final class WhatsNewGateTests: XCTestCase {
         XCTAssertNil(store.lastSeenVersion)
     }
 
+    func testReleaseSwitchOffKeepsTheStoryDormant() {
+        // Flip `WhatsNewPayload.isEnabled` only for a release; between
+        // releases the payload is a template and nothing shows.
+        let wasForced = WhatsNewPayload.isForcedOnForQA
+        WhatsNewPayload.isForcedOnForQA = false
+        defer { WhatsNewPayload.isForcedOnForQA = wasForced }
+        if WhatsNewPayload.isEnabled {
+            XCTAssertNotNil(WhatsNewPayload.active)
+        } else {
+            XCTAssertNil(WhatsNewPayload.active)
+        }
+        XCTAssertNotNil(WhatsNewPayload.payload(for: "1.0.1"), "The template payload stays in the bundle")
+    }
+
     func testBundledPayloadMatchesTheRunningVersionAndHasSixCards() {
         let payload = WhatsNewPayload.payload(for: "1.0.1")
         XCTAssertNotNil(payload)
