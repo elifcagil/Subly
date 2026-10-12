@@ -52,7 +52,7 @@ struct WhatsNewPayload: Equatable, Sendable {
     // watched this version's story never see it again even while enabled.
 
     /// Master switch. `false` → no launch story, no Settings row.
-    static let isEnabled = false
+    static let isEnabled = true
 
     /// Visual-QA override (`-whatsNewQA`): behaves as if `isEnabled` were true.
     nonisolated(unsafe) static var isForcedOnForQA = false

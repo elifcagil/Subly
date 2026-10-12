@@ -13,7 +13,7 @@ Recap ve Yenilikler aynı motoru kullanır (`Subly/Modules/Story/`):
 
 ## Sürüm anahtarı (`WhatsNewPayload.isEnabled`)
 
-Hikâye kullanıcıya **bir kez**, güncelleme sonrası ilk açılışta gösterilir. Sürümler arasında `isEnabled = false` tutulur; payload bir sonraki Yenilikler için şablondur. Yeni bir Yenilikler yayınlamak için:
+Hikâye kullanıcıya **bir kez**, güncelleme sonrası ilk açılışta gösterilir. Sürümler arasında `isEnabled = false` tutulur; payload bir sonraki Yenilikler için şablondur. 1.1.0 için anahtar **açık**. Yeni bir Yenilikler yayınlamak için:
 
 1. Yeni payload'ı yaz (`release101` kopyala), `payloads` sözlüğüne yeni `CFBundleShortVersionString` ile ekle.
 2. `isEnabled = true` yap.
