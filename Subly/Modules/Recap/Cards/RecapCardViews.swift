@@ -1,44 +1,16 @@
 import UIKit
 
-/// Base for the story cards: content stack, palette, entrance hook.
-class RecapCardView: UIView {
+/// Recap cards: the shared story card plus the recap view model and a
+/// currency count-up helper.
+class RecapCardView: StoryCardView {
     let viewModel: RecapViewModel
-    let palette: RecapPalette
-    let content = UIStackView()
-    var animators: [RecapEntranceAnimator] = []
 
     init(viewModel: RecapViewModel, palette: RecapPalette) {
         self.viewModel = viewModel
-        self.palette = palette
-        super.init(frame: .zero)
-        content.axis = .vertical
-        content.alignment = .fill
-        content.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(content)
-        NSLayoutConstraint.activate([
-            content.leadingAnchor.constraint(equalTo: leadingAnchor),
-            content.trailingAnchor.constraint(equalTo: trailingAnchor),
-            content.centerYAnchor.constraint(equalTo: centerYAnchor),
-            content.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
-            content.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
-        ])
+        super.init(palette: palette)
     }
 
     required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
-
-    /// Called once the card is on screen. Subclasses count up / fill.
-    func playEntrance(reduceMotion: Bool) {}
-
-    func stopAnimations() {
-        animators.forEach { $0.cancel() }
-        animators.removeAll()
-    }
-
-    func animate(duration: TimeInterval = 1.5, reduceMotion: Bool, _ update: @escaping (Double) -> Void) {
-        let animator = RecapEntranceAnimator()
-        animators.append(animator)
-        animator.run(duration: duration, reduceMotion: reduceMotion, update: update)
-    }
 
     func countUp(_ value: Decimal, reduceMotion: Bool, into label: UILabel, render: @escaping (String) -> NSAttributedString) {
         animate(reduceMotion: reduceMotion) { [weak self, weak label] t in
@@ -54,6 +26,9 @@ class RecapCardView: UIView {
 final class RecapTotalCardView: RecapCardView {
     private let amountLabel = UILabel()
     private var barFills: [(view: UIView, height: NSLayoutConstraint, target: CGFloat)] = []
+
+    /// Card 01 is graphite / paper by appearance.
+    override var followsAppearance: Bool { true }
 
     override init(viewModel: RecapViewModel, palette: RecapPalette) {
         super.init(viewModel: viewModel, palette: palette)
@@ -89,7 +64,7 @@ final class RecapTotalCardView: RecapCardView {
         content.addArrangedSubview(bars)
 
         if let comparison = recap.comparison {
-            let delta = RecapTypography.label(13.5, weight: .semibold, color: palette.secondary, tabular: true)
+            let delta = RecapTypography.label(13.5, weight: .semibold, color: palette.accent, tabular: true)
             let amount = viewModel.amount(abs(comparison.delta))
             delta.text = comparison.delta >= 0 ? Strings.Recap.moreThanPrevious(amount) : Strings.Recap.lessThanPrevious(amount)
             content.setCustomSpacing(12, after: bars)
@@ -125,7 +100,7 @@ final class RecapTotalCardView: RecapCardView {
             track.translatesAutoresizingMaskIntoConstraints = false
             track.heightAnchor.constraint(equalToConstant: maxHeight).isActive = true
             let fill = UIView()
-            fill.backgroundColor = index == months.count - 1 ? palette.ink : UIColor(red: 20/255, green: 22/255, blue: 9/255, alpha: 0.16)
+            fill.backgroundColor = index == months.count - 1 ? palette.accent : palette.muted
             fill.layer.cornerRadius = 8
             fill.layer.cornerCurve = .continuous
             fill.translatesAutoresizingMaskIntoConstraints = false
@@ -140,7 +115,7 @@ final class RecapTotalCardView: RecapCardView {
                 height
             ])
             barFills.append((fill, height, target))
-            let label = RecapTypography.label(11, weight: .bold, color: palette.secondary, lines: 1)
+            let label = RecapTypography.label(11, weight: .bold, color: palette.tertiary, lines: 1)
             label.text = viewModel.monthLetterLabel(month.monthStart)
             label.textAlignment = .center
             column.addArrangedSubview(track)

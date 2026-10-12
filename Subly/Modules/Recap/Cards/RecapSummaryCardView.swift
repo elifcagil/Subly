@@ -28,7 +28,7 @@ final class RecapTileView: UIView {
 /// The summary tiles (card 05 and the share image). Each tile reuses its
 /// card's colours.
 final class RecapSummaryTilesView: UIView {
-    let totalTile = RecapTileView(palette: RecapPalette.palette(for: .total))
+    let totalTile = RecapTileView(palette: RecapPalette.limeTotal)
     let mostExpensiveTile = RecapTileView(palette: RecapPalette.palette(for: .mostExpensive))
     let priceTile = RecapTileView(palette: RecapPalette.palette(for: .priceIncreases))
     let longestTile = RecapTileView(palette: RecapPalette.palette(for: .longestRunning))

@@ -67,6 +67,9 @@ final class AppCoordinator: Coordinator {
         coordinator.onFinished = { [weak self, weak coordinator] in
             guard let self, let coordinator else { return }
             self.removeChild(coordinator)
+            // Fresh install: this version's What's New is "seen" — only
+            // updates get the story.
+            self.container.whatsNewStore.markSeen(version: AppVersion.current)
             // Resume the normal route (onboarding for first-timers).
             UIView.transition(
                 with: self.window,
@@ -101,6 +104,11 @@ final class AppCoordinator: Coordinator {
         let coordinator = TabBarCoordinator(window: window, container: container)
         addChild(coordinator)
         coordinator.start()
+        if presentWhatsNewIfDue(over: coordinator) {
+            // The story covers the shell; the usual entry prompts follow once
+            // it is dismissed (see `presentWhatsNewIfDue`).
+            return
+        }
         if startingAddFlow {
             // Give the shell a beat to settle before presenting the sheet.
             // The notification prompt follows once that sheet closes.
@@ -112,5 +120,28 @@ final class AppCoordinator: Coordinator {
             // permission once the dashboard has settled.
             coordinator.promptForNotificationPermissionIfNeeded(after: 0.8)
         }
+    }
+
+    /// First launch after an update → the What's New story opens over the
+    /// shell before the Dashboard is seen (no tap needed). Returns `false`
+    /// when nothing is due.
+    @discardableResult
+    private func presentWhatsNewIfDue(over shell: TabBarCoordinator) -> Bool {
+        guard let payload = WhatsNewCoordinator.currentPayload(),
+              WhatsNewGate.shouldShow(
+                currentVersion: AppVersion.current,
+                lastSeenVersion: container.whatsNewStore.lastSeenVersion,
+                hasPayload: true
+              ),
+              let host = window.rootViewController else { return false }
+        let coordinator = WhatsNewCoordinator(presentingController: host, container: container, payload: payload)
+        coordinator.onFinished = { [weak self, weak coordinator, weak shell] in
+            guard let self, let coordinator else { return }
+            self.removeChild(coordinator)
+            shell?.promptForNotificationPermissionIfNeeded(after: 0.5)
+        }
+        addChild(coordinator)
+        coordinator.start(animated: false)
+        return true
     }
 }

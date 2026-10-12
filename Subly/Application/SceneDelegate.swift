@@ -50,6 +50,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
             UserDefaults.standard.removeObject(forKey: "com.subly.recap.last_seen_index")
         }
+        if qaArgs.contains("-whatsNewQA") {
+            // Visual-QA: forget the seen version so the story opens on launch.
+            container.whatsNewStore.reset()
+        }
         if qaArgs.contains("-rolloverQA") {
             // Visual-QA: insert a stale-dated subscription so the roll-forward
             // pass has something to advance (the UI can't create past dates).

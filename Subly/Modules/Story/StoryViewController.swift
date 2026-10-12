@@ -1,11 +1,11 @@
 import UIKit
 
-/// Story container: card background, segmented progress bar, header, the
-/// current card, "Tap to continue". Tap right 2/3 → next, left 1/3 →
-/// previous, long-press → pause, swipe down → dismiss.
-final class RecapViewController: UIViewController {
+/// Story container shared by the Recap and What's New: card background,
+/// segmented progress bar, header, the current card, bottom hint. Tap right
+/// 2/3 → next, left 1/3 → previous, long-press → pause, swipe down → dismiss.
+final class StoryViewController: UIViewController {
 
-    private let viewModel: RecapViewModel
+    private let content: StoryContent
     private let haptics: HapticsService
 
     private var backgroundLayer: CALayer?
@@ -16,14 +16,16 @@ final class RecapViewController: UIViewController {
     private let closeButton = UIButton(type: .system)
     private let cardHost = UIView()
     private let hintLabel = UILabel()
-    private var currentCard: RecapCardView?
-    private var currentPalette = RecapPalette.palette(for: .total)
+    private var currentCard: StoryCardView?
+    private var currentPalette: RecapPalette?
     private var dismissStartCenter: CGPoint = .zero
+    private var renderedIndex = -1
 
     private var reduceMotion: Bool { UIAccessibility.isReduceMotionEnabled }
+    private var theme: StoryIntroTheme { StoryIntroTheme.resolve(traitCollection) }
 
-    init(viewModel: RecapViewModel, haptics: HapticsService) {
-        self.viewModel = viewModel
+    init(content: StoryContent, haptics: HapticsService) {
+        self.content = content
         self.haptics = haptics
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,7 +33,7 @@ final class RecapViewController: UIViewController {
     required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        viewModel.currentCard == .total ? .darkContent : .lightContent
+        (currentPalette?.prefersLightStatusBar ?? true) ? .lightContent : .darkContent
     }
 
     override func viewDidLoad() {
@@ -42,7 +44,7 @@ final class RecapViewController: UIViewController {
         configureChrome()
         configureGestures()
         bind()
-        viewModel.start()
+        content.player.start()
     }
 
     override func viewDidLayoutSubviews() {
@@ -52,11 +54,20 @@ final class RecapViewController: UIViewController {
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        viewModel.stop()
+        content.player.stop()
     }
 
-    func resumeAfterShare() {
-        viewModel.setPaused(false)
+    /// Follow the appearance live: intro cards crossfade to the other theme.
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        guard let previous = previousTraitCollection,
+              previous.userInterfaceStyle != traitCollection.userInterfaceStyle,
+              renderedIndex >= 0, currentCard?.followsAppearance == true else { return }
+        showCard(at: renderedIndex, playEntrance: false, crossfade: true)
+    }
+
+    func resume() {
+        content.player.setPaused(false)
     }
 
     // MARK: - Setup
@@ -72,7 +83,7 @@ final class RecapViewController: UIViewController {
         chrome.addSubview(progressStack)
 
         headerLabel.font = RecapTypography.font(13, weight: .bold)
-        headerLabel.text = Strings.Recap.header(period: viewModel.periodLabel)
+        headerLabel.text = content.headerTitle
         headerLabel.adjustsFontForContentSizeCategory = true
 
         var config = UIButton.Configuration.plain()
@@ -83,7 +94,7 @@ final class RecapViewController: UIViewController {
         closeButton.accessibilityLabel = Strings.Recap.close
         closeButton.addAction(UIAction { [weak self] _ in
             self?.haptics.play(.lightImpact)
-            self?.viewModel.close()
+            self?.content.close()
         }, for: .touchUpInside)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         let headerRow = UIStackView(arrangedSubviews: [headerLabel, UIView(), closeButton])
@@ -93,7 +104,6 @@ final class RecapViewController: UIViewController {
         chrome.addSubview(headerRow)
 
         hintLabel.font = RecapTypography.font(12, weight: .semibold)
-        hintLabel.text = Strings.Recap.tapToContinue
         hintLabel.textAlignment = .center
         hintLabel.adjustsFontForContentSizeCategory = true
         hintLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -130,7 +140,7 @@ final class RecapViewController: UIViewController {
             cardHost.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -side)
         ])
 
-        for _ in viewModel.cards {
+        for _ in 0..<content.player.count {
             let track = UIView()
             track.layer.cornerRadius = 1.5
             let fill = UIView()
@@ -161,26 +171,24 @@ final class RecapViewController: UIViewController {
     }
 
     private func bind() {
-        viewModel.onSnapshot = { [weak self] snapshot in self?.render(snapshot) }
-        viewModel.onProgress = { [weak self] progress in self?.renderProgress(progress) }
+        content.player.onSnapshot = { [weak self] snapshot in self?.render(snapshot) }
+        content.player.onProgress = { [weak self] progress in self?.renderProgress(progress) }
     }
 
     // MARK: - Rendering
 
-    private var renderedIndex = -1
-
-    private func render(_ snapshot: RecapViewModel.Snapshot) {
+    private func render(_ snapshot: StoryPlayer.Snapshot) {
         UIView.animate(withDuration: 0.2) {
             self.chrome.alpha = snapshot.isPaused ? 0.4 : 1
         }
         guard snapshot.index != renderedIndex else { return }
         if renderedIndex >= 0 { haptics.play(.selection) }
         renderedIndex = snapshot.index
-        showCard(snapshot.cards[snapshot.index], at: snapshot.index)
+        showCard(at: snapshot.index, playEntrance: true, crossfade: false)
     }
 
-    private func showCard(_ card: Recap.Card, at index: Int) {
-        let palette = RecapPalette.palette(for: card)
+    private func showCard(at index: Int, playEntrance: Bool, crossfade: Bool) {
+        let palette = content.palette(at: index, theme: theme)
         currentPalette = palette
 
         let newBackground = palette.makeBackgroundLayer()
@@ -193,7 +201,7 @@ final class RecapViewController: UIViewController {
             let fade = CABasicAnimation(keyPath: "opacity")
             fade.fromValue = 0
             fade.toValue = 1
-            fade.duration = 0.25
+            fade.duration = crossfade ? 0.2 : 0.25
             newBackground.add(fade, forKey: "fade")
             newBackground.opacity = 1
             CATransaction.commit()
@@ -202,22 +210,31 @@ final class RecapViewController: UIViewController {
         }
         backgroundLayer = newBackground
 
-        headerLabel.textColor = palette.secondary
-        hintLabel.textColor = palette.tertiary
-        hintLabel.isHidden = card == .summary
-        closeButton.tintColor = palette.ink
-        closeButton.backgroundColor = palette.ink.withAlphaComponent(0.12)
-        for (segmentIndex, segment) in progressFills.enumerated() {
-            segment.track.backgroundColor = palette.ink.withAlphaComponent(0.2)
-            segment.fill.backgroundColor = palette.ink.withAlphaComponent(0.9)
-            segment.width.constant = segmentIndex < index ? segment.track.bounds.width : 0
-            segment.fill.isHidden = false
+        let applyChrome = {
+            self.headerLabel.textColor = palette.secondary
+            self.hintLabel.textColor = palette.tertiary
+            self.hintLabel.text = self.content.hint(at: index)
+            self.hintLabel.isHidden = self.hintLabel.text == nil
+            self.closeButton.tintColor = palette.ink
+            self.closeButton.backgroundColor = palette.closeBackground
+            for (segmentIndex, segment) in self.progressFills.enumerated() {
+                segment.track.backgroundColor = palette.progressUpcoming
+                segment.fill.backgroundColor = palette.progressDone
+                if !crossfade {
+                    segment.width.constant = segmentIndex < index ? segment.track.bounds.width : 0
+                }
+            }
+        }
+        if crossfade {
+            UIView.transition(with: chrome, duration: 0.2, options: .transitionCrossDissolve, animations: applyChrome)
+        } else {
+            applyChrome()
         }
         setNeedsStatusBarAppearanceUpdate()
 
-        currentCard?.stopAnimations()
-        currentCard?.removeFromSuperview()
-        let cardView = makeCard(card, palette: palette)
+        let outgoing = currentCard
+        outgoing?.stopAnimations()
+        let cardView = content.makeCard(at: index, palette: palette)
         cardView.translatesAutoresizingMaskIntoConstraints = false
         cardView.alpha = 0
         cardHost.addSubview(cardView)
@@ -229,43 +246,26 @@ final class RecapViewController: UIViewController {
         ])
         currentCard = cardView
         view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.2) { cardView.alpha = 1 }
-        cardView.playEntrance(reduceMotion: reduceMotion)
-        UIAccessibility.post(notification: .screenChanged, argument: cardView)
-    }
-
-    private func makeCard(_ card: Recap.Card, palette: RecapPalette) -> RecapCardView {
-        switch card {
-        case .total:
-            return RecapTotalCardView(viewModel: viewModel, palette: palette)
-        case .mostExpensive:
-            return RecapMostExpensiveCardView(viewModel: viewModel, palette: palette)
-        case .priceIncreases:
-            let view = RecapPriceIncreasesCardView(viewModel: viewModel, palette: palette)
-            view.onReview = { [weak self] in
-                self?.haptics.play(.lightImpact)
-                self?.viewModel.reviewSubscriptions()
-            }
-            return view
-        case .longestRunning:
-            return RecapLongestRunningCardView(viewModel: viewModel, palette: palette)
-        case .summary:
-            let view = RecapSummaryCardView(viewModel: viewModel, palette: palette)
-            view.onShare = { [weak self] in
-                self?.haptics.play(.lightImpact)
-                self?.viewModel.share()
-            }
-            view.onDone = { [weak self] in
-                self?.haptics.play(.lightImpact)
-                self?.viewModel.finish()
-            }
-            return view
+        if crossfade {
+            UIView.animate(withDuration: 0.2, animations: {
+                cardView.alpha = 1
+                outgoing?.alpha = 0
+            }, completion: { _ in
+                outgoing?.removeFromSuperview()
+            })
+        } else {
+            outgoing?.removeFromSuperview()
+            UIView.animate(withDuration: 0.2) { cardView.alpha = 1 }
         }
+        // Rebuilt for a theme change → final state, no replayed entrance.
+        cardView.playEntrance(reduceMotion: playEntrance ? reduceMotion : true)
+        if playEntrance { UIAccessibility.post(notification: .screenChanged, argument: cardView) }
     }
 
     private func renderProgress(_ progress: Double) {
-        guard viewModel.index < progressFills.count else { return }
-        let segment = progressFills[viewModel.index]
+        let index = content.player.index
+        guard index < progressFills.count else { return }
+        let segment = progressFills[index]
         segment.width.constant = segment.track.bounds.width * CGFloat(progress)
     }
 
@@ -276,16 +276,16 @@ final class RecapViewController: UIViewController {
         let location = recognizer.location(in: view)
         if let hit = view.hitTest(location, with: nil), hit is UIControl || hit.superview is UIControl { return }
         if location.x < view.bounds.width / 3 {
-            viewModel.previous()
-        } else if !viewModel.isLastCard {
-            viewModel.next()
+            content.player.previous()
+        } else if !content.player.isLastCard {
+            content.player.next()
         }
     }
 
     @objc private func didHold(_ recognizer: UILongPressGestureRecognizer) {
         switch recognizer.state {
-        case .began: viewModel.setPaused(true)
-        case .ended, .cancelled, .failed: viewModel.setPaused(false)
+        case .began: content.player.setPaused(true)
+        case .ended, .cancelled, .failed: content.player.setPaused(false)
         default: break
         }
     }
@@ -294,7 +294,7 @@ final class RecapViewController: UIViewController {
         let translation = recognizer.translation(in: view)
         switch recognizer.state {
         case .began:
-            viewModel.setPaused(true)
+            content.player.setPaused(true)
             dismissStartCenter = view.center
         case .changed:
             let dy = max(0, translation.y)
@@ -306,14 +306,14 @@ final class RecapViewController: UIViewController {
         case .ended, .cancelled:
             let velocity = recognizer.velocity(in: view).y
             if translation.y > 120 || velocity > 900 {
-                viewModel.close()
+                content.close()
             } else {
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.4) {
                     self.view.center = self.dismissStartCenter
                     self.view.transform = .identity
                     self.view.layer.cornerRadius = 0
                 }
-                viewModel.setPaused(false)
+                content.player.setPaused(false)
             }
         default:
             break

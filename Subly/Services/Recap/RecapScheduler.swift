@@ -138,6 +138,13 @@ final class RecapScheduler: RecapAvailabilityProviding {
         )
     }
 
+    /// When the next recap arrives (What's New finale: "Your first recap
+    /// arrives on …"). Nil before the device has an anchor.
+    func nextRecapDate() async -> Date? {
+        await refreshAnchor()
+        return cadence?.nextRecapDate(after: dateProvider.now)
+    }
+
     func recapIndex(covering date: Date) -> Int? {
         cadence?.dueIndex(covering: date, at: dateProvider.now)
     }

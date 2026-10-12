@@ -35,3 +35,7 @@ Kaynak: `design_handoff_subly_v5 3/CLAUDE_CODE_PROMPT_RECAP.md`, `Subly Monthly 
 - Ayarlar avatarı: baş harf yok; 34pt daire, avatar yüzeyi + 1pt kontrol çizgisi, 16pt semibold "person" simgesi, VoiceOver "Ayarlar".
 - VoiceOver: "Özet hazır, {Tem–Eyl}" / "Özet, {Tem–Eyl}, görüldü", ipucu "3 aylık özetini açar".
 - Snapshot testleri yazılmadı (projede snapshot altyapısı yok); durum mantığı birim testli.
+
+## Güncelleme: ortak story motoru ve kart 01 teması
+
+`RecapViewController` kaldırıldı; Recap artık `StoryViewController` + `RecapStoryContent` ile çalışır (bkz. `docs/YENILIKLER_HIKAYESI.md`). Kart 01 görünüme göre grafit / kağıt temasını kullanır; diğer kartlar ve paylaşım görseli değişmedi.

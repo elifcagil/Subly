@@ -28,6 +28,7 @@ final class SettingsViewModel {
         case openCurrency
         case openReminderDefaults
         case openQuietHours
+        case openWhatsNew
         /// Permission row: not asked yet → system prompt; otherwise iOS Settings.
         case openNotificationPermission
         case none
@@ -85,6 +86,7 @@ final class SettingsViewModel {
     var onOpenCurrency: (() -> Void)?
     var onOpenReminderDefaults: (() -> Void)?
     var onOpenQuietHours: (() -> Void)?
+    var onOpenWhatsNew: (() -> Void)?
     var onCopyDeviceID: ((String) -> Void)?
     var onErrorMessage: ((String) -> Void)?
     /// The user tapped the permission row (or flipped the switch) while iOS
@@ -195,6 +197,7 @@ final class SettingsViewModel {
         case .openCurrency: onOpenCurrency?()
         case .openReminderDefaults: onOpenReminderDefaults?()
         case .openQuietHours: onOpenQuietHours?()
+        case .openWhatsNew: onOpenWhatsNew?()
         case .openNotificationPermission: handlePermissionRowTap()
         case .none: break
         }
@@ -413,7 +416,21 @@ final class SettingsViewModel {
                 )
             ]
         )
+        // First group: re-open this version's What's New story (only when
+        // the build ships one).
+        let updates = Section(
+            title: Strings.WhatsNew.settingsSection,
+            footer: nil,
+            rows: [
+                .disclosure(
+                    title: Strings.WhatsNew.settingsRow,
+                    accessory: .detail(AppVersion.current),
+                    action: .openWhatsNew
+                )
+            ]
+        )
         var sections: [Section] = []
+        if WhatsNewPayload.payload(for: AppVersion.current) != nil { sections.append(updates) }
         if showsPlanSection { sections.append(plan) }
         sections.append(contentsOf: [appearance, language, currency, notifications, about])
         state = .loaded(Snapshot(sections: sections))

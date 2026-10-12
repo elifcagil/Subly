@@ -50,6 +50,9 @@ final class SettingsCoordinator: Coordinator {
         viewModel.onOpenQuietHours = { [weak self] in
             self?.pushQuietHours()
         }
+        viewModel.onOpenWhatsNew = { [weak self] in
+            self?.presentWhatsNew()
+        }
         viewModel.onOpenSystemNotificationSettings = {
             UIApplication.openNotificationSettings()
         }
@@ -136,6 +139,18 @@ final class SettingsCoordinator: Coordinator {
             navigationController: navigationController,
             container: container
         )
+        addChild(coordinator)
+        coordinator.start()
+    }
+
+    private func presentWhatsNew() {
+        guard let host = navigationController.topViewController,
+              let payload = WhatsNewCoordinator.currentPayload() else { return }
+        let coordinator = WhatsNewCoordinator(presentingController: host, container: container, payload: payload)
+        coordinator.onFinished = { [weak self, weak coordinator] in
+            guard let self, let coordinator else { return }
+            self.removeChild(coordinator)
+        }
         addChild(coordinator)
         coordinator.start()
     }

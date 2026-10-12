@@ -22,16 +22,46 @@ final class RecapStoryButton: UIControl {
     private var foregroundObserver: NSObjectProtocol?
     private var isSpinPaused = false
 
-    private static let side: CGFloat = 40
-    private static let ringRadius: CGFloat = 18
+    /// Geometry. The header icon is 40pt; the What's New finale reuses the
+    /// component at 132pt.
+    struct Metrics {
+        var side: CGFloat
+        var ringRadius: CGFloat
+        var lineWidth: CGFloat
+        var tileSide: CGFloat
+        var tileBorder: CGFloat
+        var markSide: CGFloat
+
+        static let header = Metrics(side: 40, ringRadius: 18, lineWidth: 2.5, tileSide: 30, tileBorder: 2, markSide: 24)
+        static let hero = Metrics(side: 132, ringRadius: 59.4, lineWidth: 5.3, tileSide: 100, tileBorder: 5, markSide: 68)
+    }
+
+    /// Fixed tile colours (e.g. on a graphite story card) instead of the
+    /// screen-background-derived ones.
+    struct TileColors {
+        var fill: UIColor
+        var border: UIColor
+    }
+
+    let metrics: Metrics
+    var tileColors: TileColors? {
+        didSet { applyColors() }
+    }
+
     private static let spinKey = "subly.recap.spin"
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(metrics: Metrics = .header) {
+        self.metrics = metrics
+        super.init(frame: CGRect(origin: .zero, size: CGSize(width: metrics.side, height: metrics.side)))
         configure()
     }
 
+    override convenience init(frame: CGRect) {
+        self.init(metrics: .header)
+    }
+
     required init?(coder: NSCoder) {
+        self.metrics = .header
         super.init(coder: coder)
         configure()
     }
@@ -40,35 +70,38 @@ final class RecapStoryButton: UIControl {
         if let foregroundObserver { NotificationCenter.default.removeObserver(foregroundObserver) }
     }
 
-    override var intrinsicContentSize: CGSize { CGSize(width: Self.side, height: Self.side) }
+    override var intrinsicContentSize: CGSize { CGSize(width: metrics.side, height: metrics.side) }
 
     private func configure() {
+        let side = metrics.side
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: Self.side),
-            heightAnchor.constraint(equalToConstant: Self.side)
+            widthAnchor.constraint(equalToConstant: side),
+            heightAnchor.constraint(equalToConstant: side)
         ])
 
-        let center = CGPoint(x: Self.side / 2, y: Self.side / 2)
-        let path = UIBezierPath(arcCenter: center, radius: Self.ringRadius, startAngle: -.pi / 2, endAngle: 1.5 * .pi, clockwise: true)
+        let center = CGPoint(x: side / 2, y: side / 2)
+        let path = UIBezierPath(arcCenter: center, radius: metrics.ringRadius, startAngle: -.pi / 2, endAngle: 1.5 * .pi, clockwise: true)
         for shape in [trackLayer, arcLayer] {
             shape.path = path.cgPath
             shape.fillColor = UIColor.clear.cgColor
             shape.lineCap = .round
-            shape.frame = CGRect(x: 0, y: 0, width: Self.side, height: Self.side)
+            shape.frame = CGRect(x: 0, y: 0, width: side, height: side)
         }
-        ringContainer.frame = CGRect(x: 0, y: 0, width: Self.side, height: Self.side)
+        ringContainer.frame = CGRect(x: 0, y: 0, width: side, height: side)
         ringContainer.addSublayer(trackLayer)
         ringContainer.addSublayer(arcLayer)
         layer.addSublayer(ringContainer)
 
-        // 30pt tile with a 2pt gap (border in the screen background colour).
-        tileView.frame = CGRect(x: 5, y: 5, width: 30, height: 30)
-        tileView.layer.cornerRadius = 15
-        tileView.layer.borderWidth = 2
+        // Tile with a gap (border in the screen background colour).
+        let tileInset = (side - metrics.tileSide) / 2
+        tileView.frame = CGRect(x: tileInset, y: tileInset, width: metrics.tileSide, height: metrics.tileSide)
+        tileView.layer.cornerRadius = metrics.tileSide / 2
+        tileView.layer.borderWidth = metrics.tileBorder
         tileView.isUserInteractionEnabled = false
         addSubview(tileView)
-        markView.frame = CGRect(x: 3, y: 3, width: 24, height: 24)
+        let markInset = (metrics.tileSide - metrics.markSide) / 2
+        markView.frame = CGRect(x: markInset, y: markInset, width: metrics.markSide, height: metrics.markSide)
         tileView.addSubview(markView)
 
         isAccessibilityElement = true
@@ -105,8 +138,8 @@ final class RecapStoryButton: UIControl {
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration)
         // Same look in both states: the arc stays and keeps spinning.
-        trackLayer.lineWidth = 2.5
-        arcLayer.lineWidth = 2.5
+        trackLayer.lineWidth = metrics.lineWidth
+        arcLayer.lineWidth = metrics.lineWidth
         arcLayer.opacity = 1
         arcLayer.strokeEnd = UIAccessibility.isReduceMotionEnabled ? 1 : 0.72
         CATransaction.commit()
@@ -155,6 +188,13 @@ final class RecapStoryButton: UIControl {
 
     private func applyColors() {
         let isDark = traitCollection.userInterfaceStyle == .dark
+        if let tileColors {
+            tileView.backgroundColor = tileColors.fill
+            tileView.layer.borderColor = tileColors.border.cgColor
+            arcLayer.strokeColor = UIColor(hex: "#C8F169").cgColor
+            trackLayer.strokeColor = UIColor(white: 1, alpha: 0.10).cgColor
+            return
+        }
         tileView.backgroundColor = UIColor(hex: isDark ? "#1A1C21" : "#1B1D22")
         tileView.layer.borderColor = DesignSystem.Colors.background.resolvedColor(with: traitCollection).cgColor
         arcLayer.strokeColor = UIColor(hex: isDark ? "#C8F169" : "#8CB33A").cgColor

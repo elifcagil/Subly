@@ -424,6 +424,62 @@ enum Strings {
         static var storyHint: String { L("recap.story.hint") }
     }
 
+    /// What's New story (handoff `CLAUDE_CODE_PROMPT_WHATS_NEW.md`).
+    enum WhatsNew {
+        static var header: String { L("whats_new.header") }
+        static var tapToSkipAhead: String { L("whats_new.tap_to_skip") }
+        static var settingsSection: String { L("whats_new.settings_section") }
+        static var settingsRow: String { L("whats_new.settings_row") }
+        static var introKicker: String { L("whats_new.intro.kicker") }
+        static var introHeadline: String { L("whats_new.intro.headline") }
+        /// The accent word of the headline ("things.") in dark mode.
+        static var introHeadlineAccent: String { L("whats_new.intro.headline_accent") }
+        static var introSubline: String { L("whats_new.intro.subline") }
+        static var featureHomeWidgets: String { L("whats_new.feature.home_widgets") }
+        static var featureLockWidgets: String { L("whats_new.feature.lock_widgets") }
+        static var featureReminders: String { L("whats_new.feature.reminders") }
+        static var featureQuietHours: String { L("whats_new.feature.quiet_hours") }
+        static var featureRecap: String { L("whats_new.feature.recap") }
+        static func newLabel(_ n: Int, of total: Int) -> String { String(format: L("whats_new.new_label_format"), n, total) }
+        static var howToAdd: String { L("whats_new.how_to_add") }
+        static var howToUse: String { L("whats_new.how_to_use") }
+        static var howToSet: String { L("whats_new.how_to_set") }
+        static var homeWidgetsTitle: String { L("whats_new.home_widgets.title") }
+        static var homeWidgetsBody: String { L("whats_new.home_widgets.body") }
+        static var homeWidgetsStep1: String { L("whats_new.home_widgets.step1") }
+        static var homeWidgetsStep2: String { L("whats_new.home_widgets.step2") }
+        static var homeWidgetsStep3: String { L("whats_new.home_widgets.step3") }
+        static var lockWidgetsTitle: String { L("whats_new.lock_widgets.title") }
+        static var lockWidgetsBody: String { L("whats_new.lock_widgets.body") }
+        static var lockWidgetsStep1: String { L("whats_new.lock_widgets.step1") }
+        static var lockWidgetsStep2: String { L("whats_new.lock_widgets.step2") }
+        static var lockWidgetsStep3: String { L("whats_new.lock_widgets.step3") }
+        static var remindersTitle: String { L("whats_new.reminders.title") }
+        static var remindersBody: String { L("whats_new.reminders.body") }
+        static var remindersStep1: String { L("whats_new.reminders.step1") }
+        static var remindersStep2: String { L("whats_new.reminders.step2") }
+        static var remindersStep3: String { L("whats_new.reminders.step3") }
+        static var remindersSampleTitle: String { L("whats_new.reminders.sample_title") }
+        static var remindersSampleBody: String { L("whats_new.reminders.sample_body") }
+        static var remindersSampleTime: String { L("whats_new.reminders.sample_time") }
+        static var quietHoursTitle: String { L("whats_new.quiet_hours.title") }
+        static var quietHoursBody: String { L("whats_new.quiet_hours.body") }
+        static var quietHoursStep1: String { L("whats_new.quiet_hours.step1") }
+        static var quietHoursStep2: String { L("whats_new.quiet_hours.step2") }
+        static var quietHoursStep3: String { L("whats_new.quiet_hours.step3") }
+        static var quietHoursDefault: String { L("whats_new.quiet_hours.default") }
+        static var finaleLabel: String { L("whats_new.finale.label") }
+        static var finaleTitle: String { L("whats_new.finale.title") }
+        static var finaleBody: String { L("whats_new.finale.body") }
+        static var finaleCalloutTitle: String { L("whats_new.finale.callout_title") }
+        static func finaleCalloutBody(date: String) -> String { String(format: L("whats_new.finale.callout_body_format"), date) }
+        static var finaleCalloutBodyNoDate: String { L("whats_new.finale.callout_body_no_date") }
+        static var finaleButton: String { L("whats_new.finale.button") }
+        static var widgetWhenTomorrow: String { L("whats_new.widget.tomorrow") }
+        static func widgetWhenDays(_ n: Int) -> String { String(format: L("whats_new.widget.days_format"), n) }
+        static var lockInlineSample: String { L("whats_new.lock.inline_sample") }
+    }
+
     /// Quiet hours settings (handoff `CLAUDE_CODE_PROMPT_QUIET_HOURS.md`).
     enum QuietHours {
         static var title: String { L("quiet_hours.title") }

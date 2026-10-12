@@ -37,6 +37,7 @@ final class AppContainer {
     let deviceProfileService: DeviceProfileSyncing
     let recapScheduler: RecapScheduler
     let quietHoursService: QuietHoursService
+    let whatsNewStore: WhatsNewStore
 
     private var entitlementObservationTask: Task<Void, Never>?
 
@@ -103,6 +104,7 @@ final class AppContainer {
         )
         let quietHoursService = QuietHoursStore(calendar: dateProvider.calendar)
         self.quietHoursService = quietHoursService
+        self.whatsNewStore = WhatsNewStore()
         let reminderSyncService = ReminderSyncService(
             repository: subscriptionRepository,
             preferences: settingsPreferences,

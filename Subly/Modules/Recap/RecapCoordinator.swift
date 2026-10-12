@@ -10,8 +10,9 @@ final class RecapCoordinator: Coordinator {
     private weak var presentingController: UIViewController?
     private let container: AppContainer
     private let recap: Recap
-    private weak var viewController: RecapViewController?
+    private weak var viewController: StoryViewController?
     private var zoomTransition: RecapZoomTransition?
+    private var content: RecapStoryContent?
 
     init(presentingController: UIViewController, container: AppContainer, recap: Recap, sourceView: UIView? = nil) {
         self.presentingController = presentingController
@@ -42,7 +43,9 @@ final class RecapCoordinator: Coordinator {
                 self?.presentingController?.tabBarController?.selectedIndex = 1
             }
         }
-        let viewController = RecapViewController(viewModel: viewModel, haptics: container.hapticsService)
+        let content = RecapStoryContent(viewModel: viewModel, haptics: container.hapticsService)
+        let viewController = StoryViewController(content: content, haptics: container.hapticsService)
+        self.content = content
         viewController.modalPresentationStyle = .overFullScreen
         viewController.modalPresentationCapturesStatusBarAppearance = true
         // Zoom from the header story icon when opened from the Dashboard.
@@ -60,7 +63,7 @@ final class RecapCoordinator: Coordinator {
         )
         let activity = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         activity.completionWithItemsHandler = { [weak viewController] _, _, _, _ in
-            viewController?.resumeAfterShare()
+            viewController?.resume()
         }
         viewController.present(activity, animated: true)
     }

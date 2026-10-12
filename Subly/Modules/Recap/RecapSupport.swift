@@ -1,6 +1,7 @@
 import UIKit
 
-/// Per-card colours. Story cards keep their colours in both appearances.
+/// Per-card colours. Story cards keep their colours in both appearances,
+/// except the intro cards, which follow `StoryIntroTheme`.
 struct RecapPalette {
     enum Background {
         case solid(UIColor)
@@ -12,16 +13,59 @@ struct RecapPalette {
     let ink: UIColor
     let secondary: UIColor
     let tertiary: UIColor
+    /// Highlight (current month bar, comparison line).
+    let accent: UIColor
+    /// Dimmed fills (previous month bars).
+    let muted: UIColor
+    let progressDone: UIColor
+    let progressUpcoming: UIColor
+    let closeBackground: UIColor
+    let prefersLightStatusBar: Bool
+
+    init(
+        background: Background,
+        ink: UIColor,
+        secondary: UIColor,
+        tertiary: UIColor,
+        accent: UIColor? = nil,
+        muted: UIColor? = nil,
+        progressDone: UIColor? = nil,
+        progressUpcoming: UIColor? = nil,
+        closeBackground: UIColor? = nil,
+        prefersLightStatusBar: Bool = true
+    ) {
+        self.background = background
+        self.ink = ink
+        self.secondary = secondary
+        self.tertiary = tertiary
+        self.accent = accent ?? ink
+        self.muted = muted ?? ink.withAlphaComponent(0.16)
+        self.progressDone = progressDone ?? ink.withAlphaComponent(0.9)
+        self.progressUpcoming = progressUpcoming ?? ink.withAlphaComponent(0.2)
+        self.closeBackground = closeBackground ?? ink.withAlphaComponent(0.12)
+        self.prefersLightStatusBar = prefersLightStatusBar
+    }
+
+    /// Card colours inside the story. Card 01 (Total) follows the system
+    /// appearance; the share image's Total tile stays lime (`limeTotal`).
+    static func palette(for card: Recap.Card, theme: StoryIntroTheme) -> RecapPalette {
+        card == .total ? theme.palette : palette(for: card)
+    }
+
+    /// The lime Total tile of the summary / share image — the brand moment,
+    /// kept in both appearances.
+    static let limeTotal = RecapPalette(
+        background: .solid(UIColor(hex: "#C8F169")),
+        ink: UIColor(hex: "#141609"),
+        secondary: UIColor(red: 20/255, green: 22/255, blue: 9/255, alpha: 0.7),
+        tertiary: UIColor(red: 20/255, green: 22/255, blue: 9/255, alpha: 0.45),
+        prefersLightStatusBar: false
+    )
 
     static func palette(for card: Recap.Card) -> RecapPalette {
         switch card {
         case .total:
-            return RecapPalette(
-                background: .solid(UIColor(hex: "#C8F169")),
-                ink: UIColor(hex: "#141609"),
-                secondary: UIColor(red: 20/255, green: 22/255, blue: 9/255, alpha: 0.7),
-                tertiary: UIColor(red: 20/255, green: 22/255, blue: 9/255, alpha: 0.45)
-            )
+            return limeTotal
         case .mostExpensive:
             return RecapPalette(
                 background: .radial(colors: [UIColor(hex: "#C0705A"), UIColor(hex: "#6A3448"), UIColor(hex: "#261426")],
@@ -41,14 +85,19 @@ struct RecapPalette {
                 ink: .white, secondary: UIColor(white: 1, alpha: 0.85), tertiary: UIColor(white: 1, alpha: 0.55)
             )
         case .summary:
-            return RecapPalette(
-                background: .solid(UIColor(hex: "#16181C")),
-                ink: UIColor(hex: "#F4F5F7"),
-                secondary: UIColor(red: 235/255, green: 238/255, blue: 245/255, alpha: 0.6),
-                tertiary: UIColor(red: 235/255, green: 238/255, blue: 245/255, alpha: 0.45)
-            )
+            return graphite
         }
     }
+
+    /// `#16181C` with light ink (summary card, What's New feature finale).
+    static let graphite = RecapPalette(
+        background: .solid(UIColor(hex: "#16181C")),
+        ink: UIColor(hex: "#F4F5F7"),
+        secondary: UIColor(red: 235/255, green: 238/255, blue: 245/255, alpha: 0.6),
+        tertiary: UIColor(red: 235/255, green: 238/255, blue: 245/255, alpha: 0.45),
+        accent: UIColor(hex: "#C8F169"),
+        closeBackground: UIColor(white: 1, alpha: 0.1)
+    )
 
     func makeBackgroundLayer() -> CALayer {
         switch background {
