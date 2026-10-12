@@ -1,4 +1,4 @@
-# App Store — Bu Sürümdeki Yenilikler (1.0.1)
+# App Store — Bu Sürümdeki Yenilikler (1.1.0)
 
 ## Türkçe
 

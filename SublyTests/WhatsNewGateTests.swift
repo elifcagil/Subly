@@ -56,11 +56,11 @@ final class WhatsNewGateTests: XCTestCase {
         } else {
             XCTAssertNil(WhatsNewPayload.active)
         }
-        XCTAssertNotNil(WhatsNewPayload.payload(for: "1.0.1"), "The template payload stays in the bundle")
+        XCTAssertNotNil(WhatsNewPayload.payload(for: "1.1.0"), "The template payload stays in the bundle")
     }
 
     func testBundledPayloadMatchesTheRunningVersionAndHasSixCards() {
-        let payload = WhatsNewPayload.payload(for: "1.0.1")
+        let payload = WhatsNewPayload.payload(for: "1.1.0")
         XCTAssertNotNil(payload)
         XCTAssertEqual(payload?.cards.count, 6)
         if case .intro(let features)? = payload?.cards.first {

@@ -79,8 +79,8 @@ targets:
       path: Subly/Resources/Info.plist
       properties:
         CFBundleDisplayName: Subly
-        CFBundleShortVersionString: "1.0.1"
-        CFBundleVersion: "2"
+        CFBundleShortVersionString: "1.1.0"
+        CFBundleVersion: "3"
         # EventKit is used to export renewals to the user's calendar. Without
         # these keys iOS terminates the app the moment access is requested.
         # iOS 17+ reads the first two; the legacy key covers older releases.
@@ -117,8 +117,8 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         GENERATE_INFOPLIST_FILE: NO
-        CURRENT_PROJECT_VERSION: "2"
-        MARKETING_VERSION: "1.0.1"
+        CURRENT_PROJECT_VERSION: "3"
+        MARKETING_VERSION: "1.1.0"
         CODE_SIGN_ENTITLEMENTS: Subly/Resources/Subly.entitlements
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: P4Y83PNQ54
@@ -169,8 +169,8 @@ targets:
       path: SublyWidgets/Info.plist
       properties:
         CFBundleDisplayName: Subly
-        CFBundleShortVersionString: "1.0.1"
-        CFBundleVersion: "2"
+        CFBundleShortVersionString: "1.1.0"
+        CFBundleVersion: "3"
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
     settings:
@@ -180,8 +180,8 @@ targets:
         TARGETED_DEVICE_FAMILY: "1"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         GENERATE_INFOPLIST_FILE: NO
-        CURRENT_PROJECT_VERSION: "2"
-        MARKETING_VERSION: "1.0.1"
+        CURRENT_PROJECT_VERSION: "3"
+        MARKETING_VERSION: "1.1.0"
         CODE_SIGN_ENTITLEMENTS: SublyWidgets/SublyWidgets.entitlements
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: P4Y83PNQ54

@@ -32,7 +32,7 @@ Hikâye kullanıcıya **bir kez**, güncelleme sonrası ilk açılışta göster
 
 ## İçerik
 
-`WhatsNewPayload.payloads` sürüm anahtarlı (şu an `"1.0.1"`). Yeni sürümde: payload'ı yeni sürüm anahtarıyla ekle, kartları güncelle. Metinler `Strings.WhatsNew` (en/tr).
+`WhatsNewPayload.payloads` sürüm anahtarlı (şu an `"1.1.0"`). Yeni sürümde: payload'ı yeni sürüm anahtarıyla ekle, kartları güncelle. Metinler `Strings.WhatsNew` (en/tr).
 
 Kartlar: 01 giriş (tema bağımlı, 5 numaralı satır — her numara gittiği kartın rengi), 02 ana ekran widget'ları, 03 kilit ekranı widget'ları, 04 akıllı hatırlatmalar, 05 sessiz saatler, 06 Recap finali (132 pt `RecapStoryButton(metrics: .hero)`, sürekli döner; ilk özet tarihi `RecapScheduler.nextRecapDate()`).
 

@@ -44,7 +44,7 @@ struct WhatsNewPayload: Equatable, Sendable {
     // The story is shown ONCE per user, on the first launch after an update.
     // Between releases it stays off and the cards below are the template for
     // the next one. To ship a new What's New:
-    //   1. Write the new payload (copy `release101`), key it by the new
+    //   1. Write the new payload (copy `release110`), key it by the new
     //      `CFBundleShortVersionString` in `payloads`.
     //   2. Flip `isEnabled` to `true`.
     //   3. After that release, flip it back to `false`.
@@ -59,7 +59,7 @@ struct WhatsNewPayload: Equatable, Sendable {
 
     /// All payloads this build knows, by version.
     static let payloads: [String: WhatsNewPayload] = [
-        "1.0.1": release101
+        "1.1.0": release110
     ]
 
     /// The payload keyed by `version`, regardless of the switch (tests).
@@ -74,9 +74,9 @@ struct WhatsNewPayload: Equatable, Sendable {
         return payload(for: AppVersion.current)
     }
 
-    // MARK: - 1.0.1
+    // MARK: - 1.1.0
 
-    static var release101: WhatsNewPayload {
+    static var release110: WhatsNewPayload {
         let features = [
             Feature(number: 1, name: Strings.WhatsNew.featureHomeWidgets, circleHex: "#B4624F", digitHex: "#FFFFFF"),
             Feature(number: 2, name: Strings.WhatsNew.featureLockWidgets, circleHex: "#4A5C9E", digitHex: "#FFFFFF"),
@@ -84,7 +84,7 @@ struct WhatsNewPayload: Equatable, Sendable {
             Feature(number: 4, name: Strings.WhatsNew.featureQuietHours, circleHex: "#54468A", digitHex: "#FFFFFF"),
             Feature(number: 5, name: Strings.WhatsNew.featureRecap, circleHex: "#C8F169", digitHex: "#141609")
         ]
-        return WhatsNewPayload(version: "1.0.1", cards: [
+        return WhatsNewPayload(version: "1.1.0", cards: [
             .intro(features: features),
             .feature(FeatureCard(
                 visual: .homeWidgets,
