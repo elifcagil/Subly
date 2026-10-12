@@ -92,3 +92,18 @@ loglanıp yutulur; uygulama etkilenmez.
 - Bekleyen bildirimleri görmek için: abonelik ekleyip Xcode → Debug →
   `UNUserNotificationCenter.current().pendingNotificationRequests()` (ya da
   cihaz tarihini ileri alıp teslimatı izle).
+
+## Güncelleme: hatırlatma saati ve güvenilir zaman
+
+**Saat.** Hatırlatma, aboneliğin **eklendiği saatte** gelir: "1 gün önce" = yenileme gününden tam 24 saat önce, aynı saat. Örnek: abonelik 21:30'da eklendi, yenileme 13.10 → "1 gün önce" 12.10 21:30, aynı gün hatırlatması 13.10 21:30. `createdAt` olmayan eski kayıtlar 09:00'a düşer. Aynı güne düşen hatırlatmalar yalnızca **aynı dakikada** ateşleniyorsa tek bildirimde birleşir (`grouped.<gün>.<dakika>`). "Yarın hatırlat" aynı saati korur (`fireMinute` userInfo anahtarı). Özet bildirimi 09:00'da kalır.
+
+**Güvenilir zaman.** `TrustedDateProvider` (`Subly/Services/Time/`) uygulamanın "şimdi"sidir:
+
+- Her ön plana gelişte Supabase'e bir HEAD isteği atılır, `Date` başlığı sunucu saati olarak alınır (gidiş-dönüş ikiye bölünür).
+- Sunucu saati `kern.boottime` tabanlı monoton sayaçla ileri taşınır; kullanıcı cihaz saatini ileri/geri alsa da `now` değişmez. Yeniden başlatmada son bilinen fark korunur, ilk senkronizasyona kadar cihaz saati kullanılır.
+- Yenileme ilerletme, hatırlatma planlama ve özet zamanlaması bu saatle hesaplanır.
+- iOS yerel bildirimleri **cihaz saatine** göre ateşler; bu yüzden tetikleyici kurulurken güvenilir an, cihaz saatine çevrilir (`deviceDate(for:)`). Önemli saat değişikliğinde (`significantTimeChange`) önce saat yeniden senkronize edilir, sonra bildirimler yeniden kurulur.
+
+Sınır: uygulama kapalıyken saat değiştirilirse, bekleyen bildirimler yeni cihaz saatine göre ateşlenebilir; bir sonraki açılışta hepsi yeniden planlanır. Tam bağışıklık ancak sunucudan gönderilen push bildirimleriyle mümkündür.
+
+**Test.** `ReminderContentBuilderTests` (eklenme saati, farklı saatler gruplanmaz, erteleme saati korur) ve `TrustedDateProviderTests` (senkronizasyon, çevrimdışı, kalıcılık, saat oynatma, başlık ayrıştırma).

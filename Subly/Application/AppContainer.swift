@@ -27,6 +27,8 @@ final class AppContainer {
     let storeKitService: StoreKitService
     let authService: AuthService
     let dateProvider: DateProviding
+    /// Server-synced clock behind `dateProvider`.
+    let trustedClock: TrustedDateProvider
     let logger: Logging
     let sampleDataSeeder: SampleDataSeeding
     let deviceIdentity: DeviceIdentityProviding
@@ -44,8 +46,12 @@ final class AppContainer {
     init() {
         let logger = ConsoleLogger()
         self.logger = logger
-        let dateProvider = SystemDateProvider()
+        // "Official" time: the backend's clock, carried on a monotonic
+        // counter so moving the device clock does not move renewals,
+        // reminders or the recap cadence.
+        let dateProvider = TrustedDateProvider()
         self.dateProvider = dateProvider
+        self.trustedClock = dateProvider
 
         self.subscriptionRepository = Self.makeSubscriptionRepository(
             dateProvider: dateProvider,
@@ -97,7 +103,10 @@ final class AppContainer {
 
         // Renewal reminders: one rebuild path for every trigger (save, delete,
         // archive, roll-forward, master switch, permission, time change).
-        let reminderScheduler = LocalReminderScheduler(calendar: dateProvider.calendar)
+        let reminderScheduler = LocalReminderScheduler(
+            calendar: dateProvider.calendar,
+            deviceDate: { [dateProvider] in dateProvider.deviceDate(for: $0) }
+        )
         let reminderBuilder = ReminderContentBuilder(
             calendar: dateProvider.calendar,
             currencyFormatter: currencyFormatter
@@ -163,6 +172,24 @@ final class AppContainer {
     func rollRenewalsForward() {
         let service = renewalRolloverService
         Task { await service.rollForwardExpired() }
+    }
+
+    /// Foreground pass: refresh the trusted clock first, then everything
+    /// that depends on "now" (roll-forward, reminders, recap).
+    func refreshTimeDependentState() {
+        let clock = trustedClock
+        let rollover = renewalRolloverService
+        let reminders = reminderSyncService
+        let recap = recapScheduler
+        let profile = deviceProfileService
+        let registeredAt = deviceIdentity.registeredAt()
+        Task {
+            await clock.sync()
+            await rollover.rollForwardExpired()
+            await reminders.resync()
+            await recap.refresh()
+            if let registeredAt { await profile.setRegisteredAt(registeredAt) }
+        }
     }
 
     /// Rebuilds the next 60 days of renewal reminders. Called on every

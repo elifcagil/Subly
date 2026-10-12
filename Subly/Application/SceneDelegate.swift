@@ -173,14 +173,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Flush a registration that was completed while offline.
         container?.retryPendingRegistrationIfNeeded()
-        // Advance past-due renewal dates to the next billing cycle.
-        container?.rollRenewalsForward()
-        // Rebuild the next 60 days of renewal reminders.
-        container?.resyncReminders()
+        // Sync the trusted clock, then: advance past-due renewal dates,
+        // rebuild the next 60 days of reminders, re-schedule the recap.
+        container?.refreshTimeDependentState()
         // Pick up a permission granted in iOS Settings while we were away.
         container?.refreshNotificationPermissionAfterForeground()
-        // Keep the next recap notification scheduled.
-        container?.refreshRecap()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

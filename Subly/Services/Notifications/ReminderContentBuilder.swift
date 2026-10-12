@@ -51,6 +51,8 @@ enum ReminderUserInfoKey {
     static let offsetDays = "offsetDays"
     static let name = "name"
     static let categoryID = "categoryId"
+    /// Minute of day the reminder fires at (snooze keeps the same time).
+    static let fireMinute = "fireMinute"
 }
 
 /// One local notification to schedule. Pure data so the builder can be unit
@@ -147,9 +149,10 @@ struct ReminderContentBuilder: Sendable {
                 let renewalDay = calendar.startOfDay(for: renewal)
                 var deliveryDays = Set<Date>()
 
+                let minute = fireMinute(for: subscription)
                 for lead in leads.sorted() {
                     guard let deliveryDay = calendar.date(byAdding: .day, value: -lead, to: renewalDay) else { continue }
-                    let fire = fireDate(on: deliveryDay)
+                    let fire = fireDate(on: deliveryDay, minuteOfDay: minute)
                     guard fire > now, deliveryDays.insert(deliveryDay).inserted else { continue }
                     candidates.append(Candidate(
                         subscription: subscription, renewalDay: renewalDay,
@@ -159,7 +162,7 @@ struct ReminderContentBuilder: Sendable {
 
                 let isAcknowledged = acknowledged[subscription.id] == dayKey(renewalDay)
                 if !leads.contains(0), !isAcknowledged, !deliveryDays.contains(renewalDay) {
-                    let fire = fireDate(on: renewalDay)
+                    let fire = fireDate(on: renewalDay, minuteOfDay: minute)
                     if fire > now {
                         candidates.append(Candidate(
                             subscription: subscription, renewalDay: renewalDay,
@@ -171,8 +174,11 @@ struct ReminderContentBuilder: Sendable {
         }
 
         var requests: [ReminderRequest] = []
-        let byDeliveryDay = Dictionary(grouping: candidates) { calendar.startOfDay(for: $0.fireDate) }
-        for (deliveryDay, items) in byDeliveryDay {
+        // Reminders fire at each subscription's own time of day, so only
+        // those due at the very same moment are merged into one notification.
+        let byFireMoment = Dictionary(grouping: candidates, by: \.fireDate)
+        for (fireMoment, items) in byFireMoment {
+            let deliveryDay = calendar.startOfDay(for: fireMoment)
             // One subscription, one reminder per day: keep the most urgent.
             let perSubscription = Dictionary(grouping: items, by: \.subscription.id)
                 .values
@@ -180,7 +186,7 @@ struct ReminderContentBuilder: Sendable {
                 .sorted { ($0.renewalDay, $0.subscription.name) < ($1.renewalDay, $1.subscription.name) }
 
             if perSubscription.count >= 2 {
-                requests.append(groupedRequest(perSubscription, deliveryDay: deliveryDay, quietHours: quietHours))
+                requests.append(groupedRequest(perSubscription, deliveryDay: deliveryDay, fireDate: fireMoment, quietHours: quietHours))
             } else {
                 requests.append(contentsOf: perSubscription.map { request(for: $0, quietHours: quietHours) })
             }
@@ -209,12 +215,13 @@ struct ReminderContentBuilder: Sendable {
         let offset = daysBetween(tomorrow, renewalDay)
         guard offset >= 0 else { return nil }
         let categoryID = userInfo[ReminderUserInfoKey.categoryID].flatMap(UUID.init(uuidString:))
+        let minute = userInfo[ReminderUserInfoKey.fireMinute].flatMap(Int.init) ?? deliveryHour * 60
 
         return makeRequest(
             kind: .snoozed,
             subscriptionID: id, name: name, amount: amount, currencyCode: currency,
             categoryID: categoryID, renewalDay: renewalDay, offsetDays: offset,
-            fireDate: fireDate(on: tomorrow), quietHours: quietHours
+            fireDate: fireDate(on: tomorrow, minuteOfDay: minute), quietHours: quietHours
         )
     }
 
@@ -286,7 +293,8 @@ struct ReminderContentBuilder: Sendable {
             ReminderUserInfoKey.amount: "\(amount)",
             ReminderUserInfoKey.currency: currencyCode,
             ReminderUserInfoKey.offsetDays: "\(offsetDays)",
-            ReminderUserInfoKey.name: name
+            ReminderUserInfoKey.name: name,
+            ReminderUserInfoKey.fireMinute: "\(minuteOfDay(fireDate))"
         ]
         if let categoryID { userInfo[ReminderUserInfoKey.categoryID] = categoryID.uuidString }
 
@@ -302,7 +310,7 @@ struct ReminderContentBuilder: Sendable {
         )
     }
 
-    private func groupedRequest(_ items: [Candidate], deliveryDay: Date, quietHours: QuietHours) -> ReminderRequest {
+    private func groupedRequest(_ items: [Candidate], deliveryDay: Date, fireDate fire: Date, quietHours: QuietHours) -> ReminderRequest {
         let days = items.map { daysBetween(deliveryDay, $0.renewalDay) }.max() ?? 0
         let count = items.count
 
@@ -332,9 +340,8 @@ struct ReminderContentBuilder: Sendable {
         default: body = Strings.Reminders.groupedBodyMore(names[0], names[1], more: names.count - 2, total: totals)
         }
 
-        let fire = fireDate(on: deliveryDay)
         return ReminderRequest(
-            identifier: "\(ReminderIdentifierPrefix.grouped)\(dayKey(deliveryDay))",
+            identifier: "\(ReminderIdentifierPrefix.grouped)\(dayKey(deliveryDay)).\(minuteOfDay(fire))",
             kind: .grouped,
             title: title,
             body: body,
@@ -370,12 +377,25 @@ struct ReminderContentBuilder: Sendable {
         return dates
     }
 
-    /// `deliveryHour:00` on `day`. Quiet hours no longer move the time — a
-    /// delivery inside the window is simply silent.
-    func deliveryDate(on day: Date) -> Date { fireDate(on: day) }
+    /// `deliveryHour:00` on `day` (recap notification). Quiet hours no longer
+    /// move the time — a delivery inside the window is simply silent.
+    func deliveryDate(on day: Date) -> Date { fireDate(on: day, minuteOfDay: deliveryHour * 60) }
 
-    private func fireDate(on day: Date) -> Date {
-        calendar.date(bySettingHour: deliveryHour, minute: 0, second: 0, of: day) ?? day
+    /// Renewal reminders fire at the time of day the subscription was added
+    /// ("1 day before" = exactly 24h before that moment on the renewal day),
+    /// falling back to `deliveryHour:00` for rows without a creation time.
+    func fireMinute(for subscription: Subscription) -> Int {
+        guard let created = subscription.createdAt else { return deliveryHour * 60 }
+        return minuteOfDay(created)
+    }
+
+    private func fireDate(on day: Date, minuteOfDay minute: Int) -> Date {
+        calendar.date(bySettingHour: minute / 60, minute: minute % 60, second: 0, of: day) ?? day
+    }
+
+    private func minuteOfDay(_ date: Date) -> Int {
+        let parts = calendar.dateComponents([.hour, .minute], from: date)
+        return (parts.hour ?? 0) * 60 + (parts.minute ?? 0)
     }
 
     private func verb(for categoryID: UUID?) -> String {

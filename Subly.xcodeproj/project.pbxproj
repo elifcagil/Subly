@@ -169,6 +169,7 @@
 		8065028B0A5D2A9C78B0F73E /* DesignSystem+Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE5693F6945B8ACD7AEE7E6 /* DesignSystem+Motion.swift */; };
 		832DB7A134FE104342687276 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CEE9365377A710D589EC9B /* ViewState.swift */; };
 		83710AF2D6FFAC8089DD4F70 /* SublyWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B7C799EAE2AD7AE3E385E1CE /* SublyWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		83ED910BAB35BE9B2E691EFA /* TrustedDateProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460D68F756ABBE5D5AA7867F /* TrustedDateProviderTests.swift */; };
 		846A3F3E6BF17D172FC54077 /* SupabaseRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A706F9E6AD08FAFBBD3496F9 /* SupabaseRegistrationService.swift */; };
 		86516B2B0890F8B7F84B3E3E /* RenewalRingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823F284B8EC33F2D21B36C05 /* RenewalRingWidget.swift */; };
 		871CC722184825578EBDFC07 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EF77E880D61BE34E9A92BF /* Subscription.swift */; };
@@ -297,6 +298,7 @@
 		F5790A2E784C52EBC5BFAA7A /* WidgetItemBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6AE64C5E075FC9891790C /* WidgetItemBuilderTests.swift */; };
 		F5F5DAC580960EF37A6F9DD6 /* PaywallPlanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997CC46B1CF34EB730768A1C /* PaywallPlanCard.swift */; };
 		F631A861EEFCB93D7CB11461 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BF035438E2DDAF4862B2E /* Category.swift */; };
+		F69DE48ADA723F3DEFEDE339 /* TrustedDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5680D5D55977435F69DF54 /* TrustedDateProvider.swift */; };
 		F8CC92E8E1064B688356BC3A /* UpcomingRenewalsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7C96A6C8730C4B318D8FD /* UpcomingRenewalsUseCase.swift */; };
 		F9D9958F3F1E3759E2CCF1AE /* LanguagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034A69B5E705090918CD8181 /* LanguagePickerViewController.swift */; };
 		FA5CDD308C062D6BCE7B9811 /* SpendInCategoryIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EB62B8068D7D79E532AF6 /* SpendInCategoryIntent.swift */; };
@@ -411,6 +413,7 @@
 		4203A973D149AF5C17C85088 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		4207690D1B64581FD83CDB6B /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		428D096A69F8642F496F0BB5 /* WhatsNewVisuals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewVisuals.swift; sourceTree = "<group>"; };
+		460D68F756ABBE5D5AA7867F /* TrustedDateProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustedDateProviderTests.swift; sourceTree = "<group>"; };
 		461CD6EECC686700AD14DA06 /* SubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRepository.swift; sourceTree = "<group>"; };
 		464E20C560E9F7AC2EE03DFE /* ReminderDefaultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDefaultsViewModel.swift; sourceTree = "<group>"; };
 		48BF74175AAE30F24F479575 /* AccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
@@ -585,6 +588,7 @@
 		EA46AB63FC61F9550348A84B /* AddEditSubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditSubscriptionViewModel.swift; sourceTree = "<group>"; };
 		EC1EBEB8232BE00AA6442922 /* CatalogPriceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPriceService.swift; sourceTree = "<group>"; };
 		EC8DBDE5746B5DCBF86F7803 /* CatalogPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPickerCoordinator.swift; sourceTree = "<group>"; };
+		ED5680D5D55977435F69DF54 /* TrustedDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustedDateProvider.swift; sourceTree = "<group>"; };
 		EE40A1076B50B0966FA771A9 /* DesignSystem+Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+Typography.swift"; sourceTree = "<group>"; };
 		EF70C136B5163724FA146CE1 /* FormFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormFieldView.xib; sourceTree = "<group>"; };
 		F2A199F56C075B20872D4B0E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1073,6 +1077,14 @@
 			path = Reminders;
 			sourceTree = "<group>";
 		};
+		72DB91EF6EDE9AE3E7C7FE7B /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				ED5680D5D55977435F69DF54 /* TrustedDateProvider.swift */,
+			);
+			path = Time;
+			sourceTree = "<group>";
+		};
 		7A80BE0F47DF9BE5D63495BC /* Spacing */ = {
 			isa = PBXGroup;
 			children = (
@@ -1374,6 +1386,7 @@
 				47BB42940C348C04273FA819 /* SampleData */,
 				B3D267CBF66672FD3B6A8C29 /* ServiceLinks */,
 				97A91D46CCC706DFCC8924D8 /* StoreKit */,
+				72DB91EF6EDE9AE3E7C7FE7B /* Time */,
 				A2AA63A2355F4ECE8AADA3D1 /* WhatsNew */,
 			);
 			path = Services;
@@ -1393,6 +1406,7 @@
 				8BF77ADA76C77A99AEBFE2DA /* RenewalRolloverServiceTests.swift */,
 				F2FF4C8394D47B0730DFD6EB /* StoryIntroThemeTests.swift */,
 				8ACE40A11925599869F20D30 /* StoryPlayerTests.swift */,
+				460D68F756ABBE5D5AA7867F /* TrustedDateProviderTests.swift */,
 				3799697DB47598B9DC9029C7 /* WhatsNewGateTests.swift */,
 				36A6AE64C5E075FC9891790C /* WidgetItemBuilderTests.swift */,
 			);
@@ -1830,6 +1844,7 @@
 				5487A6169D21FFECD8B13DD0 /* RenewalRolloverServiceTests.swift in Sources */,
 				A19B5DE8ACE6BC0666202958 /* StoryIntroThemeTests.swift in Sources */,
 				B3583792BC22DAB397A3C8BA /* StoryPlayerTests.swift in Sources */,
+				83ED910BAB35BE9B2E691EFA /* TrustedDateProviderTests.swift in Sources */,
 				74398157057434C02B5D7E00 /* WhatsNewGateTests.swift in Sources */,
 				F5790A2E784C52EBC5BFAA7A /* WidgetItemBuilderTests.swift in Sources */,
 			);
@@ -2030,6 +2045,7 @@
 				391D82A43E85F6578553E868 /* TimelineCoordinator.swift in Sources */,
 				03808E460CB9819180CDA461 /* TimelineViewController.swift in Sources */,
 				6DB67C7D8DC930264FD11080 /* TimelineViewModel.swift in Sources */,
+				F69DE48ADA723F3DEFEDE339 /* TrustedDateProvider.swift in Sources */,
 				99C778268C791D3608E851D1 /* UIApplication+SystemSettings.swift in Sources */,
 				563B68DF2CBCBA8870FA70D9 /* UIColor+Hex.swift in Sources */,
 				597058ABC51678CD5FA5AA7D /* UIView+Constraints.swift in Sources */,

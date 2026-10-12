@@ -76,6 +76,9 @@ final class ReminderSyncService: ReminderSyncing {
             queue: .main
         ) { _ in
             Task { @MainActor [weak self] in
+                // A moved clock: refresh trusted time before re-planning so
+                // triggers are converted with the new skew.
+                await (self?.dateProvider as? TrustedDateProvider)?.sync()
                 await self?.resync()
             }
         }

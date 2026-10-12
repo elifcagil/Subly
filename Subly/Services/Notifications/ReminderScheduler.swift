@@ -21,8 +21,16 @@ struct LocalReminderScheduler: ReminderScheduling {
 
     private let center: UNUserNotificationCenter
     private let calendar: Calendar
+    /// Trusted fire moment → device clock (iOS fires triggers by the
+    /// device clock; see `TrustedDateProvider.deviceDate(for:)`).
+    private let deviceDate: @Sendable (Date) -> Date
 
-    init(center: UNUserNotificationCenter = .current(), calendar: Calendar = .current) {
+    init(
+        center: UNUserNotificationCenter = .current(),
+        calendar: Calendar = .current,
+        deviceDate: @escaping @Sendable (Date) -> Date = { $0 }
+    ) {
+        self.deviceDate = deviceDate
         self.center = center
         self.calendar = calendar
     }
@@ -60,7 +68,7 @@ struct LocalReminderScheduler: ReminderScheduling {
             content.interruptionLevel = .timeSensitive
         }
 
-        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: request.fireDate)
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: deviceDate(request.fireDate))
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
         let notification = UNNotificationRequest(identifier: request.identifier, content: content, trigger: trigger)
         _ = try? await center.add(notification)

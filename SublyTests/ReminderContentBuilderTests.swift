@@ -24,6 +24,37 @@ final class ReminderContentBuilderTests: XCTestCase {
 
     // MARK: - Lead + same-day
 
+    func testReminderFiresAtTheTimeOfDayTheSubscriptionWasAdded() {
+        // Added 21:30 → "1 day before" is 21:30 on the eve of the renewal.
+        var sub = makeSubscription(nextRenewal: date(2026, 6, 20), leadDays: [1, 3])
+        sub.createdAt = date(2026, 5, 2, hour: 21, minute: 30)
+        let requests = builder.plan(subscriptions: [sub], now: now, horizonDays: 30)
+        XCTAssertEqual(requests.map(\.fireDate), [
+            date(2026, 6, 17, hour: 21, minute: 30),
+            date(2026, 6, 19, hour: 21, minute: 30),
+            date(2026, 6, 20, hour: 21, minute: 30)
+        ])
+        XCTAssertEqual(requests.first?.userInfo[ReminderUserInfoKey.fireMinute], "1290")
+    }
+
+    func testSameDayDifferentTimesAreNotGrouped() {
+        var a = makeSubscription(name: "A", nextRenewal: date(2026, 6, 20), leadDays: [1])
+        a.createdAt = date(2026, 5, 2, hour: 8)
+        var b = makeSubscription(name: "B", nextRenewal: date(2026, 6, 20), leadDays: [1])
+        b.createdAt = date(2026, 5, 2, hour: 20)
+        let requests = builder.plan(subscriptions: [a, b], now: now, horizonDays: 10)
+        XCTAssertEqual(requests.count, 4)
+        XCTAssertFalse(requests.contains { $0.kind == .grouped })
+    }
+
+    func testSnoozeKeepsTheOriginalTimeOfDay() {
+        var sub = makeSubscription(nextRenewal: date(2026, 6, 20), leadDays: [3])
+        sub.createdAt = date(2026, 5, 2, hour: 21, minute: 30)
+        let original = builder.plan(subscriptions: [sub], now: now, horizonDays: 10).first!
+        let snoozed = builder.snoozedRequest(from: original.userInfo, now: date(2026, 6, 17, hour: 21, minute: 31))
+        XCTAssertEqual(snoozed?.fireDate, date(2026, 6, 18, hour: 21, minute: 30))
+    }
+
     func testLeadReminderFiresNDaysBeforeAtNine() {
         let sub = makeSubscription(name: "Netflix", nextRenewal: date(2026, 6, 20), leadDays: [3])
 
@@ -146,7 +177,7 @@ final class ReminderContentBuilderTests: XCTestCase {
 
         // Jun 19 (both "tomorrow" reminders) and Jun 20 (both same-day) → 2.
         XCTAssertEqual(requests.count, 2)
-        let grouped = requests.first { $0.identifier == "grouped.2026-06-19" }
+        let grouped = requests.first { $0.identifier == "grouped.2026-06-19.540" }
         XCTAssertEqual(grouped?.kind, .grouped)
         XCTAssertEqual(grouped?.title, Strings.Reminders.groupedTitleTomorrow(count: 2))
         XCTAssertEqual(
@@ -156,7 +187,7 @@ final class ReminderContentBuilderTests: XCTestCase {
         XCTAssertEqual(grouped?.categoryIdentifier, ReminderCategory.grouped)
         XCTAssertEqual(grouped?.userInfo[ReminderUserInfoKey.subscriptionIDs]?.split(separator: ",").count, 2)
 
-        let sameDay = requests.first { $0.identifier == "grouped.2026-06-20" }
+        let sameDay = requests.first { $0.identifier == "grouped.2026-06-20.540" }
         XCTAssertEqual(sameDay?.title, Strings.Reminders.groupedTitleToday(count: 2))
         XCTAssertEqual(sameDay?.deliveryStyle, .timeSensitive)
     }
