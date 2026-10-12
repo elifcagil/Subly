@@ -224,7 +224,22 @@ final class AppContainer {
         guard deviceIdentity.isPendingRemoteSync() else { return }
         let service = registrationService
         let deviceID = deviceIdentity.deviceID()
-        Task { _ = try? await service.register(deviceId: deviceID) }
+        let identity = deviceIdentity
+        let profile = deviceProfileService
+        let permission = notificationPermissionService
+        let quietHours = quietHoursService
+        Task {
+            // The row is created only now (the first attempt found the
+            // backend unreachable, e.g. a paused project). Mirror the
+            // profile fields right away rather than waiting for the next
+            // foreground: the original install date, the notification
+            // switch and quiet hours.
+            guard (try? await service.register(deviceId: deviceID)) != nil,
+                  !identity.isPendingRemoteSync() else { return }
+            if let registeredAt = identity.registeredAt() { await profile.setRegisteredAt(registeredAt) }
+            await permission.syncBackend()
+            await profile.setQuietHours(quietHours.current())
+        }
     }
 
     deinit {
